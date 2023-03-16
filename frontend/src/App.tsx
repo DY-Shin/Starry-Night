@@ -1,10 +1,10 @@
 import React from 'react';
+import Main from './Presentational/Page/Main';
 
 function App() {
   return (
     <div className="App">
-      StarryNight
-      <div>FrontEnd</div>
+      <Main />
     </div>
   );
 }
