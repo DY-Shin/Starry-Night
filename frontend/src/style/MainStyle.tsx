@@ -2,13 +2,10 @@ import styled from 'styled-components';
 import bg from '../assets/mainpage/space.jpg';
 
 // main page
-export const Mainpage = styled.div`
-  /* width: 100%;
-  min-height: 100vh; */
-`;
+export const Mainpage = styled.div``;
 export const Container = styled.div`
   width: 100%;
-  min-height: 100vh;
+  max-height: 100vh;
   background-image: url(${bg});
   background-size: cover;
   background-repeat: no-repeat;
@@ -17,12 +14,9 @@ export const Container = styled.div`
 export const MainTop = styled.div`
   color: white;
   padding-left: 4.5em;
-  padding-right: 4.5em;
-  /* width: 100%; */
+
   min-height: 100vh;
-  /* background-image: url(${bg});
-  background-size: cover;
-  background-repeat: no-repeat; */
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,33 +40,45 @@ export const MainExplain = styled.div`
   padding-right: 4.5em;
   color: white;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  border: 3px solid yellow;
+  /* justify-content: center; */
+  /* align-items: center; */
+  border: 3px solid pink;
 `;
 export const EPImgBox1 = styled.div`
-  /* flex-basis: 50%; */
   padding: 10px;
   display: flex;
   align-items: center;
-  /* width: auto; */
-  height: 300px;
+  justify-content: center;
+  width: 20em;
+  height: 30em;
   background-color: rgba(50, 130, 184, 0.3); //#3282B8;
   border: 2px solid #0f4c75;
   border-radius: 10px;
+`;
+
+export const EPBox1 = styled.div`
+  padding: 10px;
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: auto;
 `;
 
 interface ImgProps {
   src: string;
 }
 
-export const ImgBox = styled.img.attrs<ImgProps>((props) => ({
+export const ImgBox = styled.img.attrs((props) => ({
   src: props.src,
 }))`
-  /* flex-basis: 1000%; */
-  /* width: 50px; */
   height: 100%;
+`;
+
+export const Img = styled.image`
+  width: 91px;
+  height: 160px;
+  border-radius: 5px;
 `;
 
 // 광공해 슬라이드
@@ -82,30 +88,32 @@ export const MainLightPollution = styled.div`
   padding-right: 4.5em;
   min-height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center;
+  align-items: center; */
 `;
 
 export const LPLeftBox = styled.div`
   flex-basis: 50%;
+  display: flex;
+  align-items: center;
 `;
+
 export const LPRightBox = styled.div`
   flex-basis: 50%;
+  display: flex;
+  align-items: center;
 `;
 
 export const LPImgBox = styled.img.attrs<ImgProps>((props) => ({
   src: props.src,
 }))`
-  /* flex-basis: 1000%; */
-  /* width: 50px; */
-  width: 100%;
+  /* width: 100%; */
   height: 100%;
   object-fit: cover;
 `;
 
 export const LPBox1 = styled.div`
   padding: 10px;
-  /* flex-basis: 50%; */
   display: flex;
   align-items: center;
   width: auto;
@@ -118,9 +126,10 @@ export const LPBox1 = styled.div`
 export const LPText1 = styled.div`
   flex-basis: 50%;
 `;
+
 // star 슬라이드
 export const MainStar = styled.div`
-  border: 3px solid yellow;
+  border: 3px solid pink;
   color: white;
   padding-left: 4.5em;
   padding-right: 4.5em;
