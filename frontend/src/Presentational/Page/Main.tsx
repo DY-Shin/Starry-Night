@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import MainLightPollution from '../Components/MainLightPollution';
 import MainStar from '../Components/MainStar';
 import MainTop from '../Components/MainTop';
@@ -6,6 +6,21 @@ import MainExplain from '../Components/MainExplain';
 import * as MainStyle from '../../style/MainStyle';
 
 function Mainpage() {
+  const handleScrollAnimation = (e: Event) => {
+    console.log(e);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', (e) => {
+      handleScrollAnimation(e);
+    });
+
+    return () => {
+      window.removeEventListener('scroll', (e) => {
+        handleScrollAnimation(e);
+      });
+    };
+  }, []);
   return (
     <MainStyle.Mainpage>
       <MainTop />

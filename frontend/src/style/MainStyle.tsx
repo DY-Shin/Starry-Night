@@ -1,5 +1,7 @@
 import styled from 'styled-components';
+import Slider from 'react-slick';
 import bg from '../assets/mainpage/space.jpg';
+// import bg from '../../public/assets/mainpage/space.jpg';
 
 // main page
 export const Mainpage = styled.div``;
@@ -14,9 +16,7 @@ export const Container = styled.div`
 export const MainTop = styled.div`
   color: white;
   padding-left: 4.5em;
-
   min-height: 100vh;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,6 +33,7 @@ export const TopMap = styled.div`
   padding: 20px;
   cursor: pointer;
 `;
+
 // Explain 슬라이드
 export const MainExplain = styled.div`
   min-height: 100vh;
@@ -44,6 +45,7 @@ export const MainExplain = styled.div`
   /* align-items: center; */
   border: 3px solid pink;
 `;
+
 export const EPImgBox1 = styled.div`
   padding: 10px;
   display: flex;
@@ -65,6 +67,20 @@ export const EPBox1 = styled.div`
   width: auto;
 `;
 
+export const WrapSlide = styled.div`
+  transform: rotate(-3deg);
+`;
+
+export const WrapImg = styled(Slider)`
+  /* height: 100%;
+  width: 100%; */
+  justify-content: center;
+  align-items: center;
+  /* transform: rotate(10deg); */
+  /* position: relative; */
+  /* background-color: red; */
+`;
+
 interface ImgProps {
   src: string;
 }
@@ -72,13 +88,10 @@ interface ImgProps {
 export const ImgBox = styled.img.attrs((props) => ({
   src: props.src,
 }))`
-  height: 100%;
-`;
-
-export const Img = styled.image`
-  width: 91px;
-  height: 160px;
-  border-radius: 5px;
+  padding: 10px;
+  /* width: 20vh;
+  height: 20vh; */
+  /* object-fit: cover; */
 `;
 
 // 광공해 슬라이드
@@ -88,8 +101,6 @@ export const MainLightPollution = styled.div`
   padding-right: 4.5em;
   min-height: 100vh;
   display: flex;
-  /* justify-content: center;
-  align-items: center; */
 `;
 
 export const LPLeftBox = styled.div`
