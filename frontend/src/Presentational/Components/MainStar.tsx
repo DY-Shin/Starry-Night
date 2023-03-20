@@ -44,7 +44,6 @@ function MainStar() {
   return (
     <MainStyle.Container>
       <MainStyle.MainStar>
-        주위 별자리
         <MainStyle.WrapSlide>
           <Slider {...settings}>
             {arr.map((i) => (
