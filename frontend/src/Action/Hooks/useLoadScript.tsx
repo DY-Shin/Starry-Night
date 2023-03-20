@@ -21,6 +21,7 @@ function useLoadScript(src: string): string {
     if (!script) {
       script = document.createElement('script');
       script.src = src;
+      script.type = 'text/javascript';
 
       // async사용 이유는 스크립트를 읽는 도중 DOM생성을 멈추기 때문에 async를 사용한다면 스크립트를 불러오면서 DOM렌더링을 동시에 처리 함
       // async와 비슷한 기능을 하는 옵션은 defer이며 async는 script를 다운받으면 순서에 상관없이 다운된 파일을 우선적으로 실행하여 js파일이 우선순위가
