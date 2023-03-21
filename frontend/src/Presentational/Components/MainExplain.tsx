@@ -9,7 +9,7 @@ function MainExplain() {
   return (
     <MainStyle.Container>
       <MainStyle.MainExplain>
-        <MainStyle.EPBox1>
+        <MainStyle.EPLeftBox>
           <Fade direction="left" duration={2000}>
             <h1>어둠 속으로 떠나는 천체관측 프로젝트</h1>
           </Fade>
@@ -19,9 +19,9 @@ function MainExplain() {
           <Fade direction="left" duration={2600}>
             <h1>우리가 지켜야 할 어둠</h1>
           </Fade>
-        </MainStyle.EPBox1>
-        <Fade direction="right" duration={3000}>
-          <MainStyle.EPBox1>
+        </MainStyle.EPLeftBox>
+        <MainStyle.EPRightBox>
+          <Fade direction="right" duration={3000}>
             <MainStyle.EPImgBox1>
               {/* <MainStyle.ImgBox src={MainEp1} /> */}
               <ReactCompareSlider
@@ -32,13 +32,13 @@ function MainExplain() {
                 onlyHandleDraggable
                 style={{
                   height: '100%',
-                  // width: 'auto',
+                  width: '100%',
                 }}
               />
               {/* <MainStyle.ImgBox src={MainEp2} /> */}
             </MainStyle.EPImgBox1>
-          </MainStyle.EPBox1>
-        </Fade>
+          </Fade>
+        </MainStyle.EPRightBox>
       </MainStyle.MainExplain>
     </MainStyle.Container>
   );
