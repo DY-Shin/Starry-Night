@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import NaverMap from '../../Components/NaverMap/NaverMap';
 import * as MapAreaStyle from './MapArea_Style';
+import SidBarArea from './SidBarArea';
 
 function MapArea() {
   const mapElement = useRef(null);
@@ -17,9 +18,18 @@ function MapArea() {
       center: location,
       zoom: 17,
       tileSpare: 5,
+      logoControl: true,
+      logoControlOptions: {
+        position: naver.maps.Position.BOTTOM_RIGHT,
+      },
+      mapDataControl: false,
       zoomControl: true,
       zoomControlOptions: {
-        position: naver.maps.Position.TOP_RIGHT,
+        position: naver.maps.Position.RIGHT_CENTER,
+        style: naver.maps.ZoomControlStyle.LARGE,
+      },
+      scaleControlOptions: {
+        position: naver.maps.Position.BOTTOM_RIGHT,
       },
     });
     mapData.current = map;
@@ -30,13 +40,14 @@ function MapArea() {
     initMap();
   }, []);
 
-  const zoomPlus = () => {
-    mapData.current.setZoom(mapData.current.getZoom() + 1, true);
-  };
+  // const zoomPlus = () => {
+  //   mapData.current.setZoom(mapData.current.getZoom() + 1, true);
+  // };
 
   return (
     <MapAreaStyle.MapContainer>
-      <MapAreaStyle.TempButton onClick={zoomPlus}>줌인</MapAreaStyle.TempButton>
+      {/* <MapAreaStyle.TempButton onClick={zoomPlus}>줌인</MapAreaStyle.TempButton> */}
+      <SidBarArea />
       <NaverMap ref={mapElement} />
     </MapAreaStyle.MapContainer>
   );
