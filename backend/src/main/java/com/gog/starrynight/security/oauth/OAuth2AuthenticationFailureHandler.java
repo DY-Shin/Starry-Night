@@ -15,7 +15,7 @@ import java.io.IOException;
 public class OAuth2AuthenticationFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 
     @Value("${app.oauth2.authorizedRedirectUri}")
-    private String redirectUri;
+    private String REDIRECT_URI;
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException {
@@ -23,6 +23,6 @@ public class OAuth2AuthenticationFailureHandler extends SimpleUrlAuthenticationF
             return;
         }
 
-        getRedirectStrategy().sendRedirect(request, response, redirectUri);
+        getRedirectStrategy().sendRedirect(request, response, REDIRECT_URI);
     }
 }
