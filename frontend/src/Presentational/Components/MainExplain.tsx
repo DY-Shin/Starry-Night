@@ -11,13 +11,13 @@ function MainExplain() {
       <MainStyle.MainExplain>
         <MainStyle.EPLeftBox>
           <Fade direction="left" duration={2000}>
-            <h1>어둠 속으로 떠나는 천체관측 프로젝트</h1>
+            <MainStyle.EPText1>빛 속으로 떠나는 여행</MainStyle.EPText1>
           </Fade>
           <Fade direction="left" duration={2300}>
-            <h1>광공해가 제한하는 도시의 별</h1>
+            <MainStyle.EPText2>빛이 만들어내는 자연경관의 아름다움으로,</MainStyle.EPText2>
           </Fade>
-          <Fade direction="left" duration={2600}>
-            <h1>우리가 지켜야 할 어둠</h1>
+          <Fade direction="left" duration={2300}>
+            <MainStyle.EPText2>지금 바로 출발해보세요.</MainStyle.EPText2>
           </Fade>
         </MainStyle.EPLeftBox>
         <MainStyle.EPRightBox>
@@ -39,6 +39,17 @@ function MainExplain() {
             </MainStyle.EPImgBox1>
           </Fade>
         </MainStyle.EPRightBox>
+        <MainStyle.EPLeftBox2>
+          <Fade direction="left" duration={2000}>
+            <MainStyle.EPText1>빛 속으로 떠나는 여행</MainStyle.EPText1>
+          </Fade>
+          <Fade direction="left" duration={2300}>
+            <MainStyle.EPText2>빛이 만들어내는 자연경관의 아름다움으로,</MainStyle.EPText2>
+          </Fade>
+          <Fade direction="left" duration={2300}>
+            <MainStyle.EPText2>지금 바로 출발해보세요.</MainStyle.EPText2>
+          </Fade>
+        </MainStyle.EPLeftBox2>
       </MainStyle.MainExplain>
     </MainStyle.Container>
   );
