@@ -1,5 +1,7 @@
 package com.gog.starrynight.config;
 
+import com.gog.starrynight.security.oauth.OAuth2AuthenticationFailureHandler;
+import com.gog.starrynight.security.oauth.OAuth2AuthenticationSuccessHandler;
 import com.gog.starrynight.security.oauth.PrincipalOAuth2UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +16,8 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final PrincipalOAuth2UserService principalOauth2UserService;
+    private final OAuth2AuthenticationSuccessHandler oAuth2AuthenticationSuccessHandler;
+    private final OAuth2AuthenticationFailureHandler oAuth2AuthenticationFailureHandler;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -28,7 +32,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.oauth2Login() // OAuth2 로그인 설정
                 .userInfoEndpoint()
-                .userService(principalOauth2UserService); // OAuth2인증 과정에서 Authentication 생성에 필요한 OAuth2User를 반환하는 클래스 지정
+                .userService(principalOauth2UserService) // OAuth2인증 과정에서 Authentication 생성에 필요한 OAuth2User를 반환하는 클래스 지정
+                .and()
+                .successHandler(oAuth2AuthenticationSuccessHandler) // 인증 성공 후처리
+                .failureHandler(oAuth2AuthenticationFailureHandler); // 인증 실패 후처리
 
         http.logout()
                 .disable();
