@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import NaverMap from '../../Components/NaverMap/NaverMap';
 import * as MapAreaStyle from './MapArea_Style';
-import SidBarArea from './SidBarArea';
+import SidBarArea from './SideBar/SideBarArea';
 
 function MapArea() {
   const mapElement = useRef(null);
