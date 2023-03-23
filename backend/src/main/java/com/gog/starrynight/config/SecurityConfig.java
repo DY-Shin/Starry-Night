@@ -1,5 +1,7 @@
 package com.gog.starrynight.config;
 
+import com.gog.starrynight.security.jwt.JwtAuthenticationEntryPoint;
+import com.gog.starrynight.security.jwt.JwtAuthenticationFilter;
 import com.gog.starrynight.security.oauth.OAuth2AuthenticationFailureHandler;
 import com.gog.starrynight.security.oauth.OAuth2AuthenticationSuccessHandler;
 import com.gog.starrynight.security.oauth.PrincipalOAuth2UserService;
@@ -9,6 +11,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -18,11 +21,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final PrincipalOAuth2UserService principalOauth2UserService;
     private final OAuth2AuthenticationSuccessHandler oAuth2AuthenticationSuccessHandler;
     private final OAuth2AuthenticationFailureHandler oAuth2AuthenticationFailureHandler;
+    private final JwtAuthenticationFilter jwtAuthenticationFilter;
+    private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests() // 애플리케이션에 들어오는 요청에 대한 사용 권한을 체크
-                .anyRequest().permitAll(); // 나머지 모든 주소에 대해서 인증 여부와 관계없이 허용
+                .anyRequest().authenticated();
 
         http.cors()                     // CORS on
                 .and()
@@ -36,6 +41,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .successHandler(oAuth2AuthenticationSuccessHandler) // 인증 성공 후처리
                 .failureHandler(oAuth2AuthenticationFailureHandler); // 인증 실패 후처리
+
+        http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+
+        http.exceptionHandling() // 예외 처리 설정
+                // 비인증 사용자가 인증이 필요한 URL에 접근할 경우를 처리하는 클래스 지정
+                .authenticationEntryPoint(jwtAuthenticationEntryPoint);
 
         http.logout()
                 .disable();

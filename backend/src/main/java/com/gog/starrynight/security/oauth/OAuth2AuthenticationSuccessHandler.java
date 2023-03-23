@@ -23,9 +23,9 @@ import static com.gog.starrynight.security.jwt.JwtUtil.TOKEN_VALIDATION_SECOND;
 public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
     @Value("${app.auth.access-token-name}")
-    private String ACCESS_TOKEN_NAME;
+    private String accessTokenName;
     @Value("${app.oauth2.authorizedRedirectUri}")
-    private String REDIRECT_URI;
+    private String redirectUri;
     private final JwtUtil jwtUtil;
     private final CookieUtil cookieUtil;
 
@@ -38,10 +38,10 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
 
         String accessToken = jwtUtil.createToken(user);
 
-        Cookie tokenCookie = cookieUtil.createCookie(ACCESS_TOKEN_NAME, accessToken, (int) TOKEN_VALIDATION_SECOND);
+        Cookie tokenCookie = cookieUtil.createCookie(accessTokenName, accessToken, (int) TOKEN_VALIDATION_SECOND);
         response.addCookie(tokenCookie);
 
-        getRedirectStrategy().sendRedirect(request, response, REDIRECT_URI);
+        getRedirectStrategy().sendRedirect(request, response, redirectUri);
     }
 
 }
