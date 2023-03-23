@@ -10,6 +10,9 @@ export const BtnWrapper = styled.div`
   grid-template-columns: 20% 80%;
   grid-template-rows: 1fr;
   padding-left: 20px;
+  & .icon {
+    color: #5a5959;
+  }
   :hover {
     cursor: pointer;
     background-color: #403f3f30;

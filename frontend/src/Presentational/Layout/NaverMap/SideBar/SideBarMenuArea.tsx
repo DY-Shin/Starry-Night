@@ -18,7 +18,7 @@ function SideBarMenu(props: SideBarMenuProps) {
           changeContents('info');
         }}
       >
-        <BsFillClipboardDataFill size={30} className="icon" />
+        <BsFillClipboardDataFill size={20} className="icon" />
         <SideBarBtn btnText="관측 정보" />
       </SideBarMenuStyle.BtnWrapper>
       <SideBarMenuStyle.BtnWrapper
@@ -26,7 +26,7 @@ function SideBarMenu(props: SideBarMenuProps) {
           changeContents('board');
         }}
       >
-        <BsFillClipboardHeartFill size={30} className="icon" />
+        <BsFillClipboardHeartFill size={20} className="icon" />
         <SideBarBtn btnText="주변 위치 글" />
       </SideBarMenuStyle.BtnWrapper>
       <SideBarMenuStyle.BtnWrapper
@@ -34,7 +34,7 @@ function SideBarMenu(props: SideBarMenuProps) {
           changeContents('favorite');
         }}
       >
-        <BsStarFill size={30} className="icon" />
+        <BsStarFill size={20} className="icon" />
         <SideBarBtn btnText="위치 즐겨 찾기" />
       </SideBarMenuStyle.BtnWrapper>
     </SideBarMenuStyle.MenuWrapper>

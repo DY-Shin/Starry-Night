@@ -25,8 +25,9 @@ export const SidBarBody = styled.div`
 `;
 
 export const SidBarContentsArea = styled.div`
-  width: 100%;
-  height: calc(100% - 377px);
+  width: 100% - 20px;
+  height: calc(100% - 387px);
+  padding: 5px 10px 5px 10px;
   overflow: auto;
   ::-webkit-scrollbar {
     display: none;
@@ -40,9 +41,9 @@ export const SidBarLine = styled.hr`
 export const FoldBtn = styled.div`
   position: absolute;
   background-color: white;
-  width: 20px;
-  height: 40px;
-  top: 50%;
+  width: 30px;
+  height: 60px;
+  top: 45%;
   &.close {
     left: 350px;
     transition: 500ms;
@@ -63,6 +64,7 @@ export const FoldText = styled.p`
   width: 100%;
   height: 100%;
   text-align: center;
-  line-height: 35px;
+  font-size: larger;
+  line-height: 55px;
   color: black;
 `;
