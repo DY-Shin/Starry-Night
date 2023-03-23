@@ -38,7 +38,7 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
 
         String accessToken = jwtUtil.createToken(user);
 
-        Cookie tokenCookie = cookieUtil.createCookie(accessTokenName, accessToken, (int) TOKEN_VALIDATION_SECOND);
+        Cookie tokenCookie = cookieUtil.createCookie(accessTokenName, accessToken, (int) TOKEN_VALIDATION_SECOND, true);
         response.addCookie(tokenCookie);
 
         getRedirectStrategy().sendRedirect(request, response, redirectUri);
