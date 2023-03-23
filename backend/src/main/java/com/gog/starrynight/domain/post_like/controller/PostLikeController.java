@@ -27,7 +27,7 @@ public class PostLikeController {
     }
 
     @Operation(summary = "게시물 좋아요 취소")
-    @PostMapping("/posts/{postId}/dislike")
+    @DeleteMapping("/posts/{postId}/dislike")
     public ResponseEntity<ApiResponse> deletePostLike(@AuthenticationPrincipal LoginUser loginUser,
                                                       @PathVariable("postId") Long postId) {
         postLikeService.deletePostLike(postId, loginUser.getId());
