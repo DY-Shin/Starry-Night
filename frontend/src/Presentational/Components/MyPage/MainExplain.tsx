@@ -1,9 +1,9 @@
 import React from 'react';
 import { ReactCompareSlider, ReactCompareSliderImage, ReactCompareSliderHandle } from 'react-compare-slider';
 import { Fade } from 'react-awesome-reveal';
-import * as MainStyle from '../../style/MainStyle';
-import MainEp1 from '../../assets/mainpage/MainEp1.jpg';
-import MainEp2 from '../../assets/mainpage/MainEp2.jpg';
+import * as MainStyle from '../../../style/MainStyle';
+import MainEp1 from '../../../assets/mainpage/MainEp1.jpg';
+import MainEp2 from '../../../assets/mainpage/MainEp2.jpg';
 
 function MainExplain() {
   return (

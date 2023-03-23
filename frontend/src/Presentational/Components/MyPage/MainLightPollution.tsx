@@ -1,7 +1,7 @@
 import React from 'react';
 import { Fade } from 'react-awesome-reveal';
-import * as MainStyle from '../../style/MainStyle';
-import lightpollution2 from '../../assets/pollution/lightpollution2.png';
+import * as MainStyle from '../../../style/MainStyle';
+import lightpollution2 from '../../../assets/pollution/lightpollution2.png';
 
 function MainLightPollution() {
   return (

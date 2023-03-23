@@ -4,7 +4,7 @@ import { ReactCompareSlider, ReactCompareSliderImage, ReactCompareSliderHandle }
 import { Fade } from 'react-awesome-reveal';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import * as MainStyle from '../../style/MainStyle';
+import * as MainStyle from '../../../style/MainStyle';
 
 function MainStar() {
   const [ImgNum, setImgNum] = useState(1);

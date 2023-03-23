@@ -1,13 +1,19 @@
 import React, { useEffect } from 'react';
-import MainLightPollution from '../Components/MainLightPollution';
-import MainStar from '../Components/MainStar';
-import MainTop from '../Components/MainTop';
-import MainExplain from '../Components/MainExplain';
+import MainLightPollution from '../Components/MyPage/MainLightPollution';
+import MainStar from '../Components/MyPage/MainStar';
+import MainTop from '../Components/MyPage/MainTop';
+import MainExplain from '../Components/MyPage/MainExplain';
+import Header from '../Components/MyPage/Header';
+import Footer from '../Components/MyPage/Footer';
 import * as MainStyle from '../../style/MainStyle';
 
 function Mainpage() {
   const handleScrollAnimation = (e: Event) => {
     console.log(e);
+  };
+
+  const MoveToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // smooth
   };
 
   useEffect(() => {
@@ -23,10 +29,13 @@ function Mainpage() {
   }, []);
   return (
     <MainStyle.Mainpage>
+      <Header />
       <MainTop />
       <MainExplain />
       <MainLightPollution />
       <MainStar />
+      <Footer />
+      <MainStyle.ScrollTop onClick={MoveToTop} />
     </MainStyle.Mainpage>
   );
 }
