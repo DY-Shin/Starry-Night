@@ -1,10 +1,14 @@
 import React from 'react';
-import MyProfileImg from '../../Components/MyComponents/MyProfileImg';
-
-// import * as MyStyle from '../../Components/MyComponents/MyStyle';
+import * as MyStyle from '../../Components/MyComponents/MyStyle';
 
 function MyProfile() {
-  return <MyProfileImg />;
+  return (
+    <MyStyle.Container>
+      <div className="MyProfile">
+        <h1>MyProfile</h1>
+      </div>
+    </MyStyle.Container>
+  );
 }
 
 export default MyProfile;
