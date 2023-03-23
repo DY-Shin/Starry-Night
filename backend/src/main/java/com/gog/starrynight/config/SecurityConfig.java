@@ -7,6 +7,7 @@ import com.gog.starrynight.security.oauth.OAuth2AuthenticationSuccessHandler;
 import com.gog.starrynight.security.oauth.PrincipalOAuth2UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -27,7 +28,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests() // 애플리케이션에 들어오는 요청에 대한 사용 권한을 체크
-                .anyRequest().authenticated();
+                .antMatchers(HttpMethod.POST, "/**").authenticated()
+                .antMatchers(HttpMethod.PUT, "/**").authenticated()
+                .antMatchers(HttpMethod.DELETE, "/**").authenticated()
+                .anyRequest().permitAll();
 
         http.cors()                     // CORS on
                 .and()
