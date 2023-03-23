@@ -3,6 +3,7 @@ package com.gog.starrynight.domain.post_like.controller;
 import com.gog.starrynight.common.dto.ApiResponse;
 import com.gog.starrynight.domain.post_like.service.PostLikeService;
 import com.gog.starrynight.security.LoginUser;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,11 +17,21 @@ import org.springframework.web.bind.annotation.*;
 public class PostLikeController {
     private final PostLikeService postLikeService;
 
+    @Operation(summary = "게시물 좋아요")
     @PostMapping("/posts/{postId}/like")
     public ResponseEntity<ApiResponse> createPostLike(@AuthenticationPrincipal LoginUser loginUser,
                                                         @PathVariable("postId") Long postId) {
         postLikeService.createPostLike(postId, loginUser.getId());
         ApiResponse result = new ApiResponse(true, "좋아요 성공");
         return new ResponseEntity<>(result, HttpStatus.CREATED);
+    }
+
+    @Operation(summary = "게시물 좋아요 취소")
+    @PostMapping("/posts/{postId}/dislike")
+    public ResponseEntity<ApiResponse> deletePostLike(@AuthenticationPrincipal LoginUser loginUser,
+                                                      @PathVariable("postId") Long postId) {
+        postLikeService.deletePostLike(postId, loginUser.getId());
+        ApiResponse result = new ApiResponse(true, "좋아요 취소 성공");
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }
