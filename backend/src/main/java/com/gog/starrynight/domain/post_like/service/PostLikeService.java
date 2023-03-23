@@ -30,7 +30,7 @@ public class PostLikeService {
                 () -> new ResourceNotFoundException("존재하지 않는 게시물입니다.")
         );
 
-        if(postLikeRepository.findByPostIdAndUserId(postId, requesterId).isPresent()) {
+        if (postLikeRepository.findByPostIdAndUserId(postId, requesterId).isPresent()) {
             throw new ResourceAlreadyExistsException("이미 좋아요한 게시물입니다.");
         }
 
@@ -40,5 +40,22 @@ public class PostLikeService {
                 .build();
 
         postLikeRepository.save(postLike);
+    }
+
+    @Transactional
+    public void deletePostLike(Long postId, Long requesterId) {
+        User requester = userRepository.findById(requesterId).orElseThrow(
+                () -> new ResourceNotFoundException("존재하지 않는 회원입니다.")
+        );
+
+        Post post = postRepository.findById(postId).orElseThrow(
+                () -> new ResourceNotFoundException("존재하지 않는 게시물입니다.")
+        );
+
+        PostLike postLike = postLikeRepository.findByPostIdAndUserId(postId, requesterId).orElseThrow(
+                () -> new ResourceNotFoundException("좋아요하지 않은 게시물입니다.")
+        );
+
+        postLikeRepository.delete(postLike);
     }
 }
