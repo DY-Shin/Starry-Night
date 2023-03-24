@@ -36,12 +36,18 @@ public class DataFileController {
     @GetMapping("/datafiles/{dataFileId}")
     public ResponseEntity<Resource> getDataFile(@PathVariable Long dataFileId) throws MalformedURLException {
         DataFileResource dataFileResource = dataFileService.getDataFileResource(dataFileId);
-
         String contentDisposition = "inline; filename=\"" + dataFileResource.getEncodedFileName() + "\"";
-
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(dataFileResource.getContentType()))
                 .header(HttpHeaders.CONTENT_DISPOSITION, contentDisposition)
                 .body(dataFileResource);
+    }
+
+    @Operation(summary = "파일 삭제")
+    @DeleteMapping("/datafiles/{dataFileId}")
+    public ResponseEntity<ApiResponse> deleteDataFile(@PathVariable Long dataFileId) {
+        dataFileService.deleteDataFile(dataFileId);
+        ApiResponse result = new ApiResponse<>(true, "파일 삭제 성공");
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }
