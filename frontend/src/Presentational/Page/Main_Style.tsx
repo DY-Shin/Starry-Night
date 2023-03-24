@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 import { BsArrowUpCircleFill } from 'react-icons/bs';
-import bg from '../assets/mainpage/space.jpg';
+import bg from '../../assets/mainpage/space.jpg';
 
-// main page
 export const Mainpage = styled.div`
-  overflow: hidden;
+  overflow-x: hidden; // 가로 스크롤 숨기기
+  /* padding-left: 4.5em;
+  padding-right: 4.5em; */
+  /* overflow-y: auto; */
   &::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -19,7 +21,7 @@ export const Mainpage = styled.div`
 export const Container = styled.div`
   width: 100%;
   max-width: 100vw;
-  height: 100vh;
+  max-height: 100vh;
   background-image: url(${bg});
   background-size: cover;
   background-repeat: no-repeat;
