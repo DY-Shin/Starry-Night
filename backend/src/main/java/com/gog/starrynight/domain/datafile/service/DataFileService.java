@@ -45,4 +45,15 @@ public class DataFileService {
 
         return dataFileResource;
     }
+
+    @Transactional
+    public void deleteDataFile(Long dataFileId) {
+        DataFile dataFile = dataFileRepository.findById(dataFileId)
+                .orElseThrow(() -> new ResourceNotFoundException("해당 파일이 존재하지 않습니다."));
+
+        String dataPath = dataFileUtil.getFullPath(dataFile.getStoredFileName());
+        dataFileUtil.deleteFile(dataPath);
+
+        dataFileRepository.delete(dataFile);
+    }
 }
