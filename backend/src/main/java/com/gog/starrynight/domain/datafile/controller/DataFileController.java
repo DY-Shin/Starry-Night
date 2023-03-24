@@ -1,13 +1,31 @@
 package com.gog.starrynight.domain.datafile.controller;
 
+import com.gog.starrynight.common.dto.ApiResponse;
+import com.gog.starrynight.domain.datafile.dto.DataFileInfo;
 import com.gog.starrynight.domain.datafile.service.DataFileService;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
-@Tag(name = "데이터파일 관리")
+import java.io.IOException;
+
+@Tag(name = "파일 관리")
 @RestController
 @RequiredArgsConstructor
 public class DataFileController {
     private final DataFileService dataFileService;
+
+    @Operation(summary = "파일 등록")
+    @PostMapping("/datafiles")
+    public ResponseEntity<ApiResponse<DataFileInfo>> saveDataFile(@RequestParam("file") MultipartFile multipartFile) throws IOException {
+        DataFileInfo dataFileInfo = dataFileService.saveDataFile(multipartFile);
+        ApiResponse<DataFileInfo> result = new ApiResponse<>(true, "파일 등록 성공", dataFileInfo);
+        return new ResponseEntity<>(result, HttpStatus.CREATED);
+    }
 }
