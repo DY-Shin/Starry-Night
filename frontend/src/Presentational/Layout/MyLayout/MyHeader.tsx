@@ -1,13 +1,19 @@
 import React from 'react';
-import { Container, HeaderNav, HeaderItem } from './MyHeadStyle';
+import { Container, HeaderNav, HeaderItem, HeaderText } from './MyHeadStyle';
 
 function Header() {
   return (
     <Container>
       <HeaderNav>
-        <HeaderItem>도감</HeaderItem>
-        <HeaderItem>내가 쓴 글</HeaderItem>
-        <HeaderItem>업적</HeaderItem>
+        <HeaderItem>
+          <HeaderText>내 도감</HeaderText>
+        </HeaderItem>
+        <HeaderItem>
+          <HeaderText>내가 쓴 글</HeaderText>
+        </HeaderItem>
+        <HeaderItem>
+          <HeaderText>내 수집품</HeaderText>
+        </HeaderItem>
       </HeaderNav>
     </Container>
   );

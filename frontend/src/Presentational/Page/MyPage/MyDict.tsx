@@ -6,11 +6,8 @@ import MyDictMainBox from '../../Layout/MyLayout/MyDict/MyDictMainBox';
 function MyDict() {
   return (
     <MyStyle.Container>
-      <div className="MyDict">
-        <h1>MyDict</h1>
-        <MyDictSideBar />
-        <MyDictMainBox />
-      </div>
+      <MyDictSideBar />
+      <MyDictMainBox />
     </MyStyle.Container>
   );
 }
