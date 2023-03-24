@@ -6,6 +6,7 @@ import com.gog.starrynight.domain.datafile.entity.DataFile;
 import com.gog.starrynight.domain.datafile.repository.DataFileRepository;
 import com.gog.starrynight.domain.user.dto.UserCreateRequest;
 import com.gog.starrynight.domain.user.dto.UserNameUpdateRequest;
+import com.gog.starrynight.domain.user.dto.UserSimpleInfo;
 import com.gog.starrynight.domain.user.entity.User;
 import com.gog.starrynight.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -45,5 +46,12 @@ public class UserService {
                 .orElseThrow(() -> new ResourceNotFoundException("존재하지 않는 회원입니다."));
 
         requester.setName(dto.getName());
+    }
+
+    public UserSimpleInfo getMyProfile(Long requesterId) {
+        User requester = userRepository.findById(requesterId)
+                .orElseThrow(() -> new ResourceNotFoundException("존재하지 않는 회원입니다."));
+
+        return new UserSimpleInfo(requester);
     }
 }
