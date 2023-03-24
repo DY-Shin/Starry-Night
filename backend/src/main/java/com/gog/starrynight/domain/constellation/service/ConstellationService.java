@@ -1,5 +1,6 @@
 package com.gog.starrynight.domain.constellation.service;
 
+import com.gog.starrynight.common.exception.ResourceNotFoundException;
 import com.gog.starrynight.domain.constellation.dto.ConstellationCreateRequest;
 import com.gog.starrynight.domain.constellation.dto.ConstellationInfo;
 import com.gog.starrynight.domain.constellation.entity.Constellation;
@@ -24,5 +25,14 @@ public class ConstellationService {
         constellationRepository.save(constellation);
 
         return new ConstellationInfo(constellation);
+    }
+
+    @Transactional
+    public void deleteConstellation(Long constellationId) {
+        Constellation constellation = constellationRepository.findById(constellationId).orElseThrow(
+                () -> new ResourceNotFoundException("존재하지 않는 별자리입니다.")
+        );
+
+        constellationRepository.delete(constellation);
     }
 }
