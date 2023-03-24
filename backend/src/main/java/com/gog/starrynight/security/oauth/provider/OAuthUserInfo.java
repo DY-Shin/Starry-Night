@@ -11,5 +11,7 @@ public interface OAuthUserInfo {
 
     String getEmail();
 
+    String getProfileImageUrl();
+
     Map<String, Object> getAttributes();
 }
