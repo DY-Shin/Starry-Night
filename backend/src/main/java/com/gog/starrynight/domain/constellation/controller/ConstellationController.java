@@ -1,7 +1,7 @@
 package com.gog.starrynight.domain.constellation.controller;
 
 import com.gog.starrynight.common.dto.ApiResponse;
-import com.gog.starrynight.domain.constellation.dto.CreateConstellation;
+import com.gog.starrynight.domain.constellation.dto.ConstellationCreateRequest;
 import com.gog.starrynight.domain.constellation.dto.ConstellationInfo;
 import com.gog.starrynight.domain.constellation.service.ConstellationService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -21,7 +21,7 @@ public class ConstellationController {
 
     @Operation(summary = "별자리 등록")
     @PostMapping("/constellations")
-    public ResponseEntity<ApiResponse> createConstellation(@RequestBody CreateConstellation dto) {
+    public ResponseEntity<ApiResponse> createConstellation(@RequestBody ConstellationCreateRequest dto) {
         ConstellationInfo constellationInfo = constellationService.createConstellation(dto);
         ApiResponse result = new ApiResponse(true, "별자리 등록 성공", constellationInfo);
         return new ResponseEntity<>(result, HttpStatus.CREATED);
