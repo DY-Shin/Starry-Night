@@ -15,6 +15,9 @@ import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @Tag(name = "회원 관리")
 @RestController
@@ -39,12 +42,21 @@ public class UserController {
                 .body(result);
     }
 
-    @Operation(summary = "회원 이름 변경")
+    @Operation(summary = "내 이름 변경")
     @PatchMapping("/my-profile/name")
     public ResponseEntity<ApiResponse> updateUserName(@AuthenticationPrincipal LoginUser loginUser,
                                                       @RequestBody UserNameUpdateRequest dto) {
         userService.updateUserName(loginUser.getId(), dto);
         ApiResponse result = new ApiResponse<>(true, "회원 이름 변경 성공");
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @Operation(summary = "내 프로필 이미지 변경")
+    @PatchMapping("/my-profile/profile-image")
+    public ResponseEntity<ApiResponse> updateUserProfileImage(@AuthenticationPrincipal LoginUser loginUser,
+                                                              @RequestParam("profile-image") MultipartFile multipartFile) throws IOException {
+        userService.updateUserProfileImage(loginUser.getId(), multipartFile);
+        ApiResponse result = new ApiResponse<>(true, "회원 이미지 변경 성공");
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
