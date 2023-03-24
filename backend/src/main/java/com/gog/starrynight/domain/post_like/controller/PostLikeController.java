@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Tag(name = "게시물 좋아요 관리")
 @RestController
 @RequiredArgsConstructor
@@ -32,6 +34,14 @@ public class PostLikeController {
                                                       @PathVariable("postId") Long postId) {
         postLikeService.deletePostLike(postId, loginUser.getId());
         ApiResponse result = new ApiResponse(true, "좋아요 취소 성공");
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @Operation(summary = "게시물 좋아요한 사람 리스트")
+    @GetMapping("/posts/{postId}/like/lists")
+    public ResponseEntity<ApiResponse> postLikeList(@PathVariable("postId") Long postId) {
+        List<String> postLikePeople = postLikeService.postLikeList(postId);
+        ApiResponse<List<String>> result = new ApiResponse<>(true, "좋아요한 사람 리스트 조회", postLikePeople);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }

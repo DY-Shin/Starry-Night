@@ -12,6 +12,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
@@ -57,5 +60,15 @@ public class PostLikeService {
         );
 
         postLikeRepository.delete(postLike);
+    }
+
+    public List<String> postLikeList(Long postId) {
+        List<PostLike> postLikeList = postLikeRepository.findAllByPostId(postId);
+        ArrayList<String> postLikePeople = new ArrayList<>();
+        for (PostLike postLike : postLikeList) {
+            String person = postLike.getUser().getName();
+            postLikePeople.add(person);
+        }
+        return postLikePeople;
     }
 }
