@@ -2,11 +2,20 @@ package com.gog.starrynight.common.util;
 
 import com.gog.starrynight.domain.datafile.entity.DataFile;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.UUID;
 
 @Component
@@ -30,6 +39,34 @@ public class DataFileUtil {
         multipartFile.transferTo(new File(getFullPath(storedFileName)));
 
         return createDataFile(originalFilename, storedFileName, contentType);
+    }
+
+    public DataFile saveImageFromURL(String imageUrl) {
+        RestTemplate restTemplate = new RestTemplate();
+
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+
+        ResponseEntity<ByteArrayResource> response = restTemplate.exchange(
+                imageUrl,
+                HttpMethod.GET,
+                entity,
+                ByteArrayResource.class);
+
+        String storedFileName = null;
+        if (response.getStatusCodeValue() == 200) {
+            ByteArrayResource resource = response.getBody();
+            if (resource != null) {
+                try {
+                    storedFileName = generateStoreFileName("profile.jpg");
+                    Path path = Paths.get(getFullPath(storedFileName));
+                    Files.write(path, resource.getByteArray());
+                } catch (IOException e) {
+                    return null;
+                }
+            }
+        }
+        return createDataFile(storedFileName, storedFileName, "image/jpeg");
     }
 
     public DataFile createDataFile(String originalFilename, String storedFileName, String contentType) {
@@ -59,4 +96,6 @@ public class DataFileUtil {
         int pos = originalFilename.lastIndexOf(".");
         return originalFilename.substring(pos + 1);
     }
+
+
 }
