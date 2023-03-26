@@ -3,7 +3,8 @@ import * as MyStyle from '../Components/MyComponents/MyStyle';
 import MyHeader from '../Layout/MyLayout/MyHeader';
 // import MyProfile from './MyPage/MyProfile';
 import MyGlobal from '../Components/MyComponents/MyGlobalStyle';
-import MyDict from './MyPage/MyDict';
+// import MyDict from './MyPage/MyDict';
+import MyPost from './MyPage/MyPost';
 
 function Mypage() {
   return (
@@ -12,7 +13,7 @@ function Mypage() {
         <MyGlobal />
         {/* <MyProfile /> */}
         <MyHeader />
-        <MyDict />
+        <MyPost />
       </div>
     </MyStyle.Mypage>
   );

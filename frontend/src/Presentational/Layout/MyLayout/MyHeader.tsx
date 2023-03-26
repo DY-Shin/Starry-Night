@@ -1,21 +1,14 @@
 import React from 'react';
-import { Container, HeaderNav, HeaderItem, HeaderText } from './MyHeadStyle';
+import { MyNav } from './MyHeadStyle';
+import { MyButton } from '../../Components/MyComponents/MyStyle';
 
 function Header() {
   return (
-    <Container>
-      <HeaderNav>
-        <HeaderItem>
-          <HeaderText>내 도감</HeaderText>
-        </HeaderItem>
-        <HeaderItem>
-          <HeaderText>내가 쓴 글</HeaderText>
-        </HeaderItem>
-        <HeaderItem>
-          <HeaderText>내 수집품</HeaderText>
-        </HeaderItem>
-      </HeaderNav>
-    </Container>
+    <MyNav>
+      <MyButton>나의 도감</MyButton>
+      <MyButton>내가 쓴 글</MyButton>
+      <MyButton>나의 업적</MyButton>
+    </MyNav>
   );
 }
 

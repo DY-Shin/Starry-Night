@@ -7,3 +7,14 @@ export const Container = styled.div`
   height: 85vh;
   display: flex;
 `;
+
+export const MyButton = styled.button`
+  background-color: black;
+  color: gold;
+  border-style: solid;
+  border-width: 1px;
+  font-size: x-large;
+  border-color: #746200;
+  height: 50%;
+  width: 200px;
+`;
