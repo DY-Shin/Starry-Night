@@ -15,7 +15,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class PostLike extends BaseTimeEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
