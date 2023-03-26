@@ -13,15 +13,16 @@
 // export default App;
 
 import React from 'react';
-import Header from './Presentational/Common/Layout/Header/Header';
+// import Header from './Presentational/Common/Layout/Header/Header';
 import Footer from './Presentational/Common/Layout/Footer/Footer';
+import MyHeader from './Presentational/Layout/MyLayout/MyHeader';
 
 // import MyProfile from './Presentational/Layout/MyProfile';
 
 function App() {
   return (
     <div className="App">
-      <Header />
+      <MyHeader />
       <Footer />
     </div>
   );

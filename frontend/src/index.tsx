@@ -10,12 +10,14 @@ import MyPosts from './Presentational/Page/MyPage/MyPost';
 import MyReward from './Presentational/Page/MyPage/MyReward';
 import Header from './Presentational/Common/Layout/Header/Header';
 import Footer from './Presentational/Common/Layout/Footer/Footer';
+import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <Router>
     <Header />
     <Routes>
+      <Route path="/" element={<App />} />
       <Route path="/mypage" element={<MyProfile />} />
       <Route path="/mypage/dict" element={<MyDict />} />
       <Route path="/mypage/posts" element={<MyPosts />} />

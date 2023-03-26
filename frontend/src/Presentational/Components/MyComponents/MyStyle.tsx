@@ -17,3 +17,22 @@ export const MyButton = styled.button`
   height: 50%;
   width: 200px;
 `;
+
+export const MyDia = styled.span`
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-bottom-color: pink;
+  position: relative;
+  top: -37px;
+  :before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 37px;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-top-color: pink;
+  }
+`;

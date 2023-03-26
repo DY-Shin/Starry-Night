@@ -7,3 +7,9 @@ export const MyNav = styled.nav`
   justify-content: center;
   align-items: center;
 `;
+
+export const MyNavContainer = styled.div`
+  height: 100%;
+  align-items: center;
+  display: flex;
+`;
