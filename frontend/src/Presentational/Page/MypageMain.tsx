@@ -1,7 +1,7 @@
 import React from 'react';
 import * as MyStyle from '../Components/MyComponents/MyStyle';
 import MyHeader from '../Layout/MyLayout/MyHeader';
-import MyProfile from './MyPage/MyProfile';
+// import MyProfile from './MyPage/MyProfile';
 import MyGlobal from '../Components/MyComponents/MyGlobalStyle';
 import MyDict from './MyPage/MyDict';
 
@@ -10,7 +10,7 @@ function Mypage() {
     <MyStyle.Mypage>
       <div className="Mypage">
         <MyGlobal />
-        <MyProfile />
+        {/* <MyProfile /> */}
         <MyHeader />
         <MyDict />
       </div>
