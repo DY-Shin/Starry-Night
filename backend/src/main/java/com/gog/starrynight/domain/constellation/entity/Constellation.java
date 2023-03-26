@@ -18,7 +18,7 @@ import java.util.List;
 public class Constellation extends BaseTimeEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(length = 100, nullable = false)

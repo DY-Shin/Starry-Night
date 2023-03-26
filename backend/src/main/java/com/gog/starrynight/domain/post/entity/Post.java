@@ -19,7 +19,7 @@ import java.util.List;
 @AllArgsConstructor
 public class Post extends BaseTimeEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(length = 100, nullable = false)
@@ -29,10 +29,10 @@ public class Post extends BaseTimeEntity {
     private String content;
 
     @Column(columnDefinition = "DECIMAL(9,6)")
-    private double lat;
+    private Double lat;
 
     @Column(columnDefinition = "DECIMAL(9,6)")
-    private double lng;
+    private Double lng;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "writer_id")
