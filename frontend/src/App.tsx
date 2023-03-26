@@ -13,7 +13,6 @@
 // export default App;
 
 import React from 'react';
-import Mypage from './Presentational/Page/MypageMain';
 import Header from './Presentational/Common/Layout/Header/Header';
 import Footer from './Presentational/Common/Layout/Footer/Footer';
 
@@ -23,7 +22,6 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Mypage />
       <Footer />
     </div>
   );
