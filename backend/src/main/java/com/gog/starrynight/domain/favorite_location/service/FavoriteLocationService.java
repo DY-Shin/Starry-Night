@@ -24,7 +24,6 @@ public class FavoriteLocationService {
         User requester = userRepository.findById(requesterId)
                 .orElseThrow(() -> new ResourceNotFoundException("존재하지 않는 회원입니다."));
 
-        System.out.println(dto.getLat());
         FavoriteLocation favoriteLocation = FavoriteLocation.builder()
                 .lat(dto.getLat())
                 .lng(dto.getLng())
