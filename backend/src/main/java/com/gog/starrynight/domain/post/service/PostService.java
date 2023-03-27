@@ -111,10 +111,12 @@ public class PostService {
                 .orElseThrow(() -> new ResourceNotFoundException("존재하지 않는 게시물입니다."));
 
         UserSimpleInfo writer = new UserSimpleInfo(post.getWriter());
-        boolean permission = (requesterId == writer.getId() ? true : false);
+        boolean permission = (requesterId == writer.getId());
+        boolean postLikePossible = (requesterId != null);
+        boolean postLiked = postLikeRepository.existsPostLikeByPostIdAndUserId(postId, requesterId);
 
         List<PostImageInfo> images = post.getPostImages().stream()
-                .map(postImage -> new PostImageInfo(postImage))
+                .map(PostImageInfo::new)
                 .collect(Collectors.toList());
 
         List<ConstellationSimpleInfo> constellationTags = post.getConstellationHistories().stream()
@@ -126,6 +128,6 @@ public class PostService {
 
         int postLikeCount = postLikeRepository.getTotalPostLikeCountByPostId(postId);
 
-        return new PostDetailInfo(post, writer, images, constellationTags, postLikeCount, permission);
+        return new PostDetailInfo(post, writer, images, constellationTags, postLikeCount, postLikePossible, postLiked, permission);
     }
 }

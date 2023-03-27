@@ -7,8 +7,10 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.Optional;
 
 public interface PostLikeRepository extends JpaRepository<PostLike, Long> {
-    Optional<PostLike> findByPostIdAndUserId(Long postId, Long requesterId);
+    Optional<PostLike> findByPostIdAndUserId(Long postId, Long userId);
 
     @Query("SELECT COUNT(pl) FROM PostLike pl WHERE pl.post.id = :postId")
     int getTotalPostLikeCountByPostId(Long postId);
+
+    boolean existsPostLikeByPostIdAndUserId(Long postId, Long userId);
 }
