@@ -22,7 +22,7 @@ public class FavoriteLocationController {
     private final FavoriteLocationService favoriteLocationService;
 
     @Operation(summary = "관심위치 등록")
-    @PostMapping("/favorite-location")
+    @PostMapping("/favorite-locations")
     public ResponseEntity<ApiResponse> createFavoriteLocation(@AuthenticationPrincipal LoginUser loginUser,
                                                               @RequestBody FavoriteLocationCreateRequest dto) {
         FavoriteLocationSimpleInfo favoriteLocationSimpleInfo = favoriteLocationService.createFavoriteLocation(loginUser.getId(), dto);
