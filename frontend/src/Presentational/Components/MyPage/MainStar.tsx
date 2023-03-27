@@ -4,7 +4,7 @@ import { ReactCompareSlider, ReactCompareSliderImage, ReactCompareSliderHandle }
 import { Fade } from 'react-awesome-reveal';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import * as MainStyle from '../../../style/MainStyle';
+import * as MainStyle from '../../Page/Main_Style';
 import * as StarStyle from './MainStar_Style';
 
 function MainStar() {
@@ -65,6 +65,7 @@ function MainStar() {
               height: '100%',
               border: '2px solid white',
               backgroundColor: 'rgba(50, 130, 184, 0.3)',
+              filter: 'drop-shadow(0 0 3px rgba(255, 255, 255, 1))',
             }}
           />
 

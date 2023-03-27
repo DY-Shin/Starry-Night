@@ -1,7 +1,6 @@
 import React from 'react';
-// import * as MainStyle from '../../../style/MainStyle';
 import * as FooterStyle from './Footer_Style';
-// import * as MainStyle from '../../../style/MainStyle';
+// import * as MainStyle from '../../Page/Main_Style';
 import goindol from '../../../assets/footer/goindol.jpg';
 
 function Footer() {

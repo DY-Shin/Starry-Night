@@ -115,6 +115,7 @@ export const WrapDognju = styled.div`
 `;
 
 export const Poem = styled.div`
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
   flex-basis: 50%;
   display: flex;
   flex-direction: column;

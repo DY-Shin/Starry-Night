@@ -46,4 +46,5 @@ export const STimg2 = styled.img.attrs((props) => ({
   height: 100%;
   border-top: 2px solid white;
   border-bottom: 2px solid white;
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
 `;

@@ -1,5 +1,5 @@
 import React from 'react';
-import * as MainStyle from '../../../style/MainStyle';
+import * as MainStyle from '../../Page/Main_Style';
 import Header from './Header';
 import * as TopStyle from './MainTop_Style';
 

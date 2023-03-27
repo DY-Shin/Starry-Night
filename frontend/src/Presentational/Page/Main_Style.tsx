@@ -58,6 +58,7 @@ export const CurrentSlide = styled(AiFillStar)`
   width: 2em;
   height: 2em;
   color: white;
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
 `;
 export const JustSlide = styled(AiOutlineStar)`
   margin-top: 5px;
@@ -67,4 +68,10 @@ export const JustSlide = styled(AiOutlineStar)`
   &:hover {
     filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
   }
+`;
+
+// 텍스트 강조
+export const Highlight = styled.span`
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
+  text-decoration: underline;
 `;

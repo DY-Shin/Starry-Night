@@ -1,7 +1,7 @@
 import React from 'react';
 import { ReactCompareSlider, ReactCompareSliderImage, ReactCompareSliderHandle } from 'react-compare-slider';
 import { Fade } from 'react-awesome-reveal';
-import * as MainStyle from '../../../style/MainStyle';
+import * as MainStyle from '../../Page/Main_Style';
 import * as ExplainStyle from './MainExplain_Style';
 import MainEp1 from '../../../assets/mainpage/MainEp1.jpg';
 import MainEp2 from '../../../assets/mainpage/MainEp2.jpg';
@@ -12,7 +12,9 @@ function MainExplain() {
       <ExplainStyle.MainExplain>
         <ExplainStyle.EPLeftBox>
           <Fade direction="left" duration={2000}>
-            <ExplainStyle.EPText1>빛 속으로 떠나는 여행</ExplainStyle.EPText1>
+            <ExplainStyle.EPText1>
+              빛 속으로 떠나는 <MainStyle.Highlight>여행</MainStyle.Highlight>
+            </ExplainStyle.EPText1>
           </Fade>
           <Fade direction="left" duration={2300}>
             <ExplainStyle.EPText2>빛이 만들어내는 자연경관의 아름다움으로,</ExplainStyle.EPText2>
@@ -40,7 +42,9 @@ function MainExplain() {
         </ExplainStyle.EPRightBox>
         <ExplainStyle.EPLeftBox2>
           <Fade direction="left" duration={2000}>
-            <ExplainStyle.EPText1>빛 속으로 떠나는 여행</ExplainStyle.EPText1>
+            <ExplainStyle.EPText1>
+              빛 속으로 떠나는 <MainStyle.Highlight>여행</MainStyle.Highlight>
+            </ExplainStyle.EPText1>
           </Fade>
           <Fade direction="left" duration={2300}>
             <ExplainStyle.EPText2>빛이 만들어내는 자연경관의 아름다움으로,</ExplainStyle.EPText2>

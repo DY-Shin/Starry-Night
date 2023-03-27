@@ -11,6 +11,7 @@ export const MainTop = styled.div`
   align-items: center;
   flex-direction: column;
   overflow: hidden;
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
   @media all and (max-width: 1200px) {
   }
   @media all and (max-width: 768px) {
