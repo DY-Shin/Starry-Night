@@ -11,9 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "관심위치 관리")
 @RestController
@@ -28,5 +26,14 @@ public class FavoriteLocationController {
         FavoriteLocationSimpleInfo favoriteLocationSimpleInfo = favoriteLocationService.createFavoriteLocation(loginUser.getId(), dto);
         ApiResponse result = new ApiResponse(true, "관심위치 등록 성공", favoriteLocationSimpleInfo);
         return new ResponseEntity<>(result, HttpStatus.CREATED);
+    }
+
+    @Operation(summary = "관심위치 삭제")
+    @DeleteMapping("/favorite-locations/{favoriteLocationId}")
+    public ResponseEntity<ApiResponse> deleteFavoriteLocation(@AuthenticationPrincipal LoginUser loginUser,
+                                                              @PathVariable("favoriteLocationId") Long favoriteLocationId) {
+        favoriteLocationService.deleteFavoriteLocation(loginUser.getId(), favoriteLocationId);
+        ApiResponse result = new ApiResponse(true, "관심위치 삭제 성공");
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }
