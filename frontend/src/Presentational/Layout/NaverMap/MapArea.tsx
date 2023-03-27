@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import MapOption from '../../Components/NaverMap/MapOption';
 import NaverMap from '../../Components/NaverMap/NaverMap';
 import * as MapAreaStyle from './MapArea_Style';
 import SidBarArea from './SideBar/SideBarArea';
@@ -16,7 +17,9 @@ function MapArea() {
     const location = new naver.maps.LatLng(37.5656, 126.9769);
     const map = new naver.maps.Map(mapElement.current, {
       center: location,
-      zoom: 17,
+      zoom: 8,
+      minZoom: 8,
+      maxZoom: 15,
       tileSpare: 5,
       logoControl: true,
       logoControlOptions: {
@@ -27,6 +30,7 @@ function MapArea() {
       zoomControlOptions: {
         position: naver.maps.Position.RIGHT_CENTER,
         style: naver.maps.ZoomControlStyle.LARGE,
+        legendDisabled: true,
       },
       scaleControlOptions: {
         position: naver.maps.Position.BOTTOM_RIGHT,
@@ -48,6 +52,7 @@ function MapArea() {
     <MapAreaStyle.MapContainer>
       {/* <MapAreaStyle.TempButton onClick={zoomPlus}>줌인</MapAreaStyle.TempButton> */}
       <SidBarArea />
+      <MapOption />
       <NaverMap ref={mapElement} />
     </MapAreaStyle.MapContainer>
   );
