@@ -1,9 +1,18 @@
-import React, { MouseEvent } from 'react';
+import React, { MouseEvent, useEffect, useState } from 'react';
 import { GoSettings, GoTelescope } from 'react-icons/go';
 import { BsPinMapFill } from 'react-icons/bs';
 import * as OptionStyle from './MapOption_Style';
+import * as HeatMapAPI from '../../../Action/Modules/NaverMap/HeatMap';
 
-function MapOption() {
+type propsType = {
+  // eslint-disable-next-line no-undef
+  map: naver.maps.Map | null;
+};
+
+function MapOption(props: propsType) {
+  const { map } = props;
+  const [heatMapState, setHeatMapState] = useState(false);
+
   const changeActive = (e: MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
     console.log(e.currentTarget.classList.contains('dropdownWrapper'));
@@ -14,6 +23,20 @@ function MapOption() {
     }
   };
 
+  const changeHeatMap = () => {
+    setHeatMapState(!heatMapState);
+  };
+
+  useEffect(() => {
+    if (heatMapState) {
+      console.log('히트맵 켜짐 ', map);
+      HeatMapAPI.TurnOnHeatMap(map);
+    } else {
+      console.log('히트맵 꺼짐 ', map);
+      HeatMapAPI.TurnOffHeatMap(map);
+    }
+  }, [heatMapState]);
+
   return (
     <OptionStyle.DropDownWrapper onClick={changeActive} className="dropdownWrapper">
       {/* <OptionStyle.DropDownHeader>옵션</OptionStyle.DropDownHeader> */}
@@ -22,7 +45,13 @@ function MapOption() {
       </OptionStyle.IconWrapper>
       {/* <hr style={{ margin: '0' }} /> */}
       <OptionStyle.OptionDetailWrapper>
-        <OptionStyle.OptionDetaileDiv onClick={changeActive} className="detailDiv">
+        <OptionStyle.OptionDetaileDiv
+          onClick={(e: MouseEvent<HTMLDivElement>) => {
+            changeActive(e);
+            changeHeatMap();
+          }}
+          className="detailDiv"
+        >
           <OptionStyle.OptionDetailRound>
             <GoTelescope size={20} className="detailIcon" />
           </OptionStyle.OptionDetailRound>
