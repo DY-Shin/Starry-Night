@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import { BsArrowUpCircleFill } from 'react-icons/bs';
+import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import bg from '../../assets/mainpage/space.jpg';
 
 export const Mainpage = styled.div`
   overflow-x: hidden; // 가로 스크롤 숨기기
   /* padding-left: 4.5em;
   padding-right: 4.5em; */
-  /* overflow-y: auto; */
+  overflow-y: hidden;
   &::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -39,5 +40,31 @@ export const ScrollTop = styled(BsArrowUpCircleFill)`
   cursor: pointer;
   &:hover {
     opacity: 0.7;
+  }
+`;
+
+// 슬라이드 번호
+export const SlideShow = styled.div`
+  position: fixed;
+  display: flex;
+  left: 3%;
+  top: 40%;
+  z-index: 1;
+  flex-direction: column;
+`;
+
+export const CurrentSlide = styled(AiFillStar)`
+  margin-top: 5px;
+  width: 2em;
+  height: 2em;
+  color: white;
+`;
+export const JustSlide = styled(AiOutlineStar)`
+  margin-top: 5px;
+  color: white;
+  width: 2em;
+  height: 2em;
+  &:hover {
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
   }
 `;

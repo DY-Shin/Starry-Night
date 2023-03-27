@@ -7,6 +7,8 @@ export const MainLightPollution = styled.div`
   padding-right: 4.5em;
   min-height: 100vh;
   display: flex;
+  overflow: hidden;
+
   @media all and (max-width: 1200px) {
     justify-content: center;
     align-items: center;
@@ -22,6 +24,7 @@ export const LPLeftBox = styled.div`
   flex-basis: 50%;
   display: flex;
   align-items: center;
+  justify-content: center;
 `;
 
 export const LPRightBox = styled.div`
@@ -44,6 +47,7 @@ export const LPImg = styled.img.attrs<ImgProps>((props) => ({
 export const LPImgBox1 = styled.div`
   padding: 10px;
   display: flex;
+  /* justify-content: center; */
   align-items: center;
   height: 300px;
   background-color: rgba(50, 130, 184, 0.3); //#3282B8;
@@ -60,9 +64,10 @@ export const LPImgBox1 = styled.div`
 `;
 
 export const LPText1 = styled.p`
-  font-size: 44px;
+  font-weight: bold;
+  font-size: 39px;
   @media all and (max-width: 1200px) {
-    font-size: 44px;
+    font-size: 39px;
   }
   @media all and (max-width: 768px) {
   }
@@ -72,12 +77,12 @@ export const LPText1 = styled.p`
 `;
 
 export const LPText2 = styled.span`
-  font-size: 22px;
+  font-size: 19px;
   @media all and (max-width: 1200px) {
-    font-size: 22px;
+    font-size: 20px;
   }
   @media all and (max-width: 768px) {
-    font-size: 24px;
+    font-size: 20px;
   }
   @media all and (max-width: 500px) {
     font-size: 18px;

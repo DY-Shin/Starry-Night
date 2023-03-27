@@ -5,7 +5,7 @@ export const MainExplain = styled.div`
   min-height: 100vh;
   padding-left: 8em;
   padding-right: 8em;
-  overflow-y: hidden;
+  overflow: hidden;
   color: white;
   display: flex;
   @media all and (max-width: 1200px) {
@@ -51,6 +51,7 @@ export const EPLeftBox2 = styled.div`
     display: flex;
   }
   @media all and (max-width: 768px) {
+    margin-bottom: 3rem;
   }
   @media all and (max-width: 500px) {
   }
@@ -58,9 +59,9 @@ export const EPLeftBox2 = styled.div`
 
 export const EPText1 = styled.p`
   font-weight: bold;
-  font-size: 44px;
+  font-size: 38px;
   @media all and (max-width: 1200px) {
-    font-size: 44px;
+    font-size: 38px;
     margin-left: 0;
   }
   @media all and (max-width: 768px) {
@@ -70,10 +71,10 @@ export const EPText1 = styled.p`
   }
 `;
 export const EPText2 = styled.span`
-  font-weight: bold;
-  font-size: 22px;
+  /* font-weight: bold; */
+  font-size: 19px;
   @media all and (max-width: 1200px) {
-    font-size: 22px;
+    font-size: 19px;
     margin-left: 0;
   }
   @media all and (max-width: 768px) {

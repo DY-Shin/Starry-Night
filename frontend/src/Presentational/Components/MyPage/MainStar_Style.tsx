@@ -11,6 +11,7 @@ export const MainStar = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 `;
 
 export const WrapSlide = styled.div`
@@ -43,6 +44,6 @@ export const STimg2 = styled.img.attrs((props) => ({
   src: props.src,
 }))`
   height: 100%;
-  border-top: 2px solid yellow;
-  border-bottom: 2px solid yellow;
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
 `;

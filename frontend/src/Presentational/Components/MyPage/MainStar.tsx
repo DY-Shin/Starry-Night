@@ -55,7 +55,7 @@ function MainStar() {
       <Fade duration={2000}>
         <StarStyle.MainStar>
           <ReactCompareSlider
-            handle={<ReactCompareSliderHandle style={{ color: 'yellow' }} linesStyle={{ opacity: 0.5 }} />}
+            handle={<ReactCompareSliderHandle style={{ color: 'white' }} linesStyle={{ opacity: 0.5 }} />}
             itemOne={<ReactCompareSliderImage src={`assets/stars/star${ImgNum}.jpg`} alt="Image one" />}
             itemTwo={<ReactCompareSliderImage src={`assets/pictures/picture${ImgNum}.jpg`} alt="Image two" />}
             position={50}
@@ -63,7 +63,7 @@ function MainStar() {
             style={{
               width: '40vw',
               height: '100%',
-              border: '2px solid yellow',
+              border: '2px solid white',
               backgroundColor: 'rgba(50, 130, 184, 0.3)',
             }}
           />

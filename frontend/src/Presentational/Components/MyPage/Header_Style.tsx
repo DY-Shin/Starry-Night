@@ -32,6 +32,7 @@ export const NavLogo = styled.div`
     filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
   }
 `;
+
 export const NavLogin = styled(Link)`
   text-decoration: none;
   color: white;

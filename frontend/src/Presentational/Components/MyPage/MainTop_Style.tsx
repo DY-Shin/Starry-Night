@@ -10,7 +10,7 @@ export const MainTop = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
+  overflow: hidden;
   @media all and (max-width: 1200px) {
   }
   @media all and (max-width: 768px) {

@@ -1,40 +1,60 @@
-import React, { useEffect } from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import ReactPageScroller from 'react-page-scroller';
+import React, { useState } from 'react';
 import MainLightPollution from '../Components/MyPage/MainLightPollution';
 import MainStar from '../Components/MyPage/MainStar';
 import MainTop from '../Components/MyPage/MainTop';
 import MainExplain from '../Components/MyPage/MainExplain';
-import Header from '../Components/MyPage/Header';
 import Footer from '../Components/MyPage/Footer';
-import * as MainStyle from '../../style/MainStyle';
+import * as MainStyle from './Main_Style';
+import PageStore from '../../store';
 
 function Mainpage() {
-  const handleScrollAnimation = (e: Event) => {
-    console.log(e);
-  };
+  // const [page, setPage] = useState({
+  //   currentPage: 0,
+  //   isFooter: false,
+  // });
+
+  const { page, setPage } = PageStore();
 
   const MoveToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' }); // smooth
+    // window.scrollTo({ top: 0, behavior: 'smooth' }); // smooth
+    setPage(0);
   };
 
-  useEffect(() => {
-    window.addEventListener('scroll', (e) => {
-      handleScrollAnimation(e);
-    });
+  const pageChanage = (number: number) => {
+    if (number !== page) {
+      setPage(number);
+    }
+  };
 
-    return () => {
-      window.removeEventListener('scroll', (e) => {
-        handleScrollAnimation(e);
-      });
-    };
-  }, []);
+  const arr = [0, 1, 2, 3, 4];
+
   return (
     <MainStyle.Mainpage>
-      <Header />
-      <MainTop />
-      <MainExplain />
-      <MainLightPollution />
-      <MainStar />
-      <Footer />
+      {/* {page.isHeader && <Header />} */}
+      {/* <Header /> */}
+      <ReactPageScroller pageOnChange={pageChanage} customPageNumber={page}>
+        <MainTop />
+        <MainExplain />
+        <MainLightPollution />
+        <MainStar />
+        <Footer />
+      </ReactPageScroller>
+      <MainStyle.SlideShow>
+        {arr.map((i) =>
+          i === page ? (
+            <MainStyle.CurrentSlide key={i} />
+          ) : (
+            <MainStyle.JustSlide
+              key={i}
+              onClick={() => {
+                setPage(i);
+              }}
+            />
+          ),
+        )}
+      </MainStyle.SlideShow>
       <MainStyle.ScrollTop onClick={MoveToTop} />
     </MainStyle.Mainpage>
   );
