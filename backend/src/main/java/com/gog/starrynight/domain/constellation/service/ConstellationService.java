@@ -3,6 +3,7 @@ package com.gog.starrynight.domain.constellation.service;
 import com.gog.starrynight.common.exception.ResourceNotFoundException;
 import com.gog.starrynight.domain.constellation.dto.ConstellationCreateRequest;
 import com.gog.starrynight.domain.constellation.dto.ConstellationInfo;
+import com.gog.starrynight.domain.constellation.dto.ConstellationSimpleInfo;
 import com.gog.starrynight.domain.constellation.entity.Constellation;
 import com.gog.starrynight.domain.constellation.repository.ConstellationRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +17,7 @@ public class ConstellationService {
     private final ConstellationRepository constellationRepository;
 
     @Transactional
-    public ConstellationInfo createConstellation(ConstellationCreateRequest dto) {
+    public ConstellationSimpleInfo createConstellation(ConstellationCreateRequest dto) {
         Constellation constellation = Constellation.builder()
                 .name(dto.getName())
                 .description(dto.getDescription())
@@ -24,7 +25,7 @@ public class ConstellationService {
 
         constellationRepository.save(constellation);
 
-        return new ConstellationInfo(constellation);
+        return new ConstellationSimpleInfo(constellation);
     }
 
     @Transactional
