@@ -2,6 +2,7 @@ package com.gog.starrynight.domain.post.service;
 
 import com.gog.starrynight.common.exception.ResourceNotFoundException;
 import com.gog.starrynight.common.util.DataFileUtil;
+import com.gog.starrynight.domain.constellation.dto.ConstellationSimpleInfo;
 import com.gog.starrynight.domain.constellation.entity.Constellation;
 import com.gog.starrynight.domain.constellation.repository.ConstellationRepository;
 import com.gog.starrynight.domain.constellation_history.entity.ConstellationHistory;
@@ -9,11 +10,15 @@ import com.gog.starrynight.domain.constellation_history.repository.Constellation
 import com.gog.starrynight.domain.datafile.entity.DataFile;
 import com.gog.starrynight.domain.datafile.repository.DataFileRepository;
 import com.gog.starrynight.domain.post.dto.PostCreateRequest;
+import com.gog.starrynight.domain.post.dto.PostDetailInfo;
 import com.gog.starrynight.domain.post.dto.PostInfo;
 import com.gog.starrynight.domain.post.entity.Post;
 import com.gog.starrynight.domain.post.repository.PostRepository;
+import com.gog.starrynight.domain.post_image.dto.PostImageInfo;
 import com.gog.starrynight.domain.post_image.entity.PostImage;
 import com.gog.starrynight.domain.post_image.repository.PostImageRepository;
+import com.gog.starrynight.domain.post_like.repository.PostLikeRepository;
+import com.gog.starrynight.domain.user.dto.UserSimpleInfo;
 import com.gog.starrynight.domain.user.entity.User;
 import com.gog.starrynight.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +29,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional(readOnly = true)
@@ -34,14 +40,14 @@ public class PostService {
     private final ConstellationRepository constellationRepository;
     private final ConstellationHistoryRepository constellationHistoryRepository;
     private final PostImageRepository postImageRepository;
+    private final PostLikeRepository postLikeRepository;
     private final DataFileRepository dataFileRepository;
     private final DataFileUtil dataFileUtil;
 
     @Transactional
     public PostInfo createPost(PostCreateRequest dto, MultipartFile[] images, Long requesterId) throws IOException {
-        User requester = userRepository.findById(requesterId).orElseThrow(
-                () -> new ResourceNotFoundException("존재하지 않는 회원입니다.")
-        );
+        User requester = userRepository.findById(requesterId)
+                .orElseThrow(() -> new ResourceNotFoundException("존재하지 않는 회원입니다."));
 
         Post post = Post.builder()
                 .title(dto.getTitle())
@@ -98,5 +104,28 @@ public class PostService {
         }
 
         return new PostInfo(post);
+    }
+
+    public PostDetailInfo getPostDetailInfo(Long postId, Long requesterId) {
+        Post post = postRepository.findById(postId)
+                .orElseThrow(() -> new ResourceNotFoundException("존재하지 않는 게시물입니다."));
+
+        UserSimpleInfo writer = new UserSimpleInfo(post.getWriter());
+        boolean permission = (requesterId == writer.getId() ? true : false);
+
+        List<PostImageInfo> images = post.getPostImages().stream()
+                .map(postImage -> new PostImageInfo(postImage))
+                .collect(Collectors.toList());
+
+        List<ConstellationSimpleInfo> constellationTags = post.getConstellationHistories().stream()
+                .map(constellationHistory -> {
+                    Constellation constellation = constellationHistory.getConstellation();
+                    return new ConstellationSimpleInfo(constellation);
+                })
+                .collect(Collectors.toList());
+
+        int postLikeCount = postLikeRepository.getTotalPostLikeCountByPostId(postId);
+
+        return new PostDetailInfo(post, writer, images, constellationTags, postLikeCount, permission);
     }
 }

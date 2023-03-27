@@ -1,5 +1,6 @@
 package com.gog.starrynight.domain.datafile.dto;
 
+import com.gog.starrynight.common.util.UriUtil;
 import com.gog.starrynight.domain.datafile.entity.DataFile;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,10 +16,6 @@ public class DataFileInfo {
     public DataFileInfo(DataFile dataFile) {
         this.id = dataFile.getId();
         this.originalFileName = dataFile.getOriginalFileName();
-
-        this.url = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/datafiles/")
-                .path(this.id.toString())
-                .toUriString();
+        this.url = UriUtil.buildUri("/datafiles/" + this.id.toString());
     }
 }
