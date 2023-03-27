@@ -34,4 +34,15 @@ public class FavoriteLocationService {
 
         return new FavoriteLocationSimpleInfo(favoriteLocation);
     }
+
+    @Transactional
+    public void deleteFavoriteLocation(Long requesterId, Long favoriteLocationId) {
+        User requester = userRepository.findById(requesterId)
+                .orElseThrow(() -> new ResourceNotFoundException("존재하지 않는 회원입니다."));
+
+        FavoriteLocation favoriteLocation = favoriteLocationRepository.findByIdAndUserId(favoriteLocationId, requesterId)
+                .orElseThrow(() -> new ResourceNotFoundException("등록한 관심 위치가 아닙니다."));
+
+        favoriteLocationRepository.delete(favoriteLocation);
+    }
 }
