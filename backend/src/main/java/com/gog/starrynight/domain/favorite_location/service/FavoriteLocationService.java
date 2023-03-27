@@ -1,5 +1,6 @@
 package com.gog.starrynight.domain.favorite_location.service;
 
+import com.gog.starrynight.common.exception.ResourceAlreadyExistsException;
 import com.gog.starrynight.common.exception.ResourceNotFoundException;
 import com.gog.starrynight.domain.favorite_location.dto.FavoriteLocationCreateRequest;
 import com.gog.starrynight.domain.favorite_location.dto.FavoriteLocationSimpleInfo;
@@ -23,6 +24,11 @@ public class FavoriteLocationService {
     public FavoriteLocationSimpleInfo createFavoriteLocation(Long requesterId, FavoriteLocationCreateRequest dto) {
         User requester = userRepository.findById(requesterId)
                 .orElseThrow(() -> new ResourceNotFoundException("존재하지 않는 회원입니다."));
+
+        favoriteLocationRepository.findByLatAndLngAndUserId(dto.getLat(), dto.getLng(), requesterId)
+                .ifPresent(none -> {
+                    throw new ResourceAlreadyExistsException("이미 존재하는 관심 위치입니다.");
+                });
 
         FavoriteLocation favoriteLocation = FavoriteLocation.builder()
                 .lat(dto.getLat())
