@@ -4,14 +4,14 @@ export const RewardContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  height: 50%;
+  height: 45%;
   width: 100%;
 `;
 export const Badge = styled.div`
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   display: flex;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: whitesmoke;
   align-items: center;
   justify-content: center;

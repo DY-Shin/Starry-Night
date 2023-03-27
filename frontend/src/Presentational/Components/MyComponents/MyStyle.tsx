@@ -24,12 +24,12 @@ export const MyDia = styled.span`
   border: 10px solid transparent;
   border-bottom-color: pink;
   position: relative;
-  top: -37px;
+  top: -36px;
   :before {
     content: '';
     position: absolute;
     left: -10px;
-    top: 37px;
+    top: 36px;
     width: 0;
     height: 0;
     border: 10px solid transparent;
