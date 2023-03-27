@@ -38,8 +38,11 @@ public class PostController {
     @GetMapping("/posts/{postId}")
     public ResponseEntity<ApiResponse<PostDetailInfo>> getPostDetailInfo(@AuthenticationPrincipal LoginUser loginUser,
                                                                          @PathVariable Long postId) {
-        PostDetailInfo postDetailInfo = postService.getPostDetailInfo(postId, loginUser.getId());
+        Long requesterId = loginUser != null ? loginUser.getId() : null;
+        PostDetailInfo postDetailInfo = postService.getPostDetailInfo(postId, requesterId);
         ApiResponse<PostDetailInfo> result = new ApiResponse<>(true, "게시물 상세 조회 성공", postDetailInfo);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
+
+
 }

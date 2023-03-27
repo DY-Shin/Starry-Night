@@ -23,9 +23,11 @@ public class PostDetailInfo {
     private List<ConstellationSimpleInfo> constellationTags;
     private int postLikeCount;
     private boolean permission;
+    private boolean postLikePossible;
+    private boolean postLiked;
     private LocalDateTime createdDate;
 
-    public PostDetailInfo(Post post, UserSimpleInfo writer, List<PostImageInfo> images, List<ConstellationSimpleInfo> constellationTags, int postLikeCount, boolean permission) {
+    public PostDetailInfo(Post post, UserSimpleInfo writer, List<PostImageInfo> images, List<ConstellationSimpleInfo> constellationTags, int postLikeCount, boolean postLikePossible, boolean postLiked, boolean permission) {
         this.id = post.getId();
         this.title = post.getTitle();
         this.content = post.getContent();
@@ -36,6 +38,8 @@ public class PostDetailInfo {
         this.images = images;
         this.constellationTags = constellationTags;
         this.postLikeCount = postLikeCount;
+        this.postLikePossible = postLikePossible;
+        this.postLiked = postLiked;
         this.permission = permission;
     }
 }
