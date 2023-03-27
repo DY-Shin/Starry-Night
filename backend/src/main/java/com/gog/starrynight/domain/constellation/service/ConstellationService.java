@@ -35,4 +35,12 @@ public class ConstellationService {
 
         constellationRepository.delete(constellation);
     }
+
+    public ConstellationInfo checkConstellation(Long constellationId) {
+        Constellation constellation = constellationRepository.findById(constellationId).orElseThrow(
+                () -> new ResourceNotFoundException("존재하지 않는 별자리입니다.")
+        );
+
+        return new ConstellationInfo(constellation);
+    }
 }
