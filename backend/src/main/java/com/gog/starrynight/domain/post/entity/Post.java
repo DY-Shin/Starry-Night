@@ -47,6 +47,6 @@ public class Post extends BaseTimeEntity {
     private List<PostLike> postLikes = new ArrayList<>();
 
     @Builder.Default
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
     private List<ConstellationHistory> constellationHistories = new ArrayList<>();
 }
