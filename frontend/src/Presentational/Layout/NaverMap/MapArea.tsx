@@ -9,8 +9,6 @@ function MapArea() {
   const { naver } = window;
   const mapElement = useRef(null);
   const [elementIsLoading, setElementIsLoading] = useState(false);
-  // 나중에 아래 라인 삭제
-  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   const [centerLocation, setCenterLocation] = useState(
     new naver.maps.LatLng(useGeolocation().coordinates.lat, useGeolocation().coordinates.lng),
   );
@@ -44,7 +42,7 @@ function MapArea() {
       },
     });
     mapData.current = map;
-    naver.maps.Event.addListener(map, 'center_changed', () => {
+    naver.maps.Event.addListener(map, 'dragend zoom_changed', () => {
       setCenterLocation(new naver.maps.LatLng(map.getCenter().x, map.getCenter().y));
     });
   };
@@ -54,16 +52,11 @@ function MapArea() {
     if (mapData.current) setElementIsLoading(true);
   }, []);
 
-  // const zoomPlus = () => {
-  //   mapData.current.setZoom(mapData.current.getZoom() + 1, true);
-  // };
-
   return (
     <MapAreaStyle.MapContainer>
-      {/* <MapAreaStyle.TempButton onClick={zoomPlus}>줌인</MapAreaStyle.TempButton> */}
       <SidBarArea />
       <NaverMap ref={mapElement} />
-      {elementIsLoading ? <MapOption map={mapData.current} /> : null}
+      {elementIsLoading ? <MapOption map={mapData.current} centerLocation={centerLocation} /> : null}
     </MapAreaStyle.MapContainer>
   );
 }

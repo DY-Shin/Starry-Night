@@ -7,10 +7,12 @@ import * as HeatMapAPI from '../../../Action/Modules/NaverMap/HeatMap';
 type propsType = {
   // eslint-disable-next-line no-undef
   map: naver.maps.Map | null;
+  // eslint-disable-next-line no-undef
+  centerLocation: naver.maps.LatLng;
 };
 
 function MapOption(props: propsType) {
-  const { map } = props;
+  const { map, centerLocation } = props;
   const [heatMapState, setHeatMapState] = useState(false);
   // eslint-disable-next-line no-undef
   const [heatMapObject, setHeatMapObject] = useState<naver.maps.visualization.HeatMap | null>(null);
@@ -31,12 +33,15 @@ function MapOption(props: propsType) {
 
   useEffect(() => {
     if (heatMapState) {
+      if (heatMapObject) {
+        HeatMapAPI.TurnOffHeatMap(heatMapObject);
+      }
       setHeatMapObject(HeatMapAPI.TurnOnHeatMap(map));
     } else {
       HeatMapAPI.TurnOffHeatMap(heatMapObject);
       setHeatMapObject(null);
     }
-  }, [heatMapState]);
+  }, [heatMapState, centerLocation]);
 
   return (
     <OptionStyle.DropDownWrapper onClick={changeActive} className="dropdownWrapper">
