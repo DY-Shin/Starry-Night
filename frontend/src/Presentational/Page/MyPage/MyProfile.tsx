@@ -15,7 +15,7 @@ function MyProfile() {
             <h1>hi</h1>
           </MyProfileBox.Photo>
           <MyProfileBox.Nick>
-            <h1>hello</h1>
+            <h2>비둘기가호롤롤롤로날아가</h2>
           </MyProfileBox.Nick>
         </MyProfileBox.ProfileSubContainer>
         <MyProfileBox.ProfileSubContainer>

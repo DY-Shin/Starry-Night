@@ -25,7 +25,7 @@ export const ProfileButtonContainer = styled.div`
   justify-content: space-evenly;
   align-items: center;
   /* background-color: red; */
-  height: 30%;
+  height: 80%;
   width: 90%;
 `;
 
