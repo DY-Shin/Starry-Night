@@ -13,6 +13,7 @@ export const DictItemBox = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
   background-color: blue;
   flex-direction: column;
 `;
