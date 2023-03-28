@@ -3,13 +3,13 @@ package com.gog.starrynight.domain.post_like.dto;
 import lombok.Data;
 
 @Data
-public class PostLikeSearchRequest {
+public class GetPostLikersRequest {
     private int page;
     private int size;
     private String sort;
     private String direction;
 
-    public PostLikeSearchRequest() {
+    public GetPostLikersRequest() {
         this.sort = "createdDate";
         this.direction = "desc";
         this.page = 0;
