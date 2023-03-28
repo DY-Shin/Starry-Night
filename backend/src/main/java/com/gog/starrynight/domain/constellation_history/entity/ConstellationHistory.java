@@ -62,6 +62,8 @@ public class ConstellationHistory extends BaseTimeEntity {
         }
 
         this.post = post;
-        this.post.getConstellationHistories().add(this);
+        if (this.post != null) {
+            this.post.getConstellationHistories().add(this);
+        }
     }
 }
