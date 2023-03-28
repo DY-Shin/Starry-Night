@@ -13,6 +13,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
@@ -25,10 +27,10 @@ public class FavoriteLocationService {
         User requester = userRepository.findById(requesterId)
                 .orElseThrow(() -> new ResourceNotFoundException("존재하지 않는 회원입니다."));
 
-        favoriteLocationRepository.findByLatAndLngAndUserId(dto.getLat(), dto.getLng(), requesterId)
-                .ifPresent(none -> {
-                    throw new ResourceAlreadyExistsException("이미 존재하는 관심 위치입니다.");
-                });
+        Optional<FavoriteLocation> location = favoriteLocationRepository.findByLatAndLngAndUserId(dto.getLat(), dto.getLng(), requesterId);
+        if (location.isPresent()) {
+            throw new ResourceAlreadyExistsException("이미 존재하는 관심 위치입니다.");
+        }
 
         FavoriteLocation favoriteLocation = FavoriteLocation.builder()
                 .lat(dto.getLat())
