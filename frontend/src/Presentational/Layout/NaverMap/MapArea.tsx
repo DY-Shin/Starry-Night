@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import useGeolocation from '../../../Action/Hooks/NaverMap/useGeolocation';
 import MapOption from '../../Components/NaverMap/MapOption';
 import NaverMap from '../../Components/NaverMap/NaverMap';
 import * as MapAreaStyle from './MapArea_Style';
@@ -8,6 +9,11 @@ function MapArea() {
   const { naver } = window;
   const mapElement = useRef(null);
   const [elementIsLoading, setElementIsLoading] = useState(false);
+  // 나중에 아래 라인 삭제
+  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+  const [centerLocation, setCenterLocation] = useState(
+    new naver.maps.LatLng(useGeolocation().coordinates.lat, useGeolocation().coordinates.lng),
+  );
   // eslint-disable-next-line no-undef
   const mapData = useRef<null | naver.maps.Map>(null);
   const initMap = () => {
@@ -15,10 +21,10 @@ function MapArea() {
     if (!naver) return;
 
     // 지도에 표시할 위치의 위도와 경도 좌표를 파라미터로 넣어줍니다.
-    const location = new naver.maps.LatLng(37.5656, 126.9769);
+    const location = centerLocation;
     const map = new naver.maps.Map(mapElement.current, {
       center: location,
-      zoom: 8,
+      zoom: 15,
       minZoom: 8,
       maxZoom: 15,
       tileSpare: 5,
@@ -38,7 +44,9 @@ function MapArea() {
       },
     });
     mapData.current = map;
-    map.zoomBy(1);
+    naver.maps.Event.addListener(map, 'center_changed', () => {
+      setCenterLocation(new naver.maps.LatLng(map.getCenter().x, map.getCenter().y));
+    });
   };
 
   useEffect(() => {

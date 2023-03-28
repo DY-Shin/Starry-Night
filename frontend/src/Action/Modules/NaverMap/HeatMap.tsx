@@ -2,17 +2,17 @@
 
 const { naver } = window;
 
-export const TurnOnHeatMap = (maps: naver.maps.Map | null) => {
+export function TurnOnHeatMap(maps: naver.maps.Map | null): naver.maps.visualization.HeatMap | null {
   // const heatData = {"weight": 2, "location": [36.0207091, 127.9204629]};
-  console.log('api 들어옴 ', maps);
-  if (!maps) return;
-  console.log('api 조건 통과됨');
+  if (!maps) {
+    return null;
+  }
 
-  const heatData = [
-    new naver.maps.visualization.WeightedLocation(36.0207091, 127.9204629, 0.5),
-    new naver.maps.visualization.WeightedLocation(37.0207091, 128.9204629, 0.5),
-    new naver.maps.visualization.WeightedLocation(38.0207091, 129.9204629, 0.5),
-    new naver.maps.visualization.WeightedLocation(39.0207091, 130.9204629, 0.5),
+  const heatData: naver.maps.visualization.WeightedLocation[] = [
+    new naver.maps.visualization.WeightedLocation(36.0207091, 127.9204629, 3),
+    new naver.maps.visualization.WeightedLocation(36.1207091, 128.0204629, 3),
+    new naver.maps.visualization.WeightedLocation(36.2207091, 128.1204629, 3),
+    new naver.maps.visualization.WeightedLocation(36.3207091, 128.2204629, 3),
   ];
 
   const heatmap = new naver.maps.visualization.HeatMap({
@@ -20,13 +20,12 @@ export const TurnOnHeatMap = (maps: naver.maps.Map | null) => {
     data: heatData,
   });
 
-  console.log(heatmap);
-};
+  return heatmap;
+}
 
-export const TurnOffHeatMap = (maps: naver.maps.Map | null) => {
-  if (!maps) return;
+export function TurnOffHeatMap(heatmaps: naver.maps.visualization.HeatMap | null) {
+  if (!heatmaps) return null;
 
-  const layer = maps.getOptions('HeatMapLayer');
-
-  console.log('레이어 ', layer);
-};
+  const heatmap = heatmaps;
+  heatmap.setMap(null);
+}

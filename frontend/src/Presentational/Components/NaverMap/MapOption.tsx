@@ -12,6 +12,8 @@ type propsType = {
 function MapOption(props: propsType) {
   const { map } = props;
   const [heatMapState, setHeatMapState] = useState(false);
+  // eslint-disable-next-line no-undef
+  const [heatMapObject, setHeatMapObject] = useState<naver.maps.visualization.HeatMap | null>(null);
 
   const changeActive = (e: MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
@@ -29,11 +31,10 @@ function MapOption(props: propsType) {
 
   useEffect(() => {
     if (heatMapState) {
-      console.log('히트맵 켜짐 ', map);
-      HeatMapAPI.TurnOnHeatMap(map);
+      setHeatMapObject(HeatMapAPI.TurnOnHeatMap(map));
     } else {
-      console.log('히트맵 꺼짐 ', map);
-      HeatMapAPI.TurnOffHeatMap(map);
+      HeatMapAPI.TurnOffHeatMap(heatMapObject);
+      setHeatMapObject(null);
     }
   }, [heatMapState]);
 
