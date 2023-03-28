@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   position: sticky;
   top: 0;
-  height: 30px;
+  height: 50px;
   color: purple;
   background-color: grey;
   width: 100%;

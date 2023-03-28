@@ -6,7 +6,7 @@ export const DictMainBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  background-color: red;
+  /* background-color: red; */
 `;
 export const DictItemBox = styled.div`
   width: 90%;
@@ -14,7 +14,7 @@ export const DictItemBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  background-color: blue;
+  /* background-color: blue; */
   flex-direction: column;
 `;
 
@@ -24,7 +24,7 @@ export const DictSubBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  background-color: green;
+  /* background-color: green; */
 `;
 
 export const BjrBox = styled.div`
@@ -33,7 +33,7 @@ export const BjrBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: purple;
+  /* background-color: purple; */
   flex-direction: column;
 `;
 
