@@ -6,7 +6,12 @@ import InfoPage from '../../../Page/NaverMap/InfoPage';
 import FavoritePage from '../../../Page/NaverMap/FavoritePage';
 import BoardPage from '../../../Page/NaverMap/BoardPage';
 
-function SidBarArea() {
+type propsType = {
+  setIsBoardOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+function SidBarArea(props: propsType) {
+  const { setIsBoardOpen } = props;
   const [foldState, setFoldState] = useState(true);
   const [currentContents, setCurrentContents] = useState('info');
 
@@ -16,6 +21,11 @@ function SidBarArea() {
 
   const changeCurrentContents = (str: string) => {
     setCurrentContents(str);
+    if (str === 'board') {
+      setIsBoardOpen(true);
+    } else {
+      setIsBoardOpen(false);
+    }
   };
 
   return (

@@ -12,6 +12,8 @@ function MapArea() {
   const [centerLocation, setCenterLocation] = useState(
     new naver.maps.LatLng(useGeolocation().coordinates.lat, useGeolocation().coordinates.lng),
   );
+  const [isBoardOpen, setIsBoardOpen] = useState(false);
+
   // eslint-disable-next-line no-undef
   const mapData = useRef<null | naver.maps.Map>(null);
   const initMap = () => {
@@ -52,9 +54,16 @@ function MapArea() {
     if (mapData.current) setElementIsLoading(true);
   }, []);
 
+  useEffect(() => {
+    if (isBoardOpen) {
+      // if (!mapData.current) return;
+      // mapData.controls[naver.maps.Position.BOTTOM_CENTER].push();
+    }
+  }, [isBoardOpen]);
+
   return (
     <MapAreaStyle.MapContainer>
-      <SidBarArea />
+      <SidBarArea setIsBoardOpen={setIsBoardOpen} />
       <NaverMap ref={mapElement} />
       {elementIsLoading ? <MapOption map={mapData.current} centerLocation={centerLocation} /> : null}
     </MapAreaStyle.MapContainer>
