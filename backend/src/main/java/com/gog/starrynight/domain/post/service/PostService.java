@@ -2,6 +2,7 @@ package com.gog.starrynight.domain.post.service;
 
 import com.gog.starrynight.common.dto.AreaRange;
 import com.gog.starrynight.common.dto.PagedResult;
+import com.gog.starrynight.common.exception.ResourceForbiddenException;
 import com.gog.starrynight.common.exception.ResourceNotFoundException;
 import com.gog.starrynight.common.util.DataFileUtil;
 import com.gog.starrynight.domain.constellation.dto.ConstellationSimpleInfo;
@@ -163,9 +164,34 @@ public class PostService {
         return new PagedResult<>(processedResult);
     }
 
+    @Transactional
+    public void deletePost(Long postId, Long requesterId) {
+        Post post = postRepository.findById(postId)
+                .orElseThrow(() -> new ResourceNotFoundException("존재하지 않는 게시물입니다."));
+
+        if (!post.getWriter().getId().equals(requesterId)) {
+            throw new ResourceForbiddenException("자신이 작성한 게시물만 삭제할 수 있습니다.");
+        }
+
+        List<PostImage> postImages = post.getPostImages();
+
+        for (PostImage postImage : postImages) {
+            DataFile dataFile = postImage.getDataFile();
+            String filePath = dataFileUtil.getFullPath(dataFile.getStoredFileName());
+            dataFileUtil.deleteFile(filePath);
+        }
+
+        List<ConstellationHistory> constellationHistories = post.getConstellationHistories();
+        for (int i = constellationHistories.size() - 1; i >= 0; i--) {
+            constellationHistories.get(i).setPost(null);
+        }
+
+        postRepository.delete(post);
+    }
+
     public PostDetailInfo convertPostToPostDetailInfo(Post post, Long requesterId) {
         UserSimpleInfo writer = new UserSimpleInfo(post.getWriter());
-        boolean permission = (requesterId == writer.getId());
+        boolean permission = (writer.getId().equals(requesterId));
         boolean postLikePossible = (requesterId != null);
         boolean postLiked = postLikeRepository.existsPostLikeByPostIdAndUserId(post.getId(), requesterId);
 
@@ -209,4 +235,5 @@ public class PostService {
 
         return new AreaRange(minLat, maxLat, minLng, maxLng);
     }
+
 }
