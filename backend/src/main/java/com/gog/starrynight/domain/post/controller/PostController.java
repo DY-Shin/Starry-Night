@@ -1,9 +1,11 @@
 package com.gog.starrynight.domain.post.controller;
 
 import com.gog.starrynight.common.dto.ApiResponse;
+import com.gog.starrynight.common.dto.PagedResult;
 import com.gog.starrynight.domain.post.dto.PostCreateRequest;
 import com.gog.starrynight.domain.post.dto.PostDetailInfo;
 import com.gog.starrynight.domain.post.dto.PostInfo;
+import com.gog.starrynight.domain.post.dto.PostSearchRequest;
 import com.gog.starrynight.domain.post.service.PostService;
 import com.gog.starrynight.security.LoginUser;
 import io.swagger.v3.oas.annotations.Operation;
@@ -38,9 +40,19 @@ public class PostController {
     @GetMapping("/posts/{postId}")
     public ResponseEntity<ApiResponse<PostDetailInfo>> getPostDetailInfo(@AuthenticationPrincipal LoginUser loginUser,
                                                                          @PathVariable Long postId) {
-        Long requesterId = loginUser != null ? loginUser.getId() : null;
+        Long requesterId = (loginUser != null ? loginUser.getId() : null);
         PostDetailInfo postDetailInfo = postService.getPostDetailInfo(postId, requesterId);
         ApiResponse<PostDetailInfo> result = new ApiResponse<>(true, "게시물 상세 조회 성공", postDetailInfo);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @Operation(summary = "게시물 검색")
+    @GetMapping("/posts")
+    public ResponseEntity<ApiResponse<PagedResult<PostDetailInfo>>> searchPost(@AuthenticationPrincipal LoginUser loginUser,
+                                                                               PostSearchRequest dto) {
+        Long requesterId = (loginUser != null ? loginUser.getId() : null);
+        PagedResult<PostDetailInfo> pagedResult = postService.searchPost(dto, requesterId);
+        ApiResponse<PagedResult<PostDetailInfo>> result = new ApiResponse<>(true, "게시물 검색 성공", pagedResult);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
