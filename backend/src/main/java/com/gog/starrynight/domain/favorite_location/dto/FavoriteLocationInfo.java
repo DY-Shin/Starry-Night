@@ -6,12 +6,12 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class FavoriteLocationSimpleInfo {
+public class FavoriteLocationInfo {
     private Long id;
     private double lat;
     private double lng;
 
-    public FavoriteLocationSimpleInfo(FavoriteLocation favoriteLocation) {
+    public FavoriteLocationInfo(FavoriteLocation favoriteLocation) {
         this.id = favoriteLocation.getId();
         this.lat = favoriteLocation.getLat();
         this.lng = favoriteLocation.getLng();
