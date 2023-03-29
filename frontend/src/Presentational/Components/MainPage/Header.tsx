@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
@@ -10,6 +10,7 @@ import UserModal from './UserModal';
 import useDetectClose from '../../../Action/Hooks/Mainpage/LoginModalHook';
 import Login from '../../Common/Components/Login';
 // import { removeCookie, getCookie } from '../../../Action/Hooks/Mainpage/Cookie';
+// import { useEffect } from 'react';
 
 function Header() {
   const { name, profileImageUrl, setUser } = UserStore();
@@ -20,14 +21,6 @@ function Header() {
 
   const test = () => {
     window.location.href = 'http://localhost:8090/api/oauth2/authorization/kakao';
-    // 카카오 로그인 정보 가져오기
-    const getUser = async () => {
-      await api.get(`/api/my-profile`, { withCredentials: true }).then((res) => {
-        console.log(res.data.data);
-        setUser(res.data.data.name, res.data.data.profileImageUrl);
-        console.log(name, profileImageUrl);
-      });
-    };
   };
 
   // 카카오 로그인 정보 가져오기
@@ -39,6 +32,10 @@ function Header() {
       console.log(isOpen);
     });
   };
+
+  useEffect(() => {
+    getUser();
+  }, []);
 
   // 로그인 모달
   const LoginModal = () => {
