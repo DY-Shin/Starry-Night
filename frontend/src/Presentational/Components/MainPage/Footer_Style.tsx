@@ -25,7 +25,7 @@ export const MainFooter = styled.div`
   min-height: 100vh;
   padding-left: 8em;
   padding-right: 8em;
-  /* justify-content: center; */
+  justify-content: center;
   align-items: center;
   flex-direction: column;
   overflow: hidden;
@@ -68,6 +68,7 @@ export const WrapIcon = styled.div`
   width: 240px;
   justify-content: space-between;
 `;
+
 export const FooterFacebook = styled(SiFacebook)`
   width: 40px;
   height: 40px;
@@ -76,6 +77,7 @@ export const FooterFacebook = styled(SiFacebook)`
     opacity: 0.7;
   }
 `;
+
 export const FooterInstagram = styled(SiInstagram)`
   width: 40px;
   height: 40px;
@@ -84,6 +86,7 @@ export const FooterInstagram = styled(SiInstagram)`
     opacity: 0.7;
   }
 `;
+
 export const FooterTwitter = styled(SiTwitter)`
   width: 40px;
   height: 40px;
@@ -92,6 +95,7 @@ export const FooterTwitter = styled(SiTwitter)`
     opacity: 0.7;
   }
 `;
+
 export const FooterYoutubr = styled(SiYoutube)`
   width: 40px;
   height: 40px;
@@ -100,6 +104,7 @@ export const FooterYoutubr = styled(SiYoutube)`
     opacity: 0.7;
   }
 `;
+
 export const Copyright = styled.span`
   margin: 10px 0px;
   font-size: 10px;
@@ -109,11 +114,10 @@ export const Copyright = styled.span`
 export const WrapDognju = styled.div`
   width: 100%;
   display: flex;
-  /* flex-grow: 1 1; */
-  flex-basis: 50 50;
-  margin-top: 7.5%;
+  padding-bottom: 5rem;
 `;
 
+// 시
 export const Poem = styled.div`
   filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
   flex-basis: 50%;
@@ -123,6 +127,15 @@ export const Poem = styled.div`
   align-items: center;
   font-size: 1.25vw;
   padding-left: 8em;
+  @media all and (max-width: 1200px) {
+  }
+  @media all and (max-width: 768px) {
+    padding-left: 0px;
+    flex-basis: 100%;
+    font-size: 2.25vw;
+  }
+  @media all and (max-width: 500px) {
+  }
 `;
 
 // 시 오른쪽에 느낌있는 사진
@@ -132,6 +145,14 @@ export const PhotoPoem = styled.div`
   align-items: center;
   justify-content: center;
   padding-right: 8em;
+  @media all and (max-width: 1200px) {
+  }
+  @media all and (max-width: 768px) {
+    display: none;
+    padding-right: 0px;
+  }
+  @media all and (max-width: 500px) {
+  }
 `;
 
 interface ImgProps {

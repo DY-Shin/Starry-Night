@@ -25,7 +25,7 @@ export const TopTitle = styled.div`
   @media all and (max-width: 1200px) {
   }
   @media all and (max-width: 850px) {
-    font-size: 84px;
+    font-size: 80px;
   }
   @media all and (max-width: 500px) {
     font-size: 72px;

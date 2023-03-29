@@ -20,8 +20,7 @@ function MainLightPollution() {
           {/* <MainStyle.LPText1> */}
           <Fade direction="right" duration={2000}>
             <PolluStyle.LPText1>
-              광공해가 제한하는
-              <MainStyle.Highlight>도시의 별</MainStyle.Highlight>
+              광공해가 제한하는 <MainStyle.Highlight>도시의 별</MainStyle.Highlight>
             </PolluStyle.LPText1>
           </Fade>
           <Fade direction="right" duration={2300}>

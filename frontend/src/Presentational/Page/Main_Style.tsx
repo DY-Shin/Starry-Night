@@ -65,6 +65,7 @@ export const JustSlide = styled(AiOutlineStar)`
   color: white;
   width: 2em;
   height: 2em;
+  cursor: pointer;
   &:hover {
     filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
   }
