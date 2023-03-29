@@ -66,46 +66,12 @@ public class PostService {
 
         // 별자리를 기록했다면
         if (dto.getConstellations() != null) {
-            List<ConstellationHistory> constellationHistories = new ArrayList<>();
-            for (Long constellationId : dto.getConstellations()) {
-                Constellation constellation = constellationRepository.findById(constellationId)
-                        .orElseThrow(() -> new ResourceNotFoundException("해당 별자리가 존재하지 않습니다."));
-
-                ConstellationHistory constellationHistory = ConstellationHistory.builder()
-                        .lat(dto.getLat())
-                        .lng(dto.getLng())
-                        .user(requester)
-                        .post(post)
-                        .constellation(constellation)
-                        .build();
-
-                constellationHistories.add(constellationHistory);
-            }
-
-            constellationHistoryRepository.saveAll(constellationHistories);
-            post.setConstellationHistories(constellationHistories);
+            addConstellationHistories(post, dto.getConstellations());
         }
 
         // 이미지가 존재한다면
         if (images != null) {
-            List<DataFile> dataFiles = new ArrayList<>();
-            List<PostImage> postImages = new ArrayList<>();
-            for (MultipartFile image : images) {
-                DataFile dataFile = dataFileUtil.storeFile(image);
-
-                PostImage postImage = PostImage.builder()
-                        .dataFile(dataFile)
-                        .post(post)
-                        .build();
-
-                dataFiles.add(dataFile);
-                postImages.add(postImage);
-            }
-
-            dataFileRepository.saveAll(dataFiles);
-
-            postImageRepository.saveAll(postImages);
-            post.setPostImages(postImages);
+            addPostImages(post, images);
         }
 
         return new PostInfo(post);
