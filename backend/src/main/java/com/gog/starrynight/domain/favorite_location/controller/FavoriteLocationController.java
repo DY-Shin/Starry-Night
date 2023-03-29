@@ -2,10 +2,9 @@ package com.gog.starrynight.domain.favorite_location.controller;
 
 import com.gog.starrynight.common.dto.ApiResponse;
 import com.gog.starrynight.common.dto.PagedResult;
+import com.gog.starrynight.common.dto.PagingRequest;
 import com.gog.starrynight.domain.favorite_location.dto.FavoriteLocationCreateRequest;
 import com.gog.starrynight.domain.favorite_location.dto.FavoriteLocationInfo;
-import com.gog.starrynight.domain.favorite_location.dto.FavoriteLocationGetRequest;
-import com.gog.starrynight.domain.favorite_location.entity.FavoriteLocation;
 import com.gog.starrynight.domain.favorite_location.service.FavoriteLocationService;
 import com.gog.starrynight.security.LoginUser;
 import io.swagger.v3.oas.annotations.Operation;
@@ -25,7 +24,7 @@ public class FavoriteLocationController {
     @Operation(summary = "관심위치 등록")
     @PostMapping("/favorite-locations")
     public ResponseEntity<ApiResponse<FavoriteLocationInfo>> createFavoriteLocation(@AuthenticationPrincipal LoginUser loginUser,
-                                                              @RequestBody FavoriteLocationCreateRequest dto) {
+                                                                                    @RequestBody FavoriteLocationCreateRequest dto) {
         FavoriteLocationInfo favoriteLocationInfo = favoriteLocationService.createFavoriteLocation(loginUser.getId(), dto);
         ApiResponse<FavoriteLocationInfo> result = new ApiResponse<>(true, "관심위치 등록 성공", favoriteLocationInfo);
         return new ResponseEntity<>(result, HttpStatus.CREATED);
@@ -43,7 +42,7 @@ public class FavoriteLocationController {
     @Operation(summary = "관심위치 조회")
     @GetMapping("/favorite-locations")
     public ResponseEntity<ApiResponse<PagedResult<FavoriteLocationInfo>>> getFavoriteLocation(@AuthenticationPrincipal LoginUser loginUser,
-                                                                                          FavoriteLocationGetRequest dto) {
+                                                                                              PagingRequest dto) {
         PagedResult<FavoriteLocationInfo> pagedResult = favoriteLocationService.getFavoriteLocation(loginUser.getId(), dto);
         ApiResponse<PagedResult<FavoriteLocationInfo>> result = new ApiResponse<>(true, "관심위치 조회 성공", pagedResult);
         return new ResponseEntity<>(result, HttpStatus.OK);

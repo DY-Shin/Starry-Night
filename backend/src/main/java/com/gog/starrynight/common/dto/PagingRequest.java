@@ -1,15 +1,15 @@
-package com.gog.starrynight.domain.post_like.dto;
+package com.gog.starrynight.common.dto;
 
 import lombok.Data;
 
 @Data
-public class GetPostLikersRequest {
+public class PagingRequest {
     private int page;
     private int size;
     private String sort;
     private String direction;
 
-    public GetPostLikersRequest() {
+    public PagingRequest() {
         this.sort = "createdDate";
         this.direction = "desc";
         this.page = 0;
