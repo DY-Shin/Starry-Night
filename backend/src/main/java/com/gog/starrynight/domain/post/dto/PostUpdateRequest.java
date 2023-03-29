@@ -5,10 +5,12 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class PostCreateRequest {
+public class PostUpdateRequest {
     private String title;
     private String content;
     private Double lat;
     private Double lng;
-    private Long[] constellations;
+    private Long[] addedConstellations;
+    private Long[] deletedConstellations;
+    private Long[] deletedImages;
 }

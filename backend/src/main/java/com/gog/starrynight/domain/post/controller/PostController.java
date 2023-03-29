@@ -2,10 +2,7 @@ package com.gog.starrynight.domain.post.controller;
 
 import com.gog.starrynight.common.dto.ApiResponse;
 import com.gog.starrynight.common.dto.PagedResult;
-import com.gog.starrynight.domain.post.dto.PostCreateRequest;
-import com.gog.starrynight.domain.post.dto.PostDetailInfo;
-import com.gog.starrynight.domain.post.dto.PostInfo;
-import com.gog.starrynight.domain.post.dto.PostSearchRequest;
+import com.gog.starrynight.domain.post.dto.*;
 import com.gog.starrynight.domain.post.service.PostService;
 import com.gog.starrynight.security.LoginUser;
 import io.swagger.v3.oas.annotations.Operation;
@@ -64,4 +61,16 @@ public class PostController {
         ApiResponse<PagedResult<PostDetailInfo>> result = new ApiResponse<>(true, "게시물 삭제 성공");
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
+
+    @Operation(summary = "게시물 수정")
+    @PutMapping("/posts/{postId}")
+    public ResponseEntity<ApiResponse<PostInfo>> updatePost(@AuthenticationPrincipal LoginUser loginUser,
+                                                            @PathVariable Long postId,
+                                                            @RequestPart("post") PostUpdateRequest dto,
+                                                            @RequestPart(value = "addedImages", required = false) MultipartFile[] addedImages) throws IOException {
+        PostInfo postInfo = postService.updatePost(postId, dto, addedImages, loginUser.getId());
+        ApiResponse<PostInfo> result = new ApiResponse<>(true, "게시물 수정 성공", postInfo);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
 }
