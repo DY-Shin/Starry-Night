@@ -1,7 +1,10 @@
 package com.gog.starrynight.domain.post_like.controller;
 
 import com.gog.starrynight.common.dto.ApiResponse;
+import com.gog.starrynight.common.dto.PagedResult;
+import com.gog.starrynight.domain.post_like.dto.GetPostLikersRequest;
 import com.gog.starrynight.domain.post_like.service.PostLikeService;
+import com.gog.starrynight.domain.user.dto.UserSimpleInfo;
 import com.gog.starrynight.security.LoginUser;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -32,6 +35,15 @@ public class PostLikeController {
                                                       @PathVariable("postId") Long postId) {
         postLikeService.deletePostLike(postId, loginUser.getId());
         ApiResponse result = new ApiResponse(true, "좋아요 취소 성공");
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @Operation(summary = "게시물 좋아요한 회원 리스트")
+    @GetMapping("/posts/{postId}/like-users")
+    public ResponseEntity<ApiResponse> getPostLikers(@PathVariable("postId") Long postId,
+                                                    GetPostLikersRequest dto) {
+        PagedResult<UserSimpleInfo> pagedResult = postLikeService.getPostLikers(postId, dto);
+        ApiResponse<PagedResult<UserSimpleInfo>> result = new ApiResponse<>(true, "게시물 좋아요한 회원 리스트 조회", pagedResult);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }
