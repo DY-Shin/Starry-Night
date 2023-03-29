@@ -1,11 +1,11 @@
 package com.gog.starrynight.domain.post_like.service;
 
 import com.gog.starrynight.common.dto.PagedResult;
+import com.gog.starrynight.common.dto.PagingRequest;
 import com.gog.starrynight.common.exception.ResourceAlreadyExistsException;
 import com.gog.starrynight.common.exception.ResourceNotFoundException;
 import com.gog.starrynight.domain.post.entity.Post;
 import com.gog.starrynight.domain.post.repository.PostRepository;
-import com.gog.starrynight.domain.post_like.dto.GetPostLikersRequest;
 import com.gog.starrynight.domain.post_like.entity.PostLike;
 import com.gog.starrynight.domain.post_like.repository.PostLikeRepository;
 import com.gog.starrynight.domain.user.dto.UserSimpleInfo;
@@ -66,7 +66,7 @@ public class PostLikeService {
         postLikeRepository.delete(postLike);
     }
 
-    public PagedResult<UserSimpleInfo> getPostLikers(Long postId, GetPostLikersRequest dto) {
+    public PagedResult<UserSimpleInfo> getPostLikers(Long postId, PagingRequest dto) {
         Sort.Direction direction = dto.getDirection().equals("asc") ? Sort.Direction.ASC : Sort.Direction.DESC;
         Sort sort = Sort.by(direction, dto.getSort());
         Pageable pageable = PageRequest.of(dto.getPage(), dto.getSize(), sort);
