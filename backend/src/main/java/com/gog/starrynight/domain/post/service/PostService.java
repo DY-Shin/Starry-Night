@@ -12,10 +12,7 @@ import com.gog.starrynight.domain.constellation_history.entity.ConstellationHist
 import com.gog.starrynight.domain.constellation_history.repository.ConstellationHistoryRepository;
 import com.gog.starrynight.domain.datafile.entity.DataFile;
 import com.gog.starrynight.domain.datafile.repository.DataFileRepository;
-import com.gog.starrynight.domain.post.dto.PostCreateRequest;
-import com.gog.starrynight.domain.post.dto.PostDetailInfo;
-import com.gog.starrynight.domain.post.dto.PostInfo;
-import com.gog.starrynight.domain.post.dto.PostSearchRequest;
+import com.gog.starrynight.domain.post.dto.*;
 import com.gog.starrynight.domain.post.entity.Post;
 import com.gog.starrynight.domain.post.repository.PostRepository;
 import com.gog.starrynight.domain.post_image.dto.PostImageInfo;
@@ -189,6 +186,116 @@ public class PostService {
         postRepository.delete(post);
     }
 
+    @Transactional
+    public PostInfo updatePost(Long postId, PostUpdateRequest dto, MultipartFile[] addedImages, Long requesterId) throws IOException {
+        Post post = postRepository.findById(postId)
+                .orElseThrow(() -> new ResourceNotFoundException("존재하지 않는 게시물입니다."));
+
+        if (!post.getWriter().getId().equals(requesterId)) {
+            throw new ResourceForbiddenException("자신의 게시물만 수정할 수 있습니다.");
+        }
+
+        if (dto.getTitle() != null) {
+            post.setTitle(dto.getTitle());
+        }
+
+        if (dto.getContent() != null) {
+            post.setContent(dto.getContent());
+        }
+
+        if (dto.getLat() != null) {
+            post.setLat(dto.getLat());
+        }
+
+        if (dto.getLng() != null) {
+            post.setLng(dto.getLng());
+        }
+
+        if (dto.getDeletedImages() != null) {
+            deletePostImages(dto.getDeletedImages());
+        }
+
+        if (dto.getDeletedConstellations() != null) {
+            deleteConstellationHistories(postId, dto.getDeletedConstellations());
+        }
+
+        if (addedImages != null) {
+            addPostImages(post, addedImages);
+        }
+
+        if (dto.getAddedConstellations() != null) {
+            addConstellationHistories(post, dto.getAddedConstellations());
+        }
+
+        return new PostInfo(post);
+    }
+
+
+    @Transactional
+    public void addPostImages(Post post, MultipartFile[] images) throws IOException {
+        List<DataFile> dataFiles = new ArrayList<>();
+        List<PostImage> postImages = new ArrayList<>();
+        for (MultipartFile image : images) {
+            DataFile dataFile = dataFileUtil.storeFile(image);
+
+            PostImage postImage = PostImage.builder()
+                    .dataFile(dataFile)
+                    .post(post)
+                    .build();
+
+            dataFiles.add(dataFile);
+            postImages.add(postImage);
+        }
+
+        dataFileRepository.saveAll(dataFiles);
+
+        postImageRepository.saveAll(postImages);
+        post.setPostImages(postImages);
+    }
+
+    @Transactional
+    public void addConstellationHistories(Post post, Long[] constellations) {
+        List<ConstellationHistory> constellationHistories = new ArrayList<>();
+        for (Long constellationId : constellations) {
+            Constellation constellation = constellationRepository.findById(constellationId)
+                    .orElseThrow(() -> new ResourceNotFoundException("해당 별자리가 존재하지 않습니다."));
+
+            ConstellationHistory constellationHistory = ConstellationHistory.builder()
+                    .lat(post.getLat())
+                    .lng(post.getLng())
+                    .user(post.getWriter())
+                    .post(post)
+                    .constellation(constellation)
+                    .build();
+
+            constellationHistories.add(constellationHistory);
+        }
+
+        constellationHistoryRepository.saveAll(constellationHistories);
+        post.setConstellationHistories(constellationHistories);
+    }
+
+    @Transactional
+    public void deletePostImages(Long[] imageIds) {
+        for (Long postImageId : imageIds) {
+            PostImage postImage = postImageRepository.findById(postImageId)
+                    .orElseThrow(() -> new ResourceNotFoundException("지우려고 하는 이미지가 존재하지 않습니다."));
+            DataFile dataFile = postImage.getDataFile();
+            String filePath = dataFileUtil.getFullPath(dataFile.getStoredFileName());
+            dataFileUtil.deleteFile(filePath);
+            postImageRepository.delete(postImage);
+        }
+    }
+
+    @Transactional
+    public void deleteConstellationHistories(Long postId, Long[] constellationHistoryIds) {
+        for (Long constellationId : constellationHistoryIds) {
+            ConstellationHistory constellationHistory = constellationHistoryRepository.findByConstellationIdAndPostId(constellationId, postId)
+                    .orElseThrow(() -> new ResourceNotFoundException("지우려고 하는 별자리 태그가 존재하지 않습니다."));
+            constellationHistoryRepository.delete(constellationHistory);
+        }
+    }
+
     public PostDetailInfo convertPostToPostDetailInfo(Post post, Long requesterId) {
         UserSimpleInfo writer = new UserSimpleInfo(post.getWriter());
         boolean permission = (writer.getId().equals(requesterId));
@@ -235,5 +342,4 @@ public class PostService {
 
         return new AreaRange(minLat, maxLat, minLng, maxLng);
     }
-
 }
