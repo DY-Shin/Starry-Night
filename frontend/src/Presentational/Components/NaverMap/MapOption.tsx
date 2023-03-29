@@ -16,6 +16,7 @@ function MapOption(props: propsType) {
   const [heatMapState, setHeatMapState] = useState(false);
   // eslint-disable-next-line no-undef
   const [heatMapObject, setHeatMapObject] = useState<naver.maps.visualization.HeatMap | null>(null);
+  const [loadingHeatMapState, setLoadingHeatMapState] = useState(false);
 
   const changeActive = (e: MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
@@ -31,12 +32,19 @@ function MapOption(props: propsType) {
     setHeatMapState(!heatMapState);
   };
 
+  async function updateHeatMapObject(): Promise<void> {
+    await HeatMapAPI.TurnOffHeatMap(heatMapObject);
+    const newHeatMapObject = await HeatMapAPI.TurnOnHeatMap(map);
+    setHeatMapObject(newHeatMapObject);
+    setLoadingHeatMapState(false);
+  }
+
   useEffect(() => {
     if (heatMapState) {
-      if (heatMapObject) {
-        HeatMapAPI.TurnOffHeatMap(heatMapObject);
+      if (!loadingHeatMapState) {
+        setLoadingHeatMapState(true);
+        updateHeatMapObject();
       }
-      setHeatMapObject(HeatMapAPI.TurnOnHeatMap(map));
     } else {
       HeatMapAPI.TurnOffHeatMap(heatMapObject);
       setHeatMapObject(null);
@@ -45,11 +53,9 @@ function MapOption(props: propsType) {
 
   return (
     <OptionStyle.DropDownWrapper onClick={changeActive} className="dropdownWrapper">
-      {/* <OptionStyle.DropDownHeader>옵션</OptionStyle.DropDownHeader> */}
       <OptionStyle.IconWrapper className="tempDiv">
         <GoSettings size={20} className="icon" />
       </OptionStyle.IconWrapper>
-      {/* <hr style={{ margin: '0' }} /> */}
       <OptionStyle.OptionDetailWrapper>
         <OptionStyle.OptionDetaileDiv
           onClick={(e: MouseEvent<HTMLDivElement>) => {

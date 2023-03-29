@@ -5,7 +5,8 @@ export const MapContainer = styled.div`
   height: 100%;
 `;
 
-export const TempButton = styled.button`
+export const RefreshButton = styled.button`
   width: 100px;
   height: 100px;
+  margin-bottom: 10px;
 `;

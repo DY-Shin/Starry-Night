@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import useGeolocation from '../../../Action/Hooks/NaverMap/useGeolocation';
 import MapOption from '../../Components/NaverMap/MapOption';
 import NaverMap from '../../Components/NaverMap/NaverMap';
+import RefreshButton from '../../Components/NaverMap/SideBar/RefreshButton';
 import * as MapAreaStyle from './MapArea_Style';
 import SidBarArea from './SideBar/SideBarArea';
 
@@ -13,6 +14,7 @@ function MapArea() {
     new naver.maps.LatLng(useGeolocation().coordinates.lat, useGeolocation().coordinates.lng),
   );
   const [isBoardOpen, setIsBoardOpen] = useState(false);
+  const [refreshState, setRefreshState] = useState(false);
 
   // eslint-disable-next-line no-undef
   const mapData = useRef<null | naver.maps.Map>(null);
@@ -44,7 +46,7 @@ function MapArea() {
       },
     });
     mapData.current = map;
-    naver.maps.Event.addListener(map, 'dragend zoom_changed', () => {
+    naver.maps.Event.addListener(map, 'dragend zoomend', () => {
       setCenterLocation(new naver.maps.LatLng(map.getCenter().x, map.getCenter().y));
     });
   };
@@ -54,18 +56,12 @@ function MapArea() {
     if (mapData.current) setElementIsLoading(true);
   }, []);
 
-  useEffect(() => {
-    if (isBoardOpen) {
-      // if (!mapData.current) return;
-      // mapData.controls[naver.maps.Position.BOTTOM_CENTER].push();
-    }
-  }, [isBoardOpen]);
-
   return (
     <MapAreaStyle.MapContainer>
-      <SidBarArea setIsBoardOpen={setIsBoardOpen} />
+      <SidBarArea setIsBoardOpen={setIsBoardOpen} map={mapData.current} refreshState={refreshState} />
       <NaverMap ref={mapElement} />
       {elementIsLoading ? <MapOption map={mapData.current} centerLocation={centerLocation} /> : null}
+      {isBoardOpen ? <RefreshButton Text="현 위치에서 재검색" refreshHandler={setRefreshState} /> : null}
     </MapAreaStyle.MapContainer>
   );
 }

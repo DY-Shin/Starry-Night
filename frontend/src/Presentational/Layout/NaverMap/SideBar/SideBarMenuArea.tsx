@@ -6,16 +6,16 @@ import * as SideBarMenuStyle from './SideBarMenuArea_Style';
 
 type SideBarMenuProps = {
   // eslint-disable-next-line no-unused-vars
-  changeContents: (str: string) => void;
+  changeCurrentSelectedBoard: (str: string) => void;
 };
 
 function SideBarMenu(props: SideBarMenuProps) {
-  const { changeContents } = props;
+  const { changeCurrentSelectedBoard } = props;
   return (
     <SideBarMenuStyle.MenuWrapper>
       <SideBarMenuStyle.BtnWrapper
         onClick={() => {
-          changeContents('info');
+          changeCurrentSelectedBoard('info');
         }}
       >
         <BsFillClipboardDataFill size={20} className="icon" />
@@ -23,7 +23,7 @@ function SideBarMenu(props: SideBarMenuProps) {
       </SideBarMenuStyle.BtnWrapper>
       <SideBarMenuStyle.BtnWrapper
         onClick={() => {
-          changeContents('board');
+          changeCurrentSelectedBoard('board');
         }}
       >
         <BsFillClipboardHeartFill size={20} className="icon" />
@@ -31,7 +31,7 @@ function SideBarMenu(props: SideBarMenuProps) {
       </SideBarMenuStyle.BtnWrapper>
       <SideBarMenuStyle.BtnWrapper
         onClick={() => {
-          changeContents('favorite');
+          changeCurrentSelectedBoard('favorite');
         }}
       >
         <BsStarFill size={20} className="icon" />
