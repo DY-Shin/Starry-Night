@@ -21,7 +21,7 @@ public class PostLikeController {
     private final PostLikeService postLikeService;
 
     @Operation(summary = "게시물 좋아요")
-    @PostMapping("/posts/{postId}/like")
+    @PostMapping("/posts/{postId}/likes")
     public ResponseEntity<ApiResponse> createPostLike(@AuthenticationPrincipal LoginUser loginUser,
                                                       @PathVariable("postId") Long postId) {
         postLikeService.createPostLike(postId, loginUser.getId());
@@ -30,7 +30,7 @@ public class PostLikeController {
     }
 
     @Operation(summary = "게시물 좋아요 취소")
-    @DeleteMapping("/posts/{postId}/dislike")
+    @DeleteMapping("/posts/{postId}/likes")
     public ResponseEntity<ApiResponse> deletePostLike(@AuthenticationPrincipal LoginUser loginUser,
                                                       @PathVariable("postId") Long postId) {
         postLikeService.deletePostLike(postId, loginUser.getId());
@@ -39,7 +39,7 @@ public class PostLikeController {
     }
 
     @Operation(summary = "게시물 좋아요한 회원 리스트")
-    @GetMapping("/posts/{postId}/like-users")
+    @GetMapping("/posts/{postId}/likes")
     public ResponseEntity<ApiResponse> getPostLikers(@PathVariable("postId") Long postId,
                                                      PagingRequest dto) {
         PagedResult<UserSimpleInfo> pagedResult = postLikeService.getPostLikers(postId, dto);
