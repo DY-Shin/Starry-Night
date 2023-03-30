@@ -18,14 +18,27 @@ import java.util.List;
 public class Constellation extends BaseTimeEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(length = 100, nullable = false)
     private String name;
-
-    @Column(length = 500, nullable = false)
+    @Column(length = 20)
+    private String latin;
+    @Column(columnDefinition = "DECIMAL(9,6)", nullable = false)
+    private double mag;
+    @Column(length = 20)
+    private String ra;
+    private Integer declination;
+    @Column(length = 2000)
     private String description;
+    @Column(length = 500)
+    private String manual;
+    @Column(length = 300)
+    private String originImage;
+    @Column(length = 300)
+    private String linedImage;
+    @Column(length = 300)
+    private String illustImage;
 
     @Builder.Default
     @OneToMany(mappedBy = "constellation", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
