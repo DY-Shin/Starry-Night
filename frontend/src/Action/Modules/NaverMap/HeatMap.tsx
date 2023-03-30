@@ -22,9 +22,9 @@ export async function TurnOnHeatMap(maps: naver.maps.Map | null): Promise<naver.
   let dataArray: DataType[] = [{ lat: 0, lng: 0, weight: 0 }];
   try {
     const res = await axios.get(
-      `http://192.168.100.188:8090/api/heatmaps?baseLat=${map.getCenter().y}&baseLng=${map.getCenter().x}&NELat=${
-        map.getBounds().getMax().y
-      }&NELng=${map.getBounds().getMax().x}&zoom=${map.getZoom()}`,
+      `${process.env.REACT_APP_API_SERVER_URL}/heatmaps?baseLat=${map.getCenter().y}&baseLng=${
+        map.getCenter().x
+      }&NELat=${map.getBounds().getMax().y}&NELng=${map.getBounds().getMax().x}&zoom=${map.getZoom()}`,
     );
     if (Array.isArray(res.data.data)) {
       const data = res.data.data as DataType[];
