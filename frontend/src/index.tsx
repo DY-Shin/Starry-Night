@@ -5,6 +5,13 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// declare global {
+//   interface Window {
+//     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+//     naver: any;
+//   }
+// }
+
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <BrowserRouter>
