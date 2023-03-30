@@ -8,15 +8,29 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 public class UriUtil {
 
     private static String scheme;
+    private static String domain;
+    private static String port;
 
     @Value("${app.uri.scheme}")
     public void setScheme(String scheme) {
        this.scheme = scheme;
     }
 
+    @Value("${app.uri.domain}")
+    public void setDomain(String domain) {
+        this.domain = domain;
+    }
+
+    @Value("${app.uri.port}")
+    public void setPort(String port) {
+        this.port = port;
+    }
+
     public static String buildUri(String path) {
-        return ServletUriComponentsBuilder.fromCurrentContextPath()
+        return ServletUriComponentsBuilder.newInstance()
                 .scheme(scheme)
+                .host(domain)
+                .port(port)
                 .path(path)
                 .toUriString();
     }
