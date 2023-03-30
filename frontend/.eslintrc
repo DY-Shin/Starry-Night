@@ -48,8 +48,8 @@
       }
     ],
     "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx", ".ts", ".tsx"] }], // 확장자로 js와 jsx ts tsx 허용하도록 수정
-    "no-unused-vars": ["error"], // 사용하지 않는 변수가 있을때 빌드에러가 나던 규칙 해제
-    "@typescript-eslint/no-unused-vars": ["error"],
+    "no-unused-vars": "off", // 사용하지 않는 변수가 있을때 빌드에러가 나던 규칙 해제
+    "@typescript-eslint/no-unused-vars": "warn",
     "no-console": ["off"], // 콘솔을 쓰면 에러가 나던 규칙 해제
     "import/prefer-default-export": ["off"], // export const 문을 쓸때 에러를 내는 규칙 해제
     "react-hooks/exhaustive-deps": ["warn"], // hooks의 의존성배열이 충분하지 않을때 강제로 의존성을 추가하는 규칙을 완화
@@ -82,11 +82,12 @@
     ],
     "react-hooks/rules-of-hooks": "error"
   },
-
+  // "import/no-unresolved": "off",
   // import/no-unresolved 종류의 에러가 났을때 아래 사용 하니 없어짐
   "settings": {
     "import/resolver": {
       "typescript": {}
     }
   }
+  
 }
