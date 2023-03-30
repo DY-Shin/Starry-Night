@@ -2,7 +2,6 @@ import React from 'react';
 import { Fade } from 'react-awesome-reveal';
 import * as MainStyle from '../../Page/Main_Style';
 import * as PolluStyle from './MainLightPollution_Style';
-import lightpollution3 from '../../../assets/pollution/lightpollution3.jpg';
 
 function MainLightPollution() {
   return (
@@ -11,7 +10,7 @@ function MainLightPollution() {
         <PolluStyle.LPLeftBox>
           <Fade direction="left" duration={2000}>
             <PolluStyle.LPImgBox1>
-              <PolluStyle.LPImg src={lightpollution3} />
+              <PolluStyle.LPImg src="assets/pollution/lightpollution3.jpg" />
             </PolluStyle.LPImgBox1>
           </Fade>
         </PolluStyle.LPLeftBox>

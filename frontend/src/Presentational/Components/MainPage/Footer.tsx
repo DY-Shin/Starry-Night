@@ -1,7 +1,5 @@
 import React from 'react';
 import * as FooterStyle from './Footer_Style';
-// import * as MainStyle from '../../Page/Main_Style';
-import goindol from '../../../assets/footer/goindol.jpg';
 
 function Footer() {
   return (
@@ -16,7 +14,7 @@ function Footer() {
             <p>자랑처럼 풀이 무성할 거외다.</p>
           </FooterStyle.Poem>
           <FooterStyle.PhotoPoem>
-            <FooterStyle.FooterImg src={goindol} />
+            <FooterStyle.FooterImg src="assets/footer/goindol.jpg" />
           </FooterStyle.PhotoPoem>
         </FooterStyle.WrapDognju>
         <FooterStyle.WrapFooter>

@@ -3,8 +3,6 @@ import { ReactCompareSlider, ReactCompareSliderImage, ReactCompareSliderHandle }
 import { Fade } from 'react-awesome-reveal';
 import * as MainStyle from '../../Page/Main_Style';
 import * as ExplainStyle from './MainExplain_Style';
-import MainEp1 from '../../../assets/mainpage/MainEp1.jpg';
-import MainEp2 from '../../../assets/mainpage/MainEp2.jpg';
 
 function MainExplain() {
   return (
@@ -28,8 +26,8 @@ function MainExplain() {
             <ExplainStyle.EPImgBox1>
               <ReactCompareSlider
                 handle={<ReactCompareSliderHandle style={{ color: '#3282B8' }} linesStyle={{ opacity: 0.5 }} />}
-                itemOne={<ReactCompareSliderImage src={MainEp1} alt="Image one" />}
-                itemTwo={<ReactCompareSliderImage src={MainEp2} alt="Image two" />}
+                itemOne={<ReactCompareSliderImage src="assets/mainpage/MainEp1.jpg" alt="Image one" />}
+                itemTwo={<ReactCompareSliderImage src="assets/mainpage/MainEp2.jpg" alt="Image two" />}
                 position={50}
                 onlyHandleDraggable
                 style={{

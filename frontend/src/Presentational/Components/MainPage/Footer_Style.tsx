@@ -1,13 +1,12 @@
 import styled from 'styled-components';
 import { SiFacebook, SiInstagram, SiTwitter, SiYoutube } from 'react-icons/si';
-import bg from '../../../assets/mainpage/space.jpg';
 
 // footer
 export const Container = styled.div`
   width: 100%;
   max-width: 100vw;
   height: 100vh;
-  background-image: url(${bg});
+  background-image: url('assets/mainpage/space.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
@@ -163,5 +162,4 @@ export const FooterImg = styled.img.attrs<ImgProps>((props) => ({
   src: props.src,
 }))`
   height: 25vw;
-  /* width: 40cw */
 `;

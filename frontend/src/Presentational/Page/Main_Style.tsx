@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { BsArrowUpCircleFill } from 'react-icons/bs';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
-import bg from '../../assets/mainpage/space.jpg';
 
 export const Mainpage = styled.div`
   overflow-x: hidden; // 가로 스크롤 숨기기
@@ -23,7 +22,7 @@ export const Container = styled.div`
   width: 100%;
   max-width: 100vw;
   max-height: 100vh;
-  background-image: url(${bg});
+  background-image: url('assets/mainpage/space.jpg');
   background-size: cover;
   background-repeat: no-repeat;
 `;
