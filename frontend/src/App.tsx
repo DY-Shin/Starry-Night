@@ -1,6 +1,8 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import * as appStyle from './App_Style';
+import Main from './Presentational/Page/Main';
+import NotFound from './Presentational/Common/Components/MainPage/NotFound';
 // import { GlobalStyle } from './Action/GlobalStyle';
 
 import NaverMap from './Presentational/Page/NaverMap/NaverMapPage';
@@ -11,6 +13,8 @@ function App() {
       {/* <GlobalStyle /> */}
       <Routes>
         {/* <Route path="/" element={<MainPage />} */}
+        <Route path="/" element={<Main />} />
+        <Route path="*" element={<NotFound />} />
         <Route path="/map" element={<NaverMap />} />
       </Routes>
     </appStyle.AppContainer>

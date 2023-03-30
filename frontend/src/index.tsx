@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { BrowserRouter } from 'react-router-dom';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { CookiesProvider } from 'react-cookie';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
@@ -14,9 +16,11 @@ import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  <CookiesProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </CookiesProvider>,
 );
 
 // If you want to start measuring performance in your app, pass a function
