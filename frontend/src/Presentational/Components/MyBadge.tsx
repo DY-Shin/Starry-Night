@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 export const RewardContainer = styled.div`
   display: flex;
@@ -7,7 +8,7 @@ export const RewardContainer = styled.div`
   height: 45%;
   width: 100%;
 `;
-export const Badge = styled.div`
+export const Badge = styled(motion.div)`
   width: 200px;
   height: 200px;
   display: flex;
