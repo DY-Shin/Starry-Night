@@ -17,12 +17,12 @@ function Header() {
   const [isOpen, setIsOpen] = useDetectClose(dropDownRef, false);
 
   const test = () => {
-    window.location.href = 'http://localhost:18090/api/oauth2/authorization/kakao';
+    window.location.href = `${process.env.REACT_APP_API_SERVER_URL}/oauth2/authorization/kakao`;
   };
 
   // 카카오 로그인 정보 가져오기
   const getUser = async () => {
-    await api.get(`/api/my-profile`, { withCredentials: true }).then((res) => {
+    await api.get(`/my-profile`, { withCredentials: true }).then((res) => {
       console.log(res.data.data);
       setUser(res.data.data.name, res.data.data.profileImageUrl);
       console.log(name, profileImageUrl);
