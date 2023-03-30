@@ -9,7 +9,7 @@ export const MainNav = styled.div`
 `;
 export const WrapNav = styled.nav`
   width: 100%;
-  max-width: 1000px;
+  max-width: 1050px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -60,6 +60,16 @@ export const ProfileImg = styled.img.attrs<ImgProps>((props) => ({
 }))`
   height: 40px;
   border-radius: 50%;
+  &:hover {
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
+  }
+`;
+
+export const LogoImg = styled.img.attrs<ImgProps>((props) => ({
+  src: props.src,
+}))`
+  height: 27px;
+  /* border-radius: 50%; */
   &:hover {
     filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
   }

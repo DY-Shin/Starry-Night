@@ -50,7 +50,9 @@ function Header() {
     <HeaderStyle.MainNav>
       <HeaderStyle.WrapNav>
         {/* 로고 */}
-        <HeaderStyle.NavLogo to="/">LOGO</HeaderStyle.NavLogo>
+        <HeaderStyle.NavLogo to="/">
+          <HeaderStyle.LogoImg src="assets/logo/logo6.png" />
+        </HeaderStyle.NavLogo>
         {/* 유저 정보 */}
         {name === 'null' ? (
           <HeaderStyle.NavLogin onClick={LoginModal}>LOGIN</HeaderStyle.NavLogin>

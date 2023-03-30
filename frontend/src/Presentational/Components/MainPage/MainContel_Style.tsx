@@ -55,7 +55,7 @@ export const WrapMenu = styled.div`
 `;
 
 export const Menu = styled.div`
-  flex-basis: 25%;
+  flex-basis: 33.4%;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,7 +1,5 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState } from 'react';
 import Slider, { Settings } from 'react-slick';
+import React, { useState } from 'react';
 import dummy from '../../../db/contellation.json';
 import * as TestStyle from './Test_Style';
 
