@@ -27,8 +27,11 @@ export const WrapNav = styled.nav`
   }
 `;
 
-export const NavLogo = styled.div`
-  cursor: pointer;
+export const NavLogo = styled(Link)`
+  color: white;
+  text-decoration: none;
+  /* cursor: pointer; */
+  cursor: default;
   &:hover {
     filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
   }
@@ -37,7 +40,7 @@ export const NavLogo = styled.div`
 export const NavLogin = styled.div`
   text-decoration: none;
   color: white;
-  cursor: pointer;
+  /* cursor: pointer; */
   &:hover {
     filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
   }
@@ -61,7 +64,7 @@ export const ProfileImg = styled.img.attrs<ImgProps>((props) => ({
 }))`
   height: 40px;
   border-radius: 50%;
-  cursor: pointer;
+  /* cursor: pointer; */
   &:hover {
     filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
   }

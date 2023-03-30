@@ -8,7 +8,7 @@ import { UserStore } from '../../../store';
 import api from '../api';
 import UserModal from './UserModal';
 import useDetectClose from '../../../Action/Hooks/Mainpage/LoginModalHook';
-import Login from '../../Common/Components/Login';
+import Login from '../../Common/Components/MainPage/Login';
 // import { removeCookie, getCookie } from '../../../Action/Hooks/Mainpage/Cookie';
 // import { useEffect } from 'react';
 
@@ -54,10 +54,9 @@ function Header() {
     <HeaderStyle.MainNav>
       <HeaderStyle.WrapNav>
         {/* 로고 */}
-        <HeaderStyle.NavLogo onClick={getUser}>LOGO</HeaderStyle.NavLogo>
+        <HeaderStyle.NavLogo to="/">LOGO</HeaderStyle.NavLogo>
         {/* 유저 정보 */}
         {name === 'null' ? (
-          // <HeaderStyle.NavLogin to="http://localhost:8090/api/oauth2/authorization/kakao">LOGIN</HeaderStyle.NavLogin>
           <HeaderStyle.NavLogin onClick={LoginModal}>LOGIN</HeaderStyle.NavLogin>
         ) : (
           <HeaderStyle.NavLogOut ref={dropDownRef}>

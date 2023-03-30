@@ -37,7 +37,7 @@ export const ScrollTop = styled(BsArrowUpCircleFill)`
   width: 30px;
   height: 30px;
   color: white;
-  cursor: pointer;
+  /* cursor: pointer; */
   &:hover {
     opacity: 0.7;
   }
@@ -65,7 +65,7 @@ export const JustSlide = styled(AiOutlineStar)`
   color: white;
   width: 2em;
   height: 2em;
-  cursor: pointer;
+  /* cursor: pointer; */
   &:hover {
     filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
   }

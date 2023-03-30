@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 // top 슬라이드
 export const MainTop = styled.div`
@@ -32,11 +33,13 @@ export const TopTitle = styled.div`
   }
 `;
 
-export const TopMap = styled.div`
+export const TopMap = styled(Link)`
   margin-top: 20px;
   border: 1px solid white;
   padding: 20px;
-  cursor: pointer;
+  cursor: default;
+  text-decoration: none;
+  color: white;
   &:hover {
     filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
   }

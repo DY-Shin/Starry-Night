@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { BiPowerOff } from 'react-icons/bi';
+import { Link } from 'react-router-dom';
 
 export const ModalBox = styled.div`
   display: flex;
@@ -50,14 +51,17 @@ export const UserName = styled.div`
   padding-top: 10px;
 `;
 
-export const UserMenu1 = styled.div`
+export const UserMenu1 = styled(Link)`
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
+  color: black;
   &:hover {
-    text-decoration: underline;
-    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
+    /* text-decoration: underline; */
+    cursor: default;
+    filter: drop-shadow(0 0 2px #6816aa);
   }
 `;
 
@@ -68,8 +72,9 @@ export const UserMenu2 = styled.div`
   justify-content: center;
   padding-bottom: 5px;
   &:hover {
-    text-decoration: underline;
-    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
+    /* text-decoration: underline; */
+    /* filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1)); */
+    filter: drop-shadow(0 0 2px #6816aa);
   }
 `;
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import * as UserModalStyle from './UserModal_Style';
-import { UserStore, OpenDropStore } from '../../../store';
+import { UserStore } from '../../../store';
 
 function UserModal() {
   const { name, profileImageUrl, setUser } = UserStore();
@@ -14,7 +14,7 @@ function UserModal() {
     <UserModalStyle.ModalBox>
       <UserModalStyle.UserName>{name} 님</UserModalStyle.UserName>
       <UserModalStyle.UserMenuLine />
-      <UserModalStyle.UserMenu1>
+      <UserModalStyle.UserMenu1 to="mypage">
         <UserModalStyle.UserImg1 src={profileImageUrl} />
         회원정보
       </UserModalStyle.UserMenu1>
