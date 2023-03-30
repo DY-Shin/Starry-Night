@@ -13,7 +13,7 @@ public class UriUtil {
 
     @Value("${app.uri.scheme}")
     public void setScheme(String scheme) {
-       this.scheme = scheme;
+        this.scheme = scheme;
     }
 
     @Value("${app.uri.domain}")
@@ -31,7 +31,7 @@ public class UriUtil {
                 .scheme(scheme)
                 .host(domain)
                 .port(port)
-                .path(path)
+                .path("/api/" + path)
                 .toUriString();
     }
 }
