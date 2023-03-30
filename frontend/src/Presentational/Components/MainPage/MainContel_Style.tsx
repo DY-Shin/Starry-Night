@@ -12,7 +12,7 @@ export const Container = styled.div`
   color: white;
 `;
 
-export const MainTest = styled.div`
+export const MainContel = styled.div`
   color: white;
   padding-left: 4.5em;
   padding-right: 4.5em;

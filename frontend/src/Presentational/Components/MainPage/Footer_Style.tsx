@@ -13,14 +13,6 @@ export const Container = styled.div`
 `;
 
 export const MainFooter = styled.div`
-  /* position: relative;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-  height: 200px;
-  color: white;
-  background-color: black; */
   min-height: 100vh;
   padding-left: 8em;
   padding-right: 8em;

@@ -6,7 +6,6 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import * as MainStyle from '../../Page/Main_Style';
 import * as StarStyle from './MainStar_Style';
-import NotFound from '../../Common/Components/MainPage/NotFound';
 
 function MainStar() {
   const [ImgNum, setImgNum] = useState(1);
@@ -18,9 +17,7 @@ function MainStar() {
     slidesToScroll: 1,
     autoplay: false,
     speed: 400,
-    // autoplaySpeed: 5000,
     cssEase: 'linear',
-    // rtl: true,
     responsive: [
       {
         breakpoint: 1200,
@@ -47,7 +44,6 @@ function MainStar() {
   const arr = [];
   // eslint-disable-next-line no-plusplus
   for (let i = 1; i <= 28; i++) {
-    // arr.push(`assets/stars/star${i}.jpg`);
     arr.push(i);
   }
 

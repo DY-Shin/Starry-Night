@@ -25,6 +25,14 @@ export const LPLeftBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-left: 1rem;
+  @media all and (max-width: 1200px) {
+    padding-left: 0em;
+  }
+  @media all and (max-width: 768px) {
+  }
+  @media all and (max-width: 500px) {
+  }
 `;
 
 export const LPRightBox = styled.div`
@@ -32,6 +40,14 @@ export const LPRightBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-left: 4rem;
+  @media all and (max-width: 1200px) {
+    padding-left: 0em;
+  }
+  @media all and (max-width: 768px) {
+  }
+  @media all and (max-width: 500px) {
+  }
 `;
 
 interface ImgProps {
@@ -47,7 +63,6 @@ export const LPImg = styled.img.attrs<ImgProps>((props) => ({
 export const LPImgBox1 = styled.div`
   padding: 10px;
   display: flex;
-  /* justify-content: center; */
   align-items: center;
   height: 300px;
   background-color: rgba(50, 130, 184, 0.3); //#3282B8;

@@ -17,10 +17,6 @@ export const ModalBox = styled.div`
   color: black;
   z-index: 20;
   cursor: default;
-  /* all: unset; */
-  /* &:hover {
-    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
-  } */
   @media all and (max-width: 1100px) {
     margin-right: 9vw;
   }
@@ -59,7 +55,6 @@ export const UserMenu1 = styled(Link)`
   text-decoration: none;
   color: black;
   &:hover {
-    /* text-decoration: underline; */
     cursor: default;
     filter: drop-shadow(0 0 2px #6816aa);
   }
@@ -72,8 +67,6 @@ export const UserMenu2 = styled.div`
   justify-content: center;
   padding-bottom: 5px;
   &:hover {
-    /* text-decoration: underline; */
-    /* filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1)); */
     filter: drop-shadow(0 0 2px #6816aa);
   }
 `;

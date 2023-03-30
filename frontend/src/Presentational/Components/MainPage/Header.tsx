@@ -15,7 +15,6 @@ function Header() {
   const MySwal = withReactContent(Swal);
   const dropDownRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useDetectClose(dropDownRef, false);
-  const [test1, setTest1] = useState();
 
   const test = () => {
     window.location.href = 'http://localhost:18090/api/oauth2/authorization/kakao';

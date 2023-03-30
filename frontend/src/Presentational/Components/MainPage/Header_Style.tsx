@@ -5,11 +5,6 @@ import { Link } from 'react-router-dom';
 export const MainNav = styled.div`
   height: 50px;
   display: flex;
-  /* justify-content: center;
-  align-items: center; */
-  /* width: 100%; */
-  /* background: linear-gradient(rgb(50, 50, 50) 0%, rgb(0, 0, 0) 99.4%); */
-  /* border-bottom: 3px solid white; */
   box-shadow: 0 5px 5px -5px white;
 `;
 export const WrapNav = styled.nav`
@@ -50,7 +45,6 @@ export const NavLogin = styled.div`
 
 // 로그인 하고 보이는 유저 이미지 모양
 export const NavLogOut = styled.div`
-  /* height: 90%; */
   position: relative;
   display: flex;
   align-items: center;
@@ -66,7 +60,6 @@ export const ProfileImg = styled.img.attrs<ImgProps>((props) => ({
 }))`
   height: 40px;
   border-radius: 50%;
-  /* cursor: pointer; */
   &:hover {
     filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
   }

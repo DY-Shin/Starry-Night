@@ -14,9 +14,7 @@ function MainLightPollution() {
             </PolluStyle.LPImgBox1>
           </Fade>
         </PolluStyle.LPLeftBox>
-        {/* <MainStyle.LPBox1> */}
         <PolluStyle.LPRightBox>
-          {/* <MainStyle.LPText1> */}
           <Fade direction="right" duration={2000}>
             <PolluStyle.LPText1>
               광공해가 제한하는 <MainStyle.Highlight>도시의 별</MainStyle.Highlight>

@@ -33,7 +33,7 @@ export const EPLeftBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-left: 3rem;
+  padding-left: 4rem;
   @media all and (max-width: 1200px) {
     display: none;
   }
@@ -102,8 +102,8 @@ export const EPImgBox1 = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 500px;
-  height: 400px;
+  width: 600px;
+  height: 450px;
   background-color: rgba(50, 130, 184, 0.3); //#3282B8;
   border: 2px solid #0f4c75;
   border-radius: 10px;
