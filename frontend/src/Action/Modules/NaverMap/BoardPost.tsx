@@ -47,9 +47,9 @@ export async function GetPostData(maps: naver.maps.Map, page: number, size = 5):
   let data: resultType | null = null;
   try {
     const res = await axios.get(
-      `http://localhost:8090/api/posts?pointA=${mapBound.getMax().y}&pointA=${mapBound.getMax().x}&pointB=${
-        mapBound.getMin().y
-      }&pointB=${mapBound.getMin().x}&page=${page - 1}&size=${size}`,
+      `${process.env.REACT_APP_API_SERVER_URL}/posts?pointA=${mapBound.getMax().y}&pointA=${
+        mapBound.getMax().x
+      }&pointB=${mapBound.getMin().y}&pointB=${mapBound.getMin().x}&page=${page - 1}&size=${size}`,
     );
     data = res.data.data as resultType;
   } catch (error) {
