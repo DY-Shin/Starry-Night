@@ -8,7 +8,9 @@ export const MainNav = styled.div`
   /* justify-content: center;
   align-items: center; */
   /* width: 100%; */
-  background: linear-gradient(rgb(50, 50, 50) 0%, rgb(0, 0, 0) 99.4%);
+  /* background: linear-gradient(rgb(50, 50, 50) 0%, rgb(0, 0, 0) 99.4%); */
+  /* border-bottom: 3px solid white; */
+  box-shadow: 0 5px 5px -5px white;
 `;
 export const WrapNav = styled.nav`
   width: 100%;

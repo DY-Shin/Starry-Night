@@ -6,6 +6,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import * as MainStyle from '../../Page/Main_Style';
 import * as StarStyle from './MainStar_Style';
+import NotFound from '../../Common/Components/MainPage/NotFound';
 
 function MainStar() {
   const [ImgNum, setImgNum] = useState(1);

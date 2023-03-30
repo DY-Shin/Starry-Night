@@ -32,10 +32,14 @@ function MainExplain() {
                 onlyHandleDraggable
                 style={{
                   height: '100%',
-                  width: '100%',
+                  // width: '100%',
                 }}
               />
             </ExplainStyle.EPImgBox1>
+            {/* <ExplainStyle.EPImgBox1>
+              <div>img</div>
+              <div>메뉴</div>
+            </ExplainStyle.EPImgBox1> */}
           </Fade>
         </ExplainStyle.EPRightBox>
         <ExplainStyle.EPLeftBox2>

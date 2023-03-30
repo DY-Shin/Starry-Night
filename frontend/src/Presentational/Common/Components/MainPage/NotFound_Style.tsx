@@ -17,6 +17,7 @@ export const TextImg = styled.img.attrs<ImgProps>((props) => ({
   src: props.src,
 }))`
   width: 700px;
+  margin-left: 20px;
   @media all and (max-width: 600px) {
     width: 450px;
   }

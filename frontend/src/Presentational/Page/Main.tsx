@@ -9,6 +9,7 @@ import MainExplain from '../Components/MainPage/MainExplain';
 import Footer from '../Components/MainPage/Footer';
 import * as MainStyle from './Main_Style';
 import { PageStore } from '../../store';
+import Test from '../Components/MainPage/Test';
 
 function Mainpage() {
   // const [page, setPage] = useState(0);
@@ -26,7 +27,7 @@ function Mainpage() {
     }
   };
 
-  const arr = [0, 1, 2, 3, 4];
+  const arr = [0, 1, 2, 3, 4, 5];
 
   return (
     <MainStyle.Mainpage>
@@ -36,6 +37,7 @@ function Mainpage() {
         <MainTop />
         <MainExplain />
         <MainLightPollution />
+        <Test />
         <MainStar />
         <Footer />
       </ReactPageScroller>
