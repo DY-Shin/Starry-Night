@@ -17,6 +17,7 @@ export const RefreshButton = styled.div`
   display: grid;
   grid-template-columns: 25% 75%;
   grid-template-rows: 1fr;
+  cursor: pointer;
 
   & .icon {
     /* margin-left: 5px; */
@@ -26,6 +27,7 @@ export const RefreshButton = styled.div`
   }
 `;
 export const RefreshText = styled.h4`
+  cursor: pointer;
   width: 100%;
   height: 100%;
   margin: 10px 0 10px 0;

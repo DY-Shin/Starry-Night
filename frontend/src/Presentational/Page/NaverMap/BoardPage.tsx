@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { useEffect, useState } from 'react';
 import * as BoardPostAPI from '../../../Action/Modules/NaverMap/BoardPost';
 
@@ -21,15 +22,17 @@ function BoardPage(props: propsType) {
     refreshHandler(false);
   }
 
-  async function updateMarker(): Promise<void> {
+  async function updateMarker(): Promise<naver.maps.Marker[] | null> {
     if (!resultData) {
-      return;
+      return null;
     }
-    if (!map) return;
+    if (!map) return null;
     if (markerObject) {
       BoardPostAPI.clearMarker(markerObject);
     }
-    setMarkerObject(await BoardPostAPI.MakeMarker(map, resultData));
+    const returnData = await BoardPostAPI.MakeMarker(map, resultData);
+    setMarkerObject(returnData);
+    return returnData;
   }
 
   useEffect(() => {
@@ -40,7 +43,15 @@ function BoardPage(props: propsType) {
   }, [refreshState]);
 
   useEffect(() => {
-    updateMarker();
+    let returnData: naver.maps.Marker[] | null;
+    updateMarker().then((value) => {
+      returnData = value;
+    });
+    return () => {
+      if (returnData) {
+        BoardPostAPI.clearMarker(returnData);
+      }
+    };
   }, [resultData]);
 
   return <div>board페이지</div>;
