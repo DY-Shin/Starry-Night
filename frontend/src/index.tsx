@@ -1,11 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import { BrowserRouter } from 'react-router-dom';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { CookiesProvider } from 'react-cookie';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// declare global {
+//   interface Window {
+//     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+//     naver: any;
+//   }
+// }
+
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
-root.render(<App />);
+root.render(
+  <CookiesProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </CookiesProvider>,
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
