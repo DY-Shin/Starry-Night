@@ -11,10 +11,11 @@ type propsType = {
   // eslint-disable-next-line no-undef
   map: naver.maps.Map | null;
   refreshState: boolean;
+  refreshHandler: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 function SidBarArea(props: propsType) {
-  const { setIsBoardOpen, map, refreshState } = props;
+  const { setIsBoardOpen, map, refreshState, refreshHandler } = props;
   const [foldState, setFoldState] = useState(true);
   const [currentSelectedBoard, setCurrentSelectedBoard] = useState('info');
 
@@ -43,7 +44,9 @@ function SidBarArea(props: propsType) {
         <SidBarStyle.SidBarContentsArea className="contentsArea">
           {currentSelectedBoard === 'info' ? <InfoPage /> : null}
           {currentSelectedBoard === 'favorite' ? <FavoritePage /> : null}
-          {currentSelectedBoard === 'board' ? <BoardPage map={map} refreshState={refreshState} /> : null}
+          {currentSelectedBoard === 'board' ? (
+            <BoardPage map={map} refreshState={refreshState} refreshHandler={refreshHandler} />
+          ) : null}
         </SidBarStyle.SidBarContentsArea>
       </SidBarStyle.SidBarBody>
     </>

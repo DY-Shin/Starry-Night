@@ -58,7 +58,12 @@ function MapArea() {
 
   return (
     <MapAreaStyle.MapContainer>
-      <SidBarArea setIsBoardOpen={setIsBoardOpen} map={mapData.current} refreshState={refreshState} />
+      <SidBarArea
+        setIsBoardOpen={setIsBoardOpen}
+        map={mapData.current}
+        refreshState={refreshState}
+        refreshHandler={setRefreshState}
+      />
       <NaverMap ref={mapElement} />
       {elementIsLoading ? <MapOption map={mapData.current} centerLocation={centerLocation} /> : null}
       {isBoardOpen ? <RefreshButton Text="현 위치에서 재검색" refreshHandler={setRefreshState} /> : null}
