@@ -1,7 +1,7 @@
 import React from 'react';
 import * as Dictainer from '../../../Components/MyComponents/MyDictComponent/MyDictContainer';
 
-function MyDictBei() {
+function MyDictTai() {
   return (
     <Dictainer.DictSubBox>
       <Dictainer.BjrBox>
@@ -50,4 +50,4 @@ function MyDictBei() {
   );
 }
 
-export default MyDictBei;
+export default MyDictTai;

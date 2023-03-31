@@ -1,7 +1,7 @@
 import React from 'react';
 import * as Dictainer from '../../../Components/MyComponents/MyDictComponent/MyDictContainer';
 
-function MyDictBei() {
+function MyDictChunBot() {
   return (
     <Dictainer.DictSubBox>
       <Dictainer.BjrBox>
@@ -44,4 +44,4 @@ function MyDictBei() {
   );
 }
 
-export default MyDictBei;
+export default MyDictChunBot;

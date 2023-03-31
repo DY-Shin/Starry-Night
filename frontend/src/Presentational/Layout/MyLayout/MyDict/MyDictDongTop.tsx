@@ -1,7 +1,7 @@
 import React from 'react';
 import * as Dictainer from '../../../Components/MyComponents/MyDictComponent/MyDictContainer';
 
-function MyDictBei() {
+function MyDictDongTop() {
   return (
     <Dictainer.DictSubBox>
       <Dictainer.BjrBox>
@@ -38,4 +38,4 @@ function MyDictBei() {
   );
 }
 
-export default MyDictBei;
+export default MyDictDongTop;
