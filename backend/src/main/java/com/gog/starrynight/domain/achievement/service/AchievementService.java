@@ -54,4 +54,12 @@ public class AchievementService {
 
         return new AchievementInfo(achievement);
     }
+
+    @Transactional
+    public void deleteAchievement(Long achievementId) {
+        Achievement achievement = achievementRepository.findById(achievementId)
+                .orElseThrow(() -> new ResourceNotFoundException("존재하지 않는 도전과제입니다."));
+
+        achievementRepository.delete(achievement);
+    }
 }
