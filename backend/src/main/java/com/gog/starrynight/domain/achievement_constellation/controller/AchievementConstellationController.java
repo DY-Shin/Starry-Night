@@ -26,10 +26,9 @@ public class AchievementConstellationController {
     }
 
     @Operation(summary = "도전과제 별자리 삭제")
-    @DeleteMapping("/achievement-constellations/{achievementId}/{constellationId}")
-    public ResponseEntity<ApiResponse> deleteAchievementConstellation(@PathVariable Long achievementId,
-                                                                      @PathVariable Long constellationId) {
-        achievementConstellationService.deleteAchievementConstellation(achievementId, constellationId);
+    @DeleteMapping("/achievement-constellations/{achievementConstellationId}")
+    public ResponseEntity<ApiResponse> deleteAchievementConstellation(@PathVariable Long achievementConstellationId) {
+        achievementConstellationService.deleteAchievementConstellation(achievementConstellationId);
         ApiResponse result = new ApiResponse(true, "도전과제 별자리 삭제 성공");
         return new ResponseEntity<>(result, HttpStatus.OK);
     }

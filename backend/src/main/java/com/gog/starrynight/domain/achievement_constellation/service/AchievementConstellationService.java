@@ -50,14 +50,8 @@ public class AchievementConstellationService {
     }
 
     @Transactional
-    public void deleteAchievementConstellation(Long achievementId, Long constellationId) {
-        Achievement achievement = achievementRepository.findById(achievementId)
-                .orElseThrow(() -> new ResourceNotFoundException("존재하지 않는 도전과제입니다."));
-
-        Constellation constellation = constellationRepository.findById(constellationId)
-                .orElseThrow(() -> new ResourceNotFoundException("존재하지 않는 별자리입니다."));
-
-        AchievementConstellation achievementConstellation = achievementConstellationRepository.findByAchievementAndConstellation(achievement, constellation)
+    public void deleteAchievementConstellation(Long achievementConstellationId) {
+        AchievementConstellation achievementConstellation = achievementConstellationRepository.findById(achievementConstellationId)
                 .orElseThrow(() -> new ResourceNotFoundException("해당 도전과제에 등록되어있지 않은 별자리입니다."));
 
         achievementConstellationRepository.delete(achievementConstellation);
