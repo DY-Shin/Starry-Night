@@ -17,7 +17,7 @@ import javax.persistence.*;
 public class ConstellationHistory extends BaseTimeEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(columnDefinition = "DECIMAL(9,6)")

@@ -15,7 +15,7 @@ import javax.persistence.*;
 public class FavoriteLocation extends BaseTimeEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(columnDefinition = "DECIMAL(9,6)", nullable = false)
