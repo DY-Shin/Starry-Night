@@ -6,6 +6,7 @@ export const DictMainBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+
   /* background-color: red; */
 `;
 export const DictItemBox = styled.div`
@@ -14,6 +15,7 @@ export const DictItemBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  margin-right: 4.5em;
   /* background-color: blue; */
   flex-direction: column;
 `;
@@ -38,8 +40,8 @@ export const BjrBox = styled.div`
 `;
 
 export const BjrPhoto = styled.div`
-  width: 160px;
-  height: 160px;
+  width: 140px;
+  height: 140px;
   display: flex;
   font-size: 1.5rem;
   color: whitesmoke;
@@ -53,8 +55,8 @@ export const BjrPhoto = styled.div`
 `;
 
 export const BjrName = styled.div`
-  width: 160px;
-  height: 80px;
+  width: 140px;
+  height: 70px;
   display: flex;
   font-size: 1.3rem;
   color: whitesmoke;

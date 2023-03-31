@@ -6,23 +6,26 @@ export const Container = styled.div`
   color: #f0f0f0;
   /* background-color: darkorange; */
   opacity: 100%;
+  display: flex;
   width: 10%;
   flex-direction: column;
   justify-content: center;
-  margin-left: 4em;
+  align-items: middle;
+  margin-left: 4.5em;
+  margin-right: 2.5em;
 `;
 
-export const DictItem = styled.div`
+export const DictButton = styled.button`
   position: flex;
   display: flex;
   margin: 0.5vh;
-  height: 5vh;
+  height: 75px;
+  width: 150px;
   font-size: 100%;
   background-color: navy;
+  color: #f0f0f0;
   align-items: center;
   justify-content: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
 
   border-radius: 1vh;
 `;

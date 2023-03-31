@@ -1,5 +1,4 @@
 import React from 'react';
-import { Outlet, Routes, Route } from 'react-router-dom';
 import * as MyStyle from '../../../Components/MyComponents/MyStyle';
 import MyGlobal from '../../../Components/MyComponents/MyGlobalStyle';
 import MyHeader from '../../../Layout/MyLayout/MyHeader';
@@ -13,7 +12,9 @@ function MyDict() {
       <MyHeader />
       <Dictainer.DictMainBox>
         <MyDictSideBar />
-        <Outlet />
+        <Dictainer.DictItemBox>
+          <h1>뀨우</h1>
+        </Dictainer.DictItemBox>
       </Dictainer.DictMainBox>
     </MyStyle.Container>
   );
