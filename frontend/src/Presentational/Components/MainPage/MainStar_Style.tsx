@@ -36,15 +36,15 @@ export const STimg = styled.img.attrs((props) => ({
   src: props.src,
 }))`
   height: 100%;
-  border-top: 2px solid #0f4c75;
-  border-bottom: 2px solid #0f4c75;
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
 `;
 
 export const STimg2 = styled.img.attrs((props) => ({
   src: props.src,
 }))`
   height: 100%;
-  border-top: 2px solid white;
-  border-bottom: 2px solid white;
-  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
+  border-top: 2px solid #0f4c75;
+  border-bottom: 2px solid #0f4c75;
+  filter: drop-shadow(0 0 3px rgba(50, 130, 184, 1));
 `;

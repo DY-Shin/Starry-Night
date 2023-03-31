@@ -22,7 +22,7 @@ export const MainContel = styled.div`
   align-items: center;
   flex-direction: column;
   overflow: hidden;
-  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 1));
+  filter: drop-shadow(0 0 10px rgba(50, 130, 184, 1));
   @media all and (max-width: 1200px) {
   }
   @media all and (max-width: 768px) {
@@ -33,7 +33,7 @@ export const MainContel = styled.div`
 
 export const WrapSlide = styled.div`
   width: 50vw;
-  border: 3px solid white;
+  border: 3px solid #0f4c75;
   @media all and (max-width: 1200px) {
     width: 60vw;
   }
@@ -59,7 +59,7 @@ export const Menu = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid white;
+  border: 1px solid #0f4c75;
   &:hover {
     background-color: gray;
     opacity: 0.8;
@@ -74,7 +74,7 @@ export const Name = styled.div`
   font-size: 24px;
   font-weight: bold;
   color: #3282b8;
-  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
+  filter: drop-shadow(0 0 10px rgba(50, 130, 184, 1));
 `;
 
 interface ImgProps {

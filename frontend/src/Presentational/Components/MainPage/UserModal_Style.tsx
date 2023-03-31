@@ -56,7 +56,7 @@ export const UserMenu1 = styled(Link)`
   color: black;
   &:hover {
     cursor: default;
-    filter: drop-shadow(0 0 2px #6816aa);
+    filter: drop-shadow(0 0 2px #0f4c75);
   }
 `;
 
@@ -67,7 +67,7 @@ export const UserMenu2 = styled.div`
   justify-content: center;
   padding-bottom: 5px;
   &:hover {
-    filter: drop-shadow(0 0 2px #6816aa);
+    filter: drop-shadow(0 0 2px #0f4c75);
   }
 `;
 

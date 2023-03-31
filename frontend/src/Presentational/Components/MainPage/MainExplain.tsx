@@ -32,6 +32,7 @@ function MainExplain() {
                 onlyHandleDraggable
                 style={{
                   height: '100%',
+                  borderRadius: '10px',
                 }}
               />
             </ExplainStyle.EPImgBox1>

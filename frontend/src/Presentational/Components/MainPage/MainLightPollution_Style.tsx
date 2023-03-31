@@ -58,16 +58,18 @@ export const LPImg = styled.img.attrs<ImgProps>((props) => ({
   src: props.src,
 }))`
   height: 100%;
+  border-radius: 10px;
 `;
 
 export const LPImgBox1 = styled.div`
-  padding: 10px;
+  /* padding: 10px; */
   display: flex;
   align-items: center;
   height: 300px;
-  background-color: rgba(50, 130, 184, 0.3); //#3282B8;
-  border: 2px solid #0f4c75;
-  border-radius: 10px;
+  /* background-color: rgba(50, 130, 184, 0.3); //#3282B8; */
+  /* border: 2px solid #0f4c75; */
+
+  filter: drop-shadow(0 0 10px rgba(50, 130, 184, 1));
   @media all and (max-width: 1200px) {
   }
   @media all and (max-width: 768px) {
