@@ -9,9 +9,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "도전과제 별자리 관리")
 @RestController
@@ -25,5 +23,14 @@ public class AchievementConstellationController {
         AchievementConstellationInfo achievementConstellationInfo = achievementConstellationService.createAchievementConstellation(dto);
         ApiResponse<AchievementConstellationInfo> result = new ApiResponse<>(true, "도전과제 별자리 등록 성공", achievementConstellationInfo);
         return new ResponseEntity<>(result, HttpStatus.CREATED);
+    }
+
+    @Operation(summary = "도전과제 별자리 삭제")
+    @DeleteMapping("/achievement-constellations/{achievementId}/{constellationId}")
+    public ResponseEntity<ApiResponse> deleteAchievementConstellation(@PathVariable Long achievementId,
+                                                                      @PathVariable Long constellationId) {
+        achievementConstellationService.deleteAchievementConstellation(achievementId, constellationId);
+        ApiResponse result = new ApiResponse(true, "도전과제 별자리 삭제 성공");
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }
