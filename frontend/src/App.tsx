@@ -31,7 +31,7 @@ function App() {
         <Route path="/mypage/dict/aut" element={<MyQiu />} />
         <Route path="/mypage/dict/win" element={<MyDong />} />
         <Route path="/mypage/dict/sol" element={<MySol />} />
-        <Route path="/mypage/post" element={<MyPost />} />
+        <Route path="/mypage/posts" element={<MyPost />} />
         <Route path="/mypage/reward" element={<MyReward />} />
         <Route path="/map" element={<NaverMap />} />
         <Route path="*" element={<NotFound />} />

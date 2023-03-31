@@ -1,44 +1,50 @@
 import React from 'react';
+import Scutum from '../../../../MyAssets/symbols/Scutum';
+import Sagitta from '../../../../MyAssets/symbols/Sagitta';
+import Hercules from '../../../../MyAssets/symbols/Hercules';
+import Capricornus from '../../../../MyAssets/symbols/Capricornus';
 import * as Dictainer from '../../../Components/MyComponents/MyDictComponent/MyDictContainer';
+import Delphinus from '../../../../MyAssets/symbols/Delphinus';
+import Vulpecula from '../../../../MyAssets/symbols/Vulpecula';
 
 function MyDictXiaBot() {
   return (
     <Dictainer.DictSubBox>
       <Dictainer.BjrBox>
         <Dictainer.BjrPhoto>
-          <h1>큰곰</h1>
+          <Hercules />
         </Dictainer.BjrPhoto>
-        <Dictainer.BjrName>큰곰자리</Dictainer.BjrName>
+        <Dictainer.BjrName>헤라클레스자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
         <Dictainer.BjrPhoto>
-          <h1>작은곰</h1>
+          <Capricornus />
         </Dictainer.BjrPhoto>
-        <Dictainer.BjrName>작은곰자리</Dictainer.BjrName>
+        <Dictainer.BjrName>염소자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
         <Dictainer.BjrPhoto>
-          <h1>용</h1>
+          <Sagitta />
         </Dictainer.BjrPhoto>
-        <Dictainer.BjrName>용자리</Dictainer.BjrName>
+        <Dictainer.BjrName>화살자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
         <Dictainer.BjrPhoto>
-          <h1>카시오페아</h1>
+          <Scutum />
         </Dictainer.BjrPhoto>
-        <Dictainer.BjrName>카시오페아자리</Dictainer.BjrName>
+        <Dictainer.BjrName>방패자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
         <Dictainer.BjrPhoto>
-          <h1>세페우스</h1>
+          <Delphinus />
         </Dictainer.BjrPhoto>
-        <Dictainer.BjrName>세페우스자리</Dictainer.BjrName>
+        <Dictainer.BjrName>돌고래자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
         <Dictainer.BjrPhoto>
-          <h1>기린</h1>
+          <Vulpecula />
         </Dictainer.BjrPhoto>
-        <Dictainer.BjrName>기린자리</Dictainer.BjrName>
+        <Dictainer.BjrName>여우자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
     </Dictainer.DictSubBox>
   );

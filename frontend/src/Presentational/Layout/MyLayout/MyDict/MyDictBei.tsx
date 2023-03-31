@@ -1,6 +1,12 @@
 import React from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import * as Dictainer from '../../../Components/MyComponents/MyDictComponent/MyDictContainer';
+import UrsaMajor from '../../../../MyAssets/symbols/UrsaMajor';
+import UrsaMinor from '../../../../MyAssets/symbols/UrsaMinor';
+import Draco from '../../../../MyAssets/symbols/Draco';
+import Cassiopeia from '../../../../MyAssets/symbols/Cassiopeia';
+import Cepheus from '../../../../MyAssets/symbols/Cepheus';
+import Camelopardalis from '../../../../MyAssets/symbols/Camelopardalis';
 
 function MyDictBei() {
   return (
@@ -8,37 +14,37 @@ function MyDictBei() {
       <AnimatePresence>
         <Dictainer.BjrBox>
           <Dictainer.BjrPhoto as={motion.div} drag>
-            <h1>큰곰</h1>
+            <UrsaMajor />
           </Dictainer.BjrPhoto>
           <Dictainer.BjrName>큰곰자리</Dictainer.BjrName>
         </Dictainer.BjrBox>
         <Dictainer.BjrBox>
           <Dictainer.BjrPhoto>
-            <h1>작은곰</h1>
+            <UrsaMinor />
           </Dictainer.BjrPhoto>
           <Dictainer.BjrName>작은곰자리</Dictainer.BjrName>
         </Dictainer.BjrBox>
         <Dictainer.BjrBox>
           <Dictainer.BjrPhoto>
-            <h1>용</h1>
+            <Draco />
           </Dictainer.BjrPhoto>
           <Dictainer.BjrName>용자리</Dictainer.BjrName>
         </Dictainer.BjrBox>
         <Dictainer.BjrBox>
           <Dictainer.BjrPhoto>
-            <h1>카시오페아</h1>
+            <Cassiopeia />
           </Dictainer.BjrPhoto>
           <Dictainer.BjrName>카시오페아자리</Dictainer.BjrName>
         </Dictainer.BjrBox>
         <Dictainer.BjrBox>
           <Dictainer.BjrPhoto>
-            <h1>세페우스</h1>
+            <Cepheus />
           </Dictainer.BjrPhoto>
           <Dictainer.BjrName>세페우스자리</Dictainer.BjrName>
         </Dictainer.BjrBox>
         <Dictainer.BjrBox>
           <Dictainer.BjrPhoto>
-            <h1>기린</h1>
+            <Camelopardalis />
           </Dictainer.BjrPhoto>
           <Dictainer.BjrName>기린자리</Dictainer.BjrName>
         </Dictainer.BjrBox>

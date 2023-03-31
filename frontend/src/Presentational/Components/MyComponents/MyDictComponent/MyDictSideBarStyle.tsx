@@ -13,15 +13,32 @@ export const Container = styled.div`
   align-items: middle;
   margin-left: 4.5em;
   margin-right: 2.5em;
+  a {
+    text-decoration: none;
+    color: #f0f0f0;
+  }
+  a:visited {
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+  a:focus {
+    text-decoration: none;
+  }
+  a:hover,
+  a:active {
+    text-decoration: none;
+  }
 `;
 
 export const DictButton = styled.button`
   position: flex;
   display: flex;
   margin: 0.5vh;
-  height: 75px;
-  width: 150px;
-  font-size: 100%;
+  height: 50px;
+  width: 120px;
+  font-size: 120%;
   background-color: navy;
   color: #f0f0f0;
   align-items: center;

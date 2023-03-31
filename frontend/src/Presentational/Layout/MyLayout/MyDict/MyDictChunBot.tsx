@@ -1,4 +1,10 @@
 import React from 'react';
+import CanesVenatici from '../../../../MyAssets/symbols/CanesVenatici';
+import ComaBerenices from '../../../../MyAssets/symbols/ComaBerenices';
+import Crater from '../../../../MyAssets/symbols/Crater';
+import LeoMinor from '../../../../MyAssets/symbols/LeoMinor';
+import Lynx from '../../../../MyAssets/symbols/Lynx';
+import Sextans from '../../../../MyAssets/symbols/Sextans';
 import * as Dictainer from '../../../Components/MyComponents/MyDictComponent/MyDictContainer';
 
 function MyDictChunBot() {
@@ -6,37 +12,37 @@ function MyDictChunBot() {
     <Dictainer.DictSubBox>
       <Dictainer.BjrBox>
         <Dictainer.BjrPhoto>
-          <h1>사냥개</h1>
+          <CanesVenatici />
         </Dictainer.BjrPhoto>
         <Dictainer.BjrName>사냥개자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
         <Dictainer.BjrPhoto>
-          <h1>살쾡이</h1>
+          <Lynx />
         </Dictainer.BjrPhoto>
         <Dictainer.BjrName>살쾡이자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
         <Dictainer.BjrPhoto>
-          <h1>컵</h1>
+          <Crater />
         </Dictainer.BjrPhoto>
         <Dictainer.BjrName>컵자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
         <Dictainer.BjrPhoto>
-          <h1>작은사자</h1>
+          <LeoMinor />
         </Dictainer.BjrPhoto>
         <Dictainer.BjrName>작은사자자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
         <Dictainer.BjrPhoto>
-          <h1>머리털</h1>
+          <ComaBerenices />
         </Dictainer.BjrPhoto>
         <Dictainer.BjrName>머리털자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
         <Dictainer.BjrPhoto>
-          <h1>육분의</h1>
+          <Sextans />
         </Dictainer.BjrPhoto>
         <Dictainer.BjrName>육분의자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
