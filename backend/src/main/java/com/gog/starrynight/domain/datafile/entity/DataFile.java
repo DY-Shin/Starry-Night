@@ -13,7 +13,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class DataFile extends BaseTimeEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(length = 100, nullable = false)
