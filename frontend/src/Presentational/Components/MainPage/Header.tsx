@@ -21,19 +21,19 @@ function Header() {
   // 카카오 로그인 정보 가져오기
   const getUser = async () => {
     await api.get(`/my-profile`, { withCredentials: true }).then((res) => {
-      console.log(res.data.data);
       setUser(res.data.data.name, res.data.data.profileImageUrl);
-      setFlag(true);
-      console.log(name, profileImageUrl);
     });
   };
 
-  const test = () => {
+  const getToken = () => {
+    setFlag(true);
     window.location.href = `${process.env.REACT_APP_API_SERVER_URL}/oauth2/authorization/kakao`;
   };
 
   useEffect(() => {
-    getUser();
+    if (flag) {
+      getUser();
+    }
   }, []);
 
   // 로그인 모달
@@ -42,7 +42,7 @@ function Header() {
       confirmButtonText: '취소',
       html: (
         <div>
-          <Login test={test} />
+          <Login getToken={getToken} />
         </div>
       ),
     });
@@ -63,8 +63,6 @@ function Header() {
             <HeaderStyle.ProfileImg
               onClick={() => {
                 setIsOpen(!isOpen);
-                console.log(isOpen);
-                // setIsOpen2(!isOpen);
               }}
               src={profileImageUrl}
             />

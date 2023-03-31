@@ -26,7 +26,6 @@ function Footer() {
             <FooterStyle.FooterTwitter />
             <FooterStyle.FooterYoutubr />
           </FooterStyle.WrapIcon>
-          {/* <SiInstagram /> */}
           <FooterStyle.Copyright>2023 SSAFY D206 Starry night, All rights resevered.</FooterStyle.Copyright>
         </FooterStyle.WrapFooter>
       </FooterStyle.MainFooter>

@@ -3,15 +3,13 @@ import { persist } from 'zustand/middleware';
 
 interface PAGE {
   page: number;
-  isFooter: boolean;
   setPage: (page: number) => void;
 }
 
 export const PageStore = create<PAGE>((set) => ({
   page: 0,
-  isFooter: false,
   setPage: (page) => {
-    set(() => ({ isFooter: page === 3, page }));
+    set(() => ({ page }));
   },
 }));
 
@@ -30,14 +28,19 @@ export const UserStore = create<any>(
   ),
 );
 
-interface LOGINFLAG {
-  flag: boolean;
-  setFlag: (flag: boolean) => void;
-}
+// interface LOGINFLAG {
+//   flag: boolean;
+//   setFlag: (flag: boolean) => void;
+// }
 
-export const FlagStore = create<LOGINFLAG>((set) => ({
-  flag: false,
-  setFlag: (flag) => {
-    set(() => ({ flag }));
-  },
-}));
+export const FlagStore = create<any>(
+  persist(
+    (set) => ({
+      flag: true,
+      setFlag: (flag: boolean) => {
+        set(() => ({ flag }));
+      },
+    }),
+    { name: 'flag' },
+  ),
+);

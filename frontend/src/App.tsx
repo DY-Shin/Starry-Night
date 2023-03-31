@@ -21,13 +21,15 @@ function App() {
         {/* 로그인 필요 없음 */}
         <Route path="/" element={<Main />} />
         {/* 로그인 필요 */}
-        <Route element={<PrivateRoute />}>
+        {/* 마이페이지 */}
+        <Route element={<PrivateRoute isMypage={true} />}>
           <Route path="/mypage" element={<MyProfile />}>
             <Route path="dict" element={<MyDict />} />
             <Route path="post" element={<MyPost />} />
             <Route path="reward" element={<MyReward />} />
           </Route>
         </Route>
+        {/* 지도로 가는 거 */}
         {/* <Route element={<PrivateRoute isMypage={false} />}> */}
         <Route path="/map" element={<NaverMap />} />
         {/* </Route> */}
