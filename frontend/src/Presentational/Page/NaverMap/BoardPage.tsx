@@ -1,9 +1,10 @@
 /* eslint-disable no-undef */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as BoardPostAPI from '../../../Action/Modules/NaverMap/BoardPost';
+import BoardPost from '../../Components/NaverMap/SideBar/Baord/BoardPost';
+import * as BoardStyle from './BoardPage_Style';
 
 type propsType = {
-  // eslint-disable-next-line no-undef
   map: naver.maps.Map | null;
   refreshState: boolean;
   refreshHandler: React.Dispatch<React.SetStateAction<boolean>>;
@@ -12,14 +13,19 @@ type propsType = {
 function BoardPage(props: propsType) {
   const { map, refreshState, refreshHandler } = props;
   const [resultData, setResultData] = useState<null | BoardPostAPI.resultType>(null);
-  // eslint-disable-next-line no-undef
   const [markerObject, setMarkerObject] = useState<null | naver.maps.Marker[]>(null);
+  const TopHeaderElement = useRef<null | HTMLDivElement>(null);
+
+  const moveTop = () => {
+    TopHeaderElement?.current?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   async function updateData(): Promise<void> {
     if (!map) return;
     const result = await BoardPostAPI.GetPostData(map, 1);
     setResultData(result);
     refreshHandler(false);
+    moveTop();
   }
 
   async function updateMarker(): Promise<naver.maps.Marker[] | null> {
@@ -36,11 +42,16 @@ function BoardPage(props: propsType) {
   }
 
   useEffect(() => {
-    console.log('refreshState : ', refreshState);
     if (map && refreshState) {
       updateData();
     }
   }, [refreshState]);
+
+  useEffect(() => {
+    if (map) {
+      updateData();
+    }
+  }, []);
 
   useEffect(() => {
     let returnData: naver.maps.Marker[] | null;
@@ -54,7 +65,17 @@ function BoardPage(props: propsType) {
     };
   }, [resultData]);
 
-  return <div>board페이지</div>;
+  return (
+    <BoardStyle.BoardPageWrapper>
+      <BoardStyle.BoardTopHeader ref={TopHeaderElement}>
+        Star Post
+        <BoardStyle.BoardTopHeaderLine />
+      </BoardStyle.BoardTopHeader>
+      {resultData?.content?.map((value) => (
+        <BoardPost data={value} key={value.id} />
+      ))}
+    </BoardStyle.BoardPageWrapper>
+  );
 }
 
 export default BoardPage;
