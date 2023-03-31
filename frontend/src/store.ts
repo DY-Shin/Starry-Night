@@ -29,3 +29,15 @@ export const UserStore = create<any>(
     { name: 'user-info' },
   ),
 );
+
+interface LOGINFLAG {
+  flag: boolean;
+  setFlag: (flag: boolean) => void;
+}
+
+export const FlagStore = create<LOGINFLAG>((set) => ({
+  flag: false,
+  setFlag: (flag) => {
+    set(() => ({ flag }));
+  },
+}));

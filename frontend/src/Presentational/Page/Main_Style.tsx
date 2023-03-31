@@ -59,15 +59,47 @@ export const CurrentSlide = styled(AiFillStar)`
   color: white;
   filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
 `;
-export const JustSlide = styled(AiOutlineStar)`
+// 왼쪽 별
+export const LeftSlide = styled(AiOutlineStar)`
   margin-top: 5px;
   color: white;
   width: 2em;
   height: 2em;
   /* cursor: pointer; */
+  transform: translate(-5px, 0);
   &:hover {
     filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
   }
+`;
+// 오른쪽 별
+export const RightSlide = styled(AiOutlineStar)`
+  margin-top: 5px;
+  color: white;
+  width: 2em;
+  height: 2em;
+  transform: translate(5px, 0);
+  /* cursor: pointer; */
+  &:hover {
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
+  }
+`;
+// 선택된 왼쪽 별
+export const SelLeftSlide = styled(AiFillStar)`
+  margin-top: 5px;
+  color: white;
+  width: 2em;
+  height: 2em;
+  transform: translate(-5px, 0);
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
+`;
+// 선택된 오른쪽 별
+export const SelRightSlide = styled(AiFillStar)`
+  margin-top: 5px;
+  color: white;
+  width: 2em;
+  height: 2em;
+  transform: translate(5px, 0);
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
 `;
 
 // 텍스트 강조

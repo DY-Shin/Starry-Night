@@ -23,8 +23,6 @@ function Mainpage() {
     }
   };
 
-  const arr = [0, 1, 2, 3, 4, 5];
-
   return (
     <MainStyle.Mainpage>
       <ReactPageScroller pageOnChange={pageChanage} customPageNumber={page}>
@@ -36,17 +34,59 @@ function Mainpage() {
         <Footer />
       </ReactPageScroller>
       <MainStyle.SlideShow>
-        {arr.map((i) =>
-          i === page ? (
-            <MainStyle.CurrentSlide key={i + 100} />
-          ) : (
-            <MainStyle.JustSlide
-              key={i + 200}
-              onClick={() => {
-                setPage(i);
-              }}
-            />
-          ),
+        {page === 0 ? (
+          <MainStyle.SelLeftSlide />
+        ) : (
+          <MainStyle.LeftSlide
+            onClick={() => {
+              setPage(0);
+            }}
+          />
+        )}
+        {page === 1 ? (
+          <MainStyle.SelRightSlide />
+        ) : (
+          <MainStyle.RightSlide
+            onClick={() => {
+              setPage(1);
+            }}
+          />
+        )}
+        {page === 2 ? (
+          <MainStyle.SelLeftSlide />
+        ) : (
+          <MainStyle.LeftSlide
+            onClick={() => {
+              setPage(2);
+            }}
+          />
+        )}
+        {page === 3 ? (
+          <MainStyle.SelRightSlide />
+        ) : (
+          <MainStyle.RightSlide
+            onClick={() => {
+              setPage(3);
+            }}
+          />
+        )}
+        {page === 4 ? (
+          <MainStyle.SelLeftSlide />
+        ) : (
+          <MainStyle.LeftSlide
+            onClick={() => {
+              setPage(4);
+            }}
+          />
+        )}
+        {page === 5 ? (
+          <MainStyle.SelRightSlide />
+        ) : (
+          <MainStyle.RightSlide
+            onClick={() => {
+              setPage(5);
+            }}
+          />
         )}
       </MainStyle.SlideShow>
       <MainStyle.ScrollTop onClick={MoveToTop} />

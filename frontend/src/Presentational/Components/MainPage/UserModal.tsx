@@ -1,13 +1,19 @@
 import React from 'react';
 import * as UserModalStyle from './UserModal_Style';
 import { UserStore } from '../../../store';
+import api from '../api';
 
 function UserModal() {
   const { name, profileImageUrl, setUser } = UserStore();
+  // const { flag, setFlag } = FlagStore();
 
   // LogOut
-  const LogOutUser = () => {
-    setUser('null', 'null');
+  const LogOutUser = async () => {
+    await api.post(`/logout`, {}, { withCredentials: true }).then((res) => {
+      setUser('null', 'null');
+      console.log(123);
+      console.log(res);
+    });
   };
 
   return (
