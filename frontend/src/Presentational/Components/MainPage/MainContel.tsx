@@ -8,7 +8,6 @@ import * as ContelStyle from './MainContel_Style';
 function MainContel() {
   const [flag, setFlag] = useState({
     origin: true,
-    star: false,
     lined: false,
     illust: false,
   });
@@ -17,15 +16,6 @@ function MainContel() {
   const setOrigin = () => {
     setFlag({
       origin: true,
-      star: false,
-      lined: false,
-      illust: false,
-    });
-  };
-  const setStar = () => {
-    setFlag({
-      origin: false,
-      star: true,
       lined: false,
       illust: false,
     });
@@ -33,7 +23,6 @@ function MainContel() {
   const setLined = () => {
     setFlag({
       origin: false,
-      star: false,
       lined: true,
       illust: false,
     });
@@ -41,7 +30,6 @@ function MainContel() {
   const setIllust = () => {
     setFlag({
       origin: false,
-      star: false,
       lined: false,
       illust: true,
     });
@@ -87,7 +75,6 @@ function MainContel() {
                 <>
                   <ContelStyle.WrapContel>
                     {flag.origin && <ContelStyle.TestImg src={star.photo.origin} />}
-                    {flag.star && <ContelStyle.TestImg src={star.photo.star} />}
                     {flag.lined && <ContelStyle.TestImg src={star.photo.lined} />}
                     {flag.illust && <ContelStyle.TestImg src={star.photo.illust} />}
                   </ContelStyle.WrapContel>
@@ -97,7 +84,6 @@ function MainContel() {
           </Slider>
           <ContelStyle.WrapMenu>
             <ContelStyle.Menu onClick={setOrigin}>천체</ContelStyle.Menu>
-            <ContelStyle.Menu onClick={setStar}>별 이름</ContelStyle.Menu>
             <ContelStyle.Menu onClick={setLined}>별자리 선</ContelStyle.Menu>
             <ContelStyle.Menu onClick={setIllust}>별자리 그림</ContelStyle.Menu>
           </ContelStyle.WrapMenu>
