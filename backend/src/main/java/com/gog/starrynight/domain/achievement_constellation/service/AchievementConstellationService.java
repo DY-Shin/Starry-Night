@@ -48,4 +48,12 @@ public class AchievementConstellationService {
 
         return new AchievementConstellationInfo(achievementInfo, constellationSimpleInfo);
     }
+
+    @Transactional
+    public void deleteAchievementConstellation(Long achievementConstellationId) {
+        AchievementConstellation achievementConstellation = achievementConstellationRepository.findById(achievementConstellationId)
+                .orElseThrow(() -> new ResourceNotFoundException("해당 도전과제에 등록되어있지 않은 별자리입니다."));
+
+        achievementConstellationRepository.delete(achievementConstellation);
+    }
 }
