@@ -32,6 +32,7 @@ public class UserController {
     public ResponseEntity<ApiResponse> logout() {
         ResponseCookie cookie = ResponseCookie.from(accessTokenName, null)
                 .maxAge(0)
+                .path("/")
                 .httpOnly(true)
                 .build();
 
