@@ -7,6 +7,10 @@ export const Mainpage = styled.div`
   /* padding-left: 4.5em;
   padding-right: 4.5em; */
   overflow-y: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   &::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -36,7 +40,7 @@ export const ScrollTop = styled(BsArrowUpCircleFill)`
   width: 30px;
   height: 30px;
   color: white;
-  /* cursor: pointer; */
+  cursor: pointer;
   &:hover {
     opacity: 0.7;
   }
@@ -65,7 +69,7 @@ export const LeftSlide = styled(AiOutlineStar)`
   color: white;
   width: 2em;
   height: 2em;
-  /* cursor: pointer; */
+  cursor: pointer;
   transform: translate(-5px, 0);
   &:hover {
     filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
@@ -78,7 +82,7 @@ export const RightSlide = styled(AiOutlineStar)`
   width: 2em;
   height: 2em;
   transform: translate(5px, 0);
-  /* cursor: pointer; */
+  cursor: pointer;
   &:hover {
     filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
   }

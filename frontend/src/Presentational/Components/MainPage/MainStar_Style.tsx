@@ -12,6 +12,7 @@ export const MainStar = styled.div`
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  backdrop-filter: blur(0.4px);
 `;
 
 export const WrapSlide = styled.div`

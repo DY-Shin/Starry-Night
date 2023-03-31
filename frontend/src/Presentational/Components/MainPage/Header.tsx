@@ -66,7 +66,7 @@ function Header() {
               }}
               src={profileImageUrl}
             />
-            {isOpen && <UserModal />}
+            {isOpen ? <UserModal /> : null}
           </HeaderStyle.NavLogOut>
         )}
       </HeaderStyle.WrapNav>

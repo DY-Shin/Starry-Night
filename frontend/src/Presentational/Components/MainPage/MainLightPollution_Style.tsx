@@ -8,7 +8,7 @@ export const MainLightPollution = styled.div`
   min-height: 100vh;
   display: flex;
   overflow: hidden;
-
+  backdrop-filter: blur(0.4px);
   @media all and (max-width: 1200px) {
     justify-content: center;
     align-items: center;
@@ -41,6 +41,7 @@ export const LPRightBox = styled.div`
   flex-direction: column;
   justify-content: center;
   padding-left: 4rem;
+  cursor: default;
   @media all and (max-width: 1200px) {
     padding-left: 0em;
   }

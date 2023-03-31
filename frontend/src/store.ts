@@ -28,11 +28,6 @@ export const UserStore = create<any>(
   ),
 );
 
-// interface LOGINFLAG {
-//   flag: boolean;
-//   setFlag: (flag: boolean) => void;
-// }
-
 export const FlagStore = create<any>(
   persist(
     (set) => ({

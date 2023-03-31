@@ -22,6 +22,8 @@ export const MainContel = styled.div`
   align-items: center;
   flex-direction: column;
   overflow: hidden;
+  cursor: default;
+  backdrop-filter: blur(0.4px);
   filter: drop-shadow(0 0 10px rgba(50, 130, 184, 1));
   @media all and (max-width: 1200px) {
   }
@@ -60,6 +62,7 @@ export const Menu = styled.div`
   justify-content: center;
   align-items: center;
   border: 1px solid #0f4c75;
+  cursor: pointer;
   &:hover {
     background-color: gray;
     opacity: 0.8;

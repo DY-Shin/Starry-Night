@@ -8,6 +8,7 @@ export const MainExplain = styled.div`
   overflow: hidden;
   color: white;
   display: flex;
+  backdrop-filter: blur(0.4px);
   @media all and (max-width: 1200px) {
     justify-content: center;
     align-items: center;
@@ -34,6 +35,7 @@ export const EPLeftBox = styled.div`
   flex-direction: column;
   justify-content: center;
   padding-left: 4rem;
+  cursor: default;
   @media all and (max-width: 1200px) {
     display: none;
   }
@@ -47,6 +49,7 @@ export const EPLeftBox2 = styled.div`
   display: none;
   flex-direction: column;
   justify-content: center;
+  cursor: default;
   @media all and (max-width: 1200px) {
     display: flex;
   }
