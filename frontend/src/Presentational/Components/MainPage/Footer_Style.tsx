@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { SiFacebook, SiInstagram, SiTwitter, SiYoutube } from 'react-icons/si';
+import { Link } from 'react-router-dom';
 
 // footer
 export const Container = styled.div`
@@ -13,6 +14,7 @@ export const Container = styled.div`
 `;
 
 export const MainFooter = styled.div`
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
   min-height: 100vh;
   padding-left: 8em;
   padding-right: 8em;
@@ -22,9 +24,7 @@ export const MainFooter = styled.div`
   overflow: hidden;
   color: white;
   display: flex;
-  @media all and (max-width: 1200px) {
-    padding-top: 30px;
-  }
+  backdrop-filter: blur(0.4px);
   @media all and (max-width: 768px) {
     padding-left: 2em;
     padding-right: 2em;
@@ -41,6 +41,7 @@ export const WrapFooter = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: default;
 `;
 
 export const FooterTeamName1 = styled.div`
@@ -96,6 +97,11 @@ export const FooterYoutubr = styled(SiYoutube)`
   }
 `;
 
+export const eLink = styled(Link)`
+  text-decoration: none;
+  color: white;
+`;
+
 export const Copyright = styled.span`
   margin: 10px 0px;
   font-size: 10px;
@@ -110,7 +116,6 @@ export const WrapDognju = styled.div`
 
 // 시
 export const Poem = styled.div`
-  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
   flex-basis: 50%;
   display: flex;
   flex-direction: column;
@@ -118,6 +123,7 @@ export const Poem = styled.div`
   align-items: center;
   font-size: 1.25vw;
   padding-left: 8em;
+  cursor: default;
   @media all and (max-width: 1200px) {
   }
   @media all and (max-width: 768px) {

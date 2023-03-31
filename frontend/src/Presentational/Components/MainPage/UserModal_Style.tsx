@@ -15,8 +15,9 @@ export const ModalBox = styled.div`
   font-size: 18px;
   background-color: white;
   color: black;
+  /* backdrop-filter: blur(10px); */
   z-index: 20;
-  cursor: default;
+  /* cursor: default; */
   @media all and (max-width: 1100px) {
     margin-right: 9vw;
   }
@@ -54,9 +55,9 @@ export const UserMenu1 = styled(Link)`
   justify-content: center;
   text-decoration: none;
   color: black;
+  cursor: pointer;
   &:hover {
-    cursor: default;
-    filter: drop-shadow(0 0 2px #6816aa);
+    filter: drop-shadow(0 0 2px #0f4c75);
   }
 `;
 
@@ -66,8 +67,9 @@ export const UserMenu2 = styled.div`
   align-items: center;
   justify-content: center;
   padding-bottom: 5px;
+  cursor: pointer;
   &:hover {
-    filter: drop-shadow(0 0 2px #6816aa);
+    filter: drop-shadow(0 0 2px #0f4c75);
   }
 `;
 

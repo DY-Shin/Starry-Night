@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import * as MyStyle from '../../Components/MyComponents/MyStyle';
 import MyGlobal from '../../Components/MyComponents/MyGlobalStyle';
 import * as MyProfileBox from '../../Components/MyComponents/MyProfileComponent/MyProfileBox';
@@ -8,6 +8,7 @@ import * as MyProfileBox from '../../Components/MyComponents/MyProfileComponent/
 function MyProfile() {
   return (
     <MyStyle.Container>
+      <Outlet />
       <MyGlobal />
       <MyProfileBox.ProfileMainContainer>
         <MyProfileBox.ProfileSubContainer>
