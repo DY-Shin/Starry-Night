@@ -38,6 +38,7 @@ public class FavoriteLocationService {
         }
 
         FavoriteLocation favoriteLocation = FavoriteLocation.builder()
+                .name(dto.getName())
                 .lat(dto.getLat())
                 .lng(dto.getLng())
                 .user(requester)
