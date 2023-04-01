@@ -4,6 +4,7 @@ import com.gog.starrynight.domain.post.entity.Post;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 public interface PostRepository extends JpaRepository<Post, Long> {
     Page<Post> findAllByTitleContainingAndContentContaining(Pageable pageable, String title, String content);
@@ -41,4 +42,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
                                                                     double maxLat,
                                                                     double minLng,
                                                                     double maxLng);
+
+    @Query("SELECT COUNT(p) FROM Post p Where p.writer.id=:userId")
+    int getPostCountByUser(Long userId);
 }
