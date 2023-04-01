@@ -2,14 +2,19 @@ package com.gog.starrynight.domain.user.service;
 
 import com.gog.starrynight.common.exception.ResourceNotFoundException;
 import com.gog.starrynight.common.util.DataFileUtil;
+import com.gog.starrynight.domain.achievement.repository.AchievementRepository;
+import com.gog.starrynight.domain.constellation.repository.ConstellationRepository;
+import com.gog.starrynight.domain.constellation_history.repository.ConstellationHistoryRepository;
 import com.gog.starrynight.domain.datafile.entity.DataFile;
 import com.gog.starrynight.domain.datafile.repository.DataFileRepository;
+import com.gog.starrynight.domain.post.repository.PostRepository;
 import com.gog.starrynight.domain.user.dto.UserCreateRequest;
 import com.gog.starrynight.domain.user.dto.UserNameUpdateRequest;
+import com.gog.starrynight.domain.user.dto.UserPageInfo;
 import com.gog.starrynight.domain.user.dto.UserSimpleInfo;
 import com.gog.starrynight.domain.user.entity.User;
 import com.gog.starrynight.domain.user.repository.UserRepository;
-import lombok.Data;
+import com.gog.starrynight.domain.user_achievement.repository.UserAchievementRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -23,6 +28,11 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
+    private final ConstellationRepository constellationRepository;
+    private final ConstellationHistoryRepository constellationHistoryRepository;
+    private final AchievementRepository achievementRepository;
+    private final UserAchievementRepository userAchievementRepository;
+    private final PostRepository postRepository;
     private final DataFileRepository dataFileRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final DataFileUtil dataFileUtil;
@@ -78,5 +88,28 @@ public class UserService {
         dataFileRepository.save(profileImage);
 
         requester.setProfileImage(profileImage);
+    }
+
+    public UserPageInfo getUserPageInfo(Long userId, Long requesterId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("존재하지 않는 사용자입니다."));
+
+        int completedConstellationCount = constellationHistoryRepository.getUserCompletedConstellationCount(userId);
+        int totalConstellationCount = constellationRepository.getTotalConstellationCount();
+        int completedAchievementCount = userAchievementRepository.getUserCompletedAchievementCount(userId);
+        int totalAchievementCount = achievementRepository.getTotalAchievementCount();
+        int postCount = postRepository.getPostCountByUser(userId);
+        boolean permission = (user.getId().equals(requesterId));
+
+        UserPageInfo userPageInfo = UserPageInfo.builder()
+                .completedConstellationCount(completedConstellationCount)
+                .totalConstellationCount(totalConstellationCount)
+                .completedAchievementCount(completedAchievementCount)
+                .totalAchievementCount(totalAchievementCount)
+                .postCount(postCount)
+                .permission(permission)
+                .build();
+
+        return userPageInfo;
     }
 }

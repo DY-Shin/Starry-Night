@@ -2,6 +2,7 @@ package com.gog.starrynight.domain.achievement.entity;
 
 import com.gog.starrynight.common.entity.BaseTimeEntity;
 import com.gog.starrynight.domain.achievement_constellation.entity.AchievementConstellation;
+import com.gog.starrynight.domain.user_achievement.entity.UserAchievement;
 import lombok.*;
 
 import javax.persistence.*;
@@ -25,5 +26,9 @@ public class Achievement extends BaseTimeEntity {
     @Builder.Default
     @OneToMany(mappedBy = "achievement", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<AchievementConstellation> achievementConstellations = new ArrayList<>();
+
+    @Builder.Default
+    @OneToMany(mappedBy = "achievement", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<UserAchievement> userAchievements = new ArrayList<>();
 
 }

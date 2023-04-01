@@ -6,6 +6,7 @@ import com.gog.starrynight.domain.datafile.entity.DataFile;
 import com.gog.starrynight.domain.favorite_location.entity.FavoriteLocation;
 import com.gog.starrynight.domain.post.entity.Post;
 import com.gog.starrynight.domain.post_like.entity.PostLike;
+import com.gog.starrynight.domain.user_achievement.entity.UserAchievement;
 import lombok.*;
 
 import javax.persistence.*;
@@ -55,5 +56,9 @@ public class User extends BaseTimeEntity {
     @Builder.Default
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<ConstellationHistory> constellationHistories = new ArrayList<>();
+
+    @Builder.Default
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<UserAchievement> userAchievements = new ArrayList<>();
 
 }
