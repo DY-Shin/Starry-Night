@@ -2,6 +2,7 @@ package com.gog.starrynight.domain.user.controller;
 
 import com.gog.starrynight.common.dto.ApiResponse;
 import com.gog.starrynight.domain.user.dto.UserNameUpdateRequest;
+import com.gog.starrynight.domain.user.dto.UserPageInfo;
 import com.gog.starrynight.domain.user.dto.UserSimpleInfo;
 import com.gog.starrynight.domain.user.service.UserService;
 import com.gog.starrynight.security.LoginUser;
@@ -66,6 +67,16 @@ public class UserController {
     public ResponseEntity<ApiResponse<UserSimpleInfo>> getMyProfile(@AuthenticationPrincipal LoginUser loginUser) {
         UserSimpleInfo userSimpleInfo = userService.getMyProfile(loginUser.getId());
         ApiResponse<UserSimpleInfo> result = new ApiResponse<>(true, "회원 정보 조회 성공", userSimpleInfo);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @Operation(summary = "회원 페이지 정보 조회")
+    @GetMapping("/users/{userId}")
+    public ResponseEntity<ApiResponse<UserPageInfo>> getUserPageInfo(@AuthenticationPrincipal LoginUser loginUser,
+                                                                     @PathVariable Long userId) {
+        Long requesterId = loginUser != null ? loginUser.getId() : null;
+        UserPageInfo userPageInfo = userService.getUserPageInfo(userId, requesterId);
+        ApiResponse<UserPageInfo> result = new ApiResponse<>(true, "회원 페이지 정보 조회 성공", userPageInfo);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }
