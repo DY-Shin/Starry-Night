@@ -57,6 +57,24 @@ export const StarTag = styled.span`
   }
 `;
 
+export const PostBottomArea = styled.div`
+  width: 100%;
+  height: 25px;
+  display: flex;
+  justify-content: flex-end;
+
+  .likeIcon {
+    cursor: pointer;
+  }
+`;
+export const PostLikeCount = styled.span`
+  margin-left: 5px;
+  font-size: large;
+  font-weight: 500;
+`;
+
+export const PostDate = styled.p``;
+
 export const ImageWrapper = styled.div<{ link: string }>`
   width: 100%;
   height: 300px;

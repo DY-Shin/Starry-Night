@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import * as BoardPostAPI from '../../../Action/Modules/NaverMap/BoardPost';
 import BoardPost from '../../Components/NaverMap/SideBar/Baord/BoardPost';
 import * as BoardStyle from './BoardPage_Style';
@@ -20,59 +20,58 @@ function BoardPage(props: propsType) {
     TopHeaderElement?.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  async function updateData(): Promise<void> {
-    if (!map) return;
+  async function updateData(): Promise<BoardPostAPI.resultType | null> {
+    if (!map) return null;
     const result = await BoardPostAPI.GetPostData(map, 1);
     setResultData(result);
     refreshHandler(false);
     moveTop();
+    return result;
   }
 
-  async function updateMarker(): Promise<naver.maps.Marker[] | null> {
-    if (!resultData) {
-      return null;
-    }
+  async function updateMarker(data: Promise<BoardPostAPI.resultType | null>): Promise<naver.maps.Marker[] | null> {
+    // if (!resultData) {
+    //   return null;
+    // }
     if (!map) return null;
     if (markerObject) {
       BoardPostAPI.clearMarker(markerObject);
     }
-    const returnData = await BoardPostAPI.MakeMarker(map, resultData);
+    const convertData = await data;
+    console.log('마커 업데이트 convertData ', convertData);
+    if (!convertData) return null;
+    const returnData = await BoardPostAPI.MakeMarker(map, convertData);
     setMarkerObject(returnData);
     return returnData;
   }
 
-  useEffect(() => {
-    if (map && refreshState) {
-      updateData();
-    }
-  }, [refreshState]);
-
-  useEffect(() => {
-    if (map) {
-      updateData();
-    }
-  }, []);
+  function refrehPost(): naver.maps.Marker[] | null {
+    let result: naver.maps.Marker[] | null = null;
+    updateMarker(updateData()).then((value) => {
+      result = value;
+    });
+    return result;
+  }
 
   useEffect(() => {
     let returnData: naver.maps.Marker[] | null;
-    updateMarker().then((value) => {
-      returnData = value;
-    });
+    if (refreshState) {
+      returnData = refrehPost();
+      // updateMarker(updateData());
+    }
     return () => {
       if (returnData) {
         BoardPostAPI.clearMarker(returnData);
       }
     };
-  }, [resultData]);
+  }, [refreshState]);
 
   return (
     <BoardStyle.BoardPageWrapper>
-      <BoardStyle.BoardTopHeader ref={TopHeaderElement}>
-        Star Post
-        <BoardStyle.BoardTopHeaderLine />
-      </BoardStyle.BoardTopHeader>
-      {resultData?.content?.map((value) => (
-        <BoardPost data={value} key={value.id} />
+      <BoardStyle.BoardTopHeader ref={TopHeaderElement}>Star Post</BoardStyle.BoardTopHeader>
+      <BoardStyle.BoardTopHeaderLine />
+      {resultData?.content?.map((value, idx) => (
+        <BoardPost data={value} setDataHandler={setResultData} key={value.id} idx={idx} />
       ))}
     </BoardStyle.BoardPageWrapper>
   );

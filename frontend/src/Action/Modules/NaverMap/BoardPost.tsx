@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import PostPinMarker from '../../../Assets/NaverMap/PostPinMarker.png';
 // const { naver } = window;
 
@@ -39,7 +39,6 @@ export interface resultType {
   size: number;
 }
 
-// export async function MakeMarker(maps: naver.maps.Map): Promise<naver.maps.Marker[] | null> {
 export async function GetPostData(maps: naver.maps.Map, page: number, size = 5): Promise<resultType | null> {
   const map = maps;
   const mapBound: naver.maps.Bounds = map.getBounds();
@@ -50,6 +49,7 @@ export async function GetPostData(maps: naver.maps.Map, page: number, size = 5):
       `${process.env.REACT_APP_API_SERVER_URL}/posts?pointA=${mapBound.getMax().y}&pointA=${
         mapBound.getMax().x
       }&pointB=${mapBound.getMin().y}&pointB=${mapBound.getMin().x}&page=${page - 1}&size=${size}`,
+      { withCredentials: true },
     );
     data = res.data.data as resultType;
   } catch (error) {
@@ -82,4 +82,20 @@ export function clearMarker(markers: naver.maps.Marker[]) {
   markers.forEach((item) => {
     item.setMap(null);
   });
+}
+
+export function changeLikeOn(postId: number) {
+  return axios
+    .post(`${process.env.REACT_APP_API_SERVER_URL}/posts/${postId}/likes`, null, {
+      withCredentials: true,
+    })
+    .then((res) => res.data)
+    .catch((res) => res);
+}
+
+export function changeLikeOff(postId: number) {
+  return axios
+    .delete(`${process.env.REACT_APP_API_SERVER_URL}/posts/${postId}/likes`, { withCredentials: true })
+    .then((res) => res.data)
+    .catch((res) => res);
 }
