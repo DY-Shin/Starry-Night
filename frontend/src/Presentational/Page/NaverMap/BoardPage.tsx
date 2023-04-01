@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as BoardPostAPI from '../../../Action/Modules/NaverMap/BoardPost';
 import BoardPost from '../../Components/NaverMap/SideBar/Baord/BoardPost';
 import * as BoardStyle from './BoardPage_Style';
@@ -38,7 +38,6 @@ function BoardPage(props: propsType) {
       BoardPostAPI.clearMarker(markerObject);
     }
     const convertData = await data;
-    console.log('마커 업데이트 convertData ', convertData);
     if (!convertData) return null;
     const returnData = await BoardPostAPI.MakeMarker(map, convertData);
     setMarkerObject(returnData);
@@ -60,8 +59,8 @@ function BoardPage(props: propsType) {
       // updateMarker(updateData());
     }
     return () => {
-      if (returnData) {
-        BoardPostAPI.clearMarker(returnData);
+      if (markerObject) {
+        BoardPostAPI.clearMarker(markerObject);
       }
     };
   }, [refreshState]);
@@ -71,7 +70,7 @@ function BoardPage(props: propsType) {
       <BoardStyle.BoardTopHeader ref={TopHeaderElement}>Star Post</BoardStyle.BoardTopHeader>
       <BoardStyle.BoardTopHeaderLine />
       {resultData?.content?.map((value, idx) => (
-        <BoardPost data={value} setDataHandler={setResultData} key={value.id} idx={idx} />
+        <BoardPost data={value} setDataHandler={setResultData} key={value.id} idx={idx} markerObject={markerObject} />
       ))}
     </BoardStyle.BoardPageWrapper>
   );

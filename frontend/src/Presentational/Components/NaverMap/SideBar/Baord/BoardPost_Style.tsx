@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+export const PostLine = styled.hr`
+  margin: 0;
+  border-top: 1px dashed #0000005e;
+`;
+
 export const PostWrapper = styled.div`
   width: 100%;
   & .slick-prev {
@@ -32,7 +37,49 @@ export const PostWrapper = styled.div`
     }
   }
 
-  margin-bottom: 50px;
+  .line {
+    margin: 30px 0 30px 0;
+  }
+
+  :last-child {
+    .line {
+      display: none;
+    }
+  }
+`;
+
+export const PostTopArea = styled.div`
+  width: 100%;
+  height: 50px;
+  margin: 5px 0 10px 0;
+  display: flex;
+`;
+
+export const PostWriterImage = styled.div`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-image: url(${(props: { link: string }) => props.link});
+  background-size: contain;
+  background-repeat: no-repeat;
+`;
+
+export const PostWriterTextArea = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const PostWriterDate = styled.p`
+  margin: 0;
+  font-size: 14px;
+  margin: 5px 0 0 7px;
+`;
+
+export const PostWriterName = styled.p`
+  margin: 0 0 0 5px;
+  font-size: 17px;
+  line-height: 20px;
+  font-weight: 600;
 `;
 
 export const PostHead = styled.h3``;

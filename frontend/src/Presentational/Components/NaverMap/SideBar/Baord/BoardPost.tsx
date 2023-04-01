@@ -10,10 +10,12 @@ type propsType = {
   data: BoardPostAPI.dataType;
   setDataHandler: React.Dispatch<React.SetStateAction<BoardPostAPI.resultType | null>>;
   idx: number;
+  // eslint-disable-next-line no-undef
+  markerObject: naver.maps.Marker[] | null;
 };
 
 function BoardPost(props: propsType) {
-  const { data, setDataHandler, idx } = props;
+  const { data, setDataHandler, idx, markerObject } = props;
   const carouselSetting: Settings = {
     dots: false,
     arrows: true,
@@ -55,7 +57,6 @@ function BoardPost(props: propsType) {
     console.log(likeResultData);
     if (likeResultData.success) {
       setDataHandler((prev: BoardPostAPI.resultType | null) => {
-        console.log('on 에서 prev', prev);
         if (!prev) return null;
         const temp = { ...prev };
         temp.content[idx].postLikeCount += 1;
@@ -65,7 +66,12 @@ function BoardPost(props: propsType) {
       Swal.fire({
         icon: 'question',
         title: '위치 즐겨찾기',
-        text: likeResultData.message,
+        text: '현재 게시글이 작성된 위치를 즐겨찾기 하시겠습니까?',
+        showConfirmButton: true,
+        confirmButtonText: '예',
+        cancelButtonText: '아니요',
+        showCancelButton: true,
+        allowOutsideClick: false,
       });
     } else {
       Swal.fire({
@@ -81,12 +87,20 @@ function BoardPost(props: propsType) {
     console.log(likeResultData);
     if (likeResultData.success) {
       setDataHandler((prev: BoardPostAPI.resultType | null) => {
-        console.log('off 에서 prev', prev);
         if (!prev) return null;
         const temp = { ...prev };
         temp.content[idx].postLikeCount -= 1;
         temp.content[idx].postLiked = false;
         return temp;
+      });
+      Swal.fire({
+        icon: 'success',
+        title: '좋아요 취소',
+        text: '좋아요를 취소 했습니다.',
+        timer: 1500,
+        timerProgressBar: true,
+        showConfirmButton: false,
+        allowOutsideClick: false,
       });
     } else {
       Swal.fire({
@@ -98,8 +112,24 @@ function BoardPost(props: propsType) {
   }
 
   return (
-    <PostStyle.PostWrapper className="PostWrapper">
-      <PostStyle.PostHead>{data.title}</PostStyle.PostHead>
+    <PostStyle.PostWrapper
+      className="PostWrapper"
+      onMouseEnter={() => {
+        if (!markerObject) return;
+        BoardPostAPI.sizeUp(markerObject, idx);
+      }}
+      onMouseLeave={() => {
+        if (!markerObject) return;
+        BoardPostAPI.sizeReturn(markerObject, idx);
+      }}
+    >
+      <PostStyle.PostTopArea>
+        <PostStyle.PostWriterImage link={data.writer.profileImageUrl} />
+        <PostStyle.PostWriterTextArea>
+          <PostStyle.PostWriterName>{data.writer.name}</PostStyle.PostWriterName>
+          <PostStyle.PostWriterDate>{calculDate()}</PostStyle.PostWriterDate>
+        </PostStyle.PostWriterTextArea>
+      </PostStyle.PostTopArea>
       <Slider {...carouselSetting}>
         {data?.images?.map((value) => {
           return <PostStyle.ImageWrapper link={value.url} key={value.id} />;
@@ -121,7 +151,7 @@ function BoardPost(props: propsType) {
         )}
         <PostStyle.PostLikeCount>{data.postLikeCount}</PostStyle.PostLikeCount>
       </PostStyle.PostBottomArea>
-      <PostStyle.PostDate>{calculDate()}</PostStyle.PostDate>
+      <PostStyle.PostLine className="line" />
     </PostStyle.PostWrapper>
   );
 }

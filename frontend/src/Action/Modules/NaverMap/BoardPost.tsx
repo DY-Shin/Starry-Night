@@ -99,3 +99,27 @@ export function changeLikeOff(postId: number) {
     .then((res) => res.data)
     .catch((res) => res);
 }
+
+export function sizeUp(markers: naver.maps.Marker[], idx: number) {
+  const prevOption = markers[idx].getOptions();
+  markers[idx].setOptions({
+    ...prevOption,
+    icon: {
+      url: PostPinMarker,
+      size: new naver.maps.Size(50, 50),
+      scaledSize: new naver.maps.Size(50, 50),
+    },
+  });
+}
+
+export function sizeReturn(markers: naver.maps.Marker[], idx: number) {
+  const prevOption = markers[idx].getOptions();
+  markers[idx].setOptions({
+    ...prevOption,
+    icon: {
+      url: PostPinMarker,
+      size: new naver.maps.Size(30, 30),
+      scaledSize: new naver.maps.Size(30, 30),
+    },
+  });
+}
