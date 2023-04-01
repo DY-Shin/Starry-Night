@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class FavoriteLocationCreateRequest {
+    private String name;
     private double lat;
     private double lng;
 }

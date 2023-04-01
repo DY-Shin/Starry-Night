@@ -18,6 +18,9 @@ public class FavoriteLocation extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(length = 50, nullable = false)
+    private String name;
+
     @Column(columnDefinition = "DECIMAL(9,6)", nullable = false)
     private double lat;
 
