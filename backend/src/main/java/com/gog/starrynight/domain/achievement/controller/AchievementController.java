@@ -10,9 +10,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "도전과제 관리")
 @RestController
@@ -27,5 +25,13 @@ public class AchievementController {
         AchievementInfo achievementInfo = achievementService.createAchievement(dto);
         ApiResponse<AchievementInfo> result = new ApiResponse<>(true, "도전과제 생성 성공", achievementInfo);
         return new ResponseEntity<>(result, HttpStatus.CREATED);
+    }
+
+    @Operation(summary = "도전과제 삭제")
+    @DeleteMapping("/achievements/{achievementId}")
+    public ResponseEntity<ApiResponse> deleteAchievement(@PathVariable Long achievementId) {
+        achievementService.deleteAchievement(achievementId);
+        ApiResponse result = new ApiResponse(true, "도전과제 삭제 성공");
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }
