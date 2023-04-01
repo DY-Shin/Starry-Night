@@ -19,9 +19,12 @@ public class UserSimpleInfo {
         this.name = user.getName();
 
         DataFile profileImage = user.getProfileImage();
+        String path = null;
         if (profileImage != null) {
-            String path = "/datafiles/" + profileImage.getId().toString();
-            this.profileImageUrl = UriUtil.buildUri(path);
+            path = "/datafiles/" + profileImage.getId().toString();
+        } else {
+            path = "/datafiles/1";
         }
+        this.profileImageUrl = UriUtil.buildUri(path);
     }
 }
