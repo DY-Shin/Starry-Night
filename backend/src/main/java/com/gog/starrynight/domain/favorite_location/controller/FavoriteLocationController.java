@@ -2,9 +2,9 @@ package com.gog.starrynight.domain.favorite_location.controller;
 
 import com.gog.starrynight.common.dto.ApiResponse;
 import com.gog.starrynight.common.dto.PagedResult;
-import com.gog.starrynight.common.dto.PagingRequest;
 import com.gog.starrynight.domain.favorite_location.dto.FavoriteLocationCreateRequest;
 import com.gog.starrynight.domain.favorite_location.dto.FavoriteLocationInfo;
+import com.gog.starrynight.domain.favorite_location.dto.FavoriteLocationSearchRequest;
 import com.gog.starrynight.domain.favorite_location.service.FavoriteLocationService;
 import com.gog.starrynight.security.LoginUser;
 import io.swagger.v3.oas.annotations.Operation;
@@ -39,12 +39,12 @@ public class FavoriteLocationController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @Operation(summary = "관심위치 조회")
+    @Operation(summary = "관심위치 검색")
     @GetMapping("/favorite-locations")
     public ResponseEntity<ApiResponse<PagedResult<FavoriteLocationInfo>>> getFavoriteLocation(@AuthenticationPrincipal LoginUser loginUser,
-                                                                                              PagingRequest dto) {
+                                                                                              FavoriteLocationSearchRequest dto) {
         PagedResult<FavoriteLocationInfo> pagedResult = favoriteLocationService.getFavoriteLocation(loginUser.getId(), dto);
-        ApiResponse<PagedResult<FavoriteLocationInfo>> result = new ApiResponse<>(true, "관심위치 조회 성공", pagedResult);
+        ApiResponse<PagedResult<FavoriteLocationInfo>> result = new ApiResponse<>(true, "관심위치 검색 성공", pagedResult);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }
