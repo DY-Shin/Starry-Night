@@ -13,6 +13,6 @@ public interface ConstellationHistoryRepository extends JpaRepository<Constellat
 
     Page<ConstellationHistory> findAllByUserIdAndConstellationId(Pageable pageable, Long userId, Long constellationId);
 
-    @Query("SELECT COUNT(distinct ch) FROM ConstellationHistory ch Where ch.user.id=:userId")
+    @Query("SELECT COUNT(distinct ch.constellation) FROM ConstellationHistory ch Where ch.user.id=:userId")
     int getUserCompletedConstellationCount(Long userId);
 }
