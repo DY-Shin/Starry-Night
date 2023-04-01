@@ -23,7 +23,7 @@ function Equulues() {
             <path d="M70 0h559.99v559.99H70z" />
           </clipPath>
         </defs>
-        <g fill="none" stroke="#000" strokeMiterlimit="10" strokeWidth="41.791" clipPath="url(#z)">
+        <g fill="none" stroke="#7BD6CD" strokeMiterlimit="10" strokeWidth="41.791" clipPath="url(#z)">
           <motion.path
             fill="currentColor"
             variants={icon}
