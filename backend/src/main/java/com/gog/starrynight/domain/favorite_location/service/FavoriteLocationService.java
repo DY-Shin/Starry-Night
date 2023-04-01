@@ -6,6 +6,7 @@ import com.gog.starrynight.common.exception.ResourceAlreadyExistsException;
 import com.gog.starrynight.common.exception.ResourceNotFoundException;
 import com.gog.starrynight.domain.favorite_location.dto.FavoriteLocationCreateRequest;
 import com.gog.starrynight.domain.favorite_location.dto.FavoriteLocationInfo;
+import com.gog.starrynight.domain.favorite_location.dto.FavoriteLocationSearchRequest;
 import com.gog.starrynight.domain.favorite_location.entity.FavoriteLocation;
 import com.gog.starrynight.domain.favorite_location.repository.FavoriteLocationRepository;
 import com.gog.starrynight.domain.user.entity.User;
@@ -34,7 +35,7 @@ public class FavoriteLocationService {
 
         Optional<FavoriteLocation> location = favoriteLocationRepository.findByLatAndLngAndUserId(dto.getLat(), dto.getLng(), requesterId);
         if (location.isPresent()) {
-            throw new ResourceAlreadyExistsException("이미 존재하는 관심 위치입니다.");
+            throw new ResourceAlreadyExistsException("해당 위치는 이미 관심 위치로 등록되어있습니다.");
         }
 
         FavoriteLocation favoriteLocation = FavoriteLocation.builder()
@@ -60,7 +61,7 @@ public class FavoriteLocationService {
         favoriteLocationRepository.delete(favoriteLocation);
     }
 
-    public PagedResult<FavoriteLocationInfo> getFavoriteLocation(Long requesterId, PagingRequest dto) {
+    public PagedResult<FavoriteLocationInfo> getFavoriteLocation(Long requesterId, FavoriteLocationSearchRequest dto) {
         User requester = userRepository.findById(requesterId)
                 .orElseThrow(() -> new ResourceNotFoundException("존재하지 않는 회원입니다."));
 
@@ -68,7 +69,15 @@ public class FavoriteLocationService {
         Sort sort = Sort.by(direction, dto.getSort());
         Pageable pageable = PageRequest.of(dto.getPage(), dto.getSize(), sort);
 
-        Page<FavoriteLocation> queryResult = favoriteLocationRepository.findAllByUserId(pageable, requesterId);
+        boolean searchByName = (dto.getName() != null);
+
+        Page<FavoriteLocation> queryResult = null;
+
+        if (searchByName) {
+            queryResult = favoriteLocationRepository.findAllByUserIdAndNameContaining(pageable, requesterId, dto.getName());
+        } else {
+            queryResult = favoriteLocationRepository.findAllByUserId(pageable, requesterId);
+        }
 
         Page<FavoriteLocationInfo> processedResult = queryResult.map(FavoriteLocationInfo::new);
 

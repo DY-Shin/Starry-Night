@@ -9,7 +9,10 @@ import java.util.Optional;
 
 public interface FavoriteLocationRepository extends JpaRepository<FavoriteLocation, Long> {
     Optional<FavoriteLocation> findByIdAndUserId(Long id, Long userId);
+
     Optional<FavoriteLocation> findByLatAndLngAndUserId(double lat, double lng, Long userId);
 
     Page<FavoriteLocation> findAllByUserId(Pageable pageable, Long userId);
+
+    Page<FavoriteLocation> findAllByUserIdAndNameContaining(Pageable pageable, Long userId, String name);
 }
