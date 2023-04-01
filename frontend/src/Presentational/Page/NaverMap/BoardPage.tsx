@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import * as BoardPostAPI from '../../../Action/Modules/NaverMap/BoardPost';
 import BoardPost from '../../Components/NaverMap/SideBar/Baord/BoardPost';
 import * as BoardStyle from './BoardPage_Style';
+import BoardPagenation from '../../Components/NaverMap/SideBar/Baord/BoardPagenation';
 
 type propsType = {
   map: naver.maps.Map | null;
@@ -14,6 +15,7 @@ function BoardPage(props: propsType) {
   const { map, refreshState, refreshHandler } = props;
   const [resultData, setResultData] = useState<null | BoardPostAPI.resultType>(null);
   const [markerObject, setMarkerObject] = useState<null | naver.maps.Marker[]>(null);
+  const [currentPage, setCurrentPage] = useState(1);
   const TopHeaderElement = useRef<null | HTMLDivElement>(null);
 
   const moveTop = () => {
@@ -22,7 +24,7 @@ function BoardPage(props: propsType) {
 
   async function updateData(): Promise<BoardPostAPI.resultType | null> {
     if (!map) return null;
-    const result = await BoardPostAPI.GetPostData(map, 1);
+    const result = await BoardPostAPI.GetPostData(map, currentPage);
     setResultData(result);
     refreshHandler(false);
     moveTop();
@@ -63,7 +65,7 @@ function BoardPage(props: propsType) {
         BoardPostAPI.clearMarker(markerObject);
       }
     };
-  }, [refreshState]);
+  }, [refreshState, currentPage]);
 
   return (
     <BoardStyle.BoardPageWrapper>
@@ -72,6 +74,7 @@ function BoardPage(props: propsType) {
       {resultData?.content?.map((value, idx) => (
         <BoardPost data={value} setDataHandler={setResultData} key={value.id} idx={idx} markerObject={markerObject} />
       ))}
+      <BoardPagenation currentPage={currentPage} setCurrentPage={setCurrentPage} totalPage={resultData?.totalPages} />
     </BoardStyle.BoardPageWrapper>
   );
 }

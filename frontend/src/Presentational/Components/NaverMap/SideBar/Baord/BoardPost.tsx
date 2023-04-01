@@ -54,7 +54,6 @@ function BoardPost(props: propsType) {
 
   async function likeOn() {
     const likeResultData = await BoardPostAPI.changeLikeOn(data.id);
-    console.log(likeResultData);
     if (likeResultData.success) {
       setDataHandler((prev: BoardPostAPI.resultType | null) => {
         if (!prev) return null;
@@ -84,7 +83,6 @@ function BoardPost(props: propsType) {
 
   async function likeOff() {
     const likeResultData = await BoardPostAPI.changeLikeOff(data.id);
-    console.log(likeResultData);
     if (likeResultData.success) {
       setDataHandler((prev: BoardPostAPI.resultType | null) => {
         if (!prev) return null;
