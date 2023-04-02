@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 public interface ConstellationHistoryRepository extends JpaRepository<ConstellationHistory, Long> {
@@ -15,4 +16,10 @@ public interface ConstellationHistoryRepository extends JpaRepository<Constellat
 
     @Query("SELECT COUNT(distinct ch.constellation) FROM ConstellationHistory ch Where ch.user.id=:userId")
     int getUserCompletedConstellationCount(Long userId);
+
+    @Query("SELECT ch.createdDate FROM ConstellationHistory ch Where ch.id=:constellationId AND ch.user.id=:userId ORDER BY ch.createdDate ASC")
+    LocalDateTime getFirstViewedDateByConstellationIdAndUserId(Long constellationId, Long userId);
+
+    @Query("SELECT COUNT(*) FROM ConstellationHistory ch Where ch.id=:constellationId AND ch.user.id=:userId")
+    Integer getViewCountByConstellationIdAndUserId(Long constellationId, Long userId);
 }
