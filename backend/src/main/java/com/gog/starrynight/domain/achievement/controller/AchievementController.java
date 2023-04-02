@@ -2,15 +2,19 @@ package com.gog.starrynight.domain.achievement.controller;
 
 import com.gog.starrynight.common.dto.ApiResponse;
 import com.gog.starrynight.domain.achievement.dto.AchievementCreateRequest;
+import com.gog.starrynight.domain.achievement.dto.AchievementDetailInfo;
 import com.gog.starrynight.domain.achievement.dto.AchievementInfo;
-import com.gog.starrynight.domain.achievement.entity.Achievement;
 import com.gog.starrynight.domain.achievement.service.AchievementService;
+import com.gog.starrynight.security.LoginUser;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Tag(name = "도전과제 관리")
 @RestController
@@ -32,6 +36,15 @@ public class AchievementController {
     public ResponseEntity<ApiResponse> deleteAchievement(@PathVariable Long achievementId) {
         achievementService.deleteAchievement(achievementId);
         ApiResponse result = new ApiResponse(true, "도전과제 삭제 성공");
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @Operation(summary = "도전과제 목록 조회")
+    @GetMapping("/achievements")
+    public ResponseEntity<ApiResponse<List<AchievementDetailInfo>>> getAchievementList(@AuthenticationPrincipal LoginUser loginUser) {
+        Long requesterId = (loginUser != null ? loginUser.getId() : null);
+        List<AchievementDetailInfo> achievementList = achievementService.getAchievementList(requesterId);
+        ApiResponse<List<AchievementDetailInfo>> result = new ApiResponse(true, "도전과제 목록 조회 성공", achievementList);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }
