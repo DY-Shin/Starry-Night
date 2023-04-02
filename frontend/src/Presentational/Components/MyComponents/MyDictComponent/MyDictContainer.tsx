@@ -30,21 +30,26 @@ export const DictSubBox = styled.div`
 `;
 
 export const BjrBox = styled.div`
-  width: 14%;
-  height: 100%;
+  width: 150px;
+  height: 220px;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #7bd6cd;
   /* background-color: purple; */
   flex-direction: column;
+  &:hover {
+    color: goldenrod;
+    transition: all 2s;
+    cursor: help;
+  }
 `;
 
-export const BjrPhoto = styled.div`
+export const BjrSymbol = styled.div`
   width: 140px;
   height: 140px;
   display: flex;
   font-size: 1.5rem;
-  color: whitesmoke;
   align-items: center;
   justify-content: center;
   background: #016040;

@@ -1,43 +1,43 @@
 import React from 'react';
-import Auriga from '../../../../MyAssets/symbols/Auriga';
-import CanisMajor from '../../../../MyAssets/symbols/CanisMajor';
-import CanisMinor from '../../../../MyAssets/symbols/CanisMinor';
+import Auriga from '../../../../Assets/Mypage/symbols/Auriga';
+import CanisMajor from '../../../../Assets/Mypage/symbols/CanisMajor';
+import CanisMinor from '../../../../Assets/Mypage/symbols/CanisMinor';
 
-import Orion from '../../../../MyAssets/symbols/Orion';
-import Taurus from '../../../../MyAssets/symbols/Taurus';
+import Orion from '../../../../Assets/Mypage/symbols/Orion';
+import Taurus from '../../../../Assets/Mypage/symbols/Taurus';
 import * as Dictainer from '../../../Components/MyComponents/MyDictComponent/MyDictContainer';
 
 function MyDictDongTop() {
   return (
     <Dictainer.DictSubBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <CanisMajor />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>큰개자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <Auriga />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>마차부자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <Orion />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>오리온자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <CanisMinor />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>작은개자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <Taurus />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>황소자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
     </Dictainer.DictSubBox>

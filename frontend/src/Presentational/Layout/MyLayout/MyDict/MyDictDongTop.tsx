@@ -1,42 +1,42 @@
 import React from 'react';
-import Gemini from '../../../../MyAssets/symbols/Gemini';
-import Cancer from '../../../../MyAssets/symbols/Cancer';
-import Eridanus from '../../../../MyAssets/symbols/Eridanus';
-import Lupus from '../../../../MyAssets/symbols/Lupus';
-import Monoceros from '../../../../MyAssets/symbols/Monoceros';
+import Gemini from '../../../../Assets/Mypage/symbols/Gemini';
+import Cancer from '../../../../Assets/Mypage/symbols/Cancer';
+import Eridanus from '../../../../Assets/Mypage/symbols/Eridanus';
+import Lupus from '../../../../Assets/Mypage/symbols/Lupus';
+import Monoceros from '../../../../Assets/Mypage/symbols/Monoceros';
 import * as Dictainer from '../../../Components/MyComponents/MyDictComponent/MyDictContainer';
 
 function MyDictDongBot() {
   return (
     <Dictainer.DictSubBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <Gemini />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>쌍둥이자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <Lupus />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>토끼자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <Eridanus />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>에리다누스자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <Cancer />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>게자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <Monoceros />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>외뿔소자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
     </Dictainer.DictSubBox>

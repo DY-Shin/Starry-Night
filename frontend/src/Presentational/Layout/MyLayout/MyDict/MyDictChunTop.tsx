@@ -1,56 +1,56 @@
 import React from 'react';
-import Bootes from '../../../../MyAssets/symbols/Bootes';
-import CoronaBorealis from '../../../../MyAssets/symbols/CoronaBorealis';
-import Corvus from '../../../../MyAssets/symbols/Corvus';
-import Hydra from '../../../../MyAssets/symbols/Hydra';
-import Leo from '../../../../MyAssets/symbols/Leo';
-import Libra from '../../../../MyAssets/symbols/Libra';
-import Virgo from '../../../../MyAssets/symbols/Virgo';
+import Bootes from '../../../../Assets/Mypage/symbols/Bootes';
+import CoronaBorealis from '../../../../Assets/Mypage/symbols/CoronaBorealis';
+import Corvus from '../../../../Assets/Mypage/symbols/Corvus';
+import Hydra from '../../../../Assets/Mypage/symbols/Hydra';
+import Leo from '../../../../Assets/Mypage/symbols/Leo';
+import Libra from '../../../../Assets/Mypage/symbols/Libra';
+import Virgo from '../../../../Assets/Mypage/symbols/Virgo';
 import * as Dictainer from '../../../Components/MyComponents/MyDictComponent/MyDictContainer';
 
 function MyDictChunTop() {
   return (
     <Dictainer.DictSubBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <Bootes />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>목동자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <Virgo />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>처녀자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <Leo />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>사자자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <Hydra />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>바다뱀자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <CoronaBorealis />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>왕관자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <Corvus />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>까마귀자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <Libra />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>천칭자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
     </Dictainer.DictSubBox>

@@ -4,7 +4,7 @@ import * as MyStyle from '../../Components/MyComponents/MyStyle';
 import MyGlobal from '../../Components/MyComponents/MyGlobalStyle';
 import * as MyProfileBox from '../../Components/MyComponents/MyProfileComponent/MyProfileBox';
 // import MyHeader from '../../Layout/MyLayout/MyHeader';
-import Vulpecula from '../../../MyAssets/symbols/Vulpecula';
+import Vulpecula from '../../../Assets/Mypage/symbols/Vulpecula';
 
 function MyProfile() {
   return (

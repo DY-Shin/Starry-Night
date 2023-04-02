@@ -1,56 +1,56 @@
 import React from 'react';
-import Aries from '../../../../MyAssets/symbols/Aries';
-import Cancer from '../../../../MyAssets/symbols/Cancer';
-import Gemini from '../../../../MyAssets/symbols/Gemini';
-import Leo from '../../../../MyAssets/symbols/Leo';
-import Libra from '../../../../MyAssets/symbols/Libra';
-import Taurus from '../../../../MyAssets/symbols/Taurus';
-import Virgo from '../../../../MyAssets/symbols/Virgo';
+import Aries from '../../../../Assets/Mypage/symbols/Aries';
+import Cancer from '../../../../Assets/Mypage/symbols/Cancer';
+import Gemini from '../../../../Assets/Mypage/symbols/Gemini';
+import Leo from '../../../../Assets/Mypage/symbols/Leo';
+import Libra from '../../../../Assets/Mypage/symbols/Libra';
+import Taurus from '../../../../Assets/Mypage/symbols/Taurus';
+import Virgo from '../../../../Assets/Mypage/symbols/Virgo';
 import * as Dictainer from '../../../Components/MyComponents/MyDictComponent/MyDictContainer';
 
 function MyDictSolTop() {
   return (
     <Dictainer.DictSubBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <Aries />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>양자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <Taurus />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>황소자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <Gemini />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>쌍둥이자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <Cancer />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>게자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <Leo />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>사자자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <Virgo />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>처녀자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <Libra />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>천칭자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
     </Dictainer.DictSubBox>

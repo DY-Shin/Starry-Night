@@ -1,49 +1,49 @@
 import React from 'react';
-import Scutum from '../../../../MyAssets/symbols/Scutum';
-import Sagitta from '../../../../MyAssets/symbols/Sagitta';
-import Hercules from '../../../../MyAssets/symbols/Hercules';
-import Capricornus from '../../../../MyAssets/symbols/Capricornus';
+import Scutum from '../../../../Assets/Mypage/symbols/Scutum';
+import Sagitta from '../../../../Assets/Mypage/symbols/Sagitta';
+import Hercules from '../../../../Assets/Mypage/symbols/Hercules';
+import Capricornus from '../../../../Assets/Mypage/symbols/Capricornus';
 import * as Dictainer from '../../../Components/MyComponents/MyDictComponent/MyDictContainer';
-import Delphinus from '../../../../MyAssets/symbols/Delphinus';
-import Vulpecula from '../../../../MyAssets/symbols/Vulpecula';
+import Delphinus from '../../../../Assets/Mypage/symbols/Delphinus';
+import Vulpecula from '../../../../Assets/Mypage/symbols/Vulpecula';
 
 function MyDictXiaBot() {
   return (
     <Dictainer.DictSubBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <Hercules />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>헤라클레스자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <Capricornus />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>염소자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <Sagitta />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>화살자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <Scutum />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>방패자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <Delphinus />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>돌고래자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <Vulpecula />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>여우자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
     </Dictainer.DictSubBox>

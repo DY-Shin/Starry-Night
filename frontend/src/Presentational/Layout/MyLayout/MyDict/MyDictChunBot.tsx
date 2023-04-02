@@ -1,49 +1,49 @@
 import React from 'react';
-import CanesVenatici from '../../../../MyAssets/symbols/CanesVenatici';
-import ComaBerenices from '../../../../MyAssets/symbols/ComaBerenices';
-import Crater from '../../../../MyAssets/symbols/Crater';
-import LeoMinor from '../../../../MyAssets/symbols/LeoMinor';
-import Lynx from '../../../../MyAssets/symbols/Lynx';
-import Sextans from '../../../../MyAssets/symbols/Sextans';
+import CanesVenatici from '../../../../Assets/Mypage/symbols/CanesVenatici';
+import ComaBerenices from '../../../../Assets/Mypage/symbols/ComaBerenices';
+import Crater from '../../../../Assets/Mypage/symbols/Crater';
+import LeoMinor from '../../../../Assets/Mypage/symbols/LeoMinor';
+import Lynx from '../../../../Assets/Mypage/symbols/Lynx';
+import Sextans from '../../../../Assets/Mypage/symbols/Sextans';
 import * as Dictainer from '../../../Components/MyComponents/MyDictComponent/MyDictContainer';
 
 function MyDictChunBot() {
   return (
     <Dictainer.DictSubBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <CanesVenatici />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>사냥개자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <Lynx />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>살쾡이자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <Crater />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>컵자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <LeoMinor />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>작은사자자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <ComaBerenices />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>머리털자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
+        <Dictainer.BjrSymbol>
           <Sextans />
-        </Dictainer.BjrPhoto>
+        </Dictainer.BjrSymbol>
         <Dictainer.BjrName>육분의자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
     </Dictainer.DictSubBox>
