@@ -1,8 +1,13 @@
 package com.gog.starrynight.domain.constellation.service;
 
 import com.gog.starrynight.common.exception.ResourceNotFoundException;
+import com.gog.starrynight.domain.achievement.entity.Achievement;
+import com.gog.starrynight.domain.achievement.repository.AchievementRepository;
+import com.gog.starrynight.domain.achievement_constellation.entity.AchievementConstellation;
+import com.gog.starrynight.domain.achievement_constellation.repository.AchievementConstellationRepository;
 import com.gog.starrynight.domain.constellation.dto.ConstellationCreateRequest;
 import com.gog.starrynight.domain.constellation.dto.ConstellationDetailInfo;
+import com.gog.starrynight.domain.constellation.dto.ConstellationListItemInfo;
 import com.gog.starrynight.domain.constellation.dto.ConstellationSimpleInfo;
 import com.gog.starrynight.domain.constellation.entity.Constellation;
 import com.gog.starrynight.domain.constellation.repository.ConstellationRepository;
@@ -12,6 +17,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional(readOnly = true)
@@ -19,6 +26,8 @@ import java.time.LocalDateTime;
 public class ConstellationService {
     private final ConstellationRepository constellationRepository;
     private final ConstellationHistoryRepository constellationHistoryRepository;
+    private final AchievementRepository achievementRepository;
+    private final AchievementConstellationRepository achievementConstellationRepository;
 
     @Transactional
     public ConstellationSimpleInfo createConstellation(ConstellationCreateRequest dto) {
@@ -60,5 +69,25 @@ public class ConstellationService {
         }
 
         return new ConstellationDetailInfo(constellation, firstViewedDate, viewCount);
+    }
+
+    public List<ConstellationListItemInfo> getConstellationsByAchievement(Long achievementId, Long requesterId) {
+        Achievement achievement = achievementRepository.findById(achievementId)
+                .orElseThrow(() -> new ResourceNotFoundException("존재하지 않는 도전과제입니다."));
+
+        List<AchievementConstellation> achievementConstellations = achievementConstellationRepository.findAllByAchievementId(achievement.getId());
+
+        return achievementConstellations.stream()
+                .map(achievementConstellation -> getConstellationListItemInfo(requesterId, achievementConstellation))
+                .collect(Collectors.toList());
+    }
+
+    public ConstellationListItemInfo getConstellationListItemInfo(Long requesterId, AchievementConstellation achievementConstellation) {
+        Constellation constellation = achievementConstellation.getConstellation();
+        boolean completed = false;
+        if (requesterId != null) {
+            completed = constellationHistoryRepository.existsByUserIdAndConstellationId(requesterId, constellation.getId());
+        }
+        return new ConstellationListItemInfo(constellation, completed);
     }
 }

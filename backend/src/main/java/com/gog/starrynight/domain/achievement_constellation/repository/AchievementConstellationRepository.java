@@ -14,4 +14,6 @@ public interface AchievementConstellationRepository extends JpaRepository<Achiev
 
     @Query("SELECT ac.constellation.id FROM AchievementConstellation ac WHERE ac.achievement.id = :achievementId")
     List<Long> getConstellationIdsByAchievementId(Long achievementId);
+
+    List<AchievementConstellation> findAllByAchievementId(Long achievementId);
 }

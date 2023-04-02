@@ -3,7 +3,7 @@ package com.gog.starrynight.domain.constellation.controller;
 import com.gog.starrynight.common.dto.ApiResponse;
 import com.gog.starrynight.domain.constellation.dto.ConstellationCreateRequest;
 import com.gog.starrynight.domain.constellation.dto.ConstellationDetailInfo;
-import com.gog.starrynight.domain.constellation.dto.ConstellationInfo;
+import com.gog.starrynight.domain.constellation.dto.ConstellationListItemInfo;
 import com.gog.starrynight.domain.constellation.dto.ConstellationSimpleInfo;
 import com.gog.starrynight.domain.constellation.service.ConstellationService;
 import com.gog.starrynight.security.LoginUser;
@@ -14,6 +14,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Tag(name = "별자리 관리")
 @RestController
@@ -44,6 +46,16 @@ public class ConstellationController {
         Long requesterId = (loginUser != null ? loginUser.getId() : null);
         ConstellationDetailInfo constellationDetailInfo = constellationService.getConstellationDetailInfo(constellationId, requesterId);
         ApiResponse<ConstellationDetailInfo> result = new ApiResponse(true, "별자리 조회 성공", constellationDetailInfo);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @Operation(summary = "도전과제별 별자리 목록 조회")
+    @GetMapping("/achievements/{achievementId}/constellations")
+    public ResponseEntity<ApiResponse<List<ConstellationListItemInfo>>> getConstellationsByAchievement(@AuthenticationPrincipal LoginUser loginUser,
+                                                                                                       @PathVariable Long achievementId) {
+        Long requesterId = (loginUser != null ? loginUser.getId() : null);
+        List<ConstellationListItemInfo> constellations = constellationService.getConstellationsByAchievement(achievementId, requesterId);
+        ApiResponse<List<ConstellationListItemInfo>> result = new ApiResponse(true, "도전과제별 별자리 목록 조회 성공", constellations);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }
