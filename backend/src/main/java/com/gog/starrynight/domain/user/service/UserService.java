@@ -101,15 +101,14 @@ public class UserService {
         int postCount = postRepository.getPostCountByUser(userId);
         boolean permission = (user.getId().equals(requesterId));
 
-        UserPageInfo userPageInfo = UserPageInfo.builder()
-                .completedConstellationCount(completedConstellationCount)
-                .totalConstellationCount(totalConstellationCount)
-                .completedAchievementCount(completedAchievementCount)
-                .totalAchievementCount(totalAchievementCount)
-                .postCount(postCount)
-                .permission(permission)
-                .build();
-
-        return userPageInfo;
+        return new UserPageInfo(
+                user,
+                completedConstellationCount,
+                totalConstellationCount,
+                completedAchievementCount,
+                totalAchievementCount,
+                postCount,
+                permission
+        );
     }
 }
