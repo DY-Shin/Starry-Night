@@ -2,14 +2,17 @@ package com.gog.starrynight.domain.constellation.controller;
 
 import com.gog.starrynight.common.dto.ApiResponse;
 import com.gog.starrynight.domain.constellation.dto.ConstellationCreateRequest;
+import com.gog.starrynight.domain.constellation.dto.ConstellationDetailInfo;
 import com.gog.starrynight.domain.constellation.dto.ConstellationInfo;
 import com.gog.starrynight.domain.constellation.dto.ConstellationSimpleInfo;
 import com.gog.starrynight.domain.constellation.service.ConstellationService;
+import com.gog.starrynight.security.LoginUser;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "별자리 관리")
@@ -36,9 +39,11 @@ public class ConstellationController {
 
     @Operation(summary = "별자리 상세 조회")
     @GetMapping("/constellations/{constellationId}")
-    public ResponseEntity<ApiResponse> checkConstellation(@PathVariable("constellationId") Long constellationId) {
-        ConstellationInfo constellationInfo = constellationService.checkConstellation(constellationId);
-        ApiResponse result = new ApiResponse(true, "별자리 조회", constellationInfo);
+    public ResponseEntity<ApiResponse<ConstellationDetailInfo>> getConstellationDetailInfo(@AuthenticationPrincipal LoginUser loginUser,
+                                                                                           @PathVariable("constellationId") Long constellationId) {
+        Long requesterId = (loginUser != null ? loginUser.getId() : null);
+        ConstellationDetailInfo constellationDetailInfo = constellationService.getConstellationDetailInfo(constellationId, requesterId);
+        ApiResponse<ConstellationDetailInfo> result = new ApiResponse(true, "별자리 조회 성공", constellationDetailInfo);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }
