@@ -34,9 +34,9 @@ public class CelestialWeatherController {
 
     @Operation(summary = "천체기상도 조회")
     @GetMapping("/celestial-weather")
-    public ResponseEntity<ApiResponse> getCelestialWeather(CelestialWeatherRequest dto) throws JsonProcessingException {
+    public ResponseEntity<ApiResponse<CelestialWeatherInfo>> getCelestialWeather(CelestialWeatherRequest dto) throws JsonProcessingException {
         CelestialWeatherInfo celestialWeatherInfo = celestialWeatherService.getCelestialWeather(dto);
-        ApiResponse result = new ApiResponse(true, "천체기상도 조회 성공", celestialWeatherInfo);
+        ApiResponse<CelestialWeatherInfo> result = new ApiResponse(true, "천체기상도 조회 성공", celestialWeatherInfo);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
