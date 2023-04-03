@@ -5,10 +5,7 @@ import com.gog.starrynight.domain.achievement.entity.Achievement;
 import com.gog.starrynight.domain.achievement.repository.AchievementRepository;
 import com.gog.starrynight.domain.achievement_constellation.entity.AchievementConstellation;
 import com.gog.starrynight.domain.achievement_constellation.repository.AchievementConstellationRepository;
-import com.gog.starrynight.domain.constellation.dto.ConstellationCreateRequest;
-import com.gog.starrynight.domain.constellation.dto.ConstellationDetailInfo;
-import com.gog.starrynight.domain.constellation.dto.ConstellationListItemInfo;
-import com.gog.starrynight.domain.constellation.dto.ConstellationSimpleInfo;
+import com.gog.starrynight.domain.constellation.dto.*;
 import com.gog.starrynight.domain.constellation.entity.Constellation;
 import com.gog.starrynight.domain.constellation.repository.ConstellationRepository;
 import com.gog.starrynight.domain.constellation_history.repository.ConstellationHistoryRepository;
@@ -55,6 +52,11 @@ public class ConstellationService {
                 .orElseThrow(() -> new ResourceNotFoundException("존재하지 않는 별자리입니다."));
 
         constellationRepository.delete(constellation);
+    }
+
+    public List<ConstellationSimpleInfo> getConstellationSimpleInfos() {
+        List<Constellation> constellations = constellationRepository.findAll();
+        return constellations.stream().map(ConstellationSimpleInfo::new).collect(Collectors.toList());
     }
 
     public ConstellationDetailInfo getConstellationDetailInfo(Long constellationId, Long requesterId) {
