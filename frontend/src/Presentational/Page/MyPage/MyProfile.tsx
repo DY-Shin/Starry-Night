@@ -3,19 +3,17 @@ import { Link } from 'react-router-dom';
 import * as MyStyle from '../../Components/MyComponents/MyStyle';
 import MyGlobal from '../../Components/MyComponents/MyGlobalStyle';
 import * as MyProfileBox from '../../Components/MyComponents/MyProfileComponent/MyProfileBox';
+import { UserStore } from '../../../store';
 // import MyHeader from '../../Layout/MyLayout/MyHeader';
-import Vulpecula from '../../../Assets/Mypage/symbols/Vulpecula';
 
 function MyProfile() {
+  const { name, profileImageUrl, setUser } = UserStore();
   return (
     <MyStyle.Container>
       <MyGlobal />
       <MyProfileBox.ProfileMainContainer>
         <MyProfileBox.ProfileSubContainer>
-          <MyProfileBox.Photo>
-            <h1>hi</h1>
-            <Vulpecula />
-          </MyProfileBox.Photo>
+          <MyProfileBox.Photo src={profileImageUrl} />
           <MyProfileBox.Nick>
             <h2>비둘기가호롤롤롤로날아가</h2>
           </MyProfileBox.Nick>
