@@ -12,7 +12,7 @@ export const WriteBlackBG = styled.div`
 export const WriteWrapper = styled.div`
   background-color: white;
   margin: auto;
-  margin-top: 10%;
+  margin-top: 2%;
   width: 500px;
   height: 700px;
   border-radius: 10px;
