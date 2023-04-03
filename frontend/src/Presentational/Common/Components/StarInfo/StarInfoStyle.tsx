@@ -8,7 +8,7 @@ export const StarInfoContainer = styled.div`
   align-items: center;
   justify-content: middle;
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.5);
 `;
 
 export const StarInfoBox = styled.dialog`
@@ -23,24 +23,24 @@ export const StarInfoBox = styled.dialog`
   align-items: center;
   border: none;
   border-radius: 3px;
-  box-shadow: 0 0 30px rgba(30, 30, 30, 0.185);
   box-sizing: border-box;
-  background-color: white;
+  background-color: #330033;
   z-index: 10000;
 `;
 
 export const StarInfoTitle = styled.div`
-  width: 100%;
-  height: 10%;
-  background-color: #330033;
+  width: 400px;
+  height: 60px;
+  font-size: 40px;
   align-items: center;
   justify-content: center;
-  align-content: center;
+  text-align: center;
+  vertical-align: center;
   color: floralwhite;
 `;
 export const StarInfoPhoto = styled.div`
-  width: 100%;
-  height: 40%;
+  width: 400px;
+  height: 240px;
   background-color: blue;
 `;
 
@@ -49,18 +49,28 @@ export const WrapImg = styled(Slider)`
 `;
 
 export const StarInfoDescription = styled.div`
-  width: 100%;
-  height: 20%;
-  background-color: green;
+  width: 400px;
+  height: 120px;
+  border-top: solid 3px grey;
+  border-bottom: solid 1.5px grey;
+  box-sizing: border-box;
+  overflow: auto;
+  white-space: normal;
+  word-break: break-all;
 `;
 export const StarInfoManual = styled.div`
-  width: 100%;
-  height: 20%;
-  background-color: skyblue;
+  width: 400px;
+  height: 120px;
+  border-top: solid 1.5px grey;
+  border-bottom: solid 3px grey;
+  box-sizing: border-box;
+  overflow: auto;
+  white-space: normal;
+  word-break: break-all;
 `;
 export const StarInfoEtc = styled.div`
-  width: 100%;
-  height: 10%;
+  width: 400px;
+  height: 60px;
   background-color: red;
 `;
 
