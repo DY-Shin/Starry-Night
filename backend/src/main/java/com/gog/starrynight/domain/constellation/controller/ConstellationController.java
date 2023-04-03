@@ -66,4 +66,12 @@ public class ConstellationController {
         ApiResponse<List<ConstellationListItemInfo>> result = new ApiResponse(true, "도전과제별 별자리 목록 조회 성공", constellations);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
+
+    @Operation(summary = "유저의 전체 별자리에 대한 현황 조회")
+    @GetMapping("/users/{userId}/constellations")
+    public ResponseEntity<ApiResponse<List<ConstellationListItemInfo>>> getConstellationInfosByUser(@PathVariable Long userId) {
+        List<ConstellationListItemInfo> constellationSimpleInfos = constellationService.getConstellationInfosByUser(userId);
+        ApiResponse<List<ConstellationListItemInfo>> result = new ApiResponse(true, "유저의 전체 별자리에 대한 현황 조회 성공", constellationSimpleInfos);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
 }
