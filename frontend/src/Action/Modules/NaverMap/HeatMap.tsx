@@ -42,11 +42,51 @@ export async function TurnOnHeatMap(maps: naver.maps.Map | null): Promise<naver.
     convertData.push(new naver.maps.visualization.WeightedLocation(value.lat, value.lng, value.weight));
   });
 
+  let radius;
+  let opacity;
+  const zoom: number = map.getZoom();
+  console.log(zoom);
+  // eslint-disable-next-line default-case
+  switch (true) {
+    case zoom <= 8:
+      radius = 16;
+      opacity = 0.38;
+      break;
+    case zoom <= 9:
+      radius = 30;
+      opacity = 0.42;
+      break;
+    case zoom <= 10:
+      radius = 35;
+      opacity = 0.33;
+      break;
+    case zoom <= 11:
+      radius = 35;
+      opacity = 0.38;
+      break;
+    case zoom <= 12:
+      radius = 32;
+      opacity = 0.4;
+      break;
+    case zoom <= 13:
+      radius = 32;
+      opacity = 0.42;
+      break;
+    case zoom <= 14:
+      radius = 60;
+      opacity = 0.5;
+      break;
+    case zoom <= 15:
+      radius = 60;
+      opacity = 0.54;
+      break;
+  }
+
   const heatmap = new naver.maps.visualization.HeatMap({
     map: maps,
     data: convertData,
-    radius: 32,
-    opacity: 0.3,
+    radius,
+    opacity,
   });
 
   return heatmap;
