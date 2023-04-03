@@ -9,6 +9,8 @@ import com.gog.starrynight.domain.constellation.dto.*;
 import com.gog.starrynight.domain.constellation.entity.Constellation;
 import com.gog.starrynight.domain.constellation.repository.ConstellationRepository;
 import com.gog.starrynight.domain.constellation_history.repository.ConstellationHistoryRepository;
+import com.gog.starrynight.domain.user.entity.User;
+import com.gog.starrynight.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,6 +27,7 @@ public class ConstellationService {
     private final ConstellationHistoryRepository constellationHistoryRepository;
     private final AchievementRepository achievementRepository;
     private final AchievementConstellationRepository achievementConstellationRepository;
+    private final UserRepository userRepository;
 
     @Transactional
     public ConstellationSimpleInfo createConstellation(ConstellationCreateRequest dto) {
@@ -80,16 +83,27 @@ public class ConstellationService {
         List<AchievementConstellation> achievementConstellations = achievementConstellationRepository.findAllByAchievementId(achievement.getId());
 
         return achievementConstellations.stream()
-                .map(achievementConstellation -> getConstellationListItemInfo(requesterId, achievementConstellation))
+                .map(achievementConstellation -> getConstellationListItemInfo(requesterId, achievementConstellation.getConstellation()))
                 .collect(Collectors.toList());
     }
 
-    public ConstellationListItemInfo getConstellationListItemInfo(Long requesterId, AchievementConstellation achievementConstellation) {
-        Constellation constellation = achievementConstellation.getConstellation();
+    public List<ConstellationListItemInfo> getConstellationInfosByUser(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("존재하지 않는 사용자입니다."));
+
+        List<Constellation> constellations = constellationRepository.findAll();
+
+        return constellations.stream()
+                .map(constellation -> getConstellationListItemInfo(userId, constellation))
+                .collect(Collectors.toList());
+    }
+
+    public ConstellationListItemInfo getConstellationListItemInfo(Long userId, Constellation constellation) {
         boolean completed = false;
-        if (requesterId != null) {
-            completed = constellationHistoryRepository.existsByUserIdAndConstellationId(requesterId, constellation.getId());
+        if (userId != null) {
+            completed = constellationHistoryRepository.existsByUserIdAndConstellationId(userId, constellation.getId());
         }
         return new ConstellationListItemInfo(constellation, completed);
     }
+
 }
