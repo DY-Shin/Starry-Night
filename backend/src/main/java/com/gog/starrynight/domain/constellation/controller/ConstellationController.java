@@ -31,6 +31,14 @@ public class ConstellationController {
         return new ResponseEntity<>(result, HttpStatus.CREATED);
     }
 
+    @Operation(summary = "별자리 목록 전체 조회")
+    @GetMapping("/constellations")
+    public ResponseEntity<ApiResponse<List<ConstellationSimpleInfo>>> getConstellations() {
+        List<ConstellationSimpleInfo> constellationSimpleInfos = constellationService.getConstellationSimpleInfos();
+        ApiResponse<List<ConstellationSimpleInfo>> result = new ApiResponse(true, "별자리 전체 조회 성공", constellationSimpleInfos);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
     @Operation(summary = "별자리 삭제")
     @DeleteMapping("/constellations/{constellationId}")
     public ResponseEntity<ApiResponse> deleteConstellation(@PathVariable("constellationId") Long constellationId) {
