@@ -1,15 +1,21 @@
-import React from 'react';
+/* eslint-disable no-undef */
+import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import { GrPrevious, GrNext } from 'react-icons/gr';
+import Swal from 'sweetalert2';
 import * as BoardPagenationStyle from './BoardPagenation_Style';
+import WritePost from '../../../Board/WritePost';
 
 type propsType = {
   currentPage: number;
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
   totalPage: number | undefined;
+  map: naver.maps.Map | null;
 };
 
 function BoardPagenation(props: propsType) {
-  const { currentPage, setCurrentPage, totalPage } = props;
+  const { currentPage, setCurrentPage, totalPage, map } = props;
+  const [isMoodalOpen, setModalOpen] = useState(false);
 
   function moveNextPage() {
     setCurrentPage(currentPage + 1);
@@ -19,12 +25,33 @@ function BoardPagenation(props: propsType) {
     setCurrentPage(currentPage - 1);
   }
 
+  useEffect(() => {
+    if (isMoodalOpen) {
+      const writeModal = <WritePost firstCenter={map?.getCenter()} setModalOpen={setModalOpen} />;
+      const modalContainer = document.createElement('div');
+      modalContainer.className = 'WriteModal';
+      document.body.appendChild(modalContainer);
+      ReactDOM.render(writeModal, modalContainer);
+    } else {
+      const writeModal = document.getElementsByClassName('WriteModal')[0];
+      if (writeModal) {
+        writeModal.remove();
+      }
+    }
+  }, [isMoodalOpen]);
+
   let previousButton;
+  let nextButton;
   if (totalPage !== currentPage) {
     if (currentPage === 1) {
       previousButton = <GrPrevious visibility="hidden" className="icon" />;
     } else {
       previousButton = <GrPrevious className="icon" onClick={() => movePrevPage} />;
+    }
+    if (totalPage === undefined) {
+      nextButton = <GrNext visibility="hidden" className="icon" />;
+    } else {
+      nextButton = <GrNext className="icon" onClick={() => moveNextPage} />;
     }
   } else {
     previousButton = <GrPrevious visibility="hidden" className="icon" />;
@@ -34,12 +61,11 @@ function BoardPagenation(props: propsType) {
     <BoardPagenationStyle.PagenationWrapper>
       {previousButton}
 
-      <BoardPagenationStyle.WriteButton>글쓰기</BoardPagenationStyle.WriteButton>
-      {totalPage !== currentPage ? (
-        <GrNext className="icon" onClick={() => moveNextPage} />
-      ) : (
-        <GrNext visibility="hidden" className="icon" />
-      )}
+      <BoardPagenationStyle.WriteButton onClick={() => setModalOpen(!isMoodalOpen)}>
+        글쓰기
+      </BoardPagenationStyle.WriteButton>
+      {/* {isMoodalOpen ? <WritePost firstCenter={map?.getCenter()} /> : null} */}
+      {nextButton}
       {/* <BoardPagenationStyle.PrevButton>&lt;</BoardPagenationStyle.PrevButton>
       <BoardPagenationStyle.NextButton>&gt;</BoardPagenationStyle.NextButton> */}
     </BoardPagenationStyle.PagenationWrapper>

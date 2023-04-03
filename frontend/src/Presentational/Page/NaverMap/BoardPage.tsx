@@ -74,7 +74,12 @@ function BoardPage(props: propsType) {
       {resultData?.content?.map((value, idx) => (
         <BoardPost data={value} setDataHandler={setResultData} key={value.id} idx={idx} markerObject={markerObject} />
       ))}
-      <BoardPagenation currentPage={currentPage} setCurrentPage={setCurrentPage} totalPage={resultData?.totalPages} />
+      <BoardPagenation
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        totalPage={resultData?.totalPages}
+        map={map}
+      />
     </BoardStyle.BoardPageWrapper>
   );
 }
