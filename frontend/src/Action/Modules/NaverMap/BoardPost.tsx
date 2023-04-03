@@ -81,7 +81,6 @@ export async function writePost(post: postCreateType, images: File[]): Promise<a
   return data;
 }
 
-// export async function MakeMarker(maps: naver.maps.Map): Promise<naver.maps.Marker[] | null> {
 export async function GetPostData(maps: naver.maps.Map, page: number, size = 5): Promise<resultType | null> {
   const map = maps;
   const mapBound: naver.maps.Bounds = map.getBounds();
@@ -92,6 +91,7 @@ export async function GetPostData(maps: naver.maps.Map, page: number, size = 5):
       `${process.env.REACT_APP_API_SERVER_URL}/posts?pointA=${mapBound.getMax().y}&pointA=${
         mapBound.getMax().x
       }&pointB=${mapBound.getMin().y}&pointB=${mapBound.getMin().x}&page=${page - 1}&size=${size}`,
+      { withCredentials: true },
     );
     data = res.data.data as resultType;
   } catch (error) {
@@ -123,5 +123,45 @@ export function clearMarker(markers: naver.maps.Marker[]) {
   if (!markers) return;
   markers.forEach((item) => {
     item.setMap(null);
+  });
+}
+
+export function changeLikeOn(postId: number) {
+  return axios
+    .post(`${process.env.REACT_APP_API_SERVER_URL}/posts/${postId}/likes`, null, {
+      withCredentials: true,
+    })
+    .then((res) => res.data)
+    .catch((res) => res);
+}
+
+export function changeLikeOff(postId: number) {
+  return axios
+    .delete(`${process.env.REACT_APP_API_SERVER_URL}/posts/${postId}/likes`, { withCredentials: true })
+    .then((res) => res.data)
+    .catch((res) => res);
+}
+
+export function sizeUp(markers: naver.maps.Marker[], idx: number) {
+  const prevOption = markers[idx].getOptions();
+  markers[idx].setOptions({
+    ...prevOption,
+    icon: {
+      url: PostPinMarker,
+      size: new naver.maps.Size(50, 50),
+      scaledSize: new naver.maps.Size(50, 50),
+    },
+  });
+}
+
+export function sizeReturn(markers: naver.maps.Marker[], idx: number) {
+  const prevOption = markers[idx].getOptions();
+  markers[idx].setOptions({
+    ...prevOption,
+    icon: {
+      url: PostPinMarker,
+      size: new naver.maps.Size(30, 30),
+      scaledSize: new naver.maps.Size(30, 30),
+    },
   });
 }
