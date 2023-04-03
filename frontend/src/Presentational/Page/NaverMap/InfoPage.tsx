@@ -1,37 +1,42 @@
 import React from 'react';
 import * as InfoPageStyle from './InfoPage_Style';
+import HumidityComponent from '../../Components/Info/HumidityComponent';
 
 function InfoPage() {
   return (
     <InfoPageStyle.InfoWrapper>
-      <div>info페이지</div>
-      <div>info페이지</div>
-      <div>info페이지</div>
-      <div>info페이지</div>
-      <div>info페이지</div>
-      <div>info페이지</div>
-      <div>info페이지</div>
-      <div>info페이지</div>
-      <div>info페이지</div>
-      <div>info페이지</div>
-      <div>info페이지</div>
-      <div>info페이지</div>
-      <div>info페이지</div>
-      <div>info페이지</div>
-      <div>info페이지</div>
-      <div>info페이지</div>
-      <div>info페이지</div>
-      <div>info페이지</div>
-      <div>info페이지</div>
-      <div>info페이지</div>
-      <div>info페이지</div>
-      <div>info페이지</div>
-      <div>info페이지</div>
-      <div>info페이지</div>
-      <div>info페이지</div>
-      <div>info페이지</div>
-      <div>info페이지</div>
-      <div>info페이지</div>
+      <HumidityComponent />
+      <h1>t</h1>
+      <h1>t</h1>
+      <h1>t</h1>
+      <h1>t</h1>
+      <h1>t</h1>
+      <h1>t</h1>
+      <h1>t</h1>
+      <h1>t</h1>
+      <h1>t</h1>
+      <h1>t</h1>
+      <h1>t</h1>
+      <h1>t</h1>
+      <h1>t</h1>
+      <h1>t</h1>
+      <h1>t</h1>
+      <h1>t</h1>
+      <h1>t</h1>
+      <h1>t</h1>
+      <h1>t</h1>
+      <h1>t</h1>
+      <h1>t</h1>
+      <h1>t</h1>
+      <h1>t</h1>
+      <h1>t</h1>
+      <h1>t</h1>
+      <h1>t</h1>
+      <h1>t</h1>
+      <h1>t</h1>
+      <h1>t</h1>
+      <h1>t</h1>
+      <h1>t</h1>
     </InfoPageStyle.InfoWrapper>
   );
 }
