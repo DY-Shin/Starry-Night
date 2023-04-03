@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Slider from 'react-slick';
 
 export const StarInfoContainer = styled.div`
   width: 200vw;
@@ -31,13 +32,22 @@ export const StarInfoBox = styled.dialog`
 export const StarInfoTitle = styled.div`
   width: 100%;
   height: 10%;
-  background-color: red;
+  background-color: #330033;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  color: floralwhite;
 `;
 export const StarInfoPhoto = styled.div`
   width: 100%;
   height: 40%;
   background-color: blue;
 `;
+
+export const WrapImg = styled(Slider)`
+  margin: 0 5px;
+`;
+
 export const StarInfoDescription = styled.div`
   width: 100%;
   height: 20%;

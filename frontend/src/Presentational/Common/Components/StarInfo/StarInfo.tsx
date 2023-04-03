@@ -1,4 +1,6 @@
 import React, { PropsWithChildren } from 'react';
+import { ReactCompareSlider, ReactCompareSliderImage, ReactCompareSliderHandle } from 'react-compare-slider';
+import Slider, { Settings } from 'react-slick';
 import * as InfoStyle from './StarInfoStyle';
 
 interface ModalDefaultType {
@@ -10,7 +12,9 @@ function StarInfo({ onClickToggleModal, children }: PropsWithChildren<ModalDefau
     <InfoStyle.StarInfoContainer>
       <InfoStyle.StarInfoBox>
         <InfoStyle.StarInfoTitle>{children}</InfoStyle.StarInfoTitle>
-        <InfoStyle.StarInfoPhoto>photo</InfoStyle.StarInfoPhoto>
+        <InfoStyle.StarInfoPhoto>
+          <InfoStyle.WrapImg />
+        </InfoStyle.StarInfoPhoto>
         <InfoStyle.StarInfoDescription>description</InfoStyle.StarInfoDescription>
         <InfoStyle.StarInfoManual>manual</InfoStyle.StarInfoManual>
         <InfoStyle.StarInfoEtc>관측횟수, 최초관측</InfoStyle.StarInfoEtc>
