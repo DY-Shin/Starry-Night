@@ -8,6 +8,7 @@ import BoardPage from '../../../Page/NaverMap/BoardPage';
 
 type propsType = {
   setIsBoardOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsInfoOpen: React.Dispatch<React.SetStateAction<boolean>>;
   // eslint-disable-next-line no-undef
   map: naver.maps.Map | null;
   refreshState: boolean;
@@ -15,7 +16,7 @@ type propsType = {
 };
 
 function SidBarArea(props: propsType) {
-  const { setIsBoardOpen, map, refreshState, refreshHandler } = props;
+  const { setIsBoardOpen, map, refreshState, refreshHandler, setIsInfoOpen } = props;
   const [foldState, setFoldState] = useState(true);
   const [currentSelectedBoard, setCurrentSelectedBoard] = useState('info');
 
@@ -27,8 +28,13 @@ function SidBarArea(props: propsType) {
     setCurrentSelectedBoard(str);
     if (str === 'board') {
       setIsBoardOpen(true);
+      setIsInfoOpen(false);
+    } else if (str === 'info') {
+      setIsBoardOpen(false);
+      setIsInfoOpen(true);
     } else {
       setIsBoardOpen(false);
+      setIsInfoOpen(false);
     }
   };
 
