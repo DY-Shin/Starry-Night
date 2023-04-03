@@ -52,6 +52,16 @@ export interface apiResponseType {
   message: string;
 }
 
+function printError(error: AxiosError) {
+  if (error.response) {
+    console.log(error.response.data);
+  } else if (error.message) {
+    console.log('오류 메시지:', error.message);
+  } else {
+    console.log('알 수 없는 오류가 발생했습니다.');
+  }
+}
+
 export async function writePost(post: postCreateType, images: File[]): Promise<apiResponseType | null> {
   const formData = new FormData();
 
@@ -70,11 +80,7 @@ export async function writePost(post: postCreateType, images: File[]): Promise<a
     const axiosError = error as AxiosError;
 
     if (axiosError.response) {
-      console.log(axiosError.response.data);
-    } else if (axiosError.message) {
-      console.log('오류 메시지:', axiosError.message);
-    } else {
-      console.log('알 수 없는 오류가 발생했습니다.');
+      return axiosError.response.data as apiResponseType;
     }
   }
 
@@ -164,4 +170,27 @@ export function sizeReturn(markers: naver.maps.Marker[], idx: number) {
       scaledSize: new naver.maps.Size(30, 30),
     },
   });
+}
+
+export interface ConstellationInfo {
+  id: number;
+  name: string;
+}
+
+// 도전과제 목록 조회
+export async function getConstellations(): Promise<ConstellationInfo[]> {
+  let data: ConstellationInfo[] = [];
+
+  try {
+    const res = await axios.get(`${process.env.REACT_APP_API_SERVER_URL}/constellations`, {
+      withCredentials: true,
+    });
+
+    data = res.data.data as ConstellationInfo[];
+  } catch (error) {
+    const axiosError = error as AxiosError;
+    printError(axiosError);
+  }
+
+  return data;
 }
