@@ -2,6 +2,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import * as WriteStyle from './WritePost_Style';
+import * as BoardPostApi from '../../../Action/Modules/NaverMap/BoardPost';
 
 type propsType = {
   firstCenter: naver.maps.Coord | undefined;
@@ -9,6 +10,16 @@ type propsType = {
 };
 
 function WritePost(props: propsType) {
+  const [postData, setPostData] = useState<BoardPostApi.postCreateType>({
+    title: '',
+    content: '',
+    lat: 0,
+    lng: 0,
+    constellations: [],
+  });
+
+  const [constellations, setConstellations] = useState<BoardPostApi.ConstellationInfo[]>([]);
+  const [selectedConstellation, setSelectedConstellation] = useState<string>('0');
   // 최초 좌표 타입은 naver.maps.Coord
   const { firstCenter, setModalOpen } = props;
   const mapElement = useRef(null);
@@ -22,7 +33,21 @@ function WritePost(props: propsType) {
   const [forceRender, setForfceRender] = useState(0);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const init = () => {
+  const selectConstellationRef = useRef<HTMLSelectElement>(null);
+
+  const handleSelectChange = () => {
+    if (selectConstellationRef.current) {
+      const selectedValue = selectConstellationRef.current.value;
+      setSelectedConstellation(selectedValue);
+    }
+  };
+
+  const getConstellations = async () => {
+    const result = await BoardPostApi.getConstellations();
+    setConstellations(result);
+  };
+
+  const init = async () => {
     if (!mapElement.current) return;
     const writeMap = new naver.maps.Map(mapElement.current, {
       center: location,
@@ -57,6 +82,8 @@ function WritePost(props: propsType) {
       marker.setPosition(newCenter);
       setWriteMapCenter(new naver.maps.LatLng(writeMap.getCenter().x, writeMap.getCenter().y));
     });
+
+    await getConstellations();
   };
 
   useEffect(() => {
@@ -91,6 +118,44 @@ function WritePost(props: propsType) {
     }
   };
 
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = event.target;
+    setPostData((prevValues) => ({ ...prevValues, [name]: value }));
+  };
+
+  const writePost = async () => {
+    const constellationIds = [];
+
+    if (selectedConstellation !== '0') {
+      constellationIds.push(parseInt(selectedConstellation, 10));
+    }
+
+    const post = {
+      title: postData.title,
+      content: postData.content,
+      lat: writeMapCenter ? writeMapCenter?.y : 0,
+      lng: writeMapCenter ? writeMapCenter?.x : 0,
+      constellations: constellationIds,
+    };
+    const result = await BoardPostApi.writePost(post, fileList);
+    if (result?.success) {
+      Swal.fire({
+        icon: 'success',
+        title: '게시글 작성 완료!',
+        timer: 1500,
+        timerProgressBar: true,
+        showConfirmButton: false,
+        allowOutsideClick: false,
+      });
+      setModalOpen(false);
+    } else {
+      Swal.fire({
+        icon: 'error',
+        text: result?.message,
+      });
+    }
+  };
+
   return (
     <WriteStyle.WriteBlackBG>
       <WriteStyle.WriteWrapper>
@@ -98,7 +163,7 @@ function WritePost(props: propsType) {
         <WriteStyle.WriteBody>
           <WriteStyle.ContentArea>
             <WriteStyle.ContentHead>본문 입력</WriteStyle.ContentHead>
-            <WriteStyle.ContentText />
+            <WriteStyle.ContentText id="content" name="content" value={postData.content} onChange={handleChange} />
           </WriteStyle.ContentArea>
           <WriteStyle.FileArea>
             <WriteStyle.FileHeader>
@@ -125,11 +190,20 @@ function WritePost(props: propsType) {
           </WriteStyle.FileArea>
           <WriteStyle.ConstellationArea>
             <WriteStyle.ConstellationHeader>별자리 선택</WriteStyle.ConstellationHeader>
-            <WriteStyle.ConstellationSelect />
+            <WriteStyle.ConstellationSelect ref={selectConstellationRef} onChange={handleSelectChange}>
+              <option key={null} value={0}>
+                별자리를 선택해주세요.
+              </option>
+              {constellations.map((option) => (
+                <option key={option.id} value={option.id}>
+                  {option.name}
+                </option>
+              ))}
+            </WriteStyle.ConstellationSelect>
           </WriteStyle.ConstellationArea>
         </WriteStyle.WriteBody>
         <WriteStyle.WriteBotttom>
-          <WriteStyle.BottomOkButton>확인</WriteStyle.BottomOkButton>
+          <WriteStyle.BottomOkButton onClick={() => writePost()}>확인</WriteStyle.BottomOkButton>
           <WriteStyle.BottomCancleButton onClick={() => setModalOpen(false)}>취소</WriteStyle.BottomCancleButton>
         </WriteStyle.WriteBotttom>
       </WriteStyle.WriteWrapper>
