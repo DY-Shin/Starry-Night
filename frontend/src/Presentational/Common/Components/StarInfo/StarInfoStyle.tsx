@@ -14,8 +14,8 @@ export const StarInfoBox = styled.dialog`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 20vw;
-  height: 80vh;
+  width: 400px;
+  height: 600px;
   display: flex;
   position: fixed;
   flex-direction: column;
