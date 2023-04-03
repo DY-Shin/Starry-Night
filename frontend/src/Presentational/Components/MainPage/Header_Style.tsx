@@ -9,7 +9,7 @@ export const MainNav = styled.div`
 `;
 export const WrapNav = styled.nav`
   width: 100%;
-  max-width: 1000px;
+  max-width: 1050px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -27,8 +27,7 @@ export const WrapNav = styled.nav`
 export const NavLogo = styled(Link)`
   color: white;
   text-decoration: none;
-  /* cursor: pointer; */
-  cursor: default;
+  cursor: pointer;
   &:hover {
     filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
   }
@@ -37,7 +36,7 @@ export const NavLogo = styled(Link)`
 export const NavLogin = styled.div`
   text-decoration: none;
   color: white;
-  /* cursor: pointer; */
+  cursor: pointer;
   &:hover {
     filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
   }
@@ -49,6 +48,7 @@ export const NavLogOut = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  /* backdrop-filter: blur(0px); */
 `;
 
 interface ImgProps {
@@ -60,6 +60,17 @@ export const ProfileImg = styled.img.attrs<ImgProps>((props) => ({
 }))`
   height: 40px;
   border-radius: 50%;
+  cursor: pointer;
+  &:hover {
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
+  }
+`;
+
+export const LogoImg = styled.img.attrs<ImgProps>((props) => ({
+  src: props.src,
+}))`
+  height: 27px;
+  /* border-radius: 50%; */
   &:hover {
     filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
   }

@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import axios, { AxiosResponse } from 'axios';
+import axios, { AxiosError } from 'axios';
 import PostPinMarker from '../../../Assets/NaverMap/PostPinMarker.png';
 // const { naver } = window;
 
@@ -37,6 +37,48 @@ export interface resultType {
   numberOfElements: number;
   page: number;
   size: number;
+}
+
+export interface postCreateType {
+  title: string;
+  content: string;
+  lat: number;
+  lng: number;
+  constellations: number[];
+}
+
+export interface apiResponseType {
+  success: boolean;
+  message: string;
+}
+
+export async function writePost(post: postCreateType, images: File[]): Promise<apiResponseType | null> {
+  const formData = new FormData();
+
+  images.forEach((file) => formData.append('images', file));
+
+  let data: apiResponseType | null = null;
+
+  formData.append('post', new Blob([JSON.stringify(post)], { type: 'application/json' }));
+  try {
+    const res = await axios.post(`${process.env.REACT_APP_API_SERVER_URL}/posts`, formData, {
+      withCredentials: true,
+    });
+
+    data = res.data as apiResponseType;
+  } catch (error) {
+    const axiosError = error as AxiosError;
+
+    if (axiosError.response) {
+      console.log(axiosError.response.data);
+    } else if (axiosError.message) {
+      console.log('오류 메시지:', axiosError.message);
+    } else {
+      console.log('알 수 없는 오류가 발생했습니다.');
+    }
+  }
+
+  return data;
 }
 
 export async function GetPostData(maps: naver.maps.Map, page: number, size = 5): Promise<resultType | null> {
