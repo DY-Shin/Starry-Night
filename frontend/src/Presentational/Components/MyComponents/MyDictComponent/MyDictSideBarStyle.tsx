@@ -10,7 +10,7 @@ export const Container = styled.div`
   width: 10%;
   flex-direction: column;
   justify-content: center;
-  align-items: middle;
+  align-items: center;
   margin-left: 4.5em;
   margin-right: 2.5em;
   a {

@@ -32,7 +32,8 @@ function MyDictBei() {
           </Dictainer.BjrSymbol>
           <Dictainer.BjrName>작은곰자리</Dictainer.BjrName>
         </Dictainer.BjrBox>
-        <Dictainer.BjrBox>
+        <Dictainer.BjrBox onClick={onClickToggleModal}>
+          {isOpenModal && <StarInfo onClickToggleModal={onClickToggleModal}>이곳에 children이 들어갑니다.</StarInfo>}
           <Dictainer.BjrSymbol>
             <Draco />
           </Dictainer.BjrSymbol>

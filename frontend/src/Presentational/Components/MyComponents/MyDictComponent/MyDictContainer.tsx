@@ -21,11 +21,11 @@ export const DictItemBox = styled.div`
 `;
 
 export const DictSubBox = styled.div`
-  width: 100%;
+  width: 1000px;
   height: 50%;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   /* background-color: green; */
 `;
 

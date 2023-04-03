@@ -8,7 +8,13 @@ interface ModalDefaultType {
 function StarInfo({ onClickToggleModal, children }: PropsWithChildren<ModalDefaultType>) {
   return (
     <InfoStyle.StarInfoContainer>
-      <InfoStyle.StarInfoBox>{children}</InfoStyle.StarInfoBox>
+      <InfoStyle.StarInfoBox>
+        <InfoStyle.StarInfoTitle>{children}</InfoStyle.StarInfoTitle>
+        <InfoStyle.StarInfoPhoto>photo</InfoStyle.StarInfoPhoto>
+        <InfoStyle.StarInfoDescription>description</InfoStyle.StarInfoDescription>
+        <InfoStyle.StarInfoManual>manual</InfoStyle.StarInfoManual>
+        <InfoStyle.StarInfoEtc>관측횟수, 최초관측</InfoStyle.StarInfoEtc>
+      </InfoStyle.StarInfoBox>
       <InfoStyle.Backdrop
         onClick={(e: React.MouseEvent) => {
           e.preventDefault();
