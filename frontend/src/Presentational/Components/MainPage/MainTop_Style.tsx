@@ -12,6 +12,7 @@ export const MainTop = styled.div`
   align-items: center;
   flex-direction: column;
   overflow: hidden;
+  backdrop-filter: blur(0.4px);
   filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
   @media all and (max-width: 1200px) {
   }
@@ -23,6 +24,7 @@ export const MainTop = styled.div`
 
 export const TopTitle = styled.div`
   font-size: 144px;
+  cursor: default;
   @media all and (max-width: 1200px) {
   }
   @media all and (max-width: 850px) {
@@ -37,7 +39,7 @@ export const TopMap = styled(Link)`
   margin-top: 20px;
   border: 1px solid white;
   padding: 20px;
-  cursor: default;
+  cursor: pointer;
   text-decoration: none;
   color: white;
   &:hover {
