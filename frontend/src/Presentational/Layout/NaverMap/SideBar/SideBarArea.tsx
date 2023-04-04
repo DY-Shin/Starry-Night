@@ -53,7 +53,7 @@ function SidBarArea(props: propsType) {
         <SidBarStyle.SidBarLine />
         <SidBarStyle.SidBarContentsArea className="contentsArea">
           {currentSelectedBoard === 'info' ? <InfoPage clickLocation={clickLocation} /> : null}
-          {currentSelectedBoard === 'favorite' ? <FavoritePage /> : null}
+          {currentSelectedBoard === 'favorite' ? <FavoritePage map={map} /> : null}
           {currentSelectedBoard === 'board' ? (
             <BoardPage map={map} refreshState={refreshState} refreshHandler={refreshHandler} />
           ) : null}
