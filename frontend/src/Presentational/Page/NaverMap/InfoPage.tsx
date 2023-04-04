@@ -5,6 +5,7 @@ import HumidityComponent from '../../Components/Info/HumidityComponent';
 import * as InfoAPI from '../../../Action/Modules/NaverMap/Info';
 import SkyComponent from '../../Components/Info/SkyComponent';
 import TemperatureComponent from '../../Components/Info/TemperatureCompoenet';
+import FineDustComponent from '../../Components/Info/FineDustCompoenet';
 
 type propsType = {
   clickLocation: naver.maps.Coord | null;
@@ -45,6 +46,9 @@ function InfoPage(props: propsType) {
           <InfoPageStyle.InfoHeader>&nbsp;&nbsp;&nbsp;온도</InfoPageStyle.InfoHeader>
           <InfoPageStyle.InfoHeaderLine />
           <TemperatureComponent temperature={infoData?.temperature} />
+          <InfoPageStyle.InfoHeader className="fineDust">미세먼지</InfoPageStyle.InfoHeader>
+          <InfoPageStyle.InfoHeaderLine />
+          <FineDustComponent fineDust={infoData?.fineDust} />
           <p>t</p>
           <p>t</p>
           <p>t</p>

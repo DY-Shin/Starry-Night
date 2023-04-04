@@ -6,8 +6,13 @@ export const InfoWrapper = styled.div`
 
 export const InfoHeader = styled.p`
   font-size: x-large;
-  font-weight: 500;
+  font-weight: 600;
   margin: 0;
+  &.fineDust {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0;
+  }
 `;
 
 export const InfoHeaderLine = styled.hr`
