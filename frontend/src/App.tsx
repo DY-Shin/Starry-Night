@@ -29,17 +29,16 @@ function App() {
         {/* 로그인 필요 */}
         {/* 마이페이지 */}
         <Route element={<PrivateRoute isMypage={true} />}>
-          <Route path="/mypage" element={<MyProfile />}>
-            <Route path="dict" element={<MyDict />} />
-            <Route path="/mypage/dict/nor" element={<MyBei />} />
-            <Route path="/mypage/dict/spr" element={<MyChun />} />
-            <Route path="/mypage/dict/sum" element={<MyXia />} />
-            <Route path="/mypage/dict/aut" element={<MyQiu />} />
-            <Route path="/mypage/dict/win" element={<MyDong />} />
-            <Route path="/mypage/dict/sol" element={<MySol />} />
-            <Route path="posts" element={<MyPost />} />
-            <Route path="reward" element={<MyReward />} />
-          </Route>
+          <Route path="/mypage" element={<MyProfile />} />
+          <Route path="/mypage/dict" element={<MyDict />} />
+          <Route path="/mypage/dict/nor" element={<MyBei />} />
+          <Route path="/mypage/dict/spr" element={<MyChun />} />
+          <Route path="/mypage/dict/sum" element={<MyXia />} />
+          <Route path="/mypage/dict/aut" element={<MyQiu />} />
+          <Route path="/mypage/dict/win" element={<MyDong />} />
+          <Route path="/mypage/dict/sol" element={<MySol />} />
+          <Route path="/mypage/posts" element={<MyPost />} />
+          <Route path="/mypage/reward" element={<MyReward />} />
         </Route>
         {/* 지도로 가는 거 */}
         {/* <Route element={<PrivateRoute isMypage={false} />}> */}

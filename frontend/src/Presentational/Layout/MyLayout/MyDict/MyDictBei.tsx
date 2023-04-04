@@ -20,7 +20,7 @@ function MyDictBei() {
     <Dictainer.DictSubBox>
       <AnimatePresence>
         <Dictainer.BjrBox onClick={onClickToggleModal}>
-          {isOpenModal && <StarInfo onClickToggleModal={onClickToggleModal}>이곳에 children이 들어갑니다.</StarInfo>}
+          {isOpenModal && <StarInfo onClickToggleModal={onClickToggleModal}>큰곰자리</StarInfo>}
           <Dictainer.BjrSymbol as={motion.div} drag>
             <UrsaMajor />
           </Dictainer.BjrSymbol>
@@ -33,7 +33,7 @@ function MyDictBei() {
           <Dictainer.BjrName>작은곰자리</Dictainer.BjrName>
         </Dictainer.BjrBox>
         <Dictainer.BjrBox onClick={onClickToggleModal}>
-          {isOpenModal && <StarInfo onClickToggleModal={onClickToggleModal}>이곳에 children이 들어갑니다.</StarInfo>}
+          {isOpenModal && <StarInfo onClickToggleModal={onClickToggleModal}>카시오페이아자리</StarInfo>}
           <Dictainer.BjrSymbol>
             <Draco />
           </Dictainer.BjrSymbol>

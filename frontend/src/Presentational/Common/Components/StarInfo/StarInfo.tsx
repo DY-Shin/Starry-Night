@@ -16,10 +16,17 @@ function StarInfo({ onClickToggleModal, children }: PropsWithChildren<ModalDefau
           <InfoStyle.WrapImg />
         </InfoStyle.StarInfoPhoto>
         <InfoStyle.StarInfoDescription>
+          <h3>세부 정보</h3> <hr />
           descriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescription
         </InfoStyle.StarInfoDescription>
-        <InfoStyle.StarInfoManual>manual</InfoStyle.StarInfoManual>
-        <InfoStyle.StarInfoEtc>관측횟수, 최초관측</InfoStyle.StarInfoEtc>
+        <InfoStyle.StarInfoManual>
+          <h3>찾는 방법</h3> <hr />
+          manual
+        </InfoStyle.StarInfoManual>
+        <InfoStyle.StarInfoEtc>
+          관측횟수
+          <br /> 최초관측
+        </InfoStyle.StarInfoEtc>
       </InfoStyle.StarInfoBox>
       <InfoStyle.Backdrop
         onClick={(e: React.MouseEvent) => {

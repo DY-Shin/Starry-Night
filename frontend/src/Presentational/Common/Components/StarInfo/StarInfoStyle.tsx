@@ -49,6 +49,7 @@ export const WrapImg = styled(Slider)`
 `;
 
 export const StarInfoDescription = styled.div`
+  padding: 0 15px;
   width: 400px;
   height: 120px;
   border-top: solid 3px grey;
@@ -57,8 +58,10 @@ export const StarInfoDescription = styled.div`
   overflow: auto;
   white-space: normal;
   word-break: break-all;
+  color: floralwhite;
 `;
 export const StarInfoManual = styled.div`
+  padding: 0 15px;
   width: 400px;
   height: 120px;
   border-top: solid 1.5px grey;
@@ -67,11 +70,13 @@ export const StarInfoManual = styled.div`
   overflow: auto;
   white-space: normal;
   word-break: break-all;
+  color: floralwhite;
 `;
 export const StarInfoEtc = styled.div`
+  padding: 10px 15px 0;
   width: 400px;
   height: 60px;
-  background-color: red;
+  color: floralwhite;
 `;
 
 export const Backdrop = styled.div`
