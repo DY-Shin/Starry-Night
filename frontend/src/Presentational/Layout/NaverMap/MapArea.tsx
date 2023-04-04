@@ -116,7 +116,7 @@ function MapArea() {
       />
       <NaverMap ref={mapElement} />
       {elementIsLoading ? <MapOption map={mapData.current} centerLocation={centerLocation} /> : null}
-      {isBoardOpen ? <RefreshButton Text="현 위치에서 재검색" refreshHandler={setRefreshState} /> : null}
+      {isBoardOpen ? <RefreshButton Text="현 위치에서 검색" refreshHandler={setRefreshState} /> : null}
       {isInfoOpen && !clickLocation ? <InfoButton Text="지도를 클릭해주세요" /> : null}
       {isInfoOpen && clickLocation ? <InfoButton Text="마커 삭제" onClick={markerClear} /> : null}
     </MapAreaStyle.MapContainer>

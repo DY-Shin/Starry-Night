@@ -33,6 +33,6 @@ export const RefreshText = styled.h4`
   font-family: 'PyeongChang-Bold', sans-serif;
   width: 100%;
   height: 100%;
-  margin: 10px 0 10px 0;
+  margin: 13px 0 10px 5px;
   color: white;
 `;

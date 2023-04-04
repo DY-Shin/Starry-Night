@@ -26,6 +26,8 @@ export const TemperWrapper = styled.div`
   display: flex;
 
   box-shadow: 0 0 0 4px ${backgroundColor} inset, 0 0 0 8px #fff inset;
+
+  margin: 10px 0 30px 0;
 `;
 
 export const ThermometerContainer = styled.div`

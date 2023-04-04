@@ -18,7 +18,7 @@ export const PercentText = styled.p`
 export const HumidityWrapper = styled.div`
   width: 100%;
   height: 200px;
-  margin-top: 10px;
+  margin: 10px 0 30px 0;
   /* border: 1px solid #858585a0 double; */
 `;
 
