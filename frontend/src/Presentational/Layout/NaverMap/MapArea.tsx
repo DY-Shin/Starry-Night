@@ -96,6 +96,7 @@ function MapArea() {
         refreshState={refreshState}
         refreshHandler={setRefreshState}
         setIsInfoOpen={setIsInfoOpen}
+        clickLocation={clickLocation}
       />
       <NaverMap ref={mapElement} />
       {elementIsLoading ? <MapOption map={mapData.current} centerLocation={centerLocation} /> : null}

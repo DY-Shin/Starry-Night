@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { useState } from 'react';
 import SideBarMenuArea from './SideBarMenuArea';
 import * as SidBarStyle from './SideBarArea_Style';
@@ -9,14 +10,14 @@ import BoardPage from '../../../Page/NaverMap/BoardPage';
 type propsType = {
   setIsBoardOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setIsInfoOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  // eslint-disable-next-line no-undef
   map: naver.maps.Map | null;
   refreshState: boolean;
   refreshHandler: React.Dispatch<React.SetStateAction<boolean>>;
+  clickLocation: null | naver.maps.Coord;
 };
 
 function SidBarArea(props: propsType) {
-  const { setIsBoardOpen, map, refreshState, refreshHandler, setIsInfoOpen } = props;
+  const { setIsBoardOpen, map, refreshState, refreshHandler, setIsInfoOpen, clickLocation } = props;
   const [foldState, setFoldState] = useState(true);
   const [currentSelectedBoard, setCurrentSelectedBoard] = useState('info');
 
@@ -45,10 +46,13 @@ function SidBarArea(props: propsType) {
       </SidBarStyle.FoldBtn>
       <SidBarStyle.SidBarBody className={foldState ? 'close' : 'open'}>
         <SideBarProfileArea />
-        <SideBarMenuArea changeCurrentSelectedBoard={changeCurrentSelectedBoard} />
+        <SideBarMenuArea
+          changeCurrentSelectedBoard={changeCurrentSelectedBoard}
+          currentSelectedBoard={currentSelectedBoard}
+        />
         <SidBarStyle.SidBarLine />
         <SidBarStyle.SidBarContentsArea className="contentsArea">
-          {currentSelectedBoard === 'info' ? <InfoPage /> : null}
+          {currentSelectedBoard === 'info' ? <InfoPage clickLocation={clickLocation} /> : null}
           {currentSelectedBoard === 'favorite' ? <FavoritePage /> : null}
           {currentSelectedBoard === 'board' ? (
             <BoardPage map={map} refreshState={refreshState} refreshHandler={refreshHandler} />

@@ -5,7 +5,7 @@ export const MenuWrapper = styled.div`
   width: 100%;
 `;
 
-export const BtnWrapper = styled.div`
+export const BtnWrapper = styled.div<{ currentSelectedBoard: string }>`
   display: grid;
   grid-template-columns: 20% 80%;
   grid-template-rows: 1fr;
@@ -29,5 +29,45 @@ export const BtnWrapper = styled.div`
   }
   & .icon {
     margin: auto 0 auto 0;
+  }
+
+  &.infoBtn {
+    ${(props) =>
+      props.currentSelectedBoard === 'info'
+        ? `
+          & p {
+            color: #fc9e39;
+          }
+          & .icon {
+            color: #fc9e39;
+          }
+        `
+        : null}
+  }
+  &.boardBtn {
+    ${(props) =>
+      props.currentSelectedBoard === 'board'
+        ? `
+          & p {
+            color: #fc9e39;
+          }
+          & .icon {
+            color: #fc9e39;
+          }
+        `
+        : null}
+  }
+  &.favoriteBtn {
+    ${(props) =>
+      props.currentSelectedBoard === 'favorite'
+        ? `
+          & p {
+            color: #fc9e39;
+          }
+          & .icon {
+            color: #fc9e39;
+          }
+        `
+        : null}
   }
 `;
