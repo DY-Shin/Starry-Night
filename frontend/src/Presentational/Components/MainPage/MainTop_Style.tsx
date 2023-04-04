@@ -25,6 +25,7 @@ export const MainTop = styled.div`
 export const TopTitle = styled.div`
   font-size: 144px;
   cursor: default;
+  font-family: 'InkLipquid';
   @media all and (max-width: 1200px) {
   }
   @media all and (max-width: 850px) {
