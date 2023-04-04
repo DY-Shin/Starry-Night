@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 @Tag(name = "게시물 관리")
 @RestController
@@ -73,4 +74,11 @@ public class PostController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
+    @Operation(summary = "관측 스팟 조회")
+    @GetMapping("/observation-spots")
+    public ResponseEntity<ApiResponse<List<ObservationSpot>>> getObservationSpots(ObservationSpotSearchRequest dto) {
+        List<ObservationSpot> observationSpots = postService.getObservationSpots(dto);
+        ApiResponse< List<ObservationSpot>> result = new ApiResponse<>(true, "관측 스팟 조회 성공", observationSpots);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
 }
