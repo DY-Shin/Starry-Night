@@ -46,4 +46,12 @@ public class AchievementController {
         ApiResponse<List<AchievementDetailInfo>> result = new ApiResponse(true, "유저의 도전과제 현황 조회 성공", achievementList);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
+
+    @Operation(summary = "모든 도전과제 조회")
+    @GetMapping("/achievements")
+    public ResponseEntity<ApiResponse<List<AchievementInfo>>> getAchievements() {
+        List<AchievementInfo> achievements = achievementService.getAchievements();
+        ApiResponse<List<AchievementInfo>> result = new ApiResponse(true, "모든 도전과제 조회 성공", achievements);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
 }

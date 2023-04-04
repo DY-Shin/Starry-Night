@@ -74,12 +74,20 @@ public class AchievementService {
 
     public List<AchievementDetailInfo> getAchievementList(Long userId) {
         User user = userRepository.findById(userId)
-                .orElseThrow(()-> new ResourceNotFoundException("존재하지 않는 회원입니다."));
+                .orElseThrow(() -> new ResourceNotFoundException("존재하지 않는 회원입니다."));
 
         List<Achievement> achievements = achievementRepository.findAll();
 
         return achievements.stream()
                 .map(achievement -> getAchievementDetailInfo(userId, achievement))
+                .collect(Collectors.toList());
+    }
+
+    public List<AchievementInfo> getAchievements() {
+        List<Achievement> achievements = achievementRepository.findAll();
+
+        return achievements.stream()
+                .map(AchievementInfo::new)
                 .collect(Collectors.toList());
     }
 
@@ -113,4 +121,5 @@ public class AchievementService {
                 totalConstellationCount
         );
     }
+
 }
