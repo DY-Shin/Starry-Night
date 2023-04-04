@@ -43,6 +43,36 @@ export interface ConstellationListItemInfo {
   completed: boolean;
 }
 
+export interface MyPostInfo {
+  id: number;
+  title: string;
+  content: string;
+  lat: number;
+  lng: number;
+  writer: {
+    id: number;
+    name: string;
+    profileImagUrl: string;
+  };
+  image: [
+    {
+      id: number;
+      url: string;
+    },
+  ];
+  constellationTags: [
+    {
+      id: number;
+      name: string;
+    },
+  ];
+  postLikeCount: number;
+  permission: true;
+  postLikePossible: true;
+  postLiked: true;
+  createdDate: string;
+}
+
 function printError(error: AxiosError) {
   if (error.response) {
     console.log(error.response.data);
