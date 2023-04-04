@@ -7,6 +7,7 @@ import lombok.Data;
 public class PostSearchRequest extends PagingRequest {
     private String title;
     private String content;
+    private Long userId;
     private double[] pointA;
     private double[] pointB;
     

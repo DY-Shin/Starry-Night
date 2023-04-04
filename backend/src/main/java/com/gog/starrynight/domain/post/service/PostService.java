@@ -27,10 +27,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.persistence.criteria.Predicate;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -89,38 +91,42 @@ public class PostService {
         Sort sort = Sort.by(direction, dto.getSort());
         Pageable pageable = PageRequest.of(dto.getPage(), dto.getSize(), sort);
 
-        boolean searchByTitle = (dto.getTitle() != null);
-        boolean searchByContent = (dto.getContent() != null);
-        boolean searchByLocation = (dto.getPointA() != null && dto.getPointB() != null && dto.getPointA().length == 2 && dto.getPointB().length == 2);
-
-        Page<Post> queryResult = null;
-
-        // 위치 데이터 포함
-        if (searchByLocation) {
-            AreaRange areaRange = calculateAreaRange(dto.getPointA(), dto.getPointB());
-
-            // 제목 및 내용 포함
-            if (searchByTitle && searchByContent) {
-                queryResult = postRepository.findAllByTitleContainingAndContentContainingAndLatBetweenAndLngBetween(pageable, dto.getTitle(), dto.getContent(), areaRange.getMinLat(), areaRange.getMaxLat(), areaRange.getMinLng(), areaRange.getMaxLng());
-            } else if (searchByTitle) { // 제목 포함
-                queryResult = postRepository.findAllByTitleContainingAndLatBetweenAndLngBetween(pageable, dto.getTitle(), areaRange.getMinLat(), areaRange.getMaxLat(), areaRange.getMinLng(), areaRange.getMaxLng());
-            } else if (searchByContent) { // 내용 포함
-                queryResult = postRepository.findAllByContentContainingAndLatBetweenAndLngBetween(pageable, dto.getContent(), areaRange.getMinLat(), areaRange.getMaxLat(), areaRange.getMinLng(), areaRange.getMaxLng());
-            } else {
-                queryResult = postRepository.findAllByLatBetweenAndLngBetween(pageable, areaRange.getMinLat(), areaRange.getMaxLat(), areaRange.getMinLng(), areaRange.getMaxLng());
-            }
-        } else { // 위치 데이터 미포함
-            // 제목 및 내용 포함
-            if (searchByTitle && searchByContent) {
-                queryResult = postRepository.findAllByTitleContainingAndContentContaining(pageable, dto.getTitle(), dto.getContent());
-            } else if (searchByTitle) { // 제목 포함
-                queryResult = postRepository.findAllByTitleContaining(pageable, dto.getTitle());
-            } else if (searchByContent) { // 내용 포함
-                queryResult = postRepository.findAllByContentContaining(pageable, dto.getContent());
-            } else {
-                queryResult = postRepository.findAll(pageable);
-            }
+        AreaRange areaRange;
+        if (dto.getPointA() != null && dto.getPointB() != null && dto.getPointA().length == 2 && dto.getPointB().length == 2) {
+            areaRange = calculateAreaRange(dto.getPointA(), dto.getPointB());
+        } else {
+            areaRange = null;
         }
+
+        Specification<Post> spec = (root, query, criteriaBuilder) -> {
+            List<Predicate> predicates = new ArrayList<>();
+
+            // 제목 검색 조건
+            if (dto.getTitle() != null && !dto.getTitle().isEmpty()) {
+                predicates.add(criteriaBuilder.like(root.get("title"), "%" + dto.getTitle() + "%"));
+            }
+
+            // 내용 검색 조건
+            if (dto.getContent() != null && !dto.getContent().isEmpty()) {
+                predicates.add(criteriaBuilder.like(root.get("content"), "%" + dto.getContent() + "%"));
+            }
+
+            // 위치 검색 조건
+            if (areaRange != null) {
+                predicates.add(criteriaBuilder.between(root.get("lat"), areaRange.getMinLat(), areaRange.getMaxLat()));
+                predicates.add(criteriaBuilder.between(root.get("lng"), areaRange.getMinLng(), areaRange.getMaxLng()));
+            }
+
+            // 작성자 검색 조건
+            if (dto.getUserId() != null) {
+                predicates.add(criteriaBuilder.equal(root.get("writer"), dto.getUserId()));
+            }
+
+            // 모든 검색 조건 AND 연산 결합
+            return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
+        };
+
+        Page<Post> queryResult = postRepository.findAll(spec, pageable);
 
         Page<PostDetailInfo> processedResult = queryResult.map(post -> convertPostToPostDetailInfo(post, requesterId));
 
