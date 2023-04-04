@@ -12,6 +12,8 @@ import com.gog.starrynight.domain.achievement_constellation.repository.Achieveme
 import com.gog.starrynight.domain.constellation.entity.Constellation;
 import com.gog.starrynight.domain.constellation.repository.ConstellationRepository;
 import com.gog.starrynight.domain.constellation_history.repository.ConstellationHistoryRepository;
+import com.gog.starrynight.domain.user.entity.User;
+import com.gog.starrynight.domain.user.repository.UserRepository;
 import com.gog.starrynight.domain.user_achievement.repository.UserAchievementRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -30,6 +32,7 @@ public class AchievementService {
     private final UserAchievementRepository userAchievementRepository;
     private final ConstellationHistoryRepository constellationHistoryRepository;
     private final AchievementConstellationRepository achievementConstellationRepository;
+    private final UserRepository userRepository;
 
     @Transactional
     public AchievementInfo createAchievement(AchievementCreateRequest dto) {
@@ -69,11 +72,22 @@ public class AchievementService {
         achievementRepository.delete(achievement);
     }
 
-    public List<AchievementDetailInfo> getAchievementList(Long requesterId) {
+    public List<AchievementDetailInfo> getAchievementList(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("존재하지 않는 회원입니다."));
+
         List<Achievement> achievements = achievementRepository.findAll();
 
         return achievements.stream()
-                .map(achievement -> getAchievementDetailInfo(requesterId, achievement))
+                .map(achievement -> getAchievementDetailInfo(userId, achievement))
+                .collect(Collectors.toList());
+    }
+
+    public List<AchievementInfo> getAchievements() {
+        List<Achievement> achievements = achievementRepository.findAll();
+
+        return achievements.stream()
+                .map(AchievementInfo::new)
                 .collect(Collectors.toList());
     }
 
@@ -107,4 +121,5 @@ public class AchievementService {
                 totalConstellationCount
         );
     }
+
 }
