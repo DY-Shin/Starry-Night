@@ -1,5 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 
+const backgroundColor = '#064663';
+
 const moveUpDown = keyframes`
   0% {
     transform: translateY(0);
@@ -26,14 +28,14 @@ export const SkyWrapper = styled.div`
   height: 200px;
   /* z-index: 1000; */
   /* background-color: #007dc5; */
-  background-color: #149be9;
+  background-color: ${backgroundColor};
   /* background-color: #ffffff; */
   display: flex;
   text-align: center;
   justify-content: center;
   flex-direction: column;
 
-  box-shadow: 0 0 0 4px #149be9 inset, 0 0 0 8px #fff inset;
+  box-shadow: 0 0 0 4px ${backgroundColor} inset, 0 0 0 8px #fff inset;
 
   & .icon {
     color: white;

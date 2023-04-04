@@ -133,9 +133,7 @@ function BoardPost(props: propsType) {
           return <PostStyle.ImageWrapper link={value.url} key={value.id} />;
         })}
       </Slider>
-      <PostStyle.PostContent>
-        이것은 50자일것입니다. 끼예예예예예예예예예옝예예예예예예예예예예예예예예예예예예예예예예옝예엑
-      </PostStyle.PostContent>
+      <PostStyle.PostContent>{data?.content}</PostStyle.PostContent>
       <PostStyle.StarTagArea>
         {data?.constellationTags?.map((starValue) => {
           return <PostStyle.StarTag key={starValue.name}>#{starValue.name.split('자리')[0]}</PostStyle.StarTag>;

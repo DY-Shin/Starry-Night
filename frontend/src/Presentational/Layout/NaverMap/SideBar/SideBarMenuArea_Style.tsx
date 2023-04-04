@@ -5,23 +5,25 @@ export const MenuWrapper = styled.div`
   width: 100%;
 `;
 
+const focusColor = '#ed83f7;';
+
 export const BtnWrapper = styled.div<{ currentSelectedBoard: string }>`
   display: grid;
   grid-template-columns: 20% 80%;
   grid-template-rows: 1fr;
   padding-left: 20px;
   & .icon {
-    color: #5a5959;
+    color: #b8b8b8;
   }
   :hover {
     cursor: pointer;
-    background-color: #403f3f30;
+    background-color: #d4d3d32f;
     transition: 500ms;
     & p {
-      color: #fc9e39;
+      color: ${focusColor};
     }
     & .icon {
-      color: #fc9e39;
+      color: ${focusColor};
     }
   }
   &:not(:first-child, :last-child) {
@@ -36,10 +38,10 @@ export const BtnWrapper = styled.div<{ currentSelectedBoard: string }>`
       props.currentSelectedBoard === 'info'
         ? `
           & p {
-            color: #fc9e39;
+            color: ${focusColor};
           }
           & .icon {
-            color: #fc9e39;
+            color: ${focusColor};
           }
         `
         : null}
@@ -49,10 +51,10 @@ export const BtnWrapper = styled.div<{ currentSelectedBoard: string }>`
       props.currentSelectedBoard === 'board'
         ? `
           & p {
-            color: #fc9e39;
+            color: ${focusColor};
           }
           & .icon {
-            color: #fc9e39;
+            color: ${focusColor};
           }
         `
         : null}
@@ -62,10 +64,10 @@ export const BtnWrapper = styled.div<{ currentSelectedBoard: string }>`
       props.currentSelectedBoard === 'favorite'
         ? `
           & p {
-            color: #fc9e39;
+            color: ${focusColor};
           }
           & .icon {
-            color: #fc9e39;
+            color: ${focusColor};
           }
         `
         : null}

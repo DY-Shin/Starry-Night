@@ -8,13 +8,13 @@ function SkyComponent(props: { sky: string }) {
   let weather;
 
   if (sky === '맑음') {
-    weather = <BsSun className="icon" />;
+    weather = <BsSun className="icon" color="#ffbe32" />;
   } else if (sky === '구름많음') {
-    weather = <BsCloudSun className="icon" />;
+    weather = <BsCloudSun className="icon" color="#adacac" />;
   } else if (sky === '흐림') {
-    weather = <BsClouds className="icon" />;
+    weather = <BsClouds className="icon" color="#7e7a7a" />;
   } else {
-    weather = <BsCloudRain className="icon" />;
+    weather = <BsCloudRain className="icon" color="#7e7a7a" />;
   }
 
   return (

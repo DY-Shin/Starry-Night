@@ -11,13 +11,13 @@ function FineDustComponent(props: { fineDust: string }) {
   let fineDustIcon;
 
   if (fineDust === '좋음') {
-    fineDustIcon = <FiSmile className="icon" />;
+    fineDustIcon = <FiSmile className="icon" color="#4daefd" />;
   } else if (fineDust === '보통') {
-    fineDustIcon = <RiEmotionNormalLine className="icon" />;
+    fineDustIcon = <RiEmotionNormalLine className="icon" color="#3fdb2a" />;
   } else if (fineDust === '나쁨') {
-    fineDustIcon = <MdMoodBad className="icon" />;
+    fineDustIcon = <MdMoodBad className="icon" color="#d89924" />;
   } else {
-    fineDustIcon = <MdOutlineSentimentVeryDissatisfied className="icon" />;
+    fineDustIcon = <MdOutlineSentimentVeryDissatisfied className="icon" color="#fa1616" />;
   }
 
   return (

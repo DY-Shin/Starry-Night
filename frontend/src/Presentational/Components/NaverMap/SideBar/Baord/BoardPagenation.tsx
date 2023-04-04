@@ -17,6 +17,8 @@ function BoardPagenation(props: propsType) {
   const { currentPage, setCurrentPage, totalPage, map } = props;
   const [isMoodalOpen, setModalOpen] = useState(false);
 
+  console.log('props', props);
+
   function moveNextPage() {
     setCurrentPage(currentPage + 1);
   }
@@ -55,19 +57,16 @@ function BoardPagenation(props: propsType) {
     }
   } else {
     previousButton = <GrPrevious visibility="hidden" className="icon" />;
+    nextButton = <GrNext visibility="hidden" className="icon" />;
   }
 
   return (
     <BoardPagenationStyle.PagenationWrapper>
       {previousButton}
-
       <BoardPagenationStyle.WriteButton onClick={() => setModalOpen(!isMoodalOpen)}>
         글쓰기
       </BoardPagenationStyle.WriteButton>
-      {/* {isMoodalOpen ? <WritePost firstCenter={map?.getCenter()} /> : null} */}
       {nextButton}
-      {/* <BoardPagenationStyle.PrevButton>&lt;</BoardPagenationStyle.PrevButton>
-      <BoardPagenationStyle.NextButton>&gt;</BoardPagenationStyle.NextButton> */}
     </BoardPagenationStyle.PagenationWrapper>
   );
 }

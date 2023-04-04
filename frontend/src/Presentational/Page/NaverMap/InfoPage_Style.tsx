@@ -4,9 +4,12 @@ export const InfoWrapper = styled.div`
   width: 100%;
 `;
 
+const textColor = '#f9fae9e1;';
+
 export const InfoHeader = styled.p`
   font-size: x-large;
   font-weight: 600;
+  color: ${textColor};
   margin: 0;
   &.fineDust {
     font-size: 22px;
@@ -16,7 +19,7 @@ export const InfoHeader = styled.p`
 `;
 
 export const InfoHeaderLine = styled.hr`
-  background-color: black;
+  background-color: ${textColor};
   height: 1px;
   position: relative;
   width: calc(100% - 100px);

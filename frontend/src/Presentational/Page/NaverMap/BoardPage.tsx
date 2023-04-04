@@ -70,10 +70,12 @@ function BoardPage(props: propsType) {
   return (
     <BoardStyle.BoardPageWrapper>
       <BoardStyle.BoardTopHeader ref={TopHeaderElement}>Star Post</BoardStyle.BoardTopHeader>
-      <BoardStyle.BoardTopHeaderLine />
-      {resultData?.content?.map((value, idx) => (
-        <BoardPost data={value} setDataHandler={setResultData} key={value.id} idx={idx} markerObject={markerObject} />
-      ))}
+      {/* <BoardStyle.BoardTopHeaderLine /> */}
+      <BoardStyle.BoardPostWrapper>
+        {resultData?.content?.map((value, idx) => (
+          <BoardPost data={value} setDataHandler={setResultData} key={value.id} idx={idx} markerObject={markerObject} />
+        ))}
+      </BoardStyle.BoardPostWrapper>
       <BoardPagenation
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}

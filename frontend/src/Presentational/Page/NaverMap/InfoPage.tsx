@@ -38,17 +38,18 @@ function InfoPage(props: propsType) {
       {infoData ? (
         <React.Fragment key={clickLocation?.x.toString()}>
           <InfoPageStyle.InfoHeader>&nbsp;&nbsp;&nbsp;습도</InfoPageStyle.InfoHeader>
-          <InfoPageStyle.InfoHeaderLine />
+          {/* <InfoPageStyle.InfoHeaderLine /> */}
           <HumidityComponent humidity={infoData?.humidity} />
           <InfoPageStyle.InfoHeader>&nbsp;&nbsp;&nbsp;날씨</InfoPageStyle.InfoHeader>
-          <InfoPageStyle.InfoHeaderLine />
+          {/* <InfoPageStyle.InfoHeaderLine /> */}
           <SkyComponent sky={infoData?.sky} />
           <InfoPageStyle.InfoHeader>&nbsp;&nbsp;&nbsp;온도</InfoPageStyle.InfoHeader>
-          <InfoPageStyle.InfoHeaderLine />
+          {/* <InfoPageStyle.InfoHeaderLine /> */}
           <TemperatureComponent temperature={infoData?.temperature} />
-          <InfoPageStyle.InfoHeader className="fineDust">미세먼지</InfoPageStyle.InfoHeader>
-          <InfoPageStyle.InfoHeaderLine />
+          <InfoPageStyle.InfoHeader className="fineDust">&nbsp;&nbsp;&nbsp;미세 먼지</InfoPageStyle.InfoHeader>
+          {/* <InfoPageStyle.InfoHeaderLine /> */}
           <FineDustComponent fineDust={infoData?.fineDust} />
+          <InfoPageStyle.InfoHeader>&nbsp;&nbsp;&nbsp;관측 가능 별자리 목록</InfoPageStyle.InfoHeader>
           <p>t</p>
           <p>t</p>
           <p>t</p>

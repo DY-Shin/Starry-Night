@@ -1,8 +1,10 @@
 import styled, { keyframes } from 'styled-components';
 
+const buttonColor = '#222430;';
+
 export const ButtonBody = styled.div`
   position: absolute;
-  background-color: #416dea;
+  background-color: ${buttonColor};
   box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
   width: 210px;
   height: 50px;

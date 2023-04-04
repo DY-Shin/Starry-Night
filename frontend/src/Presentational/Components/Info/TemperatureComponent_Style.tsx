@@ -1,5 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 
+const backgroundColor = '#064663';
+
 const fluidFill = (percent: number) => keyframes`
   0% {
     height: 0%;
@@ -20,10 +22,10 @@ export const TemperWrapper = styled.div`
   border-radius: 10px;
   width: 100%;
   height: 200px;
-  background-color: #149be9;
+  background-color: ${backgroundColor};
   display: flex;
 
-  box-shadow: 0 0 0 4px #149be9 inset, 0 0 0 8px #fff inset;
+  box-shadow: 0 0 0 4px ${backgroundColor} inset, 0 0 0 8px #fff inset;
 `;
 
 export const ThermometerContainer = styled.div`

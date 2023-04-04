@@ -1,5 +1,9 @@
 import styled, { keyframes } from 'styled-components';
 
+const backgroundColor = '#064663';
+const backgroundColor2 = '#064663';
+const waterColor = '#5bd5fa';
+
 export const PercentText = styled.p`
   position: relative;
   margin: 0;
@@ -43,15 +47,15 @@ export const StyledLoader = styled.div<{ percent: number }>`
   width: 100%;
   height: 100%;
   z-index: 1000;
-  /* background-color: #007dc5; */
-  background-color: #149be9;
+  /* background-color: #149be9; */
+  background-color: ${backgroundColor};
   /* background-color: #ffffff; */
   display: flex;
   text-align: center;
   justify-content: center;
   flex-direction: column;
 
-  box-shadow: 0 0 0 4px #149be9 inset, 0 0 0 8px #fff inset;
+  box-shadow: 0 0 0 4px ${backgroundColor} inset, 0 0 0 8px #fff inset;
 
   svg {
     height: 282px;
@@ -62,24 +66,24 @@ export const StyledLoader = styled.div<{ percent: number }>`
     transform: translate(-44%, -45%);
 
     #rect4487 {
-      fill: #149be9;
+      fill: ${backgroundColor2};
       /* fill: #ffffff; */
     }
   }
 
   .loader {
-    height: 100px;
-    width: 87px;
+    height: 90px;
+    width: 85px;
     overflow: hidden;
     position: relative;
     margin: 0 auto;
     border-radius: 50%;
     left: -20%;
-    top: 20px;
+    top: 26px;
   }
 
   .water {
-    background: white;
+    background: ${waterColor};
     /* background: #007dc5; */
     position: relative;
     top: 50%;
