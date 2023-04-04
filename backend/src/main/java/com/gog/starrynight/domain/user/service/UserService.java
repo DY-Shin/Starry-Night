@@ -39,8 +39,11 @@ public class UserService {
 
     @Transactional
     public User creatUser(UserCreateRequest dto) {
-        DataFile profileImage = dataFileUtil.saveImageFromURL(dto.getProfileImageUrl());
-        dataFileRepository.save(profileImage);
+        DataFile profileImage = null;
+        if(dto.getProfileImageUrl() != null) {
+            profileImage = dataFileUtil.saveImageFromURL(dto.getProfileImageUrl());
+            dataFileRepository.save(profileImage);
+        }
 
         User user = User.builder()
                 .loginId(dto.getLoginId())
