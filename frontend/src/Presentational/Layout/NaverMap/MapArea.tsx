@@ -21,6 +21,7 @@ function MapArea() {
   const [isInfoOpen, setIsInfoOpen] = useState(true);
   const [clickLocation, setClickLocation] = useState<null | naver.maps.Coord>(null);
   const infoMarker = useRef<naver.maps.Marker | null>(null);
+  const [clickEvent, setClickEvent] = useState<null | naver.maps.MapEventListener>(null);
 
   // eslint-disable-next-line no-undef
   const mapData = useRef<null | naver.maps.Map>(null);
@@ -55,25 +56,6 @@ function MapArea() {
     naver.maps.Event.addListener(map, 'dragend zoomend', () => {
       setCenterLocation(new naver.maps.LatLng(map.getCenter().x, map.getCenter().y));
     });
-
-    naver.maps.Event.addListener(map, 'click', (e) => {
-      if (isInfoOpen) {
-        if (infoMarker.current) {
-          infoMarker.current.setMap(null);
-        }
-        if (!mapData.current) return;
-        infoMarker.current = new naver.maps.Marker({
-          position: e.coord,
-          map: mapData.current,
-          icon: {
-            url: InfoMarkerIcon,
-            size: new naver.maps.Size(30, 30),
-            scaledSize: new naver.maps.Size(30, 30),
-          },
-        });
-        setClickLocation(new naver.maps.LatLng(infoMarker.current.getPosition().y, infoMarker.current.getPosition().x));
-      }
-    });
   };
 
   useEffect(() => {
@@ -87,6 +69,40 @@ function MapArea() {
       setClickLocation(null);
     }
   };
+
+  useEffect(() => {
+    if (!isInfoOpen && clickEvent) {
+      markerClear();
+      mapData.current?.removeListener(clickEvent);
+    } else if (isInfoOpen) {
+      const cEvent = naver.maps.Event.addListener(mapData.current, 'click', (e) => {
+        console.log('isInfo', isInfoOpen);
+        if (isInfoOpen) {
+          if (infoMarker.current) {
+            infoMarker.current.setMap(null);
+          }
+          if (!mapData.current) return;
+          infoMarker.current = new naver.maps.Marker({
+            position: e.coord,
+            map: mapData.current,
+            icon: {
+              url: InfoMarkerIcon,
+              size: new naver.maps.Size(30, 30),
+              scaledSize: new naver.maps.Size(30, 30),
+            },
+          });
+          setClickLocation(
+            new naver.maps.LatLng(infoMarker.current.getPosition().y, infoMarker.current.getPosition().x),
+          );
+        } else if (infoMarker.current) {
+          infoMarker.current.setMap(null);
+          setClickLocation(null);
+        }
+      });
+      console.log(cEvent);
+      setClickEvent(cEvent);
+    }
+  }, [isInfoOpen]);
 
   return (
     <MapAreaStyle.MapContainer>
