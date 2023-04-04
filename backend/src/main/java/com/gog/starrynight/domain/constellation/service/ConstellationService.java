@@ -76,14 +76,17 @@ public class ConstellationService {
         return new ConstellationDetailInfo(constellation, firstViewedDate, viewCount);
     }
 
-    public List<ConstellationListItemInfo> getConstellationsByAchievement(Long achievementId, Long requesterId) {
+    public List<ConstellationListItemInfo> getConstellationsByUserAndAchievement(Long achievementId, Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("존재하지 않는 사용자입니다."));
+
         Achievement achievement = achievementRepository.findById(achievementId)
                 .orElseThrow(() -> new ResourceNotFoundException("존재하지 않는 도전과제입니다."));
 
         List<AchievementConstellation> achievementConstellations = achievementConstellationRepository.findAllByAchievementId(achievement.getId());
 
         return achievementConstellations.stream()
-                .map(achievementConstellation -> getConstellationListItemInfo(requesterId, achievementConstellation.getConstellation()))
+                .map(achievementConstellation -> getConstellationListItemInfo(userId, achievementConstellation.getConstellation()))
                 .collect(Collectors.toList());
     }
 
