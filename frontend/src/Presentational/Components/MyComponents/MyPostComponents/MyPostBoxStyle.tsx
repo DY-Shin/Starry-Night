@@ -36,12 +36,26 @@ export const rowVariants = {
   },
 };
 
-export const Box = styled(motion.div)`
+export const Box = styled(motion.div)<{ bgPhoto: string }>`
   background-color: navy;
+  background-image: url(${(props) => props.bgPhoto});
+  background-size: cover;
+  background-position: center center;
   color: white;
   font-size: 50px;
   height: 200px;
   position: relative;
+`;
+
+interface ImgProps {
+  src: string;
+}
+
+export const Img = styled.img.attrs<ImgProps>((props) => ({
+  src: props.src,
+}))`
+  height: 100%;
+  border-radius: 10px;
 `;
 
 export const boxVariants = {

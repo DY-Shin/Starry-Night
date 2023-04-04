@@ -43,7 +43,7 @@ export interface ConstellationListItemInfo {
   completed: boolean;
 }
 
-export interface MyPostInfo {
+interface UserPostInfo {
   id: number;
   title: string;
   content: string;
@@ -71,6 +71,11 @@ export interface MyPostInfo {
   postLikePossible: true;
   postLiked: true;
   createdDate: string;
+}
+
+// 회원 작성글
+export interface UserPostInfos extends Array<UserPostInfo> {
+  content: [];
 }
 
 function printError(error: AxiosError) {
@@ -129,6 +134,24 @@ export async function getAchievementList(): Promise<AchievementDetailInfo[] | nu
     });
 
     data = res.data.data as AchievementDetailInfo[];
+  } catch (error) {
+    const axiosError = error as AxiosError;
+    printError(axiosError);
+  }
+
+  return data;
+}
+
+// 회원이 작성한 글 목록 조회 (MAX:1000)
+export async function getUserPostInfo(userId: number): Promise<UserPostInfos | null> {
+  let data: UserPostInfos | null = null;
+
+  try {
+    const res = await axios.get(`${process.env.REACT_APP_API_SERVER_URL}/posts?size=1000&userId=${userId}`, {
+      withCredentials: true,
+    });
+
+    data = res.data.data.content as UserPostInfos;
   } catch (error) {
     const axiosError = error as AxiosError;
     printError(axiosError);

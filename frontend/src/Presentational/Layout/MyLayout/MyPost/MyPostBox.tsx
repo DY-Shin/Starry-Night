@@ -1,19 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import * as MyPostBox from '../../../Components/MyComponents/MyPostComponents/MyPostBoxStyle';
-
-const offset = 10;
-const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
+import * as MyPageApi from '../../../../Action/Modules/MyPage/MyPage';
+import { UserStore } from '../../../../store';
 
 function MyArticle() {
+  const offset = 10;
+
+  const { id } = UserStore();
+
+  const [userPostInfo, setUserPostInfo] = useState<null | MyPageApi.UserPostInfos>(null);
+
+  useEffect(() => {
+    const getUserPostInfo = async () => {
+      const request = await MyPageApi.getUserPostInfo(id);
+      console.log('request', request);
+      setUserPostInfo(request);
+    };
+    getUserPostInfo();
+  }, []);
+
+  console.log(userPostInfo);
+
   const [index, setIndex] = useState(0);
+
   const [leaving, setLeaving] = useState(false);
+
   const toggleLeaving = () => setLeaving((prev) => !prev);
+
   const increaseIndex = () => {
-    if (data) {
+    if (userPostInfo) {
       if (leaving) return;
       toggleLeaving();
-      const totalPosts = data.length;
+      const totalPosts = userPostInfo.length;
       const maxIndex = Math.ceil(totalPosts / offset) - 1;
       setIndex((prev) => (prev === maxIndex ? 0 : prev + 1));
     }
@@ -37,16 +56,17 @@ function MyArticle() {
             transition={{ type: 'tween', duration: 1 }}
             key={index}
           >
-            {data.slice(offset * index, offset * index + offset).map((i) => (
+            {userPostInfo?.slice(offset * index, offset * index + offset).map((post) => (
               <MyPostBox.Box
-                key={i}
+                key={post.id}
                 variants={MyPostBox.boxVariants}
                 whileHover="hover"
                 initial="normal"
                 transition={{ type: 'tween' }}
+                bgPhoto={post.image[0].url}
               >
                 {/* onClick={()=>onBoxClicked(movie.id)} */}
-                {i}
+                {post.content}
 
                 <MyPostBox.PostInfo variants={MyPostBox.PostInfoVariants} />
               </MyPostBox.Box>
