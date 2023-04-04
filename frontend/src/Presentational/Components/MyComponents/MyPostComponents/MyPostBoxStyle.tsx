@@ -36,22 +36,6 @@ export const rowVariants = {
   },
 };
 
-export const boxVariants = {
-  normal: {
-    scale: 1,
-  },
-  hover: {
-    zIndex: 99,
-    scale: 1.2,
-    y: -50,
-    transition: {
-      delay: 0.3,
-      duration: 0.3,
-      type: 'tween',
-    },
-  },
-};
-
 export const Box = styled(motion.div)`
   background-color: navy;
   color: white;
@@ -59,6 +43,21 @@ export const Box = styled(motion.div)`
   height: 200px;
   position: relative;
 `;
+
+export const boxVariants = {
+  normal: {
+    scale: 1,
+  },
+  hover: {
+    scale: 1.2,
+    y: -50,
+    transition: {
+      delay: 0.3,
+      duration: 0.1,
+      type: 'tween',
+    },
+  },
+};
 
 export const PostInfo = styled(motion.div)`
   padding: 20px;

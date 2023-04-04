@@ -18,6 +18,12 @@ function MyArticle() {
       setIndex((prev) => (prev === maxIndex ? 0 : prev + 1));
     }
   };
+  // const bigMovieMatch = useRouteMatch<{ movieId: string }>("/movies/:movieId");
+  // console.log(bigMovieMatch);
+
+  // const onBoxClicked = (movieId: number) => {
+  //   history.push(`/movies/${movieId}`);
+  // };
 
   return (
     <MyPostBox.SliderWrapper onClick={increaseIndex}>
@@ -32,14 +38,39 @@ function MyArticle() {
             key={index}
           >
             {data.slice(offset * index, offset * index + offset).map((i) => (
-              <MyPostBox.Box key={i} variants={MyPostBox.boxVariants} whileHover="hover" initial="normal">
+              <MyPostBox.Box
+                key={i}
+                variants={MyPostBox.boxVariants}
+                whileHover="hover"
+                initial="normal"
+                transition={{ type: 'tween' }}
+              >
+                {/* onClick={()=>onBoxClicked(movie.id)} */}
                 {i}
+
                 <MyPostBox.PostInfo variants={MyPostBox.PostInfoVariants} />
               </MyPostBox.Box>
             ))}
           </MyPostBox.Row>
         </AnimatePresence>
       </MyPostBox.Slider>
+      {/* <AnimatePresence>
+        {bigMovieMatch ? (
+          <motion.div
+            layoutId={bigMovieMatch.params.movieId}
+            style={{
+              position: 'absolute',
+              width: '40vw',
+              height: '80vh',
+              backgroundColor: 'red',
+              top: 50,
+              left: 0,
+              right: 0,
+              margin: '0 auto',
+            }}
+          />
+        ) : null}
+      </AnimatePresence> */}
     </MyPostBox.SliderWrapper>
   );
 }
