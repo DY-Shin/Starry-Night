@@ -268,6 +268,26 @@ public class PostService {
         }
     }
 
+    public List<ObservationSpot> getObservationSpots(ObservationSpotSearchRequest dto) {
+        AreaRange areaRange = null;
+
+        if (dto.getPointA() != null && dto.getPointB() != null && dto.getPointA().length == 2 && dto.getPointB().length == 2) {
+            areaRange = calculateAreaRange(dto.getPointA(), dto.getPointB());
+        }
+
+        List<Post> queryResult = null;
+
+        if (areaRange != null) { // 영역을 받아왔다면 해당 영역에서 조회
+            queryResult = postRepository.findAllByLatBetweenAndLngBetween(areaRange.getMinLat(), areaRange.getMaxLat(), areaRange.getMinLng(), areaRange.getMaxLng());
+        } else { // 정한 영역이 없다면 전체 조회
+            queryResult = postRepository.findAll();
+        }
+
+        return queryResult.stream()
+                .map(ObservationSpot::new)
+                .collect(Collectors.toList());
+    }
+
     public PostDetailInfo convertPostToPostDetailInfo(Post post, Long requesterId) {
         UserSimpleInfo writer = new UserSimpleInfo(post.getWriter());
         boolean permission = (writer.getId().equals(requesterId));
@@ -314,4 +334,6 @@ public class PostService {
 
         return new AreaRange(minLat, maxLat, minLng, maxLng);
     }
+
+
 }
