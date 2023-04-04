@@ -57,13 +57,12 @@ public class ConstellationController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @Operation(summary = "도전과제별 별자리 목록 조회")
-    @GetMapping("/achievements/{achievementId}/constellations")
-    public ResponseEntity<ApiResponse<List<ConstellationListItemInfo>>> getConstellationsByAchievement(@AuthenticationPrincipal LoginUser loginUser,
+    @Operation(summary = "유저의 도전과제별 별자리 목록 조회")
+    @GetMapping("/users/{userId}/achievements/{achievementId}/constellations")
+    public ResponseEntity<ApiResponse<List<ConstellationListItemInfo>>> getConstellationsByUserAndAchievement(@PathVariable Long userId,
                                                                                                        @PathVariable Long achievementId) {
-        Long requesterId = (loginUser != null ? loginUser.getId() : null);
-        List<ConstellationListItemInfo> constellations = constellationService.getConstellationsByAchievement(achievementId, requesterId);
-        ApiResponse<List<ConstellationListItemInfo>> result = new ApiResponse(true, "도전과제별 별자리 목록 조회 성공", constellations);
+        List<ConstellationListItemInfo> constellations = constellationService.getConstellationsByUserAndAchievement(achievementId, userId);
+        ApiResponse<List<ConstellationListItemInfo>> result = new ApiResponse(true, "유저의 도전과제별 별자리 목록 조회 성공", constellations);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
