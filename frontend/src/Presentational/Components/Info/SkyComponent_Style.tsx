@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 
-const backgroundColor = '#064663';
+const backgroundColor = '#0e2f3f';
 
 const moveUpDown = keyframes`
   0% {

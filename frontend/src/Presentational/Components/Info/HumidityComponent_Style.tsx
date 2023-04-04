@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 
-const backgroundColor = '#064663';
-const backgroundColor2 = '#064663';
+const backgroundColor = '#0e2f3f';
+const backgroundColor2 = '#0e2f3f';
 const waterColor = '#5bd5fa';
 
 export const PercentText = styled.p`

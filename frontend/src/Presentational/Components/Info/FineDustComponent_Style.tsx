@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const backgroundColor = '#064663';
+const backgroundColor = '#0e2f3f';
 
 export const FineDustText = styled.p`
   margin: 0;
