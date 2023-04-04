@@ -1,11 +1,24 @@
-import React from 'react';
+/* eslint-disable no-undef */
+import React, { useEffect } from 'react';
 import CountUp from 'react-countup';
 import * as HumidityStyle from './HumidityComponent_Style';
 
-function HumidityComponent() {
+type propsType = {
+  humidity: number | undefined;
+};
+
+function HumidityComponent(props: propsType) {
+  const { humidity } = props;
+  let convertHumidity = 0;
+  if (!humidity) {
+    convertHumidity = 10;
+  } else {
+    convertHumidity = humidity;
+  }
+
   return (
     <HumidityStyle.HumidityWrapper>
-      <HumidityStyle.StyledLoader>
+      <HumidityStyle.StyledLoader percent={100 - convertHumidity}>
         <svg viewBox="0 0 30 42" width="30%" height="30%">
           <path
             fill="transparent"
@@ -32,7 +45,7 @@ function HumidityComponent() {
           <div className="water" />
         </div>
         <HumidityStyle.PercentText>
-          <CountUp start={0} end={16} duration={4} />%
+          <CountUp start={0} end={convertHumidity} duration={4} />%
         </HumidityStyle.PercentText>
       </HumidityStyle.StyledLoader>
       {/* <p>test</p> */}

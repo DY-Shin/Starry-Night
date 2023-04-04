@@ -18,12 +18,12 @@ export const HumidityWrapper = styled.div`
   /* border: 1px solid #858585a0 double; */
 `;
 
-export const moveTop = keyframes`
+export const moveTop = (percent: number) => keyframes`
   0% {
     top: 100%;
   }
   100% {
-    top: 20%;
+    top: ${percent}%;
   }
 `;
 
@@ -36,7 +36,7 @@ export const wave = keyframes`
   }
 `;
 
-export const StyledLoader = styled.div`
+export const StyledLoader = styled.div<{ percent: number }>`
   /* position: fixed; */
   position: relative;
   border-radius: 10px;
@@ -90,6 +90,6 @@ export const StyledLoader = styled.div`
     left: -30%;
     transform: rotate(360deg);
     transition: all 1s ease;
-    animation: ${wave} 10s linear infinite, ${moveTop} 2s linear forwards;
+    animation: ${wave} 10s linear infinite, ${(props) => moveTop(props.percent)} 2s linear forwards;
   }
 `;
