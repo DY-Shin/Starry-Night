@@ -39,12 +39,11 @@ public class AchievementController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @Operation(summary = "도전과제 목록 조회")
-    @GetMapping("/achievements")
-    public ResponseEntity<ApiResponse<List<AchievementDetailInfo>>> getAchievementList(@AuthenticationPrincipal LoginUser loginUser) {
-        Long requesterId = (loginUser != null ? loginUser.getId() : null);
-        List<AchievementDetailInfo> achievementList = achievementService.getAchievementList(requesterId);
-        ApiResponse<List<AchievementDetailInfo>> result = new ApiResponse(true, "도전과제 목록 조회 성공", achievementList);
+    @Operation(summary = "유저의 도전과제 현황 조회")
+    @GetMapping("/users/{userId}/achievements")
+    public ResponseEntity<ApiResponse<List<AchievementDetailInfo>>> getAchievementListByUser(@PathVariable Long userId) {
+        List<AchievementDetailInfo> achievementList = achievementService.getAchievementList(userId);
+        ApiResponse<List<AchievementDetailInfo>> result = new ApiResponse(true, "유저의 도전과제 현황 조회 성공", achievementList);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }
