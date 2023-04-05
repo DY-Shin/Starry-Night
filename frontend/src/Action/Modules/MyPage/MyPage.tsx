@@ -54,7 +54,7 @@ interface UserPostInfo {
     name: string;
     profileImagUrl: string;
   };
-  image: [
+  images: [
     {
       id: number;
       url: string;

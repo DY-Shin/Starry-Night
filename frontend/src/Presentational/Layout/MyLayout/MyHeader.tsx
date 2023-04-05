@@ -21,7 +21,7 @@ function Header() {
       <MyHeaderStyle.WrapNav>
         <MyHeaderStyle.MyNavContainer>
           <MyHeaderStyle.NavLogo to="/">
-            <MyHeaderStyle.LogoImg src="assets/logo/logo6.png" />
+            <MyHeaderStyle.LogoImg src="../assets/logo/logo6.png" />
           </MyHeaderStyle.NavLogo>
           <MyHeaderStyle.MenuSet>
             <MyHeaderStyle.Menu>

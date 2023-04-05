@@ -51,7 +51,7 @@ function MyProfile() {
             </Link>
 
             <MyProfileBox.MyProfileContent>
-              <h1>{userPageInfo?.totalConstellationCount}개</h1>
+              <h1>{userPageInfo?.postCount}개</h1>
             </MyProfileBox.MyProfileContent>
           </MyProfileBox.ProfileButtonContainer>
           <MyProfileBox.ProfileButtonContainer>

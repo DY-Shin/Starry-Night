@@ -20,7 +20,9 @@ function MyArticle() {
     getUserPostInfo();
   }, []);
 
-  console.log(userPostInfo);
+  if (userPostInfo != null) {
+    console.log(userPostInfo[0].images[0]);
+  }
 
   const [index, setIndex] = useState(0);
 
@@ -37,6 +39,7 @@ function MyArticle() {
       setIndex((prev) => (prev === maxIndex ? 0 : prev + 1));
     }
   };
+
   // const bigMovieMatch = useRouteMatch<{ movieId: string }>("/movies/:movieId");
   // console.log(bigMovieMatch);
 
@@ -63,18 +66,16 @@ function MyArticle() {
                 whileHover="hover"
                 initial="normal"
                 transition={{ type: 'tween' }}
-                // bgPhoto={post.image[0].url}
+                bgPhoto={post.images[0] ? post.images[0].url : 'https://j8d206.p.ssafy.io/api/datafiles/8'}
               >
-                {post.content}
-
                 <MyPostBox.PostInfo variants={MyPostBox.PostInfoVariants}>
                   <h5>
-                    날짜 : {post.createdDate}
+                    날짜 : {post.createdDate.substring(0, 10)}
                     <br />
-                    위치 : {post.lat}, {post.lng}
+                    위치 : {post.lng.toFixed(4)} / {post.lat.toFixed(4)}
+                    <br />
+                    {post.constellationTags[0] ? `별자리 : ${post.constellationTags[0].name}` : null}
                   </h5>
-                  <hr />
-                  <h4>{post.content}</h4>
                 </MyPostBox.PostInfo>
               </MyPostBox.Box>
             ))}

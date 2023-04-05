@@ -35,26 +35,14 @@ export const rowVariants = {
     x: -window.outerWidth - 30,
   },
 };
-// <{ bgPhoto: string }>
-/* background-image: url(${(props) => props.bgPhoto}); */
-export const Box = styled(motion.div)`
+export const Box = styled(motion.div)<{ bgPhoto: string }>`
   background-color: navy;
-  /* background-size: cover;
-  background-position: center center; */
+  background-image: url(${(props) => props.bgPhoto});
+  background-size: cover;
+  background-position: center center;
   color: white;
   font-size: 50px;
   height: 200px;
-`;
-
-interface ImgProps {
-  src: string;
-}
-
-export const Img = styled.img.attrs<ImgProps>((props) => ({
-  src: props.src,
-}))`
-  height: 100%;
-  border-radius: 10px;
 `;
 
 export const boxVariants = {
@@ -73,7 +61,7 @@ export const boxVariants = {
 };
 
 export const PostInfo = styled(motion.div)`
-  padding: 20px;
+  padding: 10px;
   background-color: grey;
   opacity: 0;
   position: absolute;
@@ -81,7 +69,7 @@ export const PostInfo = styled(motion.div)`
   bottom: 0;
 
   h5 {
-    font-size: 8px;
+    font-size: 10px;
     color: black;
   }
   h4 {
