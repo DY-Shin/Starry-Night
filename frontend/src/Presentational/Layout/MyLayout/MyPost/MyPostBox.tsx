@@ -8,7 +8,6 @@ import * as MyPageApi from '../../../../Action/Modules/MyPage/MyPage';
 import { UserStore } from '../../../../store';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import * as StarStyle from '../../../Components/MainPage/MainStar_Style';
 
 function MyArticle() {
   const offset = 10;
@@ -72,7 +71,7 @@ function MyArticle() {
     cssEase: 'linear',
     responsive: [
       {
-        breakpoint: 1200,
+        breakpoint: 2000,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
@@ -92,16 +91,20 @@ function MyArticle() {
     setImgNum(target);
   };
 
+  if (userPostInfo != null) {
+    console.log(userPostInfo[0].images.length);
+  }
+
   const arr = [];
   // eslint-disable-next-line no-plusplus
-  for (let i = 1; i <= 3; i++) {
+  for (let i = 0; i <= 2; i++) {
     arr.push(i);
   }
 
   return (
     <MyPostBox.SliderWrapper>
       <MyPostBox.SliderClickZone onClick={increaseIndex} />
-      <MyPostBox.Slider>
+      <MyPostBox.PostSlider>
         <AnimatePresence initial={false} onExitComplete={toggleLeaving}>
           <MyPostBox.Row
             variants={MyPostBox.rowVariants}
@@ -135,7 +138,7 @@ function MyArticle() {
             ))}
           </MyPostBox.Row>
         </AnimatePresence>
-      </MyPostBox.Slider>
+      </MyPostBox.PostSlider>
       <AnimatePresence>
         {postMatch ? (
           <>
@@ -144,36 +147,42 @@ function MyArticle() {
               {clickedPost && (
                 <>
                   <MyPostBox.BigCover>
-                    <StarStyle.WrapSlide>
-                      <Slider {...settings}>
-                        {arr.map((i) =>
-                          i === ImgNum ? (
-                            <StarStyle.WrapImg key={i}>
-                              <StarStyle.STimg2
-                                src={
-                                  clickedPost.images[0]
-                                    ? clickedPost.images[0].url
-                                    : 'https://j8d206.p.ssafy.io/api/datafiles/8'
-                                }
-                                onClick={() => onClickImg(i)}
-                              />
-                            </StarStyle.WrapImg>
-                          ) : (
-                            <StarStyle.WrapImg key={i}>
-                              <StarStyle.STimg
-                                src={
-                                  clickedPost.images[0]
-                                    ? clickedPost.images[0].url
-                                    : 'https://j8d206.p.ssafy.io/api/datafiles/8'
-                                }
-                              />
-                            </StarStyle.WrapImg>
-                          ),
-                        )}
-                      </Slider>
-                    </StarStyle.WrapSlide>
+                    {clickedPost.images && clickedPost.images.length > 0 ? (
+                      <MyPostBox.WrapSlide>
+                        <Slider {...settings}>
+                          {arr.map((i) =>
+                            i === ImgNum ? (
+                              <MyPostBox.WrapImg key={i}>
+                                <MyPostBox.STimg2
+                                  src={
+                                    clickedPost.images[i]
+                                      ? clickedPost.images[i].url
+                                      : 'https://j8d206.p.ssafy.io/api/datafiles/8'
+                                  }
+                                  onClick={() => onClickImg(i)}
+                                />
+                              </MyPostBox.WrapImg>
+                            ) : (
+                              <MyPostBox.WrapImg key={i}>
+                                <MyPostBox.STimg
+                                  src={
+                                    clickedPost.images[i]
+                                      ? clickedPost.images[i].url
+                                      : 'https://j8d206.p.ssafy.io/api/datafiles/8'
+                                  }
+                                />
+                              </MyPostBox.WrapImg>
+                            ),
+                          )}
+                        </Slider>
+                      </MyPostBox.WrapSlide>
+                    ) : (
+                      <MyPostBox.WrapImg>
+                        <MyPostBox.STimg2 src="https://j8d206.p.ssafy.io/api/datafiles/8" />
+                      </MyPostBox.WrapImg>
+                    )}
                   </MyPostBox.BigCover>
-                  <MyPostBox.BigTitle>{clickedPost.images[0].url}</MyPostBox.BigTitle>
+                  <MyPostBox.BigTitle>{clickedPost.content}</MyPostBox.BigTitle>
                   <MyPostBox.BigContent>{clickedPost.content}</MyPostBox.BigContent>
                 </>
               )}

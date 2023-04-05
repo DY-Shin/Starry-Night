@@ -13,27 +13,11 @@ function MainStar() {
     dots: false,
     infinite: true,
     arrows: true,
-    slidesToShow: 3,
+    slidesToShow: 2,
     slidesToScroll: 1,
     autoplay: false,
     speed: 400,
     cssEase: 'linear',
-    responsive: [
-      {
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-    ],
   };
 
   const onClickImg = (target: number) => {

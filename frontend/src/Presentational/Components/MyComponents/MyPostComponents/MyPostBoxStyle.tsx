@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
+import Slider from 'react-slick';
 
 export const SliderWrapper = styled.div`
   width: 100%;
@@ -9,7 +10,7 @@ export const SliderWrapper = styled.div`
   flex-direction: column;
 `;
 
-export const Slider = styled.div`
+export const PostSlider = styled.div`
   position: relative;
   margin-right: 4.5em;
   margin-left: 4.5em;
@@ -140,4 +141,34 @@ export const BigContent = styled.p`
   position: relative;
   top: -80px;
   color: indigo;
+`;
+
+// image slider from MainStar
+
+export const WrapSlide = styled.div`
+  width: 60vw;
+  margin-top: 1rem;
+`;
+
+export const WrapImg = styled(Slider)`
+  margin: 0 5px;
+`;
+
+export const STimg = styled.img.attrs((props) => ({
+  src: props.src,
+}))`
+  height: 300px;
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+  object-fit: contain;
+`;
+
+export const STimg2 = styled.img.attrs((props) => ({
+  src: props.src,
+}))`
+  height: 300px;
+  border-top: 2px solid #0f4c75;
+  border-bottom: 2px solid #0f4c75;
+  filter: drop-shadow(0 0 3px rgba(50, 130, 184, 1));
+  object-fit: contain;
 `;
