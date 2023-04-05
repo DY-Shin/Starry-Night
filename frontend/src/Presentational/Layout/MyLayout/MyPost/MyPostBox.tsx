@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { AnimatePresence, useScroll } from 'framer-motion';
 import { PathMatch, useMatch, useNavigate } from 'react-router-dom';
-import { ReactCompareSlider, ReactCompareSliderImage, ReactCompareSliderHandle } from 'react-compare-slider';
 import Slider, { Settings } from 'react-slick';
 import * as MyPostBox from '../../../Components/MyComponents/MyPostComponents/MyPostBoxStyle';
 import * as MyPageApi from '../../../../Action/Modules/MyPage/MyPage';
@@ -63,7 +62,7 @@ function MyArticle() {
   const settings: Settings = {
     dots: false,
     infinite: true,
-    arrows: true,
+    arrows: false,
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: false,
@@ -153,7 +152,7 @@ function MyArticle() {
                           {arr.map((i) =>
                             i === ImgNum ? (
                               <MyPostBox.WrapImg key={i}>
-                                <MyPostBox.STimg2
+                                <MyPostBox.STimg
                                   src={
                                     clickedPost.images[i]
                                       ? clickedPost.images[i].url
@@ -182,8 +181,16 @@ function MyArticle() {
                       </MyPostBox.WrapImg>
                     )}
                   </MyPostBox.BigCover>
-                  <MyPostBox.BigTitle>{clickedPost.content}</MyPostBox.BigTitle>
+                  <MyPostBox.BigLikes>💖{clickedPost.postLikeCount}</MyPostBox.BigLikes>
                   <MyPostBox.BigContent>{clickedPost.content}</MyPostBox.BigContent>
+                  <MyPostBox.BigInfos>
+                    🌏 위도 : N {clickedPost.lat.toFixed(4)} / 경도 : E {clickedPost.lng.toFixed(4)}
+                  </MyPostBox.BigInfos>
+                  <MyPostBox.BigDates>📅 {clickedPost.createdDate.substring(0, 10)}</MyPostBox.BigDates>
+                  <MyPostBox.BigCons>
+                    {' '}
+                    {clickedPost.constellationTags[0] ? `🌠 ${clickedPost.constellationTags[0].name} 🚀` : `🔮`}
+                  </MyPostBox.BigCons>
                 </>
               )}
             </MyPostBox.BigPost>
