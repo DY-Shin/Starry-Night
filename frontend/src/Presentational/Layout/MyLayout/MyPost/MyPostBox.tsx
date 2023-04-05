@@ -173,7 +173,7 @@ function MyArticle() {
                       </Slider>
                     </StarStyle.WrapSlide>
                   </MyPostBox.BigCover>
-                  <MyPostBox.BigTitle>{clickedPost.title}</MyPostBox.BigTitle>
+                  <MyPostBox.BigTitle>{clickedPost.images[0].url}</MyPostBox.BigTitle>
                   <MyPostBox.BigContent>{clickedPost.content}</MyPostBox.BigContent>
                 </>
               )}

@@ -130,7 +130,7 @@ export const BigCover = styled.div`
 export const BigTitle = styled.h3`
   color: red;
   padding: 20px;
-  font-size: 46px;
+  font-size: 10px;
   position: relative;
   top: -80px;
 `;
