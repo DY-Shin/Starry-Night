@@ -60,7 +60,7 @@ function PagenationComponent(props: propsType) {
         <MdOutlineNavigateBefore className="icon" onClick={() => movePrevPage()} size={30} color="white" />
       );
     }
-    if (totalPage === undefined) {
+    if (totalPage === undefined || totalPage === 0) {
       nextButton = <MdOutlineNavigateNext visibility="hidden" className="icon" />;
     } else {
       nextButton = <MdOutlineNavigateNext className="icon" onClick={() => moveNextPage()} size={30} color="white" />;
