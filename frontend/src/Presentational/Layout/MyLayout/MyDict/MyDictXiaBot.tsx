@@ -1,47 +1,53 @@
 import React from 'react';
+import Scutum from '../../../../Assets/Mypage/symbols/Scutum';
+import Sagitta from '../../../../Assets/Mypage/symbols/Sagitta';
+import Hercules from '../../../../Assets/Mypage/symbols/Hercules';
+import Capricornus from '../../../../Assets/Mypage/symbols/Capricornus';
 import * as Dictainer from '../../../Components/MyComponents/MyDictComponent/MyDictContainer';
+import Delphinus from '../../../../Assets/Mypage/symbols/Delphinus';
+import Vulpecula from '../../../../Assets/Mypage/symbols/Vulpecula';
 
-function MyDictBei() {
+function MyDictXiaBot() {
   return (
     <Dictainer.DictSubBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
-          <h1>큰곰</h1>
-        </Dictainer.BjrPhoto>
-        <Dictainer.BjrName>큰곰자리</Dictainer.BjrName>
+        <Dictainer.BjrSymbol>
+          <Hercules />
+        </Dictainer.BjrSymbol>
+        <Dictainer.BjrName>헤라클레스자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
-          <h1>작은곰</h1>
-        </Dictainer.BjrPhoto>
-        <Dictainer.BjrName>작은곰자리</Dictainer.BjrName>
+        <Dictainer.BjrSymbol>
+          <Capricornus />
+        </Dictainer.BjrSymbol>
+        <Dictainer.BjrName>염소자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
-          <h1>용</h1>
-        </Dictainer.BjrPhoto>
-        <Dictainer.BjrName>용자리</Dictainer.BjrName>
+        <Dictainer.BjrSymbol>
+          <Sagitta />
+        </Dictainer.BjrSymbol>
+        <Dictainer.BjrName>화살자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
-          <h1>카시오페아</h1>
-        </Dictainer.BjrPhoto>
-        <Dictainer.BjrName>카시오페아자리</Dictainer.BjrName>
+        <Dictainer.BjrSymbol>
+          <Scutum />
+        </Dictainer.BjrSymbol>
+        <Dictainer.BjrName>방패자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
-          <h1>세페우스</h1>
-        </Dictainer.BjrPhoto>
-        <Dictainer.BjrName>세페우스자리</Dictainer.BjrName>
+        <Dictainer.BjrSymbol>
+          <Delphinus />
+        </Dictainer.BjrSymbol>
+        <Dictainer.BjrName>돌고래자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
-          <h1>기린</h1>
-        </Dictainer.BjrPhoto>
-        <Dictainer.BjrName>기린자리</Dictainer.BjrName>
+        <Dictainer.BjrSymbol>
+          <Vulpecula />
+        </Dictainer.BjrSymbol>
+        <Dictainer.BjrName>여우자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
     </Dictainer.DictSubBox>
   );
 }
 
-export default MyDictBei;
+export default MyDictXiaBot;

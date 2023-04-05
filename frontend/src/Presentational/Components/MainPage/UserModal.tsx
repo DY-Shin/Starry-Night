@@ -19,7 +19,7 @@ function UserModal() {
     <UserModalStyle.ModalBox>
       <UserModalStyle.UserName>{name} 님</UserModalStyle.UserName>
       <UserModalStyle.UserMenuLine />
-      <UserModalStyle.UserMenu1 to="mypage">
+      <UserModalStyle.UserMenu1 to="/mypage">
         <UserModalStyle.UserImg1 src={profileImageUrl} />
         회원정보
       </UserModalStyle.UserMenu1>

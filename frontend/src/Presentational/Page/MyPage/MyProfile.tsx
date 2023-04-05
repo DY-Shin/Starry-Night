@@ -1,47 +1,68 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import * as MyStyle from '../../Components/MyComponents/MyStyle';
 import MyGlobal from '../../Components/MyComponents/MyGlobalStyle';
 import * as MyProfileBox from '../../Components/MyComponents/MyProfileComponent/MyProfileBox';
+import { UserStore } from '../../../store';
 // import MyHeader from '../../Layout/MyLayout/MyHeader';
+import * as MyPageApi from '../../../Action/Modules/MyPage/MyPage';
 
 function MyProfile() {
+  const { id } = UserStore();
+
+  const [userPageInfo, setUserPageInfo] = useState<null | MyPageApi.UserPageInfo>(null);
+  // const [userPageInfo, setUserPageInfo] = useState({});
+
+  useEffect(() => {
+    const getUserPageInfo = async () => {
+      const request = await MyPageApi.getUserPageInfo(id);
+      console.log('request', request);
+      setUserPageInfo(request);
+    };
+    getUserPageInfo();
+  }, []);
+
   return (
     <MyStyle.Container>
       <Outlet />
       <MyGlobal />
       <MyProfileBox.ProfileMainContainer>
         <MyProfileBox.ProfileSubContainer>
-          <MyProfileBox.Photo>
-            <h1>hi</h1>
-          </MyProfileBox.Photo>
+          <MyProfileBox.Photo src={userPageInfo?.profileImageUrl} />
           <MyProfileBox.Nick>
-            <h2>비둘기가호롤롤롤로날아가</h2>
+            <h1>{userPageInfo?.name}</h1>
           </MyProfileBox.Nick>
         </MyProfileBox.ProfileSubContainer>
         <MyProfileBox.ProfileSubContainer>
           <MyProfileBox.ProfileButtonContainer>
-            <MyStyle.MyButton>
-              <Link to="/mypage/dict">나의 도감</Link>
-            </MyStyle.MyButton>
+            <Link to="/mypage/dict">
+              <MyStyle.MyButton>나의 도감</MyStyle.MyButton>
+            </Link>
+
             <MyProfileBox.MyProfileContent>
-              <h1>23/60</h1>
+              <h1>
+                {userPageInfo?.completedConstellationCount}/{userPageInfo?.totalConstellationCount}
+              </h1>
             </MyProfileBox.MyProfileContent>
           </MyProfileBox.ProfileButtonContainer>
           <MyProfileBox.ProfileButtonContainer>
-            <MyStyle.MyButton>
-              <Link to="/mypage/posts">내가 쓴 글 </Link>
-            </MyStyle.MyButton>
+            <Link to="/mypage/posts">
+              <MyStyle.MyButton>내가 쓴 글 </MyStyle.MyButton>
+            </Link>
+
             <MyProfileBox.MyProfileContent>
-              <h1>123개</h1>
+              <h1>{userPageInfo?.totalConstellationCount}개</h1>
             </MyProfileBox.MyProfileContent>
           </MyProfileBox.ProfileButtonContainer>
           <MyProfileBox.ProfileButtonContainer>
-            <MyStyle.MyButton>
-              <Link to="/mypage/reward">나의 업적</Link>
-            </MyStyle.MyButton>
+            <Link to="/mypage/reward">
+              <MyStyle.MyButton>나의 업적</MyStyle.MyButton>
+            </Link>
+
             <MyProfileBox.MyProfileContent>
-              <h1>2/8</h1>
+              <h1>
+                {userPageInfo?.completedAchievementCount}/{userPageInfo?.totalAchievementCount}
+              </h1>
             </MyProfileBox.MyProfileContent>
           </MyProfileBox.ProfileButtonContainer>
         </MyProfileBox.ProfileSubContainer>

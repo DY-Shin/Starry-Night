@@ -21,7 +21,7 @@ function Header() {
   // 카카오 로그인 정보 가져오기
   const getUser = async () => {
     await api.get(`/my-profile`, { withCredentials: true }).then((res) => {
-      setUser(res.data.data.name, res.data.data.profileImageUrl);
+      setUser(res.data.data.id, res.data.data.name, res.data.data.profileImageUrl);
     });
   };
 
