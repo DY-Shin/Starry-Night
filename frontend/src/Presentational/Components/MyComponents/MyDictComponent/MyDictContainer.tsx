@@ -6,6 +6,7 @@ export const DictMainBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+
   /* background-color: red; */
 `;
 export const DictItemBox = styled.div`
@@ -14,35 +15,41 @@ export const DictItemBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  margin-right: 4.5em;
   /* background-color: blue; */
   flex-direction: column;
 `;
 
 export const DictSubBox = styled.div`
-  width: 100%;
+  width: 1000px;
   height: 50%;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   /* background-color: green; */
 `;
 
 export const BjrBox = styled.div`
-  width: 14%;
-  height: 100%;
+  width: 150px;
+  height: 220px;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #7bd6cd;
   /* background-color: purple; */
   flex-direction: column;
+  &:hover {
+    color: goldenrod;
+    transition: all 2s;
+    cursor: help;
+  }
 `;
 
-export const BjrPhoto = styled.div`
-  width: 160px;
-  height: 160px;
+export const BjrSymbol = styled.div`
+  width: 140px;
+  height: 140px;
   display: flex;
   font-size: 1.5rem;
-  color: whitesmoke;
   align-items: center;
   justify-content: center;
   background: #016040;
@@ -53,8 +60,8 @@ export const BjrPhoto = styled.div`
 `;
 
 export const BjrName = styled.div`
-  width: 160px;
-  height: 80px;
+  width: 140px;
+  height: 70px;
   display: flex;
   font-size: 1.3rem;
   color: whitesmoke;

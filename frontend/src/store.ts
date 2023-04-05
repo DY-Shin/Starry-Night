@@ -18,10 +18,11 @@ export const PageStore = create<PAGE>((set) => ({
 export const UserStore = create<any>(
   persist(
     (set) => ({
+      id: 0,
       name: 'null',
       profileImageUrl: 'null',
-      setUser: (name: string, profileImageUrl: string) => {
-        set(() => ({ name, profileImageUrl }));
+      setUser: (id: number, name: string, profileImageUrl: string) => {
+        set(() => ({ id, name, profileImageUrl }));
       },
     }),
     { name: 'user-info' },

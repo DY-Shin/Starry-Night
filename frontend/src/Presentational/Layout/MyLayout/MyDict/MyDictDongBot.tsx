@@ -1,47 +1,47 @@
 import React from 'react';
+import Auriga from '../../../../Assets/Mypage/symbols/Auriga';
+import CanisMajor from '../../../../Assets/Mypage/symbols/CanisMajor';
+import CanisMinor from '../../../../Assets/Mypage/symbols/CanisMinor';
+
+import Orion from '../../../../Assets/Mypage/symbols/Orion';
+import Taurus from '../../../../Assets/Mypage/symbols/Taurus';
 import * as Dictainer from '../../../Components/MyComponents/MyDictComponent/MyDictContainer';
 
-function MyDictBei() {
+function MyDictDongTop() {
   return (
     <Dictainer.DictSubBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
-          <h1>쌍둥이</h1>
-        </Dictainer.BjrPhoto>
-        <Dictainer.BjrName>쌍둥이자리</Dictainer.BjrName>
+        <Dictainer.BjrSymbol>
+          <CanisMajor />
+        </Dictainer.BjrSymbol>
+        <Dictainer.BjrName>큰개자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
-          <h1>토끼</h1>
-        </Dictainer.BjrPhoto>
-        <Dictainer.BjrName>토끼자리</Dictainer.BjrName>
+        <Dictainer.BjrSymbol>
+          <Auriga />
+        </Dictainer.BjrSymbol>
+        <Dictainer.BjrName>마차부자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
-          <h1>에리다누스</h1>
-        </Dictainer.BjrPhoto>
-        <Dictainer.BjrName>에리다누스자리</Dictainer.BjrName>
+        <Dictainer.BjrSymbol>
+          <Orion />
+        </Dictainer.BjrSymbol>
+        <Dictainer.BjrName>오리온자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
-          <h1>게</h1>
-        </Dictainer.BjrPhoto>
-        <Dictainer.BjrName>게자리</Dictainer.BjrName>
+        <Dictainer.BjrSymbol>
+          <CanisMinor />
+        </Dictainer.BjrSymbol>
+        <Dictainer.BjrName>작은개자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
       <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
-          <h1>외뿔소</h1>
-        </Dictainer.BjrPhoto>
-        <Dictainer.BjrName>외뿔소자리</Dictainer.BjrName>
-      </Dictainer.BjrBox>
-      <Dictainer.BjrBox>
-        <Dictainer.BjrPhoto>
-          <h1>기린</h1>
-        </Dictainer.BjrPhoto>
-        <Dictainer.BjrName>기린자리</Dictainer.BjrName>
+        <Dictainer.BjrSymbol>
+          <Taurus />
+        </Dictainer.BjrSymbol>
+        <Dictainer.BjrName>황소자리</Dictainer.BjrName>
       </Dictainer.BjrBox>
     </Dictainer.DictSubBox>
   );
 }
 
-export default MyDictBei;
+export default MyDictDongTop;

@@ -29,7 +29,13 @@ export const ProfileButtonContainer = styled.div`
   width: 90%;
 `;
 
-export const Photo = styled.div`
+interface ImgProps {
+  src: string;
+}
+
+export const Photo = styled.img.attrs<ImgProps>((props) => ({
+  src: props.src,
+}))`
   width: 300px;
   height: 300px;
   display: flex;
