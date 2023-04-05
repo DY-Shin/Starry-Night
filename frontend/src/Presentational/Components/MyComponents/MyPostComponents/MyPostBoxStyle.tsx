@@ -120,9 +120,8 @@ export const BigPost = styled(motion.div)`
   background-color: #004568;
 `;
 
-export const BigCover = styled.div<{ bgPhoto: string }>`
+export const BigCover = styled.div`
   width: 100%;
-  background-image: url(${(props) => props.bgPhoto});
   background-size: cover;
   background-position: center center;
   height: 400px;
