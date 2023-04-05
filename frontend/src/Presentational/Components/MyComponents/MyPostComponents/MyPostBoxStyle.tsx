@@ -5,18 +5,26 @@ export const SliderWrapper = styled.div`
   width: 100%;
   height: 90%;
   display: flex;
+
+  flex-direction: column;
 `;
 
 export const Slider = styled.div`
   position: relative;
   margin-right: 4.5em;
   margin-left: 4.5em;
-  width: 100%;
+  width: 90%;
   height: 100%;
 `;
 
+export const SliderClickZone = styled.div`
+  position: flex;
+  /* background-color: white; */
+  height: 25%;
+  width: 100%;
+`;
+
 export const Row = styled(motion.div)`
-  margin-top: 10%;
   display: grid;
   gap: 10px;
   position: absolute;
@@ -35,26 +43,14 @@ export const rowVariants = {
     x: -window.outerWidth - 30,
   },
 };
-// <{ bgPhoto: string }>
-/* background-image: url(${(props) => props.bgPhoto}); */
-export const Box = styled(motion.div)`
+export const Box = styled(motion.div)<{ bgPhoto: string }>`
   background-color: navy;
-  /* background-size: cover;
-  background-position: center center; */
+  background-image: url(${(props) => props.bgPhoto});
+  background-size: cover;
+  background-position: center center;
   color: white;
   font-size: 50px;
   height: 200px;
-`;
-
-interface ImgProps {
-  src: string;
-}
-
-export const Img = styled.img.attrs<ImgProps>((props) => ({
-  src: props.src,
-}))`
-  height: 100%;
-  border-radius: 10px;
 `;
 
 export const boxVariants = {
@@ -62,6 +58,7 @@ export const boxVariants = {
     scale: 1,
   },
   hover: {
+    cursor: 'pointer',
     scale: 1.2,
     y: -50,
     transition: {
@@ -73,7 +70,7 @@ export const boxVariants = {
 };
 
 export const PostInfo = styled(motion.div)`
-  padding: 20px;
+  padding: 10px;
   background-color: grey;
   opacity: 0;
   position: absolute;
@@ -81,13 +78,14 @@ export const PostInfo = styled(motion.div)`
   bottom: 0;
 
   h5 {
-    font-size: 8px;
+    font-size: 10px;
     color: black;
   }
   h4 {
     font-size: 12px;
     color: midnightblue;
   }
+  cursor: pointer;
 `;
 
 export const PostInfoVariants = {
@@ -100,3 +98,45 @@ export const PostInfoVariants = {
     },
   },
 };
+
+export const Overlay = styled(motion.div)`
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+`;
+
+export const BigPost = styled(motion.div)`
+  position: absolute;
+  width: 40vw;
+  height: 80vh;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  border-radius: 15px;
+  overflow: hidden;
+`;
+
+export const BigCover = styled.div`
+  width: 100%;
+  background-size: cover;
+  background-position: center center;
+  height: 400px;
+`;
+
+export const BigTitle = styled.h3`
+  color: red;
+  padding: 20px;
+  font-size: 46px;
+  position: relative;
+  top: -80px;
+`;
+
+export const BigContent = styled.p`
+  padding: 20px;
+  position: relative;
+  top: -80px;
+  color: indigo;
+`;
