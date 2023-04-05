@@ -1,7 +1,8 @@
 /* eslint-disable no-undef */
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import { GrPrevious, GrNext } from 'react-icons/gr';
+import { GrPrevious, GrFormNext } from 'react-icons/gr';
+import { MdOutlineNavigateNext, MdOutlineNavigateBefore } from 'react-icons/md';
 import Swal from 'sweetalert2';
 import * as PagenationStyle from './PagenationComponent_Style';
 import WritePost from '../../Board/WritePost';
@@ -20,8 +21,6 @@ type propsType = {
 function PagenationComponent(props: propsType) {
   const { currentPage, setCurrentPage, totalPage, map, text, updateHandler, type } = props;
   const [isMoodalOpen, setModalOpen] = useState(false);
-
-  console.log('props', props);
 
   function moveNextPage() {
     setCurrentPage(currentPage + 1);
@@ -55,18 +54,26 @@ function PagenationComponent(props: propsType) {
   let nextButton;
   if (totalPage !== currentPage) {
     if (currentPage === 1) {
-      previousButton = <GrPrevious visibility="hidden" className="icon" />;
+      previousButton = <MdOutlineNavigateBefore visibility="hidden" className="icon" />;
     } else {
-      previousButton = <GrPrevious className="icon" onClick={() => movePrevPage} />;
+      previousButton = (
+        <MdOutlineNavigateBefore className="icon" onClick={() => movePrevPage()} size={30} color="white" />
+      );
     }
     if (totalPage === undefined) {
-      nextButton = <GrNext visibility="hidden" className="icon" />;
+      nextButton = <MdOutlineNavigateNext visibility="hidden" className="icon" />;
     } else {
-      nextButton = <GrNext className="icon" onClick={() => moveNextPage} />;
+      nextButton = <MdOutlineNavigateNext className="icon" onClick={() => moveNextPage()} size={30} color="white" />;
     }
   } else {
-    previousButton = <GrPrevious visibility="hidden" className="icon" />;
-    nextButton = <GrNext visibility="hidden" className="icon" />;
+    if (totalPage > 1 && totalPage === currentPage) {
+      previousButton = (
+        <MdOutlineNavigateBefore className="icon" onClick={() => movePrevPage()} size={30} color="white" />
+      );
+    } else {
+      previousButton = <MdOutlineNavigateBefore visibility="hidden" className="icon" />;
+    }
+    nextButton = <MdOutlineNavigateNext visibility="hidden" className="icon" />;
   }
 
   return (

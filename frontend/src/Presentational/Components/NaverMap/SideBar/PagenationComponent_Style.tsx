@@ -13,7 +13,7 @@ export const PagenationWrapper = styled.div`
 
   & .icon {
     cursor: pointer;
-    color: ${textColor};
+    transform: translateY(-5px);
   }
 `;
 

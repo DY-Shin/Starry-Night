@@ -25,7 +25,7 @@ function AddFavorite(props: propsType) {
 
   const addFavorite = () => {
     if (writeMapCenter) {
-      FavoriteApi.AddFavorite(inputValue, writeMapCenter.x, writeMapCenter.y);
+      FavoriteApi.AddFavorite(inputValue, writeMapCenter.y, writeMapCenter.x);
       updateHandler();
       setModalOpen(false);
     }
@@ -64,7 +64,7 @@ function AddFavorite(props: propsType) {
     naver.maps.Event.addListener(writeMap, 'dragend zoomend', () => {
       const newCenter = writeMap.getCenter();
       marker.setPosition(newCenter);
-      setWriteMapCenter(new naver.maps.LatLng(writeMap.getCenter().x, writeMap.getCenter().y));
+      setWriteMapCenter(new naver.maps.LatLng(writeMap.getCenter().y, writeMap.getCenter().x));
     });
   };
 

@@ -4,7 +4,7 @@ const textColor = '#ffffffe1';
 
 export const FavoriteListWrapper = styled.div`
   width: 100%;
-  height: 84%;
+  height: 83.5%;
 `;
 
 export const FavoriteWrapper = styled.div`

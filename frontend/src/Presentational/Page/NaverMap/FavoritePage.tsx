@@ -38,7 +38,6 @@ function FavoritePage(props: propsType) {
     const convertData = await data;
     if (!convertData) return null;
     const returnData = await FavoriteAPI.MakeMarker(map, convertData);
-    console.log('info 마커 만듬', returnData);
     // setMarkerObject(returnData);
     markerObject.current = returnData;
     return returnData;
@@ -54,7 +53,6 @@ function FavoritePage(props: propsType) {
     // const blank = updateMarker(updateData());
     init();
     return () => {
-      console.log('favorite 페이지 나감', markerObject);
       // if (markerObject) {
       //   FavoriteAPI.clearMarker(markerObject);
       // }
@@ -65,6 +63,7 @@ function FavoritePage(props: propsType) {
   }, [currentPage, forceRerender]);
 
   function moveTo(lat: number, lng: number) {
+    map?.setZoom(15);
     map?.setCenter(new naver.maps.LatLng(lat, lng));
   }
 
