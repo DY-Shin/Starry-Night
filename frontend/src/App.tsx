@@ -38,6 +38,7 @@ function App() {
           <Route path="/mypage/dict/win" element={<MyDong />} />
           <Route path="/mypage/dict/sol" element={<MySol />} />
           <Route path="/mypage/posts" element={<MyPost />} />
+          <Route path="/posts/:postId" element={<MyPost />} />
           <Route path="/mypage/reward" element={<MyReward />} />
         </Route>
         {/* 지도로 가는 거 */}

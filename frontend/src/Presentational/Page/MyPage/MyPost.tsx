@@ -10,7 +10,7 @@ function MyPost() {
     <MyStyle.Container>
       <MyGlobal />
       <MyHeader />
-      {/* <MySearchBox /> */}
+      <MySearchBox />
       <MyArticle />
     </MyStyle.Container>
   );

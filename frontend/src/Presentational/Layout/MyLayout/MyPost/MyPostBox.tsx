@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, useScroll } from 'framer-motion';
+import { PathMatch, useMatch, useNavigate } from 'react-router-dom';
 import * as MyPostBox from '../../../Components/MyComponents/MyPostComponents/MyPostBoxStyle';
 import * as MyPageApi from '../../../../Action/Modules/MyPage/MyPage';
 import { UserStore } from '../../../../store';
@@ -40,15 +41,22 @@ function MyArticle() {
     }
   };
 
-  // const bigMovieMatch = useRouteMatch<{ movieId: string }>("/movies/:movieId");
-  // console.log(bigMovieMatch);
+  const navigate = useNavigate();
+  const postMatch: PathMatch<string> | null = useMatch('/posts/:id');
+  console.log('postmatvch', postMatch);
+  console.log('postmatid', postMatch?.params.id);
+  const { scrollY } = useScroll();
 
-  // const onBoxClicked = (movieId: number) => {
-  //   history.push(`/movies/${movieId}`);
-  // };
+  const onBoxClicked = (postId: number) => {
+    navigate(`/posts/${postId}`);
+  };
 
+  const onOverlayClick = () => navigate('/mypage/posts');
+  const clickedPost = postMatch?.params.id && userPostInfo?.find((post) => `${post.id}` === postMatch.params.id);
+  console.log('clickedPost', clickedPost);
   return (
-    <MyPostBox.SliderWrapper onClick={increaseIndex}>
+    <MyPostBox.SliderWrapper>
+      <MyPostBox.SliderClickZone onClick={increaseIndex} />
       <MyPostBox.Slider>
         <AnimatePresence initial={false} onExitComplete={toggleLeaving}>
           <MyPostBox.Row
@@ -62,6 +70,8 @@ function MyArticle() {
             {userPostInfo?.slice(offset * index, offset * index + offset).map((post) => (
               <MyPostBox.Box
                 key={post.id}
+                layoutId={`${post.id}`}
+                onClick={() => onBoxClicked(post.id)}
                 variants={MyPostBox.boxVariants}
                 whileHover="hover"
                 initial="normal"
@@ -82,6 +92,30 @@ function MyArticle() {
           </MyPostBox.Row>
         </AnimatePresence>
       </MyPostBox.Slider>
+      <AnimatePresence>
+        {postMatch ? (
+          <>
+            <MyPostBox.Overlay onClick={onOverlayClick} exit={{ opacity: 0 }} animate={{ opacity: 1 }} />
+            <MyPostBox.BigPost style={{ top: scrollY.get() + 100 }} layoutId={postMatch.params.postId}>
+              {clickedPost && (
+                <>
+                  <MyPostBox.BigCover
+                  // style={{
+                  //   backgroundImage: `linear-gradient(to top, black, transparent), url(${makeImagePath(
+                  //     clickedPost.backdrop_path,
+                  //     'w500',
+                  //   )})`,
+                  // }}
+                  />
+                  <MyPostBox.BigTitle>{clickedPost.title}</MyPostBox.BigTitle>
+                  <MyPostBox.BigContent>{clickedPost.content}</MyPostBox.BigContent>
+                </>
+              )}
+            </MyPostBox.BigPost>
+          </>
+        ) : null}
+      </AnimatePresence>
+      <MyPostBox.SliderClickZone onClick={increaseIndex} />
     </MyPostBox.SliderWrapper>
   );
 }
