@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { useState } from 'react';
 import SideBarMenuArea from './SideBarMenuArea';
 import * as SidBarStyle from './SideBarArea_Style';
@@ -8,14 +9,15 @@ import BoardPage from '../../../Page/NaverMap/BoardPage';
 
 type propsType = {
   setIsBoardOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  // eslint-disable-next-line no-undef
+  setIsInfoOpen: React.Dispatch<React.SetStateAction<boolean>>;
   map: naver.maps.Map | null;
   refreshState: boolean;
   refreshHandler: React.Dispatch<React.SetStateAction<boolean>>;
+  clickLocation: null | naver.maps.Coord;
 };
 
 function SidBarArea(props: propsType) {
-  const { setIsBoardOpen, map, refreshState, refreshHandler } = props;
+  const { setIsBoardOpen, map, refreshState, refreshHandler, setIsInfoOpen, clickLocation } = props;
   const [foldState, setFoldState] = useState(true);
   const [currentSelectedBoard, setCurrentSelectedBoard] = useState('info');
 
@@ -27,8 +29,13 @@ function SidBarArea(props: propsType) {
     setCurrentSelectedBoard(str);
     if (str === 'board') {
       setIsBoardOpen(true);
+      setIsInfoOpen(false);
+    } else if (str === 'info') {
+      setIsBoardOpen(false);
+      setIsInfoOpen(true);
     } else {
       setIsBoardOpen(false);
+      setIsInfoOpen(false);
     }
   };
 
@@ -39,11 +46,14 @@ function SidBarArea(props: propsType) {
       </SidBarStyle.FoldBtn>
       <SidBarStyle.SidBarBody className={foldState ? 'close' : 'open'}>
         <SideBarProfileArea />
-        <SideBarMenuArea changeCurrentSelectedBoard={changeCurrentSelectedBoard} />
+        <SideBarMenuArea
+          changeCurrentSelectedBoard={changeCurrentSelectedBoard}
+          currentSelectedBoard={currentSelectedBoard}
+        />
         <SidBarStyle.SidBarLine />
         <SidBarStyle.SidBarContentsArea className="contentsArea">
-          {currentSelectedBoard === 'info' ? <InfoPage /> : null}
-          {currentSelectedBoard === 'favorite' ? <FavoritePage /> : null}
+          {currentSelectedBoard === 'info' ? <InfoPage clickLocation={clickLocation} /> : null}
+          {currentSelectedBoard === 'favorite' ? <FavoritePage map={map} /> : null}
           {currentSelectedBoard === 'board' ? (
             <BoardPage map={map} refreshState={refreshState} refreshHandler={refreshHandler} />
           ) : null}

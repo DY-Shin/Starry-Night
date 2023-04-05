@@ -1,17 +1,30 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const ProfileWrapper = styled.div`
   width: 100%;
   height: 190px;
   background-color: white;
-  background-image: url('https://2.bp.blogspot.com/-2RewSLZUzRg/U-9o6SD4M6I/AAAAAAAADIE/voax99AbRx0/s1600/14%2B-%2B1%2B%281%29.jpg');
+  background-image: url('https://images.unsplash.com/photo-1528722828814-77b9b83aafb2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
   background-size: cover;
+`;
+
+export const TopHomeLink = styled(Link)`
+  margin: 0;
+  color: white;
 `;
 
 export const TopWrapper = styled.div`
   width: 100%;
   height: 30px;
   background-color: #00000062;
+  display: flex;
+  justify-content: end;
+  & .icon {
+    margin: 2px 10px 0 0;
+    cursor: pointer;
+    color: white;
+  }
 `;
 
 export const MiddleWrapper = styled.div`
