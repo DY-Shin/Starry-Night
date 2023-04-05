@@ -35,16 +35,15 @@ export const rowVariants = {
     x: -window.outerWidth - 30,
   },
 };
-
-export const Box = styled(motion.div)<{ bgPhoto: string }>`
+// <{ bgPhoto: string }>
+/* background-image: url(${(props) => props.bgPhoto}); */
+export const Box = styled(motion.div)`
   background-color: navy;
-  background-image: url(${(props) => props.bgPhoto});
-  background-size: cover;
-  background-position: center center;
+  /* background-size: cover;
+  background-position: center center; */
   color: white;
   font-size: 50px;
   height: 200px;
-  position: relative;
 `;
 
 interface ImgProps {
@@ -67,7 +66,7 @@ export const boxVariants = {
     y: -50,
     transition: {
       delay: 0.3,
-      duration: 0.1,
+      duration: 0.5,
       type: 'tween',
     },
   },
@@ -80,6 +79,15 @@ export const PostInfo = styled(motion.div)`
   position: absolute;
   width: 100%;
   bottom: 0;
+
+  h5 {
+    font-size: 8px;
+    color: black;
+  }
+  h4 {
+    font-size: 12px;
+    color: midnightblue;
+  }
 `;
 
 export const PostInfoVariants = {
@@ -87,7 +95,7 @@ export const PostInfoVariants = {
     opacity: 1,
     transition: {
       delay: 0.3,
-      duaration: 0.1,
+      duaration: 0.5,
       type: 'tween',
     },
   },

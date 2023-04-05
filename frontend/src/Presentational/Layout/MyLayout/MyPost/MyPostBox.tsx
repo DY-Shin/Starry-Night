@@ -63,34 +63,24 @@ function MyArticle() {
                 whileHover="hover"
                 initial="normal"
                 transition={{ type: 'tween' }}
-                bgPhoto={post.image[0].url}
+                // bgPhoto={post.image[0].url}
               >
-                {/* onClick={()=>onBoxClicked(movie.id)} */}
                 {post.content}
 
-                <MyPostBox.PostInfo variants={MyPostBox.PostInfoVariants} />
+                <MyPostBox.PostInfo variants={MyPostBox.PostInfoVariants}>
+                  <h5>
+                    날짜 : {post.createdDate}
+                    <br />
+                    위치 : {post.lat}, {post.lng}
+                  </h5>
+                  <hr />
+                  <h4>{post.content}</h4>
+                </MyPostBox.PostInfo>
               </MyPostBox.Box>
             ))}
           </MyPostBox.Row>
         </AnimatePresence>
       </MyPostBox.Slider>
-      {/* <AnimatePresence>
-        {bigMovieMatch ? (
-          <motion.div
-            layoutId={bigMovieMatch.params.movieId}
-            style={{
-              position: 'absolute',
-              width: '40vw',
-              height: '80vh',
-              backgroundColor: 'red',
-              top: 50,
-              left: 0,
-              right: 0,
-              margin: '0 auto',
-            }}
-          />
-        ) : null}
-      </AnimatePresence> */}
     </MyPostBox.SliderWrapper>
   );
 }
