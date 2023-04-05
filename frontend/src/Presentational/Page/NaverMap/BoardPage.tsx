@@ -31,17 +31,6 @@ function BoardPage(props: propsType) {
     return result;
   }
 
-  // async function updateMarker(data: Promise<BoardPostAPI.resultType | null>): Promise<naver.maps.Marker[] | null> {
-  //   if (!map) return null;
-  //   if (markerObject) {
-  //     BoardPostAPI.clearMarker(markerObject);
-  //   }
-  //   const convertData = await data;
-  //   if (!convertData) return null;
-  //   const returnData = await BoardPostAPI.MakeMarker(map, convertData);
-  //   setMarkerObject(returnData);
-  //   return returnData;
-  // }
   async function updateMarker(data: Promise<BoardPostAPI.resultType | null>) {
     if (map) {
       if (markerObject) {
@@ -55,29 +44,10 @@ function BoardPage(props: propsType) {
     }
   }
 
-  // function refrehPost(): naver.maps.Marker[] | null {
-  //   let result: naver.maps.Marker[] | null = null;
-  //   updateMarker(updateData()).then((value) => {
-  //     result = value;
-  //   });
-  //   return result;
-  // }
   const refrehPost = () => {
     updateMarker(updateData());
   };
 
-  // useEffect(() => {
-  //   let returnData: naver.maps.Marker[] | null;
-  //   if (refreshState) {
-  //     returnData = refrehPost();
-  //     // updateMarker(updateData());
-  //   }
-  //   return () => {
-  //     if (markerObject) {
-  //       BoardPostAPI.clearMarker(markerObject);
-  //     }
-  //   };
-  // }, [refreshState, currentPage]);
   useEffect(() => {
     if (refreshState) {
       refrehPost();
@@ -87,12 +57,15 @@ function BoardPage(props: propsType) {
         BoardPostAPI.clearMarker(markerObject);
       }
     };
-  }, [refreshState, currentPage]);
+  }, [refreshState]);
+
+  useEffect(() => {
+    refreshHandler(true);
+  }, [currentPage]);
 
   return (
     <BoardStyle.BoardPageWrapper>
       <BoardStyle.BoardTopHeader ref={TopHeaderElement}>Star Post</BoardStyle.BoardTopHeader>
-      {/* <BoardStyle.BoardTopHeaderLine /> */}
       <BoardStyle.BoardPostWrapper>
         {resultData?.content?.map((value, idx) => (
           <BoardPost data={value} setDataHandler={setResultData} key={value.id} idx={idx} markerObject={markerObject} />
