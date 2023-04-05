@@ -20,7 +20,6 @@ function MapOption(props: propsType) {
 
   const changeActive = (e: MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
-    console.log(e.currentTarget.classList.contains('dropdownWrapper'));
     if (e.currentTarget.classList.contains('dropdownWrapper')) {
       e.currentTarget.classList.toggle('active');
     } else {
@@ -52,7 +51,7 @@ function MapOption(props: propsType) {
   }, [heatMapState, centerLocation]);
 
   return (
-    <OptionStyle.DropDownWrapper onClick={changeActive} className="dropdownWrapper">
+    <OptionStyle.DropDownWrapper onClick={changeActive} className="dropdownWrapper active">
       <OptionStyle.IconWrapper className="tempDiv">
         <GoSettings size={20} className="icon" />
       </OptionStyle.IconWrapper>
