@@ -68,11 +68,6 @@ public class CelestialWeatherService {
             size++;
             heatMaps.add(hm);
         }
-        // 히트맵 보정용 값
-        HeatMap minValue = new HeatMap(36.730402, 129.839530, 2.5);
-        HeatMap maxValue = new HeatMap(36.742953, 129.835720, 6.0);
-        heatMaps.add(minValue);
-        heatMaps.add(maxValue);
 
         System.out.println("HeatMap SIZE : "+ size);
 
@@ -86,7 +81,7 @@ public class CelestialWeatherService {
                 .limit(1);
 
         GeoResults<RedisGeoCommands.GeoLocation<String>> geoResults = redisTemplate.opsForGeo().radius(
-                "heat_map_scale_0",
+                "magnitude",
                 new Circle(req.getLng(), req.getLat(), 300),
                 args
         );
