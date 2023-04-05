@@ -11,7 +11,7 @@ export const BtnWrapper = styled.div<{ currentSelectedBoard: string }>`
   display: grid;
   grid-template-columns: 20% 80%;
   grid-template-rows: 1fr;
-  padding-left: 20px;
+  margin-left: 20px;
   & .icon {
     color: #b8b8b8;
   }
@@ -27,7 +27,7 @@ export const BtnWrapper = styled.div<{ currentSelectedBoard: string }>`
     }
   }
   &:not(:first-child, :last-child) {
-    margin: 5px 0 5px 0;
+    margin: 5px 0 5px 20px;
   }
   & .icon {
     margin: auto 0 auto 0;
