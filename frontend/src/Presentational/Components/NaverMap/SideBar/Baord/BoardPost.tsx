@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import * as PostStyle from './BoardPost_Style';
 import 'slick-carousel/slick/slick';
 import * as BoardPostAPI from '../../../../../Action/Modules/NaverMap/BoardPost';
+import * as FavoriteApi from '../../../../../Action/Modules/NaverMap/Favorite';
 
 type propsType = {
   data: BoardPostAPI.dataType;
@@ -66,11 +67,26 @@ function BoardPost(props: propsType) {
         icon: 'question',
         title: '위치 즐겨찾기',
         text: '현재 게시글이 작성된 위치를 즐겨찾기 하시겠습니까?',
-        showConfirmButton: true,
         confirmButtonText: '예',
         cancelButtonText: '아니요',
+        showConfirmButton: true,
         showCancelButton: true,
         allowOutsideClick: false,
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          const { value: favoriteTitle } = await Swal.fire({
+            title: '즐겨찾기 이름 입력',
+            input: 'text',
+            confirmButtonText: '추가',
+            cancelButtonText: '취소',
+            showConfirmButton: true,
+            showCancelButton: true,
+            allowOutsideClick: false,
+          });
+          if (favoriteTitle) {
+            FavoriteApi.AddFavorite(favoriteTitle, data.lat, data.lng);
+          }
+        }
       });
     } else {
       Swal.fire({

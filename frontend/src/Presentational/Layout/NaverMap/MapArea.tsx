@@ -76,7 +76,6 @@ function MapArea() {
       mapData.current?.removeListener(clickEvent);
     } else if (isInfoOpen) {
       const cEvent = naver.maps.Event.addListener(mapData.current, 'click', (e) => {
-        console.log('isInfo', isInfoOpen);
         if (isInfoOpen) {
           if (infoMarker.current) {
             infoMarker.current.setMap(null);
@@ -99,7 +98,6 @@ function MapArea() {
           setClickLocation(null);
         }
       });
-      console.log(cEvent);
       setClickEvent(cEvent);
     }
   }, [isInfoOpen]);
