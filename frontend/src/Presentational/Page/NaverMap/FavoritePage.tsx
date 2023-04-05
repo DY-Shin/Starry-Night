@@ -91,9 +91,19 @@ function FavoritePage(props: propsType) {
       <FavoriteStyle.FavoriteHeader>저장된 위치 - {favoriteList?.totalElements}</FavoriteStyle.FavoriteHeader>
       <FavoriteStyle.FavoriteListWrapper>
         {favoriteList
-          ? favoriteList.content.map((item) => {
+          ? favoriteList.content.map((item, idx) => {
               return (
-                <FavoriteStyle.FavoriteItemWrapper key={item.name + item.lat}>
+                <FavoriteStyle.FavoriteItemWrapper
+                  key={item.name + item.lat}
+                  onMouseEnter={() => {
+                    if (!markerObject.current) return;
+                    FavoriteAPI.sizeUp(markerObject.current, idx);
+                  }}
+                  onMouseLeave={() => {
+                    if (!markerObject.current) return;
+                    FavoriteAPI.sizeReturn(markerObject.current, idx);
+                  }}
+                >
                   <FavoriteStyle.FavoriteItemFrontWrapper onClick={() => moveTo(item.lat, item.lng)}>
                     <BsBookmarkStar size={25} className="icon iconFront" />
                     <FavoriteStyle.FavoriteItemText>{item.name}</FavoriteStyle.FavoriteItemText>
