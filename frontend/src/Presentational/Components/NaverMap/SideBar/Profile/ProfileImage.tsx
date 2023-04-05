@@ -8,7 +8,9 @@ function ProfileImage() {
     <ProfileImageStyle.ProfileImageWrapper>
       <ProfileImageStyle.ProfileImageBorder>
         {profileImageUrl !== 'null' ? (
-          <ProfileImageStyle.ProfileImage url={profileImageUrl} />
+          <ProfileImageStyle.ProfileMypageLink to="/mypage">
+            <ProfileImageStyle.ProfileImage url={profileImageUrl} className="login" />
+          </ProfileImageStyle.ProfileMypageLink>
         ) : (
           <ProfileImageStyle.ProfileImage url="https://s3-us-west-2.amazonaws.com/s.cdpn.io/53474/atom_profile_01.jpg" />
         )}

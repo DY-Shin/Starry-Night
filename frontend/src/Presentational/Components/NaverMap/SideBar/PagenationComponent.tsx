@@ -20,7 +20,7 @@ type propsType = {
 
 function PagenationComponent(props: propsType) {
   const { currentPage, setCurrentPage, totalPage, map, text, updateHandler, type } = props;
-  const [isMoodalOpen, setModalOpen] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(false);
 
   function moveNextPage() {
     setCurrentPage(currentPage + 1);
@@ -31,7 +31,7 @@ function PagenationComponent(props: propsType) {
   }
 
   useEffect(() => {
-    if (isMoodalOpen) {
+    if (isModalOpen) {
       const customModal =
         type === 'post' ? (
           <WritePost firstCenter={map?.getCenter()} setModalOpen={setModalOpen} />
@@ -48,7 +48,7 @@ function PagenationComponent(props: propsType) {
         customModal.remove();
       }
     }
-  }, [isMoodalOpen]);
+  }, [isModalOpen]);
 
   let previousButton;
   let nextButton;
@@ -60,7 +60,7 @@ function PagenationComponent(props: propsType) {
         <MdOutlineNavigateBefore className="icon" onClick={() => movePrevPage()} size={30} color="white" />
       );
     }
-    if (totalPage === undefined) {
+    if (totalPage === undefined || totalPage === 0) {
       nextButton = <MdOutlineNavigateNext visibility="hidden" className="icon" />;
     } else {
       nextButton = <MdOutlineNavigateNext className="icon" onClick={() => moveNextPage()} size={30} color="white" />;
@@ -79,7 +79,7 @@ function PagenationComponent(props: propsType) {
   return (
     <PagenationStyle.PagenationWrapper>
       {previousButton}
-      <PagenationStyle.WriteButton onClick={() => setModalOpen(!isMoodalOpen)}>{text}</PagenationStyle.WriteButton>
+      <PagenationStyle.WriteButton onClick={() => setModalOpen(!isModalOpen)}>{text}</PagenationStyle.WriteButton>
       {nextButton}
     </PagenationStyle.PagenationWrapper>
   );

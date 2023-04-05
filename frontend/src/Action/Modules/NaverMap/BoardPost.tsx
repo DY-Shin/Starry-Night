@@ -117,7 +117,7 @@ export async function MakeMarker(maps: naver.maps.Map, postData: resultType): Pr
         size: new naver.maps.Size(30, 30),
         scaledSize: new naver.maps.Size(30, 30),
       },
-      animation: naver.maps.Animation.DROP,
+      // animation: naver.maps.Animation.DROP,
     };
     markers.push(new naver.maps.Marker(markerOptions));
   });
