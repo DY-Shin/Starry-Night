@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import * as BoardPostAPI from '../../../Action/Modules/NaverMap/BoardPost';
 import BoardPost from '../../Components/NaverMap/SideBar/Baord/BoardPost';
 import * as BoardStyle from './BoardPage_Style';
-import BoardPagenation from '../../Components/NaverMap/SideBar/Baord/BoardPagenation';
+import PagenationComponent from '../../Components/NaverMap/SideBar/PagenationComponent';
 
 type propsType = {
   map: naver.maps.Map | null;
@@ -31,34 +31,56 @@ function BoardPage(props: propsType) {
     return result;
   }
 
-  async function updateMarker(data: Promise<BoardPostAPI.resultType | null>): Promise<naver.maps.Marker[] | null> {
-    // if (!resultData) {
-    //   return null;
-    // }
-    if (!map) return null;
-    if (markerObject) {
-      BoardPostAPI.clearMarker(markerObject);
+  // async function updateMarker(data: Promise<BoardPostAPI.resultType | null>): Promise<naver.maps.Marker[] | null> {
+  //   if (!map) return null;
+  //   if (markerObject) {
+  //     BoardPostAPI.clearMarker(markerObject);
+  //   }
+  //   const convertData = await data;
+  //   if (!convertData) return null;
+  //   const returnData = await BoardPostAPI.MakeMarker(map, convertData);
+  //   setMarkerObject(returnData);
+  //   return returnData;
+  // }
+  async function updateMarker(data: Promise<BoardPostAPI.resultType | null>) {
+    if (map) {
+      if (markerObject) {
+        BoardPostAPI.clearMarker(markerObject);
+      }
+      const convertData = await data;
+      if (convertData) {
+        const returnData = await BoardPostAPI.MakeMarker(map, convertData);
+        setMarkerObject(returnData);
+      }
     }
-    const convertData = await data;
-    if (!convertData) return null;
-    const returnData = await BoardPostAPI.MakeMarker(map, convertData);
-    setMarkerObject(returnData);
-    return returnData;
   }
 
-  function refrehPost(): naver.maps.Marker[] | null {
-    let result: naver.maps.Marker[] | null = null;
-    updateMarker(updateData()).then((value) => {
-      result = value;
-    });
-    return result;
-  }
+  // function refrehPost(): naver.maps.Marker[] | null {
+  //   let result: naver.maps.Marker[] | null = null;
+  //   updateMarker(updateData()).then((value) => {
+  //     result = value;
+  //   });
+  //   return result;
+  // }
+  const refrehPost = () => {
+    updateMarker(updateData());
+  };
 
+  // useEffect(() => {
+  //   let returnData: naver.maps.Marker[] | null;
+  //   if (refreshState) {
+  //     returnData = refrehPost();
+  //     // updateMarker(updateData());
+  //   }
+  //   return () => {
+  //     if (markerObject) {
+  //       BoardPostAPI.clearMarker(markerObject);
+  //     }
+  //   };
+  // }, [refreshState, currentPage]);
   useEffect(() => {
-    let returnData: naver.maps.Marker[] | null;
     if (refreshState) {
-      returnData = refrehPost();
-      // updateMarker(updateData());
+      refrehPost();
     }
     return () => {
       if (markerObject) {
@@ -76,11 +98,14 @@ function BoardPage(props: propsType) {
           <BoardPost data={value} setDataHandler={setResultData} key={value.id} idx={idx} markerObject={markerObject} />
         ))}
       </BoardStyle.BoardPostWrapper>
-      <BoardPagenation
+      <PagenationComponent
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
         totalPage={resultData?.totalPages}
         map={map}
+        text="글쓰기"
+        updateHandler={refrehPost}
+        type="post"
       />
     </BoardStyle.BoardPageWrapper>
   );

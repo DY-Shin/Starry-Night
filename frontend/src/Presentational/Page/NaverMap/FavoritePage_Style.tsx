@@ -2,6 +2,11 @@ import styled from 'styled-components';
 
 const textColor = '#ffffffe1';
 
+export const FavoriteListWrapper = styled.div`
+  width: 100%;
+  height: 83.5%;
+`;
+
 export const FavoriteWrapper = styled.div`
   width: 100%;
   height: 100%;
