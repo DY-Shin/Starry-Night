@@ -15,16 +15,7 @@ import { UserStore } from '../../../store';
 
 function MyReward() {
   const [rewards, setRewards] = useState([]);
-  // const [rewards2, setRewards2] = useState<MypageAPI.AchievementDetailInfo[]>([]);
-  // const [stars, setStars] = useState<{ [key: string]: [number, number] }>({});
   const { id } = UserStore();
-
-  // 도전과제 목록 가져오기
-  // const getReward = async () => {
-  //   await api.get(`/achievements`, { withCredentials: true }).then((res) => {
-  //     setRewards(res.data.data);
-  //   });
-  // };
 
   // 유저의 도전과제별 현황 가져오기
   const getOneStars = async (userid: number) => {

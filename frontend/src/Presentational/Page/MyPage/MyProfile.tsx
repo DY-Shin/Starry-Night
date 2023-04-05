@@ -4,14 +4,12 @@ import * as MyStyle from '../../Components/MyComponents/MyStyle';
 import MyGlobal from '../../Components/MyComponents/MyGlobalStyle';
 import * as MyProfileBox from '../../Components/MyComponents/MyProfileComponent/MyProfileBox';
 import { UserStore } from '../../../store';
-// import MyHeader from '../../Layout/MyLayout/MyHeader';
 import * as MyPageApi from '../../../Action/Modules/MyPage/MyPage';
 
 function MyProfile() {
   const { id } = UserStore();
 
   const [userPageInfo, setUserPageInfo] = useState<null | MyPageApi.UserPageInfo>(null);
-  // const [userPageInfo, setUserPageInfo] = useState({});
 
   useEffect(() => {
     const getUserPageInfo = async () => {
@@ -29,15 +27,11 @@ function MyProfile() {
       <MyProfileBox.ProfileMainContainer>
         <MyProfileBox.ProfileSubContainer>
           <MyProfileBox.Photo src={userPageInfo?.profileImageUrl} />
-          <MyProfileBox.Nick>
-            <h1>{userPageInfo?.name}</h1>
-          </MyProfileBox.Nick>
+          <MyProfileBox.Nick>{userPageInfo?.name}</MyProfileBox.Nick>
         </MyProfileBox.ProfileSubContainer>
         <MyProfileBox.ProfileSubContainer>
           <MyProfileBox.ProfileButtonContainer>
-            <Link to="/mypage/dict/all">
-              <MyStyle.MyButton>나의 도감</MyStyle.MyButton>
-            </Link>
+            <MyProfileBox.MyButton to="/mypage/dict/all">나의 도감</MyProfileBox.MyButton>
 
             <MyProfileBox.MyProfileContent>
               <h1>
@@ -46,18 +40,14 @@ function MyProfile() {
             </MyProfileBox.MyProfileContent>
           </MyProfileBox.ProfileButtonContainer>
           <MyProfileBox.ProfileButtonContainer>
-            <Link to="/mypage/posts">
-              <MyStyle.MyButton>내가 쓴 글 </MyStyle.MyButton>
-            </Link>
+            <MyProfileBox.MyButton to="/mypage/posts">내가 쓴 글</MyProfileBox.MyButton>
 
             <MyProfileBox.MyProfileContent>
               <h1>{userPageInfo?.postCount}개</h1>
             </MyProfileBox.MyProfileContent>
           </MyProfileBox.ProfileButtonContainer>
           <MyProfileBox.ProfileButtonContainer>
-            <Link to="/mypage/reward">
-              <MyStyle.MyButton>나의 업적</MyStyle.MyButton>
-            </Link>
+            <MyProfileBox.MyButton to="/mypage/reward">나의 업적</MyProfileBox.MyButton>
 
             <MyProfileBox.MyProfileContent>
               <h1>
