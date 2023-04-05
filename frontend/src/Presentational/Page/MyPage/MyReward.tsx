@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/jsx-pascal-case */
 /* eslint-disable no-undef */
 /* eslint-disable operator-assignment */
@@ -7,54 +8,54 @@ import React, { useEffect, useState } from 'react';
 import * as MyStyle from '../../Components/MyComponents/MyStyle';
 import MyGlobal from '../../Components/MyComponents/MyGlobalStyle';
 import MyHeader from '../../Layout/MyLayout/MyHeader';
+// import * as MypageAPI from '../../../Action/Modules/MyPage/MyPage';
 import * as MyBadge from '../../Components/MyBadge';
 import api from '../../Components/api';
-import Header from '../../Components/MainPage/Header';
+import { UserStore } from '../../../store';
 
 function MyReward() {
   const [rewards, setRewards] = useState([]);
-  const [stars, setStars] = useState<{ [key: string]: [number, number] }>({});
+  // const [rewards2, setRewards2] = useState<MypageAPI.AchievementDetailInfo[]>([]);
+  // const [stars, setStars] = useState<{ [key: string]: [number, number] }>({});
+  const { id } = UserStore();
 
   // 도전과제 목록 가져오기
-  const getReward = async () => {
-    await api.get(`/achievements`, { withCredentials: true }).then((res) => {
+  // const getReward = async () => {
+  //   await api.get(`/achievements`, { withCredentials: true }).then((res) => {
+  //     setRewards(res.data.data);
+  //   });
+  // };
+
+  // 유저의 도전과제별 현황 가져오기
+  const getOneStars = async (userid: number) => {
+    await api.get(`/users/${userid}/achievements`, { withCredentials: true }).then((res) => {
+      console.log(res.data.data);
       setRewards(res.data.data);
     });
   };
 
-  // 도전과제별 별자리 가져오기
-  const getOneStars = async (id: string) => {
-    await api.get(`/achievements/${id}/constellations`, { withCredentials: true }).then((res) => {
-      const temps = res.data.data;
-      const count = temps.filter((star: { completed: any }) => star.completed).length;
-      const total = temps.length;
-      setStars((prevStars) => ({ ...prevStars, [id]: [total, count] }));
-    });
-  };
-
   useEffect(() => {
-    getReward();
-    for (let i = 1; i < 6; i++) {
-      getOneStars(`${i}`);
-    }
+    getOneStars(id);
   }, []);
 
   const renderRewards = (): JSX.Element[] => {
     const filteredRewards = rewards.map((reward: any) => {
-      const [total, count] = stars[reward.id] || [0, 0];
       if (!reward.completed) {
         return (
-          <MyBadge.NotCompletedBadge key={reward.id}>
+          <MyBadge.Badge key={reward.id}>
             {reward.name}
-            <MyBadge.modal>{`${count}/${total}`}</MyBadge.modal>
-          </MyBadge.NotCompletedBadge>
+            <MyBadge.modal>
+              {reward.completedConstellationCount}/{reward.totalConstellationCount}
+            </MyBadge.modal>
+          </MyBadge.Badge>
         );
       }
       return (
-        <MyBadge.CompletedBadge key={reward.id}>
+        <MyBadge.Badge key={reward.id}>
           {reward.name}
-          <MyBadge.modal>{`${count}/${total}`}</MyBadge.modal>
-        </MyBadge.CompletedBadge>
+          <MyBadge.modal>{`${reward.completedConstellationCount}/${reward.totalConstellationCount}`}</MyBadge.modal>
+          <MyBadge.Check size="36" />
+        </MyBadge.Badge>
       );
     });
 
@@ -64,7 +65,6 @@ function MyReward() {
   return (
     <MyStyle.Container>
       <MyGlobal />
-      {/* <Header /> */}
       <MyHeader />
       <MyBadge.RewardContainer>{renderRewards()}</MyBadge.RewardContainer>
     </MyStyle.Container>
