@@ -56,10 +56,10 @@ public class PostController {
 
     @Operation(summary = "게시물 삭제")
     @DeleteMapping("/posts/{postId}")
-    public ResponseEntity<ApiResponse<PagedResult<PostDetailInfo>>> deletePost(@AuthenticationPrincipal LoginUser loginUser,
+    public ResponseEntity<ApiResponse> deletePost(@AuthenticationPrincipal LoginUser loginUser,
                                                                                @PathVariable Long postId) {
         postService.deletePost(postId, loginUser.getId());
-        ApiResponse<PagedResult<PostDetailInfo>> result = new ApiResponse<>(true, "게시물 삭제 성공");
+        ApiResponse result = new ApiResponse<>(true, "게시물 삭제 성공");
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 

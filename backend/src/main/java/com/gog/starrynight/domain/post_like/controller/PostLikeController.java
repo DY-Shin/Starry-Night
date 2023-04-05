@@ -40,7 +40,7 @@ public class PostLikeController {
 
     @Operation(summary = "게시물 좋아요한 회원 리스트")
     @GetMapping("/posts/{postId}/likes")
-    public ResponseEntity<ApiResponse> getPostLikers(@PathVariable("postId") Long postId,
+    public ResponseEntity<ApiResponse<PagedResult<UserSimpleInfo>>> getPostLikers(@PathVariable("postId") Long postId,
                                                      PagingRequest dto) {
         PagedResult<UserSimpleInfo> pagedResult = postLikeService.getPostLikers(postId, dto);
         ApiResponse<PagedResult<UserSimpleInfo>> result = new ApiResponse<>(true, "게시물 좋아요한 회원 리스트 조회", pagedResult);
