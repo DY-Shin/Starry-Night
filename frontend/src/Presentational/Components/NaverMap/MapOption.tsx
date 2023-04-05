@@ -39,8 +39,8 @@ function MapOption(props: propsType) {
   };
 
   async function updateHeatMapObject(): Promise<void> {
-    await HeatMapAPI.TurnOffHeatMap(heatMapObject);
     const newHeatMapObject = await HeatMapAPI.TurnOnHeatMap(map);
+    await HeatMapAPI.TurnOffHeatMap(heatMapObject);
     setHeatMapObject(newHeatMapObject);
     setLoadingHeatMapState(false);
   }
