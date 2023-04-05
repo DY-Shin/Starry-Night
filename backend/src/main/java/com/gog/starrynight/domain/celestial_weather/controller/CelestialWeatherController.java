@@ -26,9 +26,9 @@ public class CelestialWeatherController {
 
     @Operation(summary = "천체기상도 히트맵 조회")
     @GetMapping("/heatmaps")
-    public ResponseEntity<ApiResponse> getHeatMap(HeatMapRequest dto) {
+    public ResponseEntity<ApiResponse<List<HeatMap>>> getHeatMap(HeatMapRequest dto) {
         List<HeatMap> heatMaps = celestialWeatherService.getHeatMap(dto);
-        ApiResponse result = new ApiResponse(true, "천체기상도 히트맵 조회 성공", heatMaps);
+        ApiResponse<List<HeatMap>> result = new ApiResponse(true, "천체기상도 히트맵 조회 성공", heatMaps);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
