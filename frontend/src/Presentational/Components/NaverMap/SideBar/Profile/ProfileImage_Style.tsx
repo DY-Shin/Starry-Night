@@ -13,8 +13,8 @@ export const ProfileImageBorder = styled.div`
   transform: translateY(20px);
   margin-left: 10px;
 `;
-export const ProfileImage = styled.div`
-  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/53474/atom_profile_01.jpg');
+export const ProfileImage = styled.div<{ url: string }>`
+  background-image: url(${(props) => props.url});
   border-radius: 50%;
   background-size: cover;
   width: 100%;

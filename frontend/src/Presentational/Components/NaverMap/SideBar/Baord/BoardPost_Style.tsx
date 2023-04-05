@@ -5,6 +5,8 @@ export const PostLine = styled.hr`
   border-top: 1px dashed #0000005e;
 `;
 
+const textColor = '#ffffffe1';
+
 export const PostWrapper = styled.div`
   width: 100%;
   & .slick-prev {
@@ -73,6 +75,7 @@ export const PostWriterDate = styled.p`
   margin: 0;
   font-size: 14px;
   margin: 5px 0 0 7px;
+  color: ${textColor};
 `;
 
 export const PostWriterName = styled.p`
@@ -80,12 +83,14 @@ export const PostWriterName = styled.p`
   font-size: 17px;
   line-height: 20px;
   font-weight: 600;
+  color: ${textColor};
 `;
 
 export const PostHead = styled.h3``;
 
 export const PostContent = styled.p`
   margin-top: 30px;
+  color: ${textColor};
 `;
 
 export const StarTagArea = styled.div`
@@ -96,10 +101,10 @@ export const StarTagArea = styled.div`
 `;
 
 export const StarTag = styled.span`
-  color: #2529ff;
+  color: #8d4df5;
   cursor: pointer;
   :hover {
-    color: #0004f8;
+    color: #9c61fc;
     font-weight: bold;
   }
 `;
@@ -112,12 +117,14 @@ export const PostBottomArea = styled.div`
 
   .likeIcon {
     cursor: pointer;
+    color: ${textColor};
   }
 `;
 export const PostLikeCount = styled.span`
   margin-left: 5px;
   font-size: large;
   font-weight: 500;
+  color: ${textColor};
 `;
 
 export const PostDate = styled.p``;

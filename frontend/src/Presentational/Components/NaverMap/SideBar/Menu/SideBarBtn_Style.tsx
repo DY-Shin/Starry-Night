@@ -11,7 +11,7 @@ export const SideBarBtnText = styled.p`
   margin: 0;
   line-height: 50px;
   padding-left: 40px;
-  color: black;
+  color: #b8b8b8;
   font-size: x-large;
   text-align: left;
 `;
