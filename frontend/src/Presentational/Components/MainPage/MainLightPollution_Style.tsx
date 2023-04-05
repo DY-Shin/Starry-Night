@@ -69,8 +69,11 @@ export const LPImgBox1 = styled.div`
   height: 300px;
   /* background-color: rgba(50, 130, 184, 0.3); //#3282B8; */
   /* border: 2px solid #0f4c75; */
-
-  filter: drop-shadow(0 0 10px rgba(50, 130, 184, 1));
+  border-style: solid;
+  border-radius: 10px;
+  border-color: whitesmoke;
+  box-shadow: 0 0 7px 0px rgba(52, 152, 219, 0.8) inset, 0 0 70px 2px rgba(52, 152, 219);
+  /* filter: drop-shadow(0 0 100px rgba(50, 130, 184, 1)); */
   @media all and (max-width: 1200px) {
   }
   @media all and (max-width: 768px) {

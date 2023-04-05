@@ -60,7 +60,11 @@ function MainStar() {
             height: '100%',
             border: '2px solid #0f4c75',
             backgroundColor: 'rgba(50, 130, 184, 0.3)',
-            filter: 'drop-shadow(0 0 3px rgba(50, 130, 184, 1))',
+            // filter: 'drop-shadow(0 0 3px rgba(50, 130, 184, 1))',
+            borderStyle: 'solid',
+            borderRadius: '10px',
+            borderColor: 'whitesmoke',
+            boxShadow: '0 0 7px 0px rgba(52, 152, 219, 0.8) inset, 0 0 70px 2px rgba(52, 152, 219)',
           }}
         />
 

@@ -83,9 +83,21 @@ function MainContel() {
               ))}
           </Slider>
           <ContelStyle.WrapMenu>
-            <ContelStyle.Menu onClick={setOrigin}>천체</ContelStyle.Menu>
-            <ContelStyle.Menu onClick={setLined}>별자리 선</ContelStyle.Menu>
-            <ContelStyle.Menu onClick={setIllust}>별자리 그림</ContelStyle.Menu>
+            {flag.origin ? (
+              <ContelStyle.SelMenu>천체</ContelStyle.SelMenu>
+            ) : (
+              <ContelStyle.Menu onClick={setOrigin}>천체</ContelStyle.Menu>
+            )}
+            {flag.lined ? (
+              <ContelStyle.SelMenu>별자리 선</ContelStyle.SelMenu>
+            ) : (
+              <ContelStyle.Menu onClick={setLined}>별자리 선</ContelStyle.Menu>
+            )}
+            {flag.illust ? (
+              <ContelStyle.SelMenu>별자리 그림</ContelStyle.SelMenu>
+            ) : (
+              <ContelStyle.Menu onClick={setIllust}>별자리 그림</ContelStyle.Menu>
+            )}
           </ContelStyle.WrapMenu>
         </ContelStyle.WrapSlide>
       </ContelStyle.MainContel>

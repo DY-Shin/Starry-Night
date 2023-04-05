@@ -24,7 +24,7 @@ export const MainContel = styled.div`
   overflow: hidden;
   cursor: default;
   backdrop-filter: blur(0.4px);
-  filter: drop-shadow(0 0 10px rgba(50, 130, 184, 1));
+  /* filter: drop-shadow(0 0 10px rgba(50, 130, 184, 1)); */
   @media all and (max-width: 1200px) {
   }
   @media all and (max-width: 768px) {
@@ -36,6 +36,10 @@ export const MainContel = styled.div`
 export const WrapSlide = styled.div`
   width: 50vw;
   border: 3px solid #0f4c75;
+  border-style: solid;
+  border-radius: 3px;
+  border-color: whitesmoke;
+  box-shadow: 0 0 7px 0px rgba(52, 152, 219, 0.8) inset, 0 0 70px 2px rgba(52, 152, 219);
   @media all and (max-width: 1200px) {
     width: 60vw;
   }
@@ -67,6 +71,16 @@ export const Menu = styled.div`
     background-color: gray;
     opacity: 0.8;
   }
+`;
+
+export const SelMenu = styled.div`
+  flex-basis: 33.4%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #0f4c75;
+  background-color: gray;
+  opacity: 0.8;
 `;
 
 export const Name = styled.div`
