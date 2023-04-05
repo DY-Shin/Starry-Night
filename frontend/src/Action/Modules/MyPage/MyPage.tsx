@@ -120,8 +120,8 @@ export async function getConstellationInfosByUser(userId: number): Promise<Const
 }
 
 // 도전과제 목록 조회
-export async function getAchievementList(): Promise<AchievementDetailInfo[] | null> {
-  let data: AchievementDetailInfo[] | null = null;
+export async function getAchievementList(): Promise<AchievementDetailInfo[]> {
+  let data: AchievementDetailInfo[] = [];
 
   try {
     const res = await axios.get(`${process.env.REACT_APP_API_SERVER_URL}/achievements`, {

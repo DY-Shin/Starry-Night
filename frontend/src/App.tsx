@@ -30,7 +30,7 @@ function App() {
         {/* 마이페이지 */}
         <Route element={<PrivateRoute isMypage={true} />}>
           <Route path="/mypage" element={<MyProfile />} />
-          <Route path="/mypage/dict" element={<MyDict />} />
+          <Route path="/mypage/dict/all" element={<MyDict />} />
           <Route path="/mypage/dict/nor" element={<MyBei />} />
           <Route path="/mypage/dict/spr" element={<MyChun />} />
           <Route path="/mypage/dict/sum" element={<MyXia />} />

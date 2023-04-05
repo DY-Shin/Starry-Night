@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const Container = styled.div`
   position: flex;
@@ -11,8 +12,9 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-left: 4.5em;
+  margin-left: 4em;
   margin-right: 2.5em;
+  margin-top: 4em;
   a {
     text-decoration: none;
     color: #f0f0f0;
@@ -32,17 +34,39 @@ export const Container = styled.div`
   }
 `;
 
-export const DictButton = styled.button`
+export const DictButton = styled.div`
   position: flex;
   display: flex;
-  margin: 0.5vh;
+  /* margin: 0.5vh; */
+  margin-bottom: 1.5rem;
   height: 50px;
   width: 120px;
   font-size: 120%;
-  background-color: navy;
+  background-color: rgba(0, 0, 0, 0.5);
   color: #f0f0f0;
+  /* color: black; */
   align-items: center;
   justify-content: center;
 
   border-radius: 1vh;
+  border-color: rgba(52, 152, 219, 0.8);
+  color: white;
+  box-shadow: 0 0 7px 0px rgba(52, 152, 219, 0.8) inset, 0 0 7px 4px rgba(52, 152, 219);
+  transition: all 200ms ease-in-out;
+
+  &:hover {
+    box-shadow: 0 0 10px 5px rgba(52, 152, 219) inset, 0 0 0px 4px rgba(52, 152, 219);
+  }
+`;
+
+export const MenuLink = styled(NavLink)`
+  color: white;
+  text-decoration: none;
+  /* &:hover {
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
+  } */
+  &.active {
+    filter: drop-shadow(0 0 3px rgba(52, 152, 255, 1));
+    cursor: default;
+  }
 `;
