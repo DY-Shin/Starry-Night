@@ -16,6 +16,24 @@ export interface favoriteResultType {
   size: number;
 }
 
+export async function AddFavorite(name: string, lat: number, lng: number) {
+  try {
+    await axios.post(
+      `${process.env.REACT_APP_API_SERVER_URL}/favorite-locations`,
+      {
+        name,
+        lat,
+        lng,
+      },
+      {
+        withCredentials: true,
+      },
+    );
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 export async function DeleteFavorite(id: number) {
   try {
     await axios.delete(`${process.env.REACT_APP_API_SERVER_URL}/favorite-locations/${id}`, {

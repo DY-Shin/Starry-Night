@@ -3,18 +3,22 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { GrPrevious, GrNext } from 'react-icons/gr';
 import Swal from 'sweetalert2';
-import * as BoardPagenationStyle from './BoardPagenation_Style';
-import WritePost from '../../../Board/WritePost';
+import * as PagenationStyle from './PagenationComponent_Style';
+import WritePost from '../../Board/WritePost';
+import AddFavorite from '../../Favorite/AddFavorite';
 
 type propsType = {
   currentPage: number;
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
   totalPage: number | undefined;
   map: naver.maps.Map | null;
+  text: string;
+  updateHandler: () => void;
+  type: string;
 };
 
-function BoardPagenation(props: propsType) {
-  const { currentPage, setCurrentPage, totalPage, map } = props;
+function PagenationComponent(props: propsType) {
+  const { currentPage, setCurrentPage, totalPage, map, text, updateHandler, type } = props;
   const [isMoodalOpen, setModalOpen] = useState(false);
 
   console.log('props', props);
@@ -29,15 +33,20 @@ function BoardPagenation(props: propsType) {
 
   useEffect(() => {
     if (isMoodalOpen) {
-      const writeModal = <WritePost firstCenter={map?.getCenter()} setModalOpen={setModalOpen} />;
+      const customModal =
+        type === 'post' ? (
+          <WritePost firstCenter={map?.getCenter()} setModalOpen={setModalOpen} />
+        ) : (
+          <AddFavorite firstCenter={map?.getCenter()} setModalOpen={setModalOpen} updateHandler={updateHandler} />
+        );
       const modalContainer = document.createElement('div');
-      modalContainer.className = 'WriteModal';
+      modalContainer.className = 'customModal';
       document.body.appendChild(modalContainer);
-      ReactDOM.render(writeModal, modalContainer);
+      ReactDOM.render(customModal, modalContainer);
     } else {
-      const writeModal = document.getElementsByClassName('WriteModal')[0];
-      if (writeModal) {
-        writeModal.remove();
+      const customModal = document.getElementsByClassName('customModal')[0];
+      if (customModal) {
+        customModal.remove();
       }
     }
   }, [isMoodalOpen]);
@@ -61,14 +70,12 @@ function BoardPagenation(props: propsType) {
   }
 
   return (
-    <BoardPagenationStyle.PagenationWrapper>
+    <PagenationStyle.PagenationWrapper>
       {previousButton}
-      <BoardPagenationStyle.WriteButton onClick={() => setModalOpen(!isMoodalOpen)}>
-        글쓰기
-      </BoardPagenationStyle.WriteButton>
+      <PagenationStyle.WriteButton onClick={() => setModalOpen(!isMoodalOpen)}>{text}</PagenationStyle.WriteButton>
       {nextButton}
-    </BoardPagenationStyle.PagenationWrapper>
+    </PagenationStyle.PagenationWrapper>
   );
 }
 
-export default BoardPagenation;
+export default PagenationComponent;

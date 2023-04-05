@@ -5,6 +5,7 @@ import { RiDeleteBin2Line } from 'react-icons/ri';
 import Swal from 'sweetalert2';
 import * as FavoriteStyle from './FavoritePage_Style';
 import * as FavoriteAPI from '../../../Action/Modules/NaverMap/Favorite';
+import PagenationComponent from '../../Components/NaverMap/SideBar/PagenationComponent';
 
 type propsType = {
   map: naver.maps.Map | null;
@@ -43,9 +44,15 @@ function FavoritePage(props: propsType) {
     return returnData;
   }
 
-  useEffect(() => {
+  const init = () => {
     updateData();
     const blank = updateMarker(updateData());
+  };
+
+  useEffect(() => {
+    // updateData();
+    // const blank = updateMarker(updateData());
+    init();
     return () => {
       console.log('favorite 페이지 나감', markerObject);
       // if (markerObject) {
@@ -83,19 +90,30 @@ function FavoritePage(props: propsType) {
   return (
     <FavoriteStyle.FavoriteWrapper>
       <FavoriteStyle.FavoriteHeader>저장된 위치 - {favoriteList?.totalElements}</FavoriteStyle.FavoriteHeader>
-      {favoriteList
-        ? favoriteList.content.map((item) => {
-            return (
-              <FavoriteStyle.FavoriteItemWrapper key={item.name + item.lat}>
-                <FavoriteStyle.FavoriteItemFrontWrapper onClick={() => moveTo(item.lat, item.lng)}>
-                  <BsBookmarkStar size={25} className="icon iconFront" />
-                  <FavoriteStyle.FavoriteItemText>{item.name}</FavoriteStyle.FavoriteItemText>
-                </FavoriteStyle.FavoriteItemFrontWrapper>
-                <RiDeleteBin2Line size={25} className="icon iconBack" onClick={() => deleteFavorite(item.id)} />
-              </FavoriteStyle.FavoriteItemWrapper>
-            );
-          })
-        : null}
+      <FavoriteStyle.FavoriteListWrapper>
+        {favoriteList
+          ? favoriteList.content.map((item) => {
+              return (
+                <FavoriteStyle.FavoriteItemWrapper key={item.name + item.lat}>
+                  <FavoriteStyle.FavoriteItemFrontWrapper onClick={() => moveTo(item.lat, item.lng)}>
+                    <BsBookmarkStar size={25} className="icon iconFront" />
+                    <FavoriteStyle.FavoriteItemText>{item.name}</FavoriteStyle.FavoriteItemText>
+                  </FavoriteStyle.FavoriteItemFrontWrapper>
+                  <RiDeleteBin2Line size={25} className="icon iconBack" onClick={() => deleteFavorite(item.id)} />
+                </FavoriteStyle.FavoriteItemWrapper>
+              );
+            })
+          : null}
+      </FavoriteStyle.FavoriteListWrapper>
+      <PagenationComponent
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        totalPage={favoriteList?.totalPages}
+        map={map}
+        text="즐겨찾기 추가"
+        updateHandler={init}
+        type="favorite"
+      />
     </FavoriteStyle.FavoriteWrapper>
   );
 }
