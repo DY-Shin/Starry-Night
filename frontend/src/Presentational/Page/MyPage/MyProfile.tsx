@@ -35,7 +35,7 @@ function MyProfile() {
         </MyProfileBox.ProfileSubContainer>
         <MyProfileBox.ProfileSubContainer>
           <MyProfileBox.ProfileButtonContainer>
-            <Link to="/mypage/dict">
+            <Link to="/mypage/dict/all">
               <MyStyle.MyButton>나의 도감</MyStyle.MyButton>
             </Link>
 

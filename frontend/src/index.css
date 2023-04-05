@@ -14,6 +14,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
+.container {
+  display: flex;
+  margin-top: 15px;
+  align-items: center;
+  justify-content: center;
+}
+
 /* 평창 평화체 */
 @font-face {
   font-family: 'PyeongChangPeace-Bold';
