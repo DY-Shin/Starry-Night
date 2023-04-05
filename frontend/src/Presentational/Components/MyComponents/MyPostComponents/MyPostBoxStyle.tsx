@@ -117,10 +117,12 @@ export const BigPost = styled(motion.div)`
   margin: 0 auto;
   border-radius: 15px;
   overflow: hidden;
+  background-color: #004568;
 `;
 
-export const BigCover = styled.div`
+export const BigCover = styled.div<{ bgPhoto: string }>`
   width: 100%;
+  background-image: url(${(props) => props.bgPhoto});
   background-size: cover;
   background-position: center center;
   height: 400px;

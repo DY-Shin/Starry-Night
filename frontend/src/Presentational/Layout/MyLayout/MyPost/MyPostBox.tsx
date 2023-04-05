@@ -100,12 +100,9 @@ function MyArticle() {
               {clickedPost && (
                 <>
                   <MyPostBox.BigCover
-                  // style={{
-                  //   backgroundImage: `linear-gradient(to top, black, transparent), url(${makeImagePath(
-                  //     clickedPost.backdrop_path,
-                  //     'w500',
-                  //   )})`,
-                  // }}
+                    bgPhoto={
+                      clickedPost.images[0] ? clickedPost.images[0].url : 'https://j8d206.p.ssafy.io/api/datafiles/8'
+                    }
                   />
                   <MyPostBox.BigTitle>{clickedPost.title}</MyPostBox.BigTitle>
                   <MyPostBox.BigContent>{clickedPost.content}</MyPostBox.BigContent>
