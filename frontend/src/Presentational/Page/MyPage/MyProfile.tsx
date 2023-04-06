@@ -5,7 +5,7 @@ import MyGlobal from '../../Components/MyComponents/MyGlobalStyle';
 import * as MyProfileBox from '../../Components/MyComponents/MyProfileComponent/MyProfileBox';
 import { UserStore } from '../../../store';
 import * as MyPageApi from '../../../Action/Modules/MyPage/MyPage';
-import Header from '../../Components/MainPage/Header';
+import Header from '../../Layout/MyLayout/MyMainHeader';
 
 function MyProfile() {
   const { id } = UserStore();
