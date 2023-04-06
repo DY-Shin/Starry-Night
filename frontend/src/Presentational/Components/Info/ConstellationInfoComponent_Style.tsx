@@ -50,7 +50,6 @@ export const ConstellationName = styled.p`
   color: #ffffffdf;
   font-size: 30px;
   text-align: center;
-  /* margin-left: auto; */
 `;
 
 export const ContentWrapper = styled.div`
@@ -67,9 +66,6 @@ export const DetailWrapper = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
 `;
 
 export const ImageItem = styled.img<{ link: string }>`
@@ -121,7 +117,6 @@ export const CardWrapper = styled.div`
       transform: rotateY(-180deg);
     }
     .icon {
-      /* visibility: hidden; */
       opacity: 0;
       transition: opacity 1s;
     }

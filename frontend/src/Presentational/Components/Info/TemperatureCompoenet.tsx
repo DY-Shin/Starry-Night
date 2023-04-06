@@ -4,7 +4,10 @@ import * as TemperatureStyle from './TemperatureComponent_Style';
 
 function TemperatureComponent(props: { temperature: string }) {
   const { temperature } = props;
+
+  // 보이는 수치가 너무 낮아 시각적으로 보이게 하기 위해 + 10을 해줌
   const convertTemperature = Number(temperature) + 10;
+
   return (
     <TemperatureStyle.TemperWrapper>
       <TemperatureStyle.ThermometerContainer>
