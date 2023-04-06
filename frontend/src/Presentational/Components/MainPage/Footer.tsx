@@ -1,10 +1,11 @@
 /* eslint-disable react/jsx-pascal-case */
 import React from 'react';
 import * as FooterStyle from './Footer_Style';
+import * as MainStyle from '../../Page/Main_Style';
 
 function Footer() {
   return (
-    <FooterStyle.Container>
+    <MainStyle.Container>
       <FooterStyle.MainFooter>
         <FooterStyle.WrapDognju>
           <FooterStyle.Poem>
@@ -38,7 +39,7 @@ function Footer() {
           <FooterStyle.Copyright>2023 SSAFY D206 Starry night, All rights resevered.</FooterStyle.Copyright>
         </FooterStyle.WrapFooter>
       </FooterStyle.MainFooter>
-    </FooterStyle.Container>
+    </MainStyle.Container>
   );
 }
 

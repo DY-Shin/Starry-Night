@@ -10,6 +10,7 @@ import Footer from '../Components/MainPage/Footer';
 import * as MainStyle from './Main_Style';
 import { PageStore } from '../../store';
 import Header from '../Components/MainPage/Header';
+import Back from '../Common/Components/MainPage/Back';
 
 function Mainpage() {
   const { page, setPage } = PageStore();
@@ -26,6 +27,7 @@ function Mainpage() {
 
   return (
     <MainStyle.Mainpage>
+      <Back />
       <Header />
       <ReactPageScroller pageOnChange={pageChanage} customPageNumber={page}>
         <MainTop />

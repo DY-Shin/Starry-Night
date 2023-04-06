@@ -27,9 +27,9 @@ export const Container = styled.div`
   width: 100%;
   max-width: 100vw;
   max-height: 100vh;
-  background-image: url('assets/mainpage/space.jpg');
+  /* background-image: url('assets/mainpage/space.jpg');
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
 `;
 
 // 스크롤 맨 위로 올리는 버튼
@@ -72,6 +72,7 @@ export const LeftSlide = styled(AiOutlineStar)`
   height: 2em;
   cursor: pointer;
   transform: translate(-5px, 0);
+  filter: drop-shadow(0px 4px 3px rgba(50, 130, 184, 1));
   &:hover {
     filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
   }
@@ -84,6 +85,7 @@ export const RightSlide = styled(AiOutlineStar)`
   height: 2em;
   transform: translate(5px, 0);
   cursor: pointer;
+  filter: drop-shadow(0px 4px 3px rgba(50, 130, 184, 1));
   &:hover {
     filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
   }
@@ -95,7 +97,8 @@ export const SelLeftSlide = styled(AiFillStar)`
   width: 2em;
   height: 2em;
   transform: translate(-5px, 0);
-  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
+  /* filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1)); */
+  filter: drop-shadow(0px 4px 3px rgba(50, 130, 184, 1));
 `;
 // 선택된 오른쪽 별
 export const SelRightSlide = styled(AiFillStar)`
@@ -104,7 +107,8 @@ export const SelRightSlide = styled(AiFillStar)`
   width: 2em;
   height: 2em;
   transform: translate(5px, 0);
-  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
+  /* filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1)); */
+  filter: drop-shadow(0px 4px 3px rgba(50, 130, 184, 1));
 `;
 
 // 텍스트 강조
