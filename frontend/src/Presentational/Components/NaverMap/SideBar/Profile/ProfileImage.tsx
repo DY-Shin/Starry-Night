@@ -3,7 +3,11 @@ import * as ProfileImageStyle from './ProfileImage_Style';
 import { UserStore } from '../../../../../store';
 
 function ProfileImage() {
+  /*
+   * profileImageUrl : Zustand Store에 저장된 로그인 유저 프로필 사진 링크
+   */
   const { profileImageUrl } = UserStore();
+
   return (
     <ProfileImageStyle.ProfileImageWrapper className="ImageWrapper">
       <ProfileImageStyle.ProfileBorderDiv>
