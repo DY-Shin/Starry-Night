@@ -3,6 +3,7 @@ import styled from 'styled-components';
 // 광공해 슬라이드
 export const MainLightPollution = styled.div`
   color: white;
+  padding-top: 10px;
   padding-left: 4.5em;
   padding-right: 4.5em;
   min-height: 100vh;

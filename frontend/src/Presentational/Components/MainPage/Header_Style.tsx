@@ -3,9 +3,13 @@ import { Link } from 'react-router-dom';
 
 // header
 export const MainNav = styled.div`
+  position: absolute;
+  top: 0;
   height: 50px;
+  width: 100%;
   display: flex;
   box-shadow: 0 5px 5px -5px white;
+  z-index: 50;
 `;
 export const WrapNav = styled.nav`
   width: 100%;

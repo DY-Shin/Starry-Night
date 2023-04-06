@@ -3,6 +3,7 @@ import styled from 'styled-components';
 // Explain 슬라이드
 export const MainExplain = styled.div`
   min-height: 100vh;
+  padding-top: 10px;
   padding-left: 8em;
   padding-right: 8em;
   overflow: hidden;
