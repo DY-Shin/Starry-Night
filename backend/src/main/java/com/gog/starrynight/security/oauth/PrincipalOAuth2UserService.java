@@ -5,6 +5,7 @@ import com.gog.starrynight.domain.user.entity.User;
 import com.gog.starrynight.domain.user.repository.UserRepository;
 import com.gog.starrynight.domain.user.service.UserService;
 import com.gog.starrynight.security.LoginUser;
+import com.gog.starrynight.security.oauth.provider.GoogleOAuthUserInfo;
 import com.gog.starrynight.security.oauth.provider.KakaoOAuthUserInfo;
 import com.gog.starrynight.security.oauth.provider.OAuthUserInfo;
 import lombok.RequiredArgsConstructor;
@@ -33,6 +34,8 @@ public class PrincipalOAuth2UserService extends DefaultOAuth2UserService {
 
         if (provider.equals("kakao")) {
             oAuthUserInfo = new KakaoOAuthUserInfo(oAuth2User.getAttributes());
+        } else if(provider.equals("google")) {
+            oAuthUserInfo = new GoogleOAuthUserInfo(oAuth2User.getAttributes());
         }
 
         String providerId = oAuthUserInfo.getProviderId();
