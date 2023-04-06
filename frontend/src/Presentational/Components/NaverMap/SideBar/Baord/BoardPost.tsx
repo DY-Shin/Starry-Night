@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { Root, createRoot } from 'react-dom/client';
 import Slider, { Settings } from 'react-slick';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import Swal from 'sweetalert2';
@@ -6,6 +7,7 @@ import * as PostStyle from './BoardPost_Style';
 import 'slick-carousel/slick/slick';
 import * as BoardPostAPI from '../../../../../Action/Modules/NaverMap/BoardPost';
 import * as FavoriteApi from '../../../../../Action/Modules/NaverMap/Favorite';
+import ConstellationInfoComponent from '../../../Info/ConstellationInfoComponent';
 
 type propsType = {
   data: BoardPostAPI.dataType;
@@ -15,8 +17,63 @@ type propsType = {
   markerObject: naver.maps.Marker[] | null;
 };
 
+function CustomModal({
+  setIsModalOpen,
+  selectId,
+}: {
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  selectId: React.MutableRefObject<number>;
+}) {
+  return <ConstellationInfoComponent setIsModalOpen={setIsModalOpen} selectId={selectId.current} />;
+}
+
 function BoardPost(props: propsType) {
   const { data, setDataHandler, idx, markerObject } = props;
+
+  /*
+   * 모달 닫힘/펼침 상태 State
+   */
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  /*
+   * selectId : 현재 선택된 별자리 id 값을 담을 number타입 참조 객체
+   */
+  const selectId = useRef(0);
+
+  /*
+   * modalContainer : createRoot() 메서드가 실행될 div 엘리먼트에 대한 참조
+   */
+  const modalContainer = useRef(document.createElement('div')).current;
+  modalContainer.className = 'customModal';
+
+  /*
+   * root : createRoot() 메서드가 실행된 레퍼런스
+   */
+  const root = useRef<null | Root>(null);
+
+  /*
+   * isModalOpen State값 변경 마다 실행
+   */
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.appendChild(modalContainer);
+
+      /*
+       * createRoot() 메서드가 처음 실행될 때에만 레퍼런스를 설정하도록 함
+       */
+      if (!root.current) {
+        root.current = createRoot(modalContainer);
+      }
+
+      root.current.render(<CustomModal setIsModalOpen={setIsModalOpen} selectId={selectId} />);
+    } else {
+      const customModal = document.getElementsByClassName('customModal')[0];
+      if (customModal) {
+        customModal.remove();
+      }
+    }
+  }, [isModalOpen]);
+
   const carouselSetting: Settings = {
     dots: false,
     arrows: true,
@@ -152,7 +209,17 @@ function BoardPost(props: propsType) {
       <PostStyle.PostContent>{data?.content}</PostStyle.PostContent>
       <PostStyle.StarTagArea>
         {data?.constellationTags?.map((starValue) => {
-          return <PostStyle.StarTag key={starValue.name}>#{starValue.name.split('자리')[0]}</PostStyle.StarTag>;
+          return (
+            <PostStyle.StarTag
+              key={starValue.name}
+              onClick={() => {
+                selectId.current = starValue.id;
+                setIsModalOpen(true);
+              }}
+            >
+              #{starValue.name.split('자리')[0]}
+            </PostStyle.StarTag>
+          );
         })}
       </PostStyle.StarTagArea>
       <PostStyle.PostBottomArea>

@@ -1,5 +1,39 @@
 import styled from 'styled-components';
 
+export const SpectrumGuide = styled.div`
+  position: absolute;
+  bottom: 3%;
+  right: 0.5%;
+  width: 200px;
+  height: 50px;
+  background-color: #222430;
+  border-radius: 5px;
+  z-index: 10;
+`;
+
+export const SpectrumGuideImg = styled.div<{ link: string }>`
+  width: 90%;
+  height: 40%;
+  margin: 5px auto;
+  border-radius: 5px;
+  background-image: url(${(props) => props.link});
+`;
+
+export const SpectrumGuidTextWrapper = styled.div`
+  width: 90%;
+  height: 30%;
+  margin: 5px auto;
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const SpectrumGuidText = styled.p`
+  color: #fff;
+  font-size: 15px;
+  font-family: 'PyeongChang-Bold', sans-serif;
+  transform: translateY(-17px);
+`;
+
 export const DropDownWrapper = styled.div`
   display: block;
   width: 30px;
@@ -16,7 +50,6 @@ export const DropDownWrapper = styled.div`
   transition-delay: 0s, 0.4s;
   &.active {
     & .icon {
-      /* margin-left: 125px; */
       position: absolute;
       top: 0;
       right: 0;
@@ -62,8 +95,6 @@ export const DropDownHeader = styled.p`
 `;
 
 export const OptionDetailWrapper = styled.div`
-  /* width: 60%;
-  height: calc(120px - (120 * 0.4)); */
   height: 120px;
   display: grid;
   grid-template-columns: 50% 50%;

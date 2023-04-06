@@ -45,7 +45,6 @@ export async function TurnOnHeatMap(maps: naver.maps.Map | null): Promise<naver.
   let radius;
   let opacity;
   const zoom: number = map.getZoom();
-  console.log(zoom);
   // eslint-disable-next-line default-case
   switch (true) {
     case zoom <= 8: //
