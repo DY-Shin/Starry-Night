@@ -9,7 +9,7 @@ export const MainNav = styled.div`
 `;
 export const WrapNav = styled.nav`
   width: 100%;
-  max-width: 1050px;
+  max-width: 1250px;
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -13,11 +13,27 @@ function MainStar() {
     dots: false,
     infinite: true,
     arrows: true,
-    slidesToShow: 2,
+    slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: false,
     speed: 400,
     cssEase: 'linear',
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   const onClickImg = (target: number) => {
@@ -44,7 +60,6 @@ function MainStar() {
             height: '100%',
             border: '2px solid #0f4c75',
             backgroundColor: 'rgba(50, 130, 184, 0.3)',
-            // filter: 'drop-shadow(0 0 3px rgba(50, 130, 184, 1))',
             borderStyle: 'solid',
             borderRadius: '10px',
             borderColor: 'whitesmoke',
