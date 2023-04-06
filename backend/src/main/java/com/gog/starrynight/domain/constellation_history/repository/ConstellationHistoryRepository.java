@@ -18,7 +18,7 @@ public interface ConstellationHistoryRepository extends JpaRepository<Constellat
     @Query("SELECT COUNT(distinct ch.constellation) FROM ConstellationHistory ch Where ch.user.id=:userId")
     int getUserCompletedConstellationCount(Long userId);
 
-    @Query("SELECT ch.createdDate FROM ConstellationHistory ch Where ch.constellation.id=:constellationId AND ch.user.id=:userId ORDER BY ch.createdDate ASC")
+    @Query("SELECT MIN(ch.createdDate) FROM ConstellationHistory ch Where ch.constellation.id=:constellationId AND ch.user.id=:userId ORDER BY ch.createdDate ASC")
     LocalDateTime getFirstViewedDateByConstellationIdAndUserId(Long constellationId, Long userId);
 
     @Query("SELECT COUNT(*) FROM ConstellationHistory ch Where ch.constellation.id=:constellationId AND ch.user.id=:userId")
