@@ -1,5 +1,4 @@
 import React from 'react';
-import { BsSun, BsCloudRain, BsCloudSun, BsClouds } from 'react-icons/bs';
 import { FiSmile } from 'react-icons/fi';
 import { RiEmotionNormalLine } from 'react-icons/ri';
 import { MdMoodBad, MdOutlineSentimentVeryDissatisfied } from 'react-icons/md';

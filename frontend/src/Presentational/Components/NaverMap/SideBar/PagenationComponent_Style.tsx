@@ -7,13 +7,13 @@ export const PagenationWrapper = styled.div`
   display: flex;
   margin: auto;
   width: 100%;
-  height: 30px;
+  height: 100%;
   justify-content: space-between;
-  transform: translateY(15px);
+  /* transform: translateY(15px); */
+  align-items: center;
 
   & .icon {
     cursor: pointer;
-    transform: translateY(-5px);
   }
 `;
 
@@ -28,7 +28,7 @@ export const WriteButton = styled.div`
   width: 250px;
   height: 30px;
   border-radius: 5px;
-  transform: translateY(-5px);
+  /* transform: translateY(-5px); */
 `;
 
 export const BlankDiv = styled.div`

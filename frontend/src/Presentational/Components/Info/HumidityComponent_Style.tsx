@@ -4,24 +4,6 @@ const backgroundColor = '#0e2f3f';
 const backgroundColor2 = '#0e2f3f';
 const waterColor = '#5bd5fa';
 
-export const PercentText = styled.p`
-  position: relative;
-  margin: 0;
-  width: 0;
-  height: 0;
-  color: white;
-  font-size: 50px;
-  font-weight: bold;
-  transform: translate(180px, -80px);
-`;
-
-export const HumidityWrapper = styled.div`
-  width: 100%;
-  height: 200px;
-  margin: 10px 0 30px 0;
-  /* border: 1px solid #858585a0 double; */
-`;
-
 export const moveTop = (percent: number) => keyframes`
   0% {
     top: 100%;
@@ -40,16 +22,19 @@ export const wave = keyframes`
   }
 `;
 
+export const HumidityWrapper = styled.div`
+  width: 100%;
+  height: 200px;
+  margin: 10px 0 30px 0;
+`;
+
 export const StyledLoader = styled.div<{ percent: number }>`
-  /* position: fixed; */
   position: relative;
   border-radius: 10px;
   width: 100%;
   height: 100%;
   z-index: 1000;
-  /* background-color: #149be9; */
   background-color: ${backgroundColor};
-  /* background-color: #ffffff; */
   display: flex;
   text-align: center;
   justify-content: center;
@@ -67,7 +52,6 @@ export const StyledLoader = styled.div<{ percent: number }>`
 
     #rect4487 {
       fill: ${backgroundColor2};
-      /* fill: #ffffff; */
     }
   }
 
@@ -84,7 +68,6 @@ export const StyledLoader = styled.div<{ percent: number }>`
 
   .water {
     background: ${waterColor};
-    /* background: #007dc5; */
     position: relative;
     top: 50%;
     height: 200%;
@@ -96,4 +79,15 @@ export const StyledLoader = styled.div<{ percent: number }>`
     transition: all 1s ease;
     animation: ${wave} 10s linear infinite, ${(props) => moveTop(props.percent)} 2s linear forwards;
   }
+`;
+
+export const PercentText = styled.p`
+  position: relative;
+  margin: 0;
+  width: 0;
+  height: 0;
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
+  transform: translate(180px, -80px);
 `;

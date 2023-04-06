@@ -114,15 +114,17 @@ function FavoritePage(props: propsType) {
             })
           : null}
       </FavoriteStyle.FavoriteListWrapper>
-      <PagenationComponent
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        totalPage={favoriteList?.totalPages}
-        map={map}
-        text="즐겨찾기 추가"
-        updateHandler={init}
-        type="favorite"
-      />
+      <FavoriteStyle.FavoriteBottomWrapper>
+        <PagenationComponent
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          totalPage={favoriteList?.totalPages}
+          map={map}
+          text="즐겨찾기 추가"
+          updateHandler={init}
+          type="favorite"
+        />
+      </FavoriteStyle.FavoriteBottomWrapper>
     </FavoriteStyle.FavoriteWrapper>
   );
 }

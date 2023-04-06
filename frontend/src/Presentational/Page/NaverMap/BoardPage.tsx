@@ -71,15 +71,17 @@ function BoardPage(props: propsType) {
           <BoardPost data={value} setDataHandler={setResultData} key={value.id} idx={idx} markerObject={markerObject} />
         ))}
       </BoardStyle.BoardPostWrapper>
-      <PagenationComponent
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        totalPage={resultData?.totalPages}
-        map={map}
-        text="글쓰기"
-        updateHandler={refrehPost}
-        type="post"
-      />
+      <BoardStyle.BoardBottomWrapper>
+        <PagenationComponent
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          totalPage={resultData?.totalPages}
+          map={map}
+          text="글쓰기"
+          updateHandler={refrehPost}
+          type="post"
+        />
+      </BoardStyle.BoardBottomWrapper>
     </BoardStyle.BoardPageWrapper>
   );
 }

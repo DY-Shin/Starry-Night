@@ -1,19 +1,25 @@
 import React from 'react';
-// import { BiCalendarStar } from 'react-icons/bi';
 import { BsFillClipboardHeartFill, BsStarFill, BsFillClipboardDataFill } from 'react-icons/bs';
 import SideBarBtn from '../../../Components/NaverMap/SideBar/Menu/SideBarBtn';
 import * as SideBarMenuStyle from './SideBarMenuArea_Style';
 
-type SideBarMenuProps = {
-  // eslint-disable-next-line no-unused-vars
+/**
+ * 상위 컴포넌트에서 전달 받은 props 타입
+ */
+type PropsType = {
   changeCurrentSelectedBoard: (str: string) => void;
   currentSelectedBoard: string;
 };
 
-function SideBarMenu(props: SideBarMenuProps) {
+function SideBarMenu(props: PropsType) {
+  /*
+   * changeCurrentSelectedBoard : 현재 선택한 메뉴 상태 변경 함수
+   * currentSelectedBoard : 현재 선택된 메뉴 상태 state
+   */
   const { changeCurrentSelectedBoard, currentSelectedBoard } = props;
+
   return (
-    <SideBarMenuStyle.MenuWrapper>
+    <SideBarMenuStyle.MenuWrapper className="menuWrapper">
       <SideBarMenuStyle.BtnWrapper
         className="infoBtn"
         onClick={() => {
