@@ -2,11 +2,17 @@ import React from 'react';
 import * as LoginStyle from './Login_Style';
 
 type GetToken = {
-  getToken: () => void;
+  getkakaoToken: () => void;
+  getgoogleToken: () => void;
 };
 
-function Login({ getToken }: GetToken) {
-  return <LoginStyle.LoginImg onClick={getToken} src="assets/ko/kakao_login_large_narrow.png" alt="" />;
+function Login({ getkakaoToken, getgoogleToken }: GetToken) {
+  return (
+    <LoginStyle.WrapLogin>
+      <LoginStyle.LoginImg onClick={getkakaoToken} src="assets/ko/kakao.png" alt="" />
+      <LoginStyle.LoginImg onClick={getgoogleToken} src="assets/ko/google.png" alt="" />
+    </LoginStyle.WrapLogin>
+  );
 }
 
 export default Login;
