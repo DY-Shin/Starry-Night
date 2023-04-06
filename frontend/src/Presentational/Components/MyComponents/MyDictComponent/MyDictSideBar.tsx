@@ -29,7 +29,7 @@ function Dict() {
     await api
       .get(`/users/${userid}/achievements/${achievementid}/constellations`, { withCredentials: true })
       .then((res) => {
-        console.log(res.data.data);
+        // console.log(res.data.data);
       });
   };
 

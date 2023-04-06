@@ -20,7 +20,7 @@ function MyReward() {
   // 유저의 도전과제별 현황 가져오기
   const getOneStars = async (userid: number) => {
     await api.get(`/users/${userid}/achievements`, { withCredentials: true }).then((res) => {
-      console.log(res.data.data);
+      // console.log(res.data.data);
       setRewards(res.data.data);
     });
   };

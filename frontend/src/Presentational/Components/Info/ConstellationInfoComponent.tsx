@@ -40,7 +40,7 @@ function ConstellationInfoComponent(props: PropsType) {
   const getDetailConstellation = async (ConstellationsId: number) => {
     try {
       const response = await constellationAPI.get(`constellations/${ConstellationsId}`, { withCredentials: true });
-      console.log(response.data.data);
+      // console.log(response.data.data);
       setStarDetail(response.data.data);
     } catch (error) {
       console.error(error);

@@ -15,7 +15,7 @@ function MyProfile() {
   useEffect(() => {
     const getUserPageInfo = async () => {
       const request = await MyPageApi.getUserPageInfo(id);
-      console.log('request', request);
+      // console.log('request', request);
       setUserPageInfo(request);
     };
     getUserPageInfo();
