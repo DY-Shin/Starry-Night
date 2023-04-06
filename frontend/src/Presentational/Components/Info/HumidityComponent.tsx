@@ -1,16 +1,29 @@
 /* eslint-disable no-undef */
-import React, { useEffect } from 'react';
+import React from 'react';
 import CountUp from 'react-countup';
 import * as HumidityStyle from './HumidityComponent_Style';
 
-type propsType = {
+/**
+ * 상위 컴포넌트에서 전달받은 props 타입 설정
+ */
+type PropsType = {
   humidity: number | undefined;
 };
 
-function HumidityComponent(props: propsType) {
+function HumidityComponent(props: PropsType) {
+  /*
+   * humidity : 상위에서 전달받은 습도 퍼센트
+   */
   const { humidity } = props;
+
+  /*
+   * convertHumidity : 상위에서 전달받은 humidity를 변환하여 사용하기 위한 number 타입 변수
+   * (undefined가 올 수 있고, CountUp 라이브러리는 number만 넣을 수 있기 때문에 변환 하는 작업을 거침)
+   */
   let convertHumidity = 0;
+
   if (!humidity) {
+    // humidity 에는 undefined값이 올 수 있으므로 값이 없다면 10으로 고정.
     convertHumidity = 10;
   } else {
     convertHumidity = humidity;
@@ -25,7 +38,6 @@ function HumidityComponent(props: propsType) {
             d="m 13.552735,2.0426703 q 1.5,3.7999997 10,14.9999997 a 12.8,12.8 0 1 1 -20.0000007,0 Q 12.052736,5.84267 13.552735,2.0426703 Z"
             id="path2"
             style={{ stroke: '#ffffff', strokeWidth: '1.3' }}
-            // style={{ stroke: '#007dc5', strokeWidth: '1.3' }}
           />
           <path
             style={{
@@ -48,7 +60,6 @@ function HumidityComponent(props: propsType) {
           <CountUp start={0} end={convertHumidity} duration={4} />%
         </HumidityStyle.PercentText>
       </HumidityStyle.StyledLoader>
-      {/* <p>test</p> */}
     </HumidityStyle.HumidityWrapper>
   );
 }
