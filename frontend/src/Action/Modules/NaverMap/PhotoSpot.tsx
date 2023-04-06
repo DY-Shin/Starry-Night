@@ -2,8 +2,6 @@
 
 import axios from 'axios';
 
-const { naver } = window;
-
 interface DataType {
   lat: number;
   lng: number;

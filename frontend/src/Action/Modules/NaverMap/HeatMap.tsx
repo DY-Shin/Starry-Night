@@ -2,8 +2,6 @@
 
 import axios from 'axios';
 
-const { naver } = window;
-
 interface DataType {
   lat: number;
   lng: number;
@@ -11,8 +9,6 @@ interface DataType {
 }
 
 export async function TurnOnHeatMap(maps: naver.maps.Map | null): Promise<naver.maps.visualization.HeatMap | null> {
-  // const heatData = {"weight": 2, "location": [36.0207091, 127.9204629]};
-
   if (!maps) {
     return null;
   }
