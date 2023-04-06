@@ -101,7 +101,7 @@ public class AchievementService {
         totalConstellationCount = constellationIds.size();
 
         if (requesterId != null) {
-            completedConstellationCount = constellationHistoryRepository.getCompletedConstellationCountByAchievementIdsAndUserId(
+            completedConstellationCount = constellationHistoryRepository.getCompletedConstellationCountByConstellationIdsAndUserId(
                     constellationIds,
                     requesterId
             );

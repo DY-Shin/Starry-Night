@@ -5,6 +5,9 @@ import com.gog.starrynight.common.dto.PagedResult;
 import com.gog.starrynight.common.exception.ResourceForbiddenException;
 import com.gog.starrynight.common.exception.ResourceNotFoundException;
 import com.gog.starrynight.common.util.DataFileUtil;
+import com.gog.starrynight.domain.achievement.entity.Achievement;
+import com.gog.starrynight.domain.achievement.repository.AchievementRepository;
+import com.gog.starrynight.domain.achievement_constellation.repository.AchievementConstellationRepository;
 import com.gog.starrynight.domain.constellation.dto.ConstellationSimpleInfo;
 import com.gog.starrynight.domain.constellation.entity.Constellation;
 import com.gog.starrynight.domain.constellation.repository.ConstellationRepository;
@@ -22,6 +25,8 @@ import com.gog.starrynight.domain.post_like.repository.PostLikeRepository;
 import com.gog.starrynight.domain.user.dto.UserSimpleInfo;
 import com.gog.starrynight.domain.user.entity.User;
 import com.gog.starrynight.domain.user.repository.UserRepository;
+import com.gog.starrynight.domain.user_achievement.entity.UserAchievement;
+import com.gog.starrynight.domain.user_achievement.repository.UserAchievementRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -36,6 +41,7 @@ import javax.persistence.criteria.Predicate;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -47,6 +53,9 @@ public class PostService {
     private final ConstellationRepository constellationRepository;
     private final ConstellationHistoryRepository constellationHistoryRepository;
     private final PostImageRepository postImageRepository;
+    private final AchievementRepository achievementRepository;
+    private final AchievementConstellationRepository achievementConstellationRepository;
+    private final UserAchievementRepository userAchievementRepository;
     private final PostLikeRepository postLikeRepository;
     private final DataFileRepository dataFileRepository;
     private final DataFileUtil dataFileUtil;
@@ -66,14 +75,15 @@ public class PostService {
 
         postRepository.save(post);
 
-        // 별자리를 기록했다면
-        if (dto.getConstellations() != null) {
-            addConstellationHistories(post, dto.getConstellations());
-        }
-
         // 이미지가 존재한다면
         if (images != null) {
             addPostImages(post, images);
+        }
+
+        // 별자리를 기록했다면
+        if (dto.getConstellations() != null) {
+            addConstellationHistories(post, dto.getConstellations()); // 별자리 본 기록 추가
+            checkAndGrantAchievement(requester); // 업적 달성 가능 여부 확인 후 업적 달성
         }
 
         return new PostInfo(post);
@@ -308,6 +318,33 @@ public class PostService {
         int postLikeCount = postLikeRepository.getTotalPostLikeCountByPostId(post.getId());
 
         return new PostDetailInfo(post, writer, images, constellationTags, postLikeCount, postLikePossible, postLiked, permission);
+    }
+
+    @Transactional
+    public void checkAndGrantAchievement(User requester) {
+        List<Achievement> achievementList = achievementRepository.findAll();
+
+        for (Achievement achievement : achievementList) {
+            Optional<UserAchievement> userAchievement = userAchievementRepository.findByUserIdAndAchievementId(requester.getId(), achievement.getId());
+
+            // 이미 달성한 업적이라면 패스
+            if (userAchievement.isPresent()) {
+                continue;
+            }
+
+            List<Long> constellationIds = achievementConstellationRepository.getConstellationIdsByAchievementId(achievement.getId());
+            int totalConstellationCount = constellationIds.size();
+            int completedConstellationsCount = constellationHistoryRepository.getCompletedConstellationCountByConstellationIdsAndUserId(constellationIds, requester.getId());
+
+            if (completedConstellationsCount == totalConstellationCount) {
+                UserAchievement newUserAchievement = UserAchievement.builder()
+                        .user(requester)
+                        .achievement(achievement)
+                        .build();
+
+                userAchievementRepository.save(newUserAchievement);
+            }
+        }
     }
 
     public AreaRange calculateAreaRange(double[] pointA, double[] pointB) {

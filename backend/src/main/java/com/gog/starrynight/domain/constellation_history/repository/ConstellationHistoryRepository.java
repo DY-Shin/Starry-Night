@@ -25,7 +25,7 @@ public interface ConstellationHistoryRepository extends JpaRepository<Constellat
     Integer getViewCountByConstellationIdAndUserId(Long constellationId, Long userId);
 
     @Query("SELECT COUNT(distinct ch.constellation) FROM ConstellationHistory ch WHERE ch.constellation.id in :constellationIds AND ch.user.id = :userId")
-    int getCompletedConstellationCountByAchievementIdsAndUserId(List<Long> constellationIds, Long userId);
+    int getCompletedConstellationCountByConstellationIdsAndUserId(List<Long> constellationIds, Long userId);
 
     boolean existsByUserIdAndConstellationId(Long userId, Long constellationId);
 }
