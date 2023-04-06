@@ -107,6 +107,7 @@ export const ProfileImg = styled.img.attrs<ImgProps>((props) => ({
 }))`
   height: 40px;
   border-radius: 50%;
+  margin-left: 20px;
   cursor: pointer;
   &:hover {
     filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
@@ -121,6 +122,13 @@ export const LogoImg = styled.img.attrs<ImgProps>((props) => ({
   &:hover {
     filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
   }
+`;
+
+export const ToMap = styled.div`
+  color: #fff;
+  height: 28px;
+  width: 28px;
+  background-color: #f23;
 `;
 
 export const ProfileText = styled.div``;

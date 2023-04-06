@@ -76,11 +76,11 @@ export interface UserPostInfos extends Array<UserPostInfo> {
 
 function printError(error: AxiosError) {
   if (error.response) {
-    console.log(error.response.data);
+    // console.log(error.response.data);
   } else if (error.message) {
-    console.log('오류 메시지:', error.message);
+    // console.log('오류 메시지:', error.message);
   } else {
-    console.log('알 수 없는 오류가 발생했습니다.');
+    // console.log('알 수 없는 오류가 발생했습니다.');
   }
 }
 

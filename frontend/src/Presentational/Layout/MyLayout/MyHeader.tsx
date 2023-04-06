@@ -41,6 +41,7 @@ function Header() {
         </MyHeaderStyle.MyNavContainer>
 
         <MyHeaderStyle.NavLogOut ref={dropDownRef}>
+          <MyHeaderStyle.MenuLink to="/map">🌏지도</MyHeaderStyle.MenuLink>
           <MyHeaderStyle.ProfileImg
             onClick={() => {
               setIsOpen(!isOpen);

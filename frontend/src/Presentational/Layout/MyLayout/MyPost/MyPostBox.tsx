@@ -22,14 +22,14 @@ function MyArticle() {
   useEffect(() => {
     const getUserPostInfo = async () => {
       const request = await MyPageApi.getUserPostInfo(id);
-      console.log('request', request);
+      // console.log('request', request);
       setUserPostInfo(request);
     };
     getUserPostInfo();
   }, []);
 
   if (userPostInfo != null) {
-    console.log(userPostInfo[0].images[0]);
+    // console.log(userPostInfo[0].images[0]);
   }
 
   const [index, setIndex] = useState(0);
@@ -50,8 +50,8 @@ function MyArticle() {
 
   const navigate = useNavigate();
   const postMatch: PathMatch<string> | null = useMatch('/posts/:id');
-  console.log('postmatvch', postMatch);
-  console.log('postmatid', postMatch?.params.id);
+  // console.log('postmatvch', postMatch);
+  // console.log('postmatid', postMatch?.params.id);
   const { scrollY } = useScroll();
 
   const onBoxClicked = (postId: number) => {
@@ -60,7 +60,7 @@ function MyArticle() {
 
   const onOverlayClick = () => navigate('/mypage/posts');
   const clickedPost = postMatch?.params.id && userPostInfo?.find((post) => `${post.id}` === postMatch.params.id);
-  console.log('clickedPost', clickedPost);
+  // console.log('clickedPost', clickedPost);
 
   const [ImgNum, setImgNum] = useState(0);
   const settings: Settings = {
@@ -79,7 +79,7 @@ function MyArticle() {
   };
 
   if (userPostInfo != null) {
-    console.log(userPostInfo[0].images.length);
+    // console.log(userPostInfo[0].images.length);
   }
 
   const arr = [];
@@ -95,7 +95,7 @@ function MyArticle() {
       .delete(`${process.env.REACT_APP_API_SERVER_URL}/posts/${postId}`, { withCredentials: true })
       .then((res) => {
         // handle success
-        console.log(res);
+        // console.log(res);
 
         Swal.fire({
           icon: 'success',
@@ -107,7 +107,7 @@ function MyArticle() {
 
         const getUserPostInfo = async () => {
           const request = await MyPageApi.getUserPostInfo(id);
-          console.log('request', request);
+          // console.log('request', request);
           setUserPostInfo(request);
         };
         getUserPostInfo();
@@ -117,7 +117,7 @@ function MyArticle() {
       })
       .catch((error) => {
         // handle error
-        console.log(error);
+        // console.log(error);
         Swal.fire({
           icon: 'error',
           title: '에러 발생!',
