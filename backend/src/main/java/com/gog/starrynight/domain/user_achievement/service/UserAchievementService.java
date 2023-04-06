@@ -47,7 +47,7 @@ public class UserAchievementService {
         List<Long> constellationIds = achievementConstellationRepository.getConstellationIdsByAchievementId(achievement.getId());
         int totalConstellationCount = constellationIds.size();
 
-        int completedConstellationCount = constellationHistoryRepository.getCompletedConstellationCountByAchievementIdsAndUserId(
+        int completedConstellationCount = constellationHistoryRepository.getCompletedConstellationCountByConstellationIdsAndUserId(
                 constellationIds,
                 requesterId
         );
