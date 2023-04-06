@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+const focusColor = '#ed83f7;';
+
 export const MenuWrapper = styled.div`
   margin: 10px 0 10px 0px;
   width: 100%;
@@ -7,19 +9,13 @@ export const MenuWrapper = styled.div`
   border-bottom: 1px solid #ffffffc8;
 `;
 
-const focusColor = '#ed83f7;';
-
 export const BtnWrapper = styled.div<{ currentSelectedBoard: string }>`
+  height: calc(100% / 3);
+  align-items: center;
   display: grid;
   grid-template-columns: 20% 80%;
   grid-template-rows: 1fr;
-  height: calc(100% / 3);
-  /* margin-left: 20px; */
-  align-items: center;
-  & .icon {
-    color: #b8b8b8;
-    margin: auto;
-  }
+
   :hover {
     cursor: pointer;
     background-color: #d4d3d32f;
@@ -30,6 +26,11 @@ export const BtnWrapper = styled.div<{ currentSelectedBoard: string }>`
     & .icon {
       color: ${focusColor};
     }
+  }
+
+  & .icon {
+    color: #b8b8b8;
+    margin: auto;
   }
 
   &.infoBtn {
