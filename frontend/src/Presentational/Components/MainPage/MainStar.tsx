@@ -56,7 +56,7 @@ function MainStar() {
           position={50}
           onlyHandleDraggable
           style={{
-            width: '40vw',
+            width: '35vw',
             height: '100%',
             border: '2px solid #0f4c75',
             backgroundColor: 'rgba(50, 130, 184, 0.3)',

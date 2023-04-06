@@ -4,6 +4,7 @@ import Slider from 'react-slick';
 // star 슬라이드
 export const MainStar = styled.div`
   color: white;
+  padding-top: 20px;
   padding-left: 4.5em;
   padding-right: 4.5em;
   min-height: 100vh;
@@ -16,7 +17,7 @@ export const MainStar = styled.div`
 `;
 
 export const WrapSlide = styled.div`
-  width: 60vw;
+  width: 50vw;
   margin-top: 1rem;
   @media all and (max-width: 1200px) {
     width: 60vw;
