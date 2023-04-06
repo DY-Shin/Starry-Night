@@ -1,9 +1,7 @@
 /* eslint-disable no-undef */
-import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
-import { GrPrevious, GrFormNext } from 'react-icons/gr';
+import React, { useState, useEffect, useRef } from 'react';
 import { MdOutlineNavigateNext, MdOutlineNavigateBefore } from 'react-icons/md';
-import Swal from 'sweetalert2';
+import { Root, createRoot } from 'react-dom/client';
 import * as PagenationStyle from './PagenationComponent_Style';
 import WritePost from '../../Board/WritePost';
 import AddFavorite from '../../Favorite/AddFavorite';
@@ -18,9 +16,43 @@ type propsType = {
   type: string;
 };
 
+function WriteCustomModal({
+  setModalOpen,
+  firstCenter,
+}: {
+  setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  firstCenter: naver.maps.Coord | undefined;
+}) {
+  return <WritePost firstCenter={firstCenter} setModalOpen={setModalOpen} />;
+}
+
+function AddFavoriteCustomModal({
+  setModalOpen,
+  firstCenter,
+  updateHandler,
+}: {
+  setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  firstCenter: naver.maps.Coord | undefined;
+  updateHandler: () => void;
+}) {
+  return <AddFavorite firstCenter={firstCenter} setModalOpen={setModalOpen} updateHandler={updateHandler} />;
+}
+
 function PagenationComponent(props: propsType) {
   const { currentPage, setCurrentPage, totalPage, map, text, updateHandler, type } = props;
   const [isModalOpen, setModalOpen] = useState(false);
+
+  /*
+   * modalContainer : createRoot() 메서드가 실행될 div 엘리먼트에 대한 참조
+   */
+  const modalContainer = useRef(document.createElement('div')).current;
+  modalContainer.className = 'customModal';
+
+  /*
+   * root : createRoot() 메서드가 실행된 레퍼런스
+   */
+  const postRoot = useRef<null | Root>(null);
+  const favoirteRoot = useRef<null | Root>(null);
 
   function moveNextPage() {
     setCurrentPage(currentPage + 1);
@@ -30,18 +62,30 @@ function PagenationComponent(props: propsType) {
     setCurrentPage(currentPage - 1);
   }
 
+  /*
+   * isModalOpen State값 변경 마다 실행
+   */
   useEffect(() => {
     if (isModalOpen) {
-      const customModal =
-        type === 'post' ? (
-          <WritePost firstCenter={map?.getCenter()} setModalOpen={setModalOpen} />
-        ) : (
-          <AddFavorite firstCenter={map?.getCenter()} setModalOpen={setModalOpen} updateHandler={updateHandler} />
-        );
-      const modalContainer = document.createElement('div');
-      modalContainer.className = 'customModal';
       document.body.appendChild(modalContainer);
-      ReactDOM.render(customModal, modalContainer);
+
+      if (type === 'post') {
+        if (!postRoot.current) {
+          postRoot.current = createRoot(modalContainer);
+        }
+        postRoot.current.render(<WriteCustomModal setModalOpen={setModalOpen} firstCenter={map?.getCenter()} />);
+      } else {
+        if (!favoirteRoot.current) {
+          favoirteRoot.current = createRoot(modalContainer);
+        }
+        favoirteRoot.current.render(
+          <AddFavoriteCustomModal
+            firstCenter={map?.getCenter()}
+            setModalOpen={setModalOpen}
+            updateHandler={updateHandler}
+          />,
+        );
+      }
     } else {
       const customModal = document.getElementsByClassName('customModal')[0];
       if (customModal) {
