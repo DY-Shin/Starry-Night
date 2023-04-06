@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { AnimatePresence, useScroll } from 'framer-motion';
 import { PathMatch, useMatch, useNavigate } from 'react-router-dom';
+import Slider, { Settings } from 'react-slick';
 import * as MyPostBox from '../../../Components/MyComponents/MyPostComponents/MyPostBoxStyle';
 import * as MyPageApi from '../../../../Action/Modules/MyPage/MyPage';
 import { UserStore } from '../../../../store';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 function MyArticle() {
   const offset = 10;
@@ -54,10 +57,37 @@ function MyArticle() {
   const onOverlayClick = () => navigate('/mypage/posts');
   const clickedPost = postMatch?.params.id && userPostInfo?.find((post) => `${post.id}` === postMatch.params.id);
   console.log('clickedPost', clickedPost);
+
+  const [ImgNum, setImgNum] = useState(0);
+  const settings: Settings = {
+    dots: false,
+    infinite: true,
+    arrows: false,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    autoplay: false,
+    speed: 400,
+    cssEase: 'linear',
+  };
+
+  const onClickImg = (target: number) => {
+    setImgNum(target);
+  };
+
+  if (userPostInfo != null) {
+    console.log(userPostInfo[0].images.length);
+  }
+
+  const arr = [];
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i <= 2; i++) {
+    arr.push(i);
+  }
+
   return (
     <MyPostBox.SliderWrapper>
       <MyPostBox.SliderClickZone onClick={increaseIndex} />
-      <MyPostBox.Slider>
+      <MyPostBox.PostSlider>
         <AnimatePresence initial={false} onExitComplete={toggleLeaving}>
           <MyPostBox.Row
             variants={MyPostBox.rowVariants}
@@ -91,7 +121,7 @@ function MyArticle() {
             ))}
           </MyPostBox.Row>
         </AnimatePresence>
-      </MyPostBox.Slider>
+      </MyPostBox.PostSlider>
       <AnimatePresence>
         {postMatch ? (
           <>
@@ -99,16 +129,52 @@ function MyArticle() {
             <MyPostBox.BigPost style={{ top: scrollY.get() + 100 }} layoutId={postMatch.params.postId}>
               {clickedPost && (
                 <>
-                  <MyPostBox.BigCover
-                  // style={{
-                  //   backgroundImage: `linear-gradient(to top, black, transparent), url(${makeImagePath(
-                  //     clickedPost.backdrop_path,
-                  //     'w500',
-                  //   )})`,
-                  // }}
-                  />
-                  <MyPostBox.BigTitle>{clickedPost.title}</MyPostBox.BigTitle>
+                  <MyPostBox.BigCover>
+                    {clickedPost.images && clickedPost.images.length > 0 ? (
+                      <MyPostBox.WrapSlide>
+                        <Slider {...settings}>
+                          {arr.map((i) =>
+                            i === ImgNum ? (
+                              <MyPostBox.WrapImg key={i}>
+                                <MyPostBox.STimg
+                                  src={
+                                    clickedPost.images[i]
+                                      ? clickedPost.images[i].url
+                                      : 'https://j8d206.p.ssafy.io/api/datafiles/8'
+                                  }
+                                  onClick={() => onClickImg(i)}
+                                />
+                              </MyPostBox.WrapImg>
+                            ) : (
+                              <MyPostBox.WrapImg key={i}>
+                                <MyPostBox.STimg
+                                  src={
+                                    clickedPost.images[i]
+                                      ? clickedPost.images[i].url
+                                      : 'https://j8d206.p.ssafy.io/api/datafiles/8'
+                                  }
+                                />
+                              </MyPostBox.WrapImg>
+                            ),
+                          )}
+                        </Slider>
+                      </MyPostBox.WrapSlide>
+                    ) : (
+                      <MyPostBox.WrapImg>
+                        <MyPostBox.STimg2 src="https://j8d206.p.ssafy.io/api/datafiles/8" />
+                      </MyPostBox.WrapImg>
+                    )}
+                  </MyPostBox.BigCover>
+                  <MyPostBox.BigLikes>💖{clickedPost.postLikeCount}</MyPostBox.BigLikes>
                   <MyPostBox.BigContent>{clickedPost.content}</MyPostBox.BigContent>
+                  <MyPostBox.BigInfos>
+                    🌏 위도 : N {clickedPost.lat.toFixed(4)} / 경도 : E {clickedPost.lng.toFixed(4)}
+                  </MyPostBox.BigInfos>
+                  <MyPostBox.BigDates>📅 {clickedPost.createdDate.substring(0, 10)}</MyPostBox.BigDates>
+                  <MyPostBox.BigCons>
+                    {' '}
+                    {clickedPost.constellationTags[0] ? `🌠 ${clickedPost.constellationTags[0].name} 🚀` : `🔮`}
+                  </MyPostBox.BigCons>
                 </>
               )}
             </MyPostBox.BigPost>

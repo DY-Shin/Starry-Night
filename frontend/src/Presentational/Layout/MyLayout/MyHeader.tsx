@@ -5,6 +5,7 @@ import * as MyHeaderStyle from './MyHeadStyle';
 import { UserStore } from '../../../store';
 import useDetectClose from '../../../Action/Hooks/Mainpage/LoginModalHook';
 import UserModal from '../../Components/MainPage/UserModal';
+import logo from '../../../Assets/logo/logo6.png';
 
 function Header() {
   const { profileImageUrl } = UserStore();
@@ -22,7 +23,7 @@ function Header() {
       <MyHeaderStyle.WrapNav>
         <MyHeaderStyle.MyNavContainer>
           <MyHeaderStyle.NavLogo to="/">
-            <MyHeaderStyle.LogoImg src="../assets/logo/logo6.png" />
+            <MyHeaderStyle.LogoImg src={logo} />
           </MyHeaderStyle.NavLogo>
           <MyHeaderStyle.MenuSet>
             <MyHeaderStyle.Menu>

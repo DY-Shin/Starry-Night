@@ -54,18 +54,14 @@ interface UserPostInfo {
     name: string;
     profileImagUrl: string;
   };
-  images: [
-    {
-      id: number;
-      url: string;
-    },
-  ];
-  constellationTags: [
-    {
-      id: number;
-      name: string;
-    },
-  ];
+  images: {
+    id: number;
+    url: string;
+  }[];
+  constellationTags: {
+    id: number;
+    name: string;
+  }[];
   postLikeCount: number;
   permission: true;
   postLikePossible: true;

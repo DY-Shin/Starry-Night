@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { GoTelescope } from 'react-icons/go';
 
 // top 슬라이드
 export const MainTop = styled.div`
@@ -38,7 +39,7 @@ export const TopTitle = styled.div`
 
 export const TopMap = styled(Link)`
   margin-top: 20px;
-  border: 1px solid white;
+  /* border: 1px solid white; */
   padding: 20px;
   cursor: pointer;
   text-decoration: none;
@@ -46,4 +47,8 @@ export const TopMap = styled(Link)`
   &:hover {
     filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
   }
+`;
+
+export const telescope = styled(GoTelescope)`
+  margin-right: 5px;
 `;

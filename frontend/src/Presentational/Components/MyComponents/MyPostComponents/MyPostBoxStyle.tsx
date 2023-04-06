@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
+import Slider from 'react-slick';
 
 export const SliderWrapper = styled.div`
   width: 100%;
@@ -9,7 +10,7 @@ export const SliderWrapper = styled.div`
   flex-direction: column;
 `;
 
-export const Slider = styled.div`
+export const PostSlider = styled.div`
   position: relative;
   margin-right: 4.5em;
   margin-left: 4.5em;
@@ -20,8 +21,9 @@ export const Slider = styled.div`
 export const SliderClickZone = styled.div`
   position: flex;
   /* background-color: white; */
-  height: 25%;
+  height: 30%;
   width: 100%;
+  cursor: pointer;
 `;
 
 export const Row = styled(motion.div)`
@@ -58,7 +60,7 @@ export const boxVariants = {
     scale: 1,
   },
   hover: {
-    cursor: 'pointer',
+    cursor: 'help',
     scale: 1.2,
     y: -50,
     transition: {
@@ -79,13 +81,13 @@ export const PostInfo = styled(motion.div)`
 
   h5 {
     font-size: 10px;
-    color: black;
+    color: #001b6d;
   }
   h4 {
     font-size: 12px;
     color: midnightblue;
   }
-  cursor: pointer;
+  cursor: help;
 `;
 
 export const PostInfoVariants = {
@@ -117,6 +119,7 @@ export const BigPost = styled(motion.div)`
   margin: 0 auto;
   border-radius: 15px;
   overflow: hidden;
+  background-color: #001823;
 `;
 
 export const BigCover = styled.div`
@@ -126,17 +129,80 @@ export const BigCover = styled.div`
   height: 400px;
 `;
 
-export const BigTitle = styled.h3`
-  color: red;
-  padding: 20px;
-  font-size: 46px;
+export const BigLikes = styled.div`
+  color: #de7316;
+  text-align: right;
+  padding: 5px 15px;
+  font-size: 15px;
   position: relative;
-  top: -80px;
+  top: -130px;
 `;
 
-export const BigContent = styled.p`
-  padding: 20px;
+export const BigContent = styled.div`
+  padding: 5px 20px;
   position: relative;
-  top: -80px;
-  color: indigo;
+  top: -120px;
+  color: #d2b600;
+  font-size: 30px;
+  height: 120px;
+  border-bottom: 2px solid #0f4c75;
+  filter: drop-shadow(0 0 3px rgba(50, 130, 184, 0.7));
+`;
+
+export const BigInfos = styled.p`
+  padding: 5px 20px;
+  position: relative;
+  top: -100px;
+  color: #066f2e;
+  font-size: 15px;
+`;
+
+export const BigDates = styled.p`
+  padding: 5px 20px;
+  position: relative;
+  top: -100px;
+  color: #2056dd;
+  font-size: 15px;
+`;
+
+export const BigCons = styled.div`
+  padding: 5px 15px;
+  text-align: right;
+  position: relative;
+  top: -130px;
+  color: #5267ce;
+  font-size: 15px;
+`;
+
+// image slider from MainStar
+
+export const WrapSlide = styled.div`
+  width: 60vw;
+  margin-top: 1rem;
+`;
+
+export const WrapImg = styled(Slider)``;
+
+export const STimg = styled.img.attrs((props) => ({
+  src: props.src,
+}))`
+  padding: 0 3px;
+  height: 300px;
+  border-top: 2px solid #0f4c75;
+  border-bottom: 2px solid #0f4c75;
+  object-fit: contain;
+  cursor: grab;
+  &:active {
+    cursor: grabbing;
+  }
+`;
+
+export const STimg2 = styled.img.attrs((props) => ({
+  src: props.src,
+}))`
+  height: 300px;
+  border-top: 2px solid #0f4c75;
+  border-bottom: 2px solid #0f4c75;
+  filter: drop-shadow(0 0 3px rgba(50, 130, 184, 1));
+  object-fit: contain;
 `;
