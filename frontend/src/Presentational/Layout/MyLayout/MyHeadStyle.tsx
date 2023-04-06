@@ -34,13 +34,17 @@ export const MyNavContainer = styled.div`
 
 // header
 export const MainNav = styled.div`
+  position: absolute;
+  top: 0;
   height: 50px;
+  width: 100%;
   display: flex;
   box-shadow: 0 5px 5px -5px white;
+  z-index: 50;
 `;
 export const WrapNav = styled.nav`
   width: 100%;
-  max-width: 1050px;
+  max-width: 1250px;
   display: flex;
   justify-content: space-between;
   align-items: center;
