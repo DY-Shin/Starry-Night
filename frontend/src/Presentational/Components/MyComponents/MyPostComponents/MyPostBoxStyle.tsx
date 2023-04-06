@@ -101,6 +101,8 @@ export const PostInfoVariants = {
   },
 };
 
+// modal zone
+
 export const Overlay = styled(motion.div)`
   position: fixed;
   top: 0;
@@ -112,7 +114,7 @@ export const Overlay = styled(motion.div)`
 
 export const BigPost = styled(motion.div)`
   position: absolute;
-  width: 40vw;
+  width: 30vw;
   height: 80vh;
   left: 0;
   right: 0;
@@ -172,6 +174,22 @@ export const BigCons = styled.div`
   top: -130px;
   color: #5267ce;
   font-size: 15px;
+`;
+
+export const BigDeleteBtn = styled.button`
+  background-color: #ca1010;
+  top: -120px;
+  left: 40px;
+  position: relative;
+  height: 50px;
+  width: 100px;
+  color: white;
+  font-size: 20px;
+  border-radius: 3px;
+  border: 2px solid brown;
+  &:hover {
+    background-color: #6b0000;
+  }
 `;
 
 // image slider from MainStar

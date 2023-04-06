@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { AnimatePresence, useScroll } from 'framer-motion';
 import { PathMatch, useMatch, useNavigate } from 'react-router-dom';
 import Slider, { Settings } from 'react-slick';
+import Swal from 'sweetalert2';
 import * as MyPostBox from '../../../Components/MyComponents/MyPostComponents/MyPostBoxStyle';
 import * as MyPageApi from '../../../../Action/Modules/MyPage/MyPage';
 import { UserStore } from '../../../../store';
@@ -14,6 +16,8 @@ function MyArticle() {
   const { id } = UserStore();
 
   const [userPostInfo, setUserPostInfo] = useState<null | MyPageApi.UserPostInfos>(null);
+
+  const [deletedPostId, setDeletedPostId] = useState(null);
 
   useEffect(() => {
     const getUserPostInfo = async () => {
@@ -83,6 +87,61 @@ function MyArticle() {
   for (let i = 0; i <= 2; i++) {
     arr.push(i);
   }
+
+  // 글 삭제기능
+
+  const deletePost = (postId: number) => {
+    axios
+      .delete(`${process.env.REACT_APP_API_SERVER_URL}/posts/${postId}`, { withCredentials: true })
+      .then((res) => {
+        // handle success
+        console.log(res);
+
+        Swal.fire({
+          icon: 'success',
+          title: '삭제 성공!',
+          text: '글이 성공적으로 삭제되었습니다.',
+        });
+
+        // set the deletedPostId state variable to trigger a rerender
+
+        const getUserPostInfo = async () => {
+          const request = await MyPageApi.getUserPostInfo(id);
+          console.log('request', request);
+          setUserPostInfo(request);
+        };
+        getUserPostInfo();
+
+        // redirect to mypage/posts after deleting the post
+        navigate('/mypage/posts');
+      })
+      .catch((error) => {
+        // handle error
+        console.log(error);
+        Swal.fire({
+          icon: 'error',
+          title: '에러 발생!',
+          text: '삭제에 실패했습니다!',
+        });
+      });
+  };
+
+  const confirmDelete = (postId: number) => {
+    Swal.fire({
+      icon: 'warning',
+      title: '글 삭제하기',
+      text: '해당 글을 정말로 삭제하시겠습니까?',
+      confirmButtonText: '예',
+      cancelButtonText: '아니요',
+      showConfirmButton: true,
+      showCancelButton: true,
+      allowOutsideClick: false,
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        deletePost(postId);
+      }
+    });
+  };
 
   return (
     <MyPostBox.SliderWrapper>
@@ -175,6 +234,7 @@ function MyArticle() {
                     {' '}
                     {clickedPost.constellationTags[0] ? `🌠 ${clickedPost.constellationTags[0].name} 🚀` : `🔮`}
                   </MyPostBox.BigCons>
+                  <MyPostBox.BigDeleteBtn onClick={() => confirmDelete(clickedPost.id)}>글 삭제</MyPostBox.BigDeleteBtn>
                 </>
               )}
             </MyPostBox.BigPost>
