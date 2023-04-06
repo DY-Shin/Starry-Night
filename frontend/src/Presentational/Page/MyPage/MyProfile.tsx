@@ -5,6 +5,7 @@ import MyGlobal from '../../Components/MyComponents/MyGlobalStyle';
 import * as MyProfileBox from '../../Components/MyComponents/MyProfileComponent/MyProfileBox';
 import { UserStore } from '../../../store';
 import * as MyPageApi from '../../../Action/Modules/MyPage/MyPage';
+import Header from '../../Components/MainPage/Header';
 
 function MyProfile() {
   const { id } = UserStore();
@@ -24,6 +25,7 @@ function MyProfile() {
     <MyStyle.Container>
       <Outlet />
       <MyGlobal />
+      <Header />
       <MyProfileBox.ProfileMainContainer>
         <MyProfileBox.ProfileSubContainer>
           <MyProfileBox.Photo src={userPageInfo?.profileImageUrl} />

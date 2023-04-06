@@ -8,6 +8,7 @@ export const ProfileMainContainer = styled.div`
   /* background-color: black; */
   height: 90vh;
   width: 100%;
+  padding-top: 4rem;
 `;
 
 export const ProfileSubContainer = styled.div`
