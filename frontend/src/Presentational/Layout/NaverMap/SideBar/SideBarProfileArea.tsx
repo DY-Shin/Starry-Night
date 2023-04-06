@@ -5,11 +5,14 @@ import ProfileImage from '../../../Components/NaverMap/SideBar/Profile/ProfileIm
 import { UserStore } from '../../../../store';
 
 function SideBarProfileArea() {
+  /*
+   * name : Zustand Store에 저장된 로그인 한 유저 이름
+   */
   const { name } = UserStore();
+
   return (
     <ProfileStyle.ProfileWrapper>
       <ProfileStyle.TopWrapper>
-        {/* <ProfileStyle.TopText>Home</ProfileStyle.TopText> */}
         <ProfileStyle.TopHomeLink to="/">
           <AiOutlineHome size={25} className="icon" />
         </ProfileStyle.TopHomeLink>
