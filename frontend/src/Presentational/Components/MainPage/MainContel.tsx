@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Slider, { Settings } from 'react-slick';
 import dummy from '../../../db/contellation.json';
 import * as ContelStyle from './MainContel_Style';
+import * as MainStyle from '../../Page/Main_Style';
 
 function MainContel() {
   const [flag, setFlag] = useState({
@@ -65,7 +66,7 @@ function MainContel() {
   };
 
   return (
-    <ContelStyle.Container>
+    <MainStyle.Container>
       <ContelStyle.MainContel>
         <ContelStyle.WrapSlide>
           <Slider {...settings}>
@@ -101,7 +102,7 @@ function MainContel() {
           </ContelStyle.WrapMenu>
         </ContelStyle.WrapSlide>
       </ContelStyle.MainContel>
-    </ContelStyle.Container>
+    </MainStyle.Container>
   );
 }
 

@@ -28,6 +28,7 @@ export const TopTitle = styled.div`
   font-size: 144px;
   cursor: default;
   font-family: 'InkLipquid';
+  filter: drop-shadow(0 0 30px rgba(50, 130, 184, 1));
   @media all and (max-width: 1200px) {
   }
   @media all and (max-width: 850px) {
@@ -45,6 +46,7 @@ export const TopMap = styled(Link)`
   cursor: pointer;
   text-decoration: none;
   color: white;
+  filter: drop-shadow(0 0 50px rgba(50, 130, 184, 1));
   &:hover {
     filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
   }
