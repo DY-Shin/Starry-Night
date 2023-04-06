@@ -18,17 +18,24 @@ function Header() {
   const dropDownRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useDetectClose(dropDownRef, false);
 
-  // 카카오 로그인 정보 가져오기
+  // 로그인 정보 가져오기
   const getUser = async () => {
     await api.get(`/my-profile`, { withCredentials: true }).then((res) => {
       setUser(res.data.data.id, res.data.data.name, res.data.data.profileImageUrl);
     });
   };
 
-  const getToken = () => {
+  const getkakaoToken = () => {
     setFlag(true);
     window.location.href = `${process.env.REACT_APP_API_SERVER_URL}/oauth2/authorization/kakao`;
   };
+
+  const getgoogleToken = () => {
+    setFlag(true);
+    window.location.href = `${process.env.REACT_APP_API_SERVER_URL}/oauth2/authorization/google`;
+  };
+
+  // https://j8d206.p.ssafy.io/api/oauth2/authorization/google
 
   useEffect(() => {
     if (flag) {
@@ -39,12 +46,11 @@ function Header() {
   // 로그인 모달
   const LoginModal = () => {
     MySwal.fire({
+      width: '500px',
+      // padding-bottom: '10px',
+      padding: '0 0 0 10',
       confirmButtonText: '취소',
-      html: (
-        <div>
-          <Login getToken={getToken} />
-        </div>
-      ),
+      html: <Login getkakaoToken={getkakaoToken} getgoogleToken={getgoogleToken} />,
     });
   };
 

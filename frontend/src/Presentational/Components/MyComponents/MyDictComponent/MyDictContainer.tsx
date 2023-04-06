@@ -58,6 +58,7 @@ export const DictMainBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-bottom: 5rem;
 `;
 export const DictItemBox = styled.div`
   width: 90%;
@@ -90,7 +91,7 @@ export const BjrBox = styled.div`
   &:hover {
     /* color: goldenrod;
     transition: all 1s; */
-    cursor: help;
+    cursor: pointer;
   }
 `;
 
