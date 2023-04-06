@@ -14,6 +14,7 @@ export const Container = styled.div`
 
 export const MainContel = styled.div`
   color: white;
+  padding-top: 20px;
   padding-left: 4.5em;
   padding-right: 4.5em;
   min-height: 100vh;

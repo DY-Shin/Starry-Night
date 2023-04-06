@@ -9,6 +9,7 @@ import MainContel from '../Components/MainPage/MainContel';
 import Footer from '../Components/MainPage/Footer';
 import * as MainStyle from './Main_Style';
 import { PageStore } from '../../store';
+import Header from '../Components/MainPage/Header';
 
 function Mainpage() {
   const { page, setPage } = PageStore();
@@ -25,6 +26,7 @@ function Mainpage() {
 
   return (
     <MainStyle.Mainpage>
+      <Header />
       <ReactPageScroller pageOnChange={pageChanage} customPageNumber={page}>
         <MainTop />
         <MainExplain />

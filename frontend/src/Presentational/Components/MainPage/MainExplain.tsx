@@ -26,8 +26,8 @@ function MainExplain() {
             <ExplainStyle.EPImgBox1>
               <ReactCompareSlider
                 handle={<ReactCompareSliderHandle style={{ color: '#3282B8' }} linesStyle={{ opacity: 0.5 }} />}
-                itemOne={<ReactCompareSliderImage src="assets/mainpage/MainEp1.jpg" alt="Image one" />}
-                itemTwo={<ReactCompareSliderImage src="assets/mainpage/MainEp2.jpg" alt="Image two" />}
+                itemOne={<ReactCompareSliderImage src="assets/mainpage/MainEp3.jpg" alt="Image one" />}
+                itemTwo={<ReactCompareSliderImage src="assets/mainpage/MainEp4.png" alt="Image two" />}
                 position={50}
                 onlyHandleDraggable
                 style={{

@@ -1,13 +1,13 @@
 /* eslint-disable react/jsx-pascal-case */
 import React from 'react';
 import * as MainStyle from '../../Page/Main_Style';
-import Header from './Header';
+// import Header from './Header';
 import * as TopStyle from './MainTop_Style';
 
 function MainTop() {
   return (
     <MainStyle.Container>
-      <Header />
+      {/* <Header /> */}
       <TopStyle.MainTop>
         <TopStyle.TopTitle>별 헤는 밤</TopStyle.TopTitle>
         <TopStyle.TopMap to="map">

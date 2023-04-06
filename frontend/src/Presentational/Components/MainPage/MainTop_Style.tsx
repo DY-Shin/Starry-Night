@@ -4,6 +4,7 @@ import { GoTelescope } from 'react-icons/go';
 
 // top 슬라이드
 export const MainTop = styled.div`
+  padding-top: 50px;
   color: white;
   padding-left: 4.5em;
   padding-right: 4.5em;

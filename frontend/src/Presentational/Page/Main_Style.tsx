@@ -11,6 +11,7 @@ export const Mainpage = styled.div`
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  position: relative;
   &::-webkit-scrollbar {
     width: 8px;
     height: 8px;
