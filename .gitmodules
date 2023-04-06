@@ -1,0 +1,3 @@
+[submodule "config"]
+	path = config
+	url = https://lab.ssafy.com/2heedol/d206-config-files.git
