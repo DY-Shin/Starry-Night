@@ -63,27 +63,11 @@ function MyArticle() {
     dots: false,
     infinite: true,
     arrows: false,
-    slidesToShow: 3,
+    slidesToShow: 2,
     slidesToScroll: 1,
     autoplay: false,
     speed: 400,
     cssEase: 'linear',
-    responsive: [
-      {
-        breakpoint: 2000,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-    ],
   };
 
   const onClickImg = (target: number) => {
