@@ -33,7 +33,7 @@ function StarInfo({ onClickToggleModal, children, id }: PropsWithChildren<ModalD
   const getDetailConstellation = async (ConstellationsId: number) => {
     try {
       const response = await api.get(`constellations/${ConstellationsId}`, { withCredentials: true });
-      console.log(response.data.data);
+      // console.log(response.data.data);
       setStarDetail(response.data.data);
     } catch (error) {
       console.error(error);
@@ -82,7 +82,7 @@ function StarInfo({ onClickToggleModal, children, id }: PropsWithChildren<ModalD
       <InfoStyle.Backdrop
         onClick={(e: React.MouseEvent) => {
           e.preventDefault();
-          console.log(123);
+          // console.log(123);
           if (onClickToggleModal) {
             onClickToggleModal();
           }
