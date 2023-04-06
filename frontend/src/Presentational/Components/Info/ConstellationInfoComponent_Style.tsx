@@ -32,6 +32,7 @@ export const ConstellationExplanText = styled.p`
   color: #ffffffdf;
   margin: 5px;
   white-space: pre-line;
+  font-family: 'PyeongChang-Bold', sans-serif;
 `;
 
 export const ConstellationExplanWrapper = styled.div`
@@ -66,6 +67,7 @@ export const DetailWrapper = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
+  cursor: default;
 `;
 
 export const ImageItem = styled.img<{ link: string }>`

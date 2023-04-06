@@ -36,6 +36,7 @@ export const MiddleWrapper = styled.div`
 export const BottomWrapper = styled.div`
   width: 100%;
   height: 50px;
+  cursor: default;
 `;
 
 export const BottomNameText = styled.p`
