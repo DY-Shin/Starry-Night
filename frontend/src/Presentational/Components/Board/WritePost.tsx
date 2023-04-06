@@ -80,7 +80,7 @@ function WritePost(props: propsType) {
     naver.maps.Event.addListener(writeMap, 'dragend zoomend', () => {
       const newCenter = writeMap.getCenter();
       marker.setPosition(newCenter);
-      setWriteMapCenter(new naver.maps.LatLng(writeMap.getCenter().x, writeMap.getCenter().y));
+      setWriteMapCenter(new naver.maps.LatLng(writeMap.getCenter().y, writeMap.getCenter().x));
     });
 
     await getConstellations();
