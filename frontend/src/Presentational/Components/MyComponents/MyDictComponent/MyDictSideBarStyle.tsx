@@ -43,14 +43,12 @@ export const DictButton = styled.div`
   width: 120px;
   font-size: 120%;
   background-color: rgba(0, 0, 0, 0.5);
-  color: #f0f0f0;
-  /* color: black; */
+  color: whitesmoke;
   align-items: center;
   justify-content: center;
-
+  border-style: solid;
   border-radius: 1vh;
-  border-color: rgba(52, 152, 219, 0.8);
-  color: white;
+  /* border-color: rgba(52, 152, 219, 0.8); */
   box-shadow: 0 0 7px 0px rgba(52, 152, 219, 0.8) inset, 0 0 7px 4px rgba(52, 152, 219);
   transition: all 200ms ease-in-out;
 
@@ -62,6 +60,7 @@ export const DictButton = styled.div`
 export const MenuLink = styled(NavLink)`
   color: white;
   text-decoration: none;
+  /* border-style: solid; */
   /* &:hover {
     filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));
   } */

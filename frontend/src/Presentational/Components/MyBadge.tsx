@@ -24,17 +24,19 @@ export const Badge = styled(motion.div)`
   height: 200px;
   display: flex;
   font-size: 1.5rem;
-  /* color: whitesmoke; */
+  color: whitesmoke;
   align-items: center;
   justify-content: center;
   /* background: green; */
   border-radius: 50%;
   /* border-color: pink; */
-  background-color: rgba(50, 130, 184, 0.7);
-  border-color: #0f4c75;
+  /* background-color: rgba(50, 130, 184, 0.7); */
+  /* border-color: #0f4c75; */
   border-width: 3px;
   border-style: solid;
   justify-self: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 7px 0px rgba(52, 152, 219, 0.8) inset, 0 0 70px 2px rgba(52, 152, 219);
 `;
 export const NotCompletedBadge = styled(motion.div)`
   position: relative;
@@ -63,6 +65,9 @@ export const modal = styled.div`
   position: absolute;
   border-radius: 10px;
   top: 9em;
-  background-color: rgba(50, 130, 184, 0.7);
-  border: 3px solid #0f4c75;
+  /* background-color: rgba(50, 130, 184, 0.7); */
+  /* border: 3px solid #0f4c75; */
+  border-style: solid;
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 7px 0px rgba(52, 152, 219, 0.8) inset, 0 0 7px 2px rgba(52, 152, 219);
 `;

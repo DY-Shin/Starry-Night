@@ -9,7 +9,7 @@ export const MainNav = styled.div`
 `;
 export const WrapNav = styled.nav`
   width: 100%;
-  max-width: 1050px;
+  max-width: 1250px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -27,6 +27,7 @@ export const WrapNav = styled.nav`
 export const NavLogo = styled(Link)`
   color: white;
   text-decoration: none;
+  filter: drop-shadow(0 0 10px rgba(50, 130, 184, 1));
   cursor: pointer;
   &:hover {
     filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1));

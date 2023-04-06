@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { BsFillPatchCheckFill } from 'react-icons/bs';
-
+//
 export const WrapConstellations = styled.div`
   flex-basis: 75%;
   position: relative;
@@ -33,6 +33,7 @@ export const CurrentPage = styled.li`
   box-shadow: 0 0 7px 0px rgba(52, 152, 219, 0.8) inset, 0 0 7px 2px rgba(52, 152, 219);
   padding: 10px;
   cursor: pointer;
+  border-style: solid;
   &:hover {
     background-color: rgba(52, 152, 219, 0.8);
   }
@@ -48,6 +49,7 @@ export const MatchCurrentPage = styled.li`
   margin: 0 10px;
   padding: 10px;
   cursor: pointer;
+  border-style: solid;
 `;
 
 export const DictMainBox = styled.div`
@@ -83,11 +85,11 @@ export const BjrBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: goldenrod;
+  color: whitesmoke;
   flex-direction: column;
   &:hover {
-    color: goldenrod;
-    transition: all 1s;
+    /* color: goldenrod;
+    transition: all 1s; */
     cursor: help;
   }
 `;
@@ -98,20 +100,24 @@ export const BjrSymbol = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(50, 130, 184, 0.7);
-  border-color: #0f4c75;
+  /* background-color: rgba(50, 130, 184, 0.7); */
+  border-color: whitesmoke;
+  color: goldenrod;
   border-radius: 50%;
-  border-width: 3px;
+  /* border-width: 3px; */
   border-style: solid;
   margin-bottom: 10px;
   /* filter: drop-shadow(0 0 2px #0f4c75); */
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 7px 0px rgba(52, 152, 219, 0.8) inset, 0 0 70px 2px rgba(52, 152, 219);
 `;
 
 export const Check = styled(BsFillPatchCheckFill)`
   position: absolute;
   /* top: 5px; */
-  bottom: 35%;
-  right: 20px;
+  bottom: 34%;
+  right: 13px;
+  color: goldenrod;
 `;
 
 export const BjrName = styled.div`
@@ -119,15 +125,17 @@ export const BjrName = styled.div`
   height: 50px;
   display: flex;
   font-size: 1.2rem;
-  color: black;
+  /* color: black; */
   align-items: center;
   justify-content: center;
   background-color: rgba(50, 130, 184, 0.7);
-  border-color: #0f4c75;
+  /* border-color: #0f4c75; */
   border-radius: 10px;
   border-width: 3px;
   border-style: solid;
   /* filter: drop-shadow(0 0 2px #0f4c75); */
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 7px 0px rgba(52, 152, 219, 0.8) inset, 0 0 7px 2px rgba(52, 152, 219);
 `;
 
 export const FalseBjrSymbol = styled.div`
@@ -138,12 +146,16 @@ export const FalseBjrSymbol = styled.div`
   align-items: center;
   justify-content: center;
   background-color: rgba(50, 130, 184, 0.7);
-  border-color: #0f4c75;
+  /* border-color: #0f4c75; */
+  border-color: whitesmoke;
+  color: goldenrod;
   border-radius: 50%;
   border-width: 3px;
   border-style: solid;
   margin-bottom: 10px;
   /* filter: drop-shadow(0 0 2px #0f4c75); */
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 7px 0px rgba(52, 152, 219, 0.8) inset, 0 0 70px 2px rgba(52, 152, 219);
 `;
 
 export const FalseBjrName = styled.div`
@@ -151,14 +163,16 @@ export const FalseBjrName = styled.div`
   height: 50px;
   display: flex;
   font-size: 1.2rem;
-  color: black;
+  /* color: black; */
   align-items: center;
   justify-content: center;
   background-color: rgba(50, 130, 184, 0.7);
-  border-color: #0f4c75;
+  /* border-color: #0f4c75; */
   border-radius: 10px;
   border-width: 3px;
   border-style: solid;
   /* filter: drop-shadow(0 0 2px #0f4c75); */
   /* padding: 0px 5px; */
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 7px 0px rgba(52, 152, 219, 0.8) inset, 0 0 7px 2px rgba(52, 152, 219);
 `;

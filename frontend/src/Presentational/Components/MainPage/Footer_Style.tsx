@@ -142,6 +142,7 @@ export const PhotoPoem = styled.div`
   align-items: center;
   justify-content: center;
   padding-right: 8em;
+
   @media all and (max-width: 1200px) {
   }
   @media all and (max-width: 768px) {
@@ -160,4 +161,8 @@ export const FooterImg = styled.img.attrs<ImgProps>((props) => ({
   src: props.src,
 }))`
   height: 25vw;
+  border-style: solid;
+  border-radius: 10px;
+  border-color: whitesmoke;
+  box-shadow: 0 0 7px 0px rgba(52, 152, 219, 0.8) inset, 0 0 70px 2px rgba(52, 152, 219);
 `;
