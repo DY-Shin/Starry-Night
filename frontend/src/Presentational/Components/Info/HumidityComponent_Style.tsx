@@ -26,6 +26,7 @@ export const HumidityWrapper = styled.div`
   width: 100%;
   height: 200px;
   margin: 10px 0 30px 0;
+  cursor: default;
 `;
 
 export const StyledLoader = styled.div<{ percent: number }>`

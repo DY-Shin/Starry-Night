@@ -21,6 +21,7 @@ export const FineDustWrapper = styled.div`
   flex-direction: column;
   box-shadow: 0 0 0 4px ${backgroundColor} inset, 0 0 0 8px #fff inset;
   margin: 10px 0 30px 0;
+  cursor: default;
 
   & .icon {
     color: white;

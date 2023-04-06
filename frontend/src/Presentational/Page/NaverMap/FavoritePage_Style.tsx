@@ -19,6 +19,7 @@ export const FavoriteListWrapper = styled.div`
 export const FavoriteWrapper = styled.div`
   width: 100%;
   height: 100%;
+  cursor: default;
 `;
 
 export const FavoriteItemText = styled.p`
