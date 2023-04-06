@@ -6,7 +6,8 @@ export const SidBarBody = styled.div`
   width: 350px;
   height: 100%;
   position: absolute;
-  box-shadow: 0 0 0 1px #58585839 inset;
+  /* box-shadow: 0 0 0 1px #ffffff39 inset; */
+  /* box-shadow: 0 1px 0 0 #ffffff inset; */
   top: 0;
   &.close {
     left: 0;
@@ -30,8 +31,10 @@ export const SidBarBody = styled.div`
 
 export const SidBarContentsArea = styled.div`
   width: 100% - 20px;
-  height: calc(100% - 387px);
-  padding: 5px 10px 5px 10px;
+  /* height: calc(100% - 387px); */
+  height: calc(60% - 20px);
+  /* padding: 5px 10px 5px 10px; */
+  margin: 0 10px 0 10px;
   overflow: auto;
   ::-webkit-scrollbar {
     display: none;

@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const MenuWrapper = styled.div`
   margin: 10px 0 10px 0px;
   width: 100%;
+  height: 20%;
+  border-bottom: 1px solid #ffffffc8;
 `;
 
 const focusColor = '#ed83f7;';
@@ -11,9 +13,12 @@ export const BtnWrapper = styled.div<{ currentSelectedBoard: string }>`
   display: grid;
   grid-template-columns: 20% 80%;
   grid-template-rows: 1fr;
-  margin-left: 20px;
+  height: calc(100% / 3);
+  /* margin-left: 20px; */
+  align-items: center;
   & .icon {
     color: #b8b8b8;
+    margin: auto;
   }
   :hover {
     cursor: pointer;
@@ -25,12 +30,6 @@ export const BtnWrapper = styled.div<{ currentSelectedBoard: string }>`
     & .icon {
       color: ${focusColor};
     }
-  }
-  &:not(:first-child, :last-child) {
-    margin: 5px 0 5px 20px;
-  }
-  & .icon {
-    margin: auto 0 auto 0;
   }
 
   &.infoBtn {

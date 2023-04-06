@@ -2,9 +2,18 @@ import styled from 'styled-components';
 
 const textColor = '#ffffffe1';
 
+export const FavoriteBottomWrapper = styled.div`
+  width: 100%;
+  height: 10%;
+`;
+
 export const FavoriteListWrapper = styled.div`
   width: 100%;
-  height: 83.5%;
+  height: 80%;
+  overflow: auto;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const FavoriteWrapper = styled.div`
@@ -47,4 +56,5 @@ export const FavoriteHeader = styled.p`
   color: ${textColor};
   margin: 0;
   font-size: 25px;
+  height: 10%;
 `;

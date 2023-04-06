@@ -50,7 +50,7 @@ function SidBarArea(props: propsType) {
           changeCurrentSelectedBoard={changeCurrentSelectedBoard}
           currentSelectedBoard={currentSelectedBoard}
         />
-        <SidBarStyle.SidBarLine />
+        {/* <SidBarStyle.SidBarLine /> */}
         <SidBarStyle.SidBarContentsArea className="contentsArea">
           {currentSelectedBoard === 'info' ? <InfoPage clickLocation={clickLocation} /> : null}
           {currentSelectedBoard === 'favorite' ? <FavoritePage map={map} /> : null}

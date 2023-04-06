@@ -10,8 +10,8 @@ export const ConstellationWrapper = styled.div`
   border-radius: 1px;
   /* box-shadow: 0 0 0 2px #fff inset; */
   box-shadow: 0 0 0 4px #fff;
-
-  margin: 20px 0 30px 0;
+  width: 96%;
+  margin: 20px auto 30px auto;
 `;
 
 export const ConstellationItemWrapper = styled.div`

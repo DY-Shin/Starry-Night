@@ -13,7 +13,7 @@ type SideBarMenuProps = {
 function SideBarMenu(props: SideBarMenuProps) {
   const { changeCurrentSelectedBoard, currentSelectedBoard } = props;
   return (
-    <SideBarMenuStyle.MenuWrapper>
+    <SideBarMenuStyle.MenuWrapper className="menuWrapper">
       <SideBarMenuStyle.BtnWrapper
         className="infoBtn"
         onClick={() => {
