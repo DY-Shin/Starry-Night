@@ -15,7 +15,7 @@ export const RewardContainer = styled.div`
   color: black;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   row-gap: 5em;
-  margin-top: 3rem;
+  margin-top: 8rem;
   padding: 0px 10rem;
 `;
 export const Badge = styled(motion.div)`
