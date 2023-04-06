@@ -94,3 +94,15 @@ export const MyButton = styled(Link)`
     box-shadow: 0 0 10px 5px rgba(52, 152, 219, 0.8) inset, 0 0 70px 2px rgba(52, 152, 219);
   }
 `;
+
+export const NickFix = styled.div`
+  width: 300px;
+  height: 30px;
+  display: flex;
+  font-size: 3rem;
+  color: whitesmoke;
+  align-items: center;
+  justify-content: right;
+
+  background-color: rgba(0, 0, 0, 0.5);
+`;

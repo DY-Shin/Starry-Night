@@ -156,28 +156,32 @@ function MyArticle() {
             transition={{ type: 'tween', duration: 1 }}
             key={index}
           >
-            {userPostInfo?.slice(offset * index, offset * index + offset).map((post) => (
-              <MyPostBox.Box
-                key={post.id}
-                layoutId={`${post.id}`}
-                onClick={() => onBoxClicked(post.id)}
-                variants={MyPostBox.boxVariants}
-                whileHover="hover"
-                initial="normal"
-                transition={{ type: 'tween' }}
-                bgPhoto={post.images[0] ? post.images[0].url : 'https://j8d206.p.ssafy.io/api/datafiles/8'}
-              >
-                <MyPostBox.PostInfo variants={MyPostBox.PostInfoVariants}>
-                  <h5>
-                    날짜 : {post.createdDate.substring(0, 10)}
-                    <br />
-                    위치 : {post.lng.toFixed(4)} / {post.lat.toFixed(4)}
-                    <br />
-                    {post.constellationTags[0] ? `별자리 : ${post.constellationTags[0].name}` : null}
-                  </h5>
-                </MyPostBox.PostInfo>
-              </MyPostBox.Box>
-            ))}
+            {userPostInfo ? (
+              userPostInfo.slice(offset * index, offset * index + offset).map((post) => (
+                <MyPostBox.Box
+                  key={post.id}
+                  layoutId={`${post.id}`}
+                  onClick={() => onBoxClicked(post.id)}
+                  variants={MyPostBox.boxVariants}
+                  whileHover="hover"
+                  initial="normal"
+                  transition={{ type: 'tween' }}
+                  bgPhoto={post.images[0] ? post.images[0].url : 'https://j8d206.p.ssafy.io/api/datafiles/8'}
+                >
+                  <MyPostBox.PostInfo variants={MyPostBox.PostInfoVariants}>
+                    <h5>
+                      날짜 : {post.createdDate.substring(0, 10)}
+                      <br />
+                      위치 : {post.lng.toFixed(4)} / {post.lat.toFixed(4)}
+                      <br />
+                      {post.constellationTags[0] ? `별자리 : ${post.constellationTags[0].name}` : null}
+                    </h5>
+                  </MyPostBox.PostInfo>
+                </MyPostBox.Box>
+              ))
+            ) : (
+              <h1>게시글이 없습니다.</h1>
+            )}
           </MyPostBox.Row>
         </AnimatePresence>
       </MyPostBox.PostSlider>
