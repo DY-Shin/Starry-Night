@@ -8,7 +8,6 @@ const hoverTextColor = '#fbff00';
 export const ConstellationWrapper = styled.div`
   background-color: ${backgroundColor};
   border-radius: 1px;
-  /* box-shadow: 0 0 0 2px #fff inset; */
   box-shadow: 0 0 0 4px #fff;
   width: 96%;
   margin: 20px auto 30px auto;
@@ -21,9 +20,6 @@ export const ConstellationItemWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  & .icon {
-    margin: 5px 20px 5px 0;
-  }
   &:hover {
     cursor: pointer;
     background-color: ${hoverBackgroundColor};
@@ -31,6 +27,10 @@ export const ConstellationItemWrapper = styled.div`
     .icon {
       color: ${hoverTextColor};
     }
+  }
+
+  & .icon {
+    margin: 5px 20px 5px 0;
   }
 `;
 
