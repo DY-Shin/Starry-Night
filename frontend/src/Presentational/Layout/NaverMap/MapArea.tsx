@@ -33,9 +33,9 @@ function MapArea() {
     const location = centerLocation;
     const map = new naver.maps.Map(mapElement.current, {
       center: location,
-      zoom: 15,
+      zoom: 12,
       minZoom: 8,
-      maxZoom: 15,
+      maxZoom: 14,
       tileSpare: 5,
       logoControl: true,
       logoControlOptions: {

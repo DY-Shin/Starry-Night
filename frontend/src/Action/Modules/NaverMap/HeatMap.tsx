@@ -48,37 +48,37 @@ export async function TurnOnHeatMap(maps: naver.maps.Map | null): Promise<naver.
   console.log(zoom);
   // eslint-disable-next-line default-case
   switch (true) {
-    case zoom <= 8:
-      radius = 16;
+    case zoom <= 8: //
+      radius = 17;
       opacity = 0.38;
       break;
-    case zoom <= 9:
-      radius = 30;
-      opacity = 0.42;
+    case zoom <= 9: //
+      radius = 32;
+      opacity = 0.44;
       break;
-    case zoom <= 10:
-      radius = 35;
+    case zoom <= 10: //
+      radius = 36;
+      opacity = 0.34;
+      break;
+    case zoom <= 11: //
+      radius = 36;
       opacity = 0.33;
       break;
-    case zoom <= 11:
-      radius = 35;
+    case zoom <= 12: //
+      radius = 33;
       opacity = 0.38;
       break;
-    case zoom <= 12:
-      radius = 32;
-      opacity = 0.4;
-      break;
     case zoom <= 13:
-      radius = 32;
-      opacity = 0.42;
+      radius = 55;
+      opacity = 0.48;
       break;
     case zoom <= 14:
-      radius = 60;
-      opacity = 0.5;
+      radius = 53;
+      opacity = 0.52;
       break;
     case zoom <= 15:
-      radius = 60;
-      opacity = 0.54;
+      radius = 18;
+      opacity = 0.8;
       break;
   }
 
