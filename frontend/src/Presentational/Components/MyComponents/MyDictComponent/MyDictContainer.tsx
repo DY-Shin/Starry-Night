@@ -20,7 +20,7 @@ export const WrapPagination = styled.ul`
   transform: translateX(-47.5%);
   bottom: -4rem;
   list-style: none;
-  z-index: -1;
+  /* z-index: -1; */
 `;
 
 // 가려는 페이지
