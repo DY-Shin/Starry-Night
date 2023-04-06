@@ -90,7 +90,7 @@ export const BjrBox = styled.div`
   &:hover {
     /* color: goldenrod;
     transition: all 1s; */
-    cursor: help;
+    cursor: pointer;
   }
 `;
 
