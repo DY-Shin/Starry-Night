@@ -58,7 +58,7 @@ export const DictMainBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-bottom: 5rem;
+  /* padding-bottom: 5rem; */
 `;
 export const DictItemBox = styled.div`
   width: 90%;
