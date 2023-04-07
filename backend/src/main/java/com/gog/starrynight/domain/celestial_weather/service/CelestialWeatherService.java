@@ -36,8 +36,8 @@ public class CelestialWeatherService {
         int scale = 5;
         switch (req.getZoom()) {
             case 15: scale = 0; break;
-            case 14: case 13: scale = 1; break;
-            case 12: scale = 2; break;
+            case 14: scale = 1; break;
+            case 13: case 12: scale = 2; break;
             case 11: scale = 3; break;
             case 10: scale = 4; break;
             case 8: case 9: scale = 5; break;
